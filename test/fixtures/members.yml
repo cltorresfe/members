@@ -4,12 +4,12 @@ one:
   name: MyString
   adress: MyString
   email: MyString
-  phono: 1
-  status: 1
+  phone: 1
+  estado: MyString
 
 two:
   name: MyString
   adress: MyString
   email: MyString
-  phono: 1
-  status: 1
+  phone: 1
+  estado: MyString

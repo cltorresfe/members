@@ -1,11 +1,10 @@
-class CreateMembers < ActiveRecord::Migration
+class CreateChurches < ActiveRecord::Migration
   def change
-    create_table :members do |t|
+    create_table :churches do |t|
       t.string :name
       t.string :adress
       t.string :email
-      t.integer :phono
-      t.integer :status
+      t.integer :phone
 
       t.timestamps null: false
     end

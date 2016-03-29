@@ -21,16 +21,33 @@
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </div>
   <div class="field">
-    <%= f.label :phono %><br>
-    <%= f.number_field :phono %>
+    <%= f.label :phone %><br>
+    <%= f.telephone_field :phone %>
   </div>
+
+  <div class="field">
+    <%= f.label :church %><br>
+    <%= f.select(:church_id, churches_for_select, {:include_blank => '-select-'})%>
+  </div>
+
+  <div class="field">
+  <%= f.label :responsibility%><br />
+  <%= f.collection_check_boxes :responsibility_ids, Responsibility.all, :id, :name do |b| %>
+    <div class="collection-check-box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+  <% end %>
+</div>
+
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.number_field :status %>
+    <%= f.select(:status_id, statuses_for_select, {:include_blank => '-select-'})%>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

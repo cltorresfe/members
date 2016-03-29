@@ -11,14 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323195409) do
+ActiveRecord::Schema.define(version: 20160328005334) do
+
+  create_table "churches", force: :cascade do |t|
+    t.string   "name"
+    t.string   "adress"
+    t.string   "email"
+    t.integer  "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "members", force: :cascade do |t|
     t.string   "name"
     t.string   "adress"
     t.string   "email"
-    t.integer  "phono"
-    t.integer  "status"
+    t.integer  "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "church_id"
+    t.integer  "status_id"
+  end
+
+  add_index "members", ["church_id"], name: "index_members_on_church_id"
+  add_index "members", ["status_id"], name: "index_members_on_status_id"
+
+  create_table "members_responsibilities", id: false, force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "responsibility_id"
+  end
+
+  add_index "members_responsibilities", ["member_id"], name: "index_members_responsibilities_on_member_id"
+  add_index "members_responsibilities", ["responsibility_id"], name: "index_members_responsibilities_on_responsibility_id"
+
+  create_table "responsibilities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+s1 = Status.find(3)
+
+ch3 = Church.last
+ 
+10.times do |u|
+  Member.create(name: Faker::Name.name, email: Faker::Internet.email, adress: Faker::Address.street_address,
+  phone: Faker::Number.number(8), status: s1, church: ch3 )
+end

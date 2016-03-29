@@ -1,29 +1,37 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
+  <strong><%=t('.name')%>:</strong>
   <%= @member.name %>
 </p>
 
 <p>
-  <strong>Adress:</strong>
+  <strong><%=t('.address')%>:</strong>
   <%= @member.adress %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong><%=t('.email')%>:</strong>
   <%= @member.email %>
 </p>
 
 <p>
-  <strong>Phono:</strong>
-  <%= @member.phono %>
+  <strong><%=t('.phone')%>:</strong>
+  <%= @member.phone %>
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @member.status %>
+  <strong><%=t('.status')%>:</strong>
+  <%= @member.status.name %>
 </p>
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+<p>
+  <strong><%=t('.church')%>:</strong>
+  <%= @member.church.name %>
+</p>
+
+<p>
+<b><%=t('.responsibilities')%>:</b>
+  <%= @member.responsibilities.map{|p| p.name}.to_sentence %>
+</p>
+
+<%= link_to t('link.edit'), edit_member_path(@member) %> |
+<%= link_to t('link.back'), members_path %>
