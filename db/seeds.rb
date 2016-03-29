@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-s1 = Status.find(3)
+s1 = Status.create(name: 'Baja')
 
 ch3 = Church.last
  
