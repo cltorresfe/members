@@ -9,7 +9,7 @@ es:
     new_church: Nueva Iglesia
     new_status: Nuevo Estado
     new_responsibility: Nuevo Cargo
-    destroy_session: Cerrar Sesión
+    destroy_session: " Cerrar "
   confirm:
     message:
       destroy: ¿Estás seguro?

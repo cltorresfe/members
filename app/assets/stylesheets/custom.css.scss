@@ -19,3 +19,24 @@ $navbar-default-bg: #EBEBEB;
 .center {
 	text-align: center;
 }
+
+.footer {
+	margin: 25px;
+	padding-top: 5px;
+	border-top: 1px solid #eaeaea;
+	color: #777;
+}
+
+.footer a:hover{
+	color: #222;
+}
+
+.footer small {
+	float: right;
+	list-style: none;
+}
+
+.footer ul li{
+	float: left;
+	margin-left: 15px;
+}
