@@ -1,8 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<h1><%= t('.title')%></h1>
-
-<table>
+<div class="panel panel-info">
+<div class="panel-heading" > 
+  <h1 class="panel-title">
+    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 
+    <%= t('.title')%>
+  </h1>
+</div>
+<div class="panel-body" >
+  <table class ="table table-hover table-striped">
   <thead>
     <tr>
       <th><%=Member.human_attribute_name("name")%></th>
@@ -27,7 +31,6 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
 
-<%= link_to t('link.new_church'), new_church_path %>

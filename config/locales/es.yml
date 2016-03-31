@@ -40,6 +40,15 @@ es:
       address: 'Dirección'
       email: 'Correo'
       phone: 'Fono'
+  responsibilities:
+    index:
+      title: Listado de Cargos
+    edit:
+      title: Editar Cargos
+    new:
+      title: Nuevo Cargo
+    show:
+      name: Nombre
   activerecord:
     models:
       church: 'Iglesia'

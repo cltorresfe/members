@@ -32,6 +32,15 @@ en:
       address: 'Address'
       email: 'Email'
       phone: 'Telephone'
+  responsibilities:
+    index:
+      title: Listing responsibilities
+    edit:
+      title: Editing Responsibility
+    new:
+      title: New Responsibility
+    show:
+      name: Name
   activerecord:
     models:
       church: 'Church'
