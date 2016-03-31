@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'devise-i18n-views'
 gem 'faker'
+gem 'delayed_job_active_record'
 
 
 group :development do

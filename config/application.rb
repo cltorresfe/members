@@ -23,5 +23,14 @@ module Members
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile = false
+    config.active_job.queue_adapter = :delayed_job
+    config.action_mailer.default_url_options = {
+        host: 'example.com'
+    }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address:'localhost',
+        port: 1025
+    }
   end
 end
