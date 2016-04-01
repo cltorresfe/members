@@ -9,7 +9,7 @@ en:
     new_church: New Church
     new_status: New Status
     new_responsibility: New Responsibility
-    destroy_session: " Destroy"
+    destroy_session: " Logout"
   confirm:
     message:
       destroy: Are you sure?
