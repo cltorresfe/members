@@ -1,0 +1,27 @@
+= render 'shared/errors', obj: @church
+.row
+  .col-xs-10
+    = form_for(@church, :html => {class: "form-horizontal", role: "form"}) do |f|
+      .form-group
+        .col-xs-2.control-label
+          = f.label :name
+        .col-xs-8
+          = f.text_field :name, class: "form-control", placeholder: :name, autofocus: true
+      .form-group
+        .col-xs-2.control-label
+          = f.label :adress
+        .col-xs-8
+          = f.text_field :adress, class: "form-control", placeholder: :adress, autofocus: true
+      .form-group
+        .col-xs-2.control-label
+          = f.label :email
+        .col-xs-8
+          = f.text_field :email, class: "form-control", placeholder: :email, autofocus: true
+      .form-group
+        .col-xs-2.control-label
+          = f.label :phone
+        .col-xs-8
+          = f.text_field :phone, class: "form-control", placeholder: :phone, autofocus: true
+      .form-group
+        .col-xs-offset-2.col-xs-10
+          = f.submit class: "btn btn-primary btn-lg"

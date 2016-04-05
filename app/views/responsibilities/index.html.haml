@@ -1,0 +1,13 @@
+%h1 Listing Responsibilities
+%table
+  %thead
+    %tr
+      %th Name
+      %th{:colspan => "3"}
+  %tbody
+    - @responsibilities.each do |responsibility|
+      %tr
+        %td= responsibility.name
+        %td= link_to 'Show', responsibility
+        %td= link_to 'Edit', edit_responsibility_path(responsibility)
+        %td= link_to 'Destroy', responsibility, method: :delete, data: { confirm: 'Are you sure?' }

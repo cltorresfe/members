@@ -1,0 +1,24 @@
+.panel.panel-info
+  .panel-heading
+    %h1.panel-title
+      %span.glyphicon.glyphicon-th-list{"aria-hidden" => "true"}
+      = t('.title')
+  .panel-body
+    %table.table.table-hover.table-striped
+      %thead
+        %tr
+          %th= Member.human_attribute_name("name")
+          %th= Member.human_attribute_name("adress")
+          %th= Member.human_attribute_name("email")
+          %th= Member.human_attribute_name("phone")
+          %th{:colspan => "3"}
+      %tbody
+        - @churches.each do |church|
+          %tr
+            %td= church.name
+            %td= church.adress
+            %td= church.email
+            %td= church.phone
+            %td= link_to t('link.show'), church
+            %td= link_to t('link.edit'), edit_church_path(church)
+            %td= link_to t('link.destroy'), church, method: :delete, data: { confirm: t('confirm.message.destroy') }

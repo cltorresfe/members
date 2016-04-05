@@ -1,0 +1,18 @@
+.panel.panel-info
+  .panel-heading
+    %h1.panel-title
+      %span.glyphicon.glyphicon-th-list{"aria-hidden" => "true"}
+      = t('.title')
+  .panel-body.row
+    - @members.each do |member|
+      .col-md-6{:id => "”profile”"}
+        .col-md-4
+          = gravatar_image_tag(member.email, filetype: :png, rating: 'pg', size: 15, secure: false, gravatar: { default: :identicon } )
+        .col-md-8
+          %h3
+            = link_to member.name, member_path(member)
+          %dl
+            %dt Direccion:
+            %dd= member.adress
+            %dt Email:
+            %dd= member.email

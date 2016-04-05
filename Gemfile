@@ -29,6 +29,7 @@ gem 'faker'
 gem 'delayed_job_active_record'
 gem 'activeadmin', github: 'activeadmin'
 gem 'gravatar_image_tag'
+gem 'haml-rails'
 
 group :development do
   gem 'sqlite3'

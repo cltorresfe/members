@@ -1,0 +1,12 @@
+= render 'shared/errors', obj: @responsibility
+.row
+  .col-xs-10
+    = form_for(@responsibility, :html => {class: "form-horizontal", role: "form"}) do |f|
+      .form-group
+        .col-xs-2.control-label
+          = f.label :name
+        .col-xs-8
+          = f.text_field :name, class: "form-control", placeholder: :name, autofocus: true
+      .form-group
+        .col-xs-offset-2.col-xs-10
+          = f.submit class: "btn btn-primary btn-lg"
