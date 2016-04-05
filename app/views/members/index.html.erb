@@ -9,7 +9,7 @@
   <% @members.each do |member| %>
     <div id=”profile” class='col-md-6'>
       <div class="col-md-4">
-        <%= image_tag "google_mas_logo-300x300.jpg", :alt => "Google +", :title => "Google +", widht: '150px', height: '150px'%>
+        <%= gravatar_image_tag(member.email, filetype: :png, rating: 'pg', size: 15, secure: false, gravatar: { default: :identicon } ) %>
       </div>
       <div class="col-md-8">
         <h3><%= link_to member.name, member_path(member) %></h1>
