@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-s1 = Status.create(name: 'Baja')
+s1 = Status.find_or_create_by(name: 'Baja')
 
 ch3 = Church.create!(name: Faker::Name.name, email: Faker::Internet.email, adress: Faker::Address.street_address, phone: Faker::Number.number(8))
 
@@ -13,3 +13,5 @@ ch3 = Church.create!(name: Faker::Name.name, email: Faker::Internet.email, adres
   Member.create!(name: Faker::Name.name, email: Faker::Internet.email, adress: Faker::Address.street_address,
   phone: Faker::Number.number(8), status: s1, church: ch3 )
 end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

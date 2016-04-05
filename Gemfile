@@ -27,7 +27,7 @@ gem 'devise'
 gem 'devise-i18n-views'
 gem 'faker'
 gem 'delayed_job_active_record'
-
+gem 'activeadmin', github: 'activeadmin'
 
 group :development do
   gem 'sqlite3'
