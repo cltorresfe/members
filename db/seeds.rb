@@ -5,17 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-s1 = Status.create(name: 'Activo')
-ch1 = Church.create(name: 'Asamblea de Dios Autónoma', adress: 'J.M. de Rosas 1154',
-                    email: 'raul.torres.calistro@gmail.com', phone: 11151515 )
+s1 = Status.find_or_create_by(name: 'Pasivo')
 
-ch2 = Church.create(name: 'Presbiteriana', adress: 'Luis Araneda 2323',
-                    email: 'presbiteriana@gmail.com', phone: 11991515 ) 
+ch3 = Church.create!(name: 'Presbiteriana', email: Faker::Internet.email, adress: Faker::Address.street_address, phone: Faker::Number.number(8))
+
 10.times do |u|
-  Member.create(name: Faker::Name.name, email: Faker::Internet.email, adress: Faker::Address.street_address,
-  phone: Faker::Number.number(8), status: s1, church: ch1 )
+  Member.create!(name: Faker::Name.name, email: Faker::Internet.email, adress: Faker::Address.street_address,
+  phone: Faker::Number.number(8), status: s1, church: ch3 )
 end
-15.times do |u|
-  Member.create(name: Faker::Name.name, email: Faker::Internet.email, adress: Faker::Address.street_address,
-  phone: Faker::Number.number(8), status: s1, church: ch2 )
-end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
