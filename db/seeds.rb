@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-s1 = Status.create(name: 'Activo')
+s1 = Status.create(name: 'Pasivo')
 ch1 = Church.create(name: 'Asamblea de Dios Autónoma', adress: 'J.M. de Rosas 1154',
                     email: 'raul.torres.calistro@gmail.com', phone: 11151515 )
 

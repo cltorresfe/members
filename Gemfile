@@ -27,6 +27,8 @@ gem 'devise'
 gem 'devise-i18n-views'
 gem 'faker'
 gem 'delayed_job_active_record'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 
 group :development do

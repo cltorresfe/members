@@ -40,3 +40,10 @@ $navbar-default-bg: #EBEBEB;
 	float: left;
 	margin-left: 15px;
 }
+
+.pagination_div div {
+	display: inline-block;
+	padding: 0 !important;
+	margin: 0px !important;
+	border-radius: 4px;
+}
