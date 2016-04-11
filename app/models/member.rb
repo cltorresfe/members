@@ -9,4 +9,10 @@ class Member < ActiveRecord::Base
     	too_long: "%{count} characters is the maximum allowed" }
     validates :adress, length: { maximum: 50,
     	too_long: "%{count} characters is the maximum allowed" }
+
+    def self.search(search)
+    	if search
+    		where('name LIKE ?', "%#{search}%")
+    	end
+    end
 end

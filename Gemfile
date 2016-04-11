@@ -31,6 +31,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'gravatar_image_tag'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'pry-rails', :group => :development
 
 group :development do
   gem 'sqlite3'
