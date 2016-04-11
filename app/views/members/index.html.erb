@@ -7,15 +7,13 @@
   </div>
   <div class="panel-body row" >
     <% @members.each do |member| %>
-      <div id=”profile” class='col-md-6'>
+      <div id=”profile” class='col-md-4'>
         <div class="col-md-4">
           <%= gravatar_image_tag(member.email, filetype: :png, rating: 'pg', size: 15, secure: false, gravatar: { default: :identicon } ) %>
         </div>
-        <div class="col-md-8">
-          <h3><%= link_to member.name, member_path(member) %></h3>
-          <dl>
-            <dt>Direccion:</dt>
-            <dd><%= member.adress %></dd>
+        <div class="col-md-7">
+          <h5><%= link_to member.name, member_path(member) %></h5>
+          <dl class="profile">
             <dt>Email:</dt>
             <dd><%= member.email %></dd>
           </dl>

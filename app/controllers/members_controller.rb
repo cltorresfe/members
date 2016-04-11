@@ -6,12 +6,12 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     if params[:name].present?
-      @members = Member.search(params[:name]).paginate(page: params[:page], per_page: 10)
+      @members = Member.search(params[:name]).paginate(page: params[:page], per_page: 18)
         respond_to do |format|
         format.html # index.html.erb
       end
     else
-      @members = Member.paginate(page: params[:page], per_page: 10)
+      @members = Member.paginate(page: params[:page], per_page: 18)
     end
   end
 
