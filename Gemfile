@@ -29,6 +29,8 @@ gem 'faker'
 gem 'delayed_job_active_record'
 gem 'activeadmin', github: 'activeadmin'
 gem 'gravatar_image_tag'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development do
   gem 'sqlite3'
