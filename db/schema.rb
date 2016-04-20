@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419210118) do
+ActiveRecord::Schema.define(version: 20160419214735) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -45,6 +45,26 @@ ActiveRecord::Schema.define(version: 20160419210118) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "charge_members", force: :cascade do |t|
+    t.integer  "charge_id"
+    t.integer  "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "charge_members", ["charge_id"], name: "index_charge_members_on_charge_id"
+  add_index "charge_members", ["member_id"], name: "index_charge_members_on_member_id"
+
+  create_table "charges", force: :cascade do |t|
+    t.integer  "ministry_id"
+    t.integer  "responsibility_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "charges", ["ministry_id"], name: "index_charges_on_ministry_id"
+  add_index "charges", ["responsibility_id"], name: "index_charges_on_responsibility_id"
 
   create_table "churches", force: :cascade do |t|
     t.string   "name"
@@ -92,6 +112,13 @@ ActiveRecord::Schema.define(version: 20160419210118) do
 
   add_index "members_responsibilities", ["member_id"], name: "index_members_responsibilities_on_member_id"
   add_index "members_responsibilities", ["responsibility_id"], name: "index_members_responsibilities_on_responsibility_id"
+
+  create_table "ministries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "responsibilities", force: :cascade do |t|
     t.string   "name"

@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:edit, :update, :destroy]
+  before_action :load_ministries, only: [:new, :edit]
   skip_before_filter :authenticate_user!, only: :index
 
   # GET /members
@@ -13,11 +14,6 @@ class MembersController < ApplicationController
     else
       @members = Member.paginate(page: params[:page], per_page: 18)
     end
-  end
-
-  # GET /members/1
-  # GET /members/1.json
-  def show
   end
 
   def search
@@ -44,11 +40,10 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @member.save
         WelcomeMember.notify(@member).deliver_later!
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
-        format.json { render :show, status: :created, location: @member }
+        flash[:notice] = 'Member was successfully created.'
+        format.html { redirect_to action: :index}
       else
         format.html { render :new }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,11 +53,10 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
-        format.json { render :show, status: :ok, location: @member }
+        flash[:notice] = 'Member was successfully updated.'
+        format.html { redirect_to action: :index}
       else
         format.html { render :edit }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,7 +67,6 @@ class MembersController < ApplicationController
     @member.destroy
     respond_to do |format|
       format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -85,7 +78,11 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:name, :adress, :email, :phone, :status_id, :church_id, responsibility_ids:[])
+      params.require(:member).permit(:name, :adress, :email, :phone, :status_id, :church_id, charge_ids:[])
+    end
+
+    def load_ministries
+      @ministries = Ministry.all
     end
 
 end

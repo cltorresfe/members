@@ -1,7 +1,24 @@
+# == Schema Information
+#
+# Table name: members
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  adress     :string
+#  email      :string
+#  phone      :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  church_id  :integer
+#  status_id  :integer
+#
+
 class Member < ActiveRecord::Base
 	belongs_to :church
 	belongs_to :status
-	has_and_belongs_to_many :responsibilities, dependent: :destroy
+    has_many :charge_members
+	has_many :charges, through: :charge_members
+
 	validates :name, :adress, :email, :phone, :church, presence: true
 	validates :email, uniqueness: true, email: true
 	validates :phone, numericality: { less_than_or_equal_to: 2147483647 }

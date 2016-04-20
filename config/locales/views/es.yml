@@ -1,0 +1,51 @@
+es:
+  application: Plataforma Miembros de Iglesia
+  link:
+    back: Atrás
+    edit: Editar
+    destroy: Borrar
+    show: Ver
+    new_member: Nuevo Miembro
+    new_church: Nueva Iglesia
+    new_status: Nuevo Estado
+    new_responsibility: Nuevo Cargo
+    destroy_session: " Cerrar "
+  confirm:
+    message:
+      destroy: ¿Estás seguro?
+  members:
+    index:
+      title: 'Listado de Miembros'
+    edit:
+      title: 'Editar Miembros'
+    new:
+      title: 'Nuevo Miembro'
+    show:
+      name: 'Nombre'
+      address: 'Dirección'
+      email: 'Correo'
+      phone: 'Fono'
+      church: 'Iglesia'
+      responsibilities: 'Cargos'
+      status: 'Estado'
+  churches:
+    index:
+      title: 'Listado de Iglesias'
+    edit:
+      title: 'Editar Iglesia'
+    new:
+      title: 'Nueva Iglesia'
+    show:
+      name: 'Nombre'
+      address: 'Dirección'
+      email: 'Correo'
+      phone: 'Fono'
+  responsibilities:
+    index:
+      title: Listado de Cargos
+    edit:
+      title: Editar Cargos
+    new:
+      title: Nuevo Cargo
+    show:
+      name: Nombre

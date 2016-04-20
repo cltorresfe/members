@@ -1,9 +1,10 @@
 # == Schema Information
 #
-# Table name: statuses
+# Table name: charge_members
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  charge_id  :integer
+#  member_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -11,7 +12,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  charge_id: 
+  member_id: 
 
 two:
-  name: MyString
+  charge_id: 
+  member_id: 

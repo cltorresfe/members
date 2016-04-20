@@ -1,0 +1,12 @@
+.panel.panel-info
+  .panel-heading
+    %h1.panel-title
+      %span.glyphicon.glyphicon-th-list{"aria-hidden" => "true"}
+      = t('.title')
+  #ministry-list.panel-body.row
+    - @ministries.each do |ministry|
+      .ministry.col-md-4
+        .col-md-7
+          %h5= link_to ministry.name, edit_ministry_path(ministry)
+    .col-md-12
+      = will_paginate @ministries, :class => 'margin: 0px'

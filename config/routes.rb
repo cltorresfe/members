@@ -83,6 +83,14 @@
 #                                PATCH      /churches/:id(.:format)                   churches#update
 #                                PUT        /churches/:id(.:format)                   churches#update
 #                                DELETE     /churches/:id(.:format)                   churches#destroy
+#                     ministries GET        /ministries(.:format)                     ministries#index
+#                                POST       /ministries(.:format)                     ministries#create
+#                   new_ministry GET        /ministries/new(.:format)                 ministries#new
+#                  edit_ministry GET        /ministries/:id/edit(.:format)            ministries#edit
+#                       ministry GET        /ministries/:id(.:format)                 ministries#show
+#                                PATCH      /ministries/:id(.:format)                 ministries#update
+#                                PUT        /ministries/:id(.:format)                 ministries#update
+#                                DELETE     /ministries/:id(.:format)                 ministries#destroy
 #               new_user_session GET        /users/sign_in(.:format)                  devise/sessions#new
 #                   user_session POST       /users/sign_in(.:format)                  devise/sessions#create
 #           destroy_user_session DELETE     /users/sign_out(.:format)                 devise/sessions#destroy
@@ -108,8 +116,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :statuses
   resources :responsibilities
-  resources :members
+  resources :members, except: :show
   resources :churches
+  resources :ministries, except: :show
 
   devise_for :users
   devise_scope :user do

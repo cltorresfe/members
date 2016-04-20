@@ -1,0 +1,29 @@
+es:
+  activerecord:
+    models:
+      church: 'Iglesia'
+      member: 'Miembro'
+      responsibility: 'Cargo'
+      status: 'Estado'
+    attributes:
+      church:
+        name: 'Nombre'
+        email: 'Correo'
+        adress: 'Dirección'
+        phone: 'Fono'
+      member:
+        name: 'Nombre'
+        email: 'Correo'
+        adress: 'Dirección'
+        phone: 'Fono'
+        status: 'Estado'
+        church: 'Iglesia'
+        responsibility: "Cargos"
+      responsibility:
+        name: 'Nombre'
+    errors:
+      messages:
+        record_invalid: "La validación falló: %{errors}"
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes
