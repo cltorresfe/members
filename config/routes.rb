@@ -83,7 +83,14 @@
 #                                PATCH      /churches/:id(.:format)                   churches#update
 #                                PUT        /churches/:id(.:format)                   churches#update
 #                                DELETE     /churches/:id(.:format)                   churches#destroy
-#                           root GET        /                                         members#index
+#                     ministries GET        /ministries(.:format)                     ministries#index
+#                                POST       /ministries(.:format)                     ministries#create
+#                   new_ministry GET        /ministries/new(.:format)                 ministries#new
+#                  edit_ministry GET        /ministries/:id/edit(.:format)            ministries#edit
+#                       ministry GET        /ministries/:id(.:format)                 ministries#show
+#                                PATCH      /ministries/:id(.:format)                 ministries#update
+#                                PUT        /ministries/:id(.:format)                 ministries#update
+#                                DELETE     /ministries/:id(.:format)                 ministries#destroy
 #               new_user_session GET        /users/sign_in(.:format)                  devise/sessions#new
 #                   user_session POST       /users/sign_in(.:format)                  devise/sessions#create
 #           destroy_user_session DELETE     /users/sign_out(.:format)                 devise/sessions#destroy
@@ -99,6 +106,8 @@
 #                                PATCH      /users(.:format)                          devise/registrations#update
 #                                PUT        /users(.:format)                          devise/registrations#update
 #                                DELETE     /users(.:format)                          devise/registrations#destroy
+#             authenticated_root GET        /                                         members#index
+#           unauthenticated_root GET        /                                         devise/sessions#new
 #
 
 Rails.application.routes.draw do
@@ -111,8 +120,16 @@ Rails.application.routes.draw do
   resources :churches
   resources :ministries
 
-  root 'members#index'
   devise_for :users
+  devise_scope :user do
+    authenticated :user do
+      root 'members#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 
   # Serve websocket cable requests inprocess
   # mount ActionCable.server => '/cable'
