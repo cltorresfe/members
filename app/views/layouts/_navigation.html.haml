@@ -34,10 +34,10 @@
             %li.divider{:role => "separator"}
             %li
               %a{:href => "#"} One more separated link
-      %form.navbar-form.navbar-left{:role => "search"}
-        .form-group
-          %input.form-control{:placeholder => "Search Member", :type => "text"}/
-        %button.btn.btn-default{:type => "submit"} Submit
+      .form-group.navbar-form.navbar-left
+        = form_tag({controller: "members", action: "index"}, method: "get", id: "search-form") do
+          = text_field_tag :name, params[:name], placeholder: "Search Member", class: 'form-control'
+            = submit_tag "Submit", class: 'btn btn-default'
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -50,11 +50,10 @@
               %a{:href => "#"} Another action
             %li
               %a{:href => "#"} Something else here
+            - if user_signed_in?
+             %li= link_to t('link.destroy_session'), destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-user"
             %li.divider{:role => "separator"}
             %li
               %a{:href => "#"} Separated link
-        - if user_signed_in?
-          %li
-            = link_to t('link.destroy_session'), destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-user"
     / /.navbar-collapse
   / /.container-fluid

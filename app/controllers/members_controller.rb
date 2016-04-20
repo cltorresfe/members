@@ -1,16 +1,30 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
-
+  require 'pry'
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    if params[:name].present?
+      @members = Member.search(params[:name]).paginate(page: params[:page], per_page: 18)
+        respond_to do |format|
+        format.html # index.html.erb
+      end
+    else
+      @members = Member.paginate(page: params[:page], per_page: 18)
+    end
   end
 
   # GET /members/1
   # GET /members/1.json
   def show
+  end
+
+  def search
+    @members = Member.search(params[:search_member])
+    respond_to do |format|
+      format.html # index.html.erb
+    end
   end
 
   # GET /members/new
