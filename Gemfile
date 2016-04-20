@@ -30,23 +30,10 @@ gem 'faker'
 gem 'delayed_job_active_record'
 gem 'activeadmin', github: 'activeadmin'
 gem 'gravatar_image_tag'
+gem 'haml-rails'
+
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'pry-rails', :group => :development
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,11 +43,18 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'quiet_assets'
+  gem 'pry-rails'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 

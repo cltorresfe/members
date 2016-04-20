@@ -1,0 +1,45 @@
+= render 'shared/errors', obj: @member
+.row
+  .col-xs-10
+    = form_for(@member, :html => {class: "form-horizontal", role: "form"} ) do |f|
+      .form-group
+        .col-xs-2.control-label
+          = f.label :name
+        .col-xs-8
+          = f.text_field :name, class: "form-control", placeholder: :name, autofocus: true
+      .form-group
+        .col-xs-2.control-label
+          = f.label :adress
+        .col-xs-8
+          = f.text_field :adress, class: "form-control", placeholder: :adress, autofocus: true
+      .form-group
+        .col-xs-2.control-label
+          = f.label :email
+        .col-xs-8
+          = f.text_field :email, class: "form-control", placeholder: :email, autofocus: true
+      .form-group
+        .col-xs-2.control-label
+          = f.label :phone
+        .col-xs-8
+          = f.text_field :phone, class: "form-control", placeholder: :phone, autofocus: true
+      .form-group
+        .col-xs-2.control-label
+          = f.label :church
+        .col-xs-8
+          = f.select(:church_id, churches_for_select, {:include_blank => '-select-'}, class: "form-control", autofocus: true)
+      .form-group
+        .col-xs-2.control-label
+          = f.label :responsibility
+        .col-xs-8
+          = f.collection_check_boxes :responsibility_ids, Responsibility.all, :id, :name do |b|
+            .checkbox-inline
+              = b.check_box
+              = b.label
+      .form-group
+        .col-xs-2.control-label
+          = f.label :status
+        .col-xs-8
+          = f.select(:status_id, statuses_for_select, {:include_blank => '-select-'}, class: "form-control", autofocus: true)
+      .form-group
+        .col-xs-offset-2.col-xs-10
+          = f.submit class: "btn btn-primary btn-lg"
