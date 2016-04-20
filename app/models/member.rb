@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: members
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  adress     :string
+#  email      :string
+#  phone      :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  church_id  :integer
+#  status_id  :integer
+#
+
 class Member < ActiveRecord::Base
 	belongs_to :church
 	belongs_to :status
