@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
-  require 'pry'
+  skip_before_filter :authenticate_user!, only: :index
+
   # GET /members
   # GET /members.json
   def index
