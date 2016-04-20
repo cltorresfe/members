@@ -116,9 +116,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :statuses
   resources :responsibilities
-  resources :members
+  resources :members, except: :show
   resources :churches
-  resources :ministries
+  resources :ministries, except: :show
 
   devise_for :users
   devise_scope :user do

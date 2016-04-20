@@ -1,15 +1,10 @@
 class MinistriesController < ApplicationController
-  before_action :set_ministry, only: [:show, :edit, :update, :destroy]
+  before_action :set_ministry, only: [:edit, :update, :destroy]
 
   # GET /ministries
   # GET /ministries.json
   def index
     @ministries = Ministry.paginate(page: params[:page], per_page: 18)
-  end
-
-  # GET /ministries/1
-  # GET /ministries/1.json
-  def show
   end
 
   # GET /ministries/new
