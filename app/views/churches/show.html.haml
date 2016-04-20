@@ -1,0 +1,23 @@
+%p
+  %strong
+    = t('.name')
+    \:
+  = @church.name
+%p
+  %strong
+    = t('.address')
+    \:
+  = @church.adress
+%p
+  %strong
+    = t('.email')
+    \:
+  = @church.email
+%p
+  %strong
+    = t('.phone')
+    \:
+  = @church.phone
+= link_to t('link.edit'), edit_church_path(@church)
+|
+= link_to t('link.back'), churches_path

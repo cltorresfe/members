@@ -1,0 +1,38 @@
+%p
+  %strong
+    = t('.name')
+    \:
+  = @member.name
+%p
+  %strong
+    = t('.address')
+    \:
+  = @member.adress
+%p
+  %strong
+    = t('.email')
+    \:
+  = @member.email
+%p
+  %strong
+    = t('.phone')
+    \:
+  = @member.phone
+%p
+  %strong
+    = t('.status')
+    \:
+  = @member.status.name
+%p
+  %strong
+    = t('.church')
+    \:
+  = @member.church.name
+%p
+  %b
+    = t('.responsibilities')
+    \:
+  = @member.responsibilities.map{|p| p.name}.to_sentence
+= link_to t('link.edit'), edit_member_path(@member)
+|
+= link_to t('link.back'), members_path
