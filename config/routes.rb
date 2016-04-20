@@ -109,6 +109,7 @@ Rails.application.routes.draw do
   resources :responsibilities
   resources :members
   resources :churches
+  resources :ministries
 
   root 'members#index'
   devise_for :users
