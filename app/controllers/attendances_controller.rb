@@ -9,6 +9,10 @@ class AttendancesController < ApplicationController
     @ministries = Ministry.all
   end
 
+  def create
+    redirect_to action: :index
+  end
+
   private
 
     def attendance_params
