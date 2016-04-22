@@ -121,15 +121,8 @@ Rails.application.routes.draw do
   resources :ministries, except: :show
 
   devise_for :users
-  devise_scope :user do
-    authenticated :user do
-      root 'members#index', as: :authenticated_root
-    end
 
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
-  end
+  root 'members#index'
 
   # Serve websocket cable requests inprocess
   # mount ActionCable.server => '/cable'
