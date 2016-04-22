@@ -36,7 +36,8 @@ class MinistriesController < ApplicationController
   def update
     respond_to do |format|
       if @ministry.update(ministry_params)
-        format.html { redirect_to @ministry, notice: 'Ministry was successfully updated.' }
+        flash[:notice] = 'Ministry was successfully created.'
+        format.html { redirect_to action: :index}
       else
         format.html { render :edit }
       end
