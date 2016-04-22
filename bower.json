@@ -1,0 +1,22 @@
+{
+  "name": "members",
+  "homepage": "https://github.com/cltorresfe/members",
+  "authors": [
+    "Claudio Torres <cltorresfe@gmail.com>",
+    "Alter Lagos <alter.strife@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "^4.17.37",
+    "jquery": "^2.2.3"
+  }
+}
