@@ -59,5 +59,8 @@
               %li.divider{:role => "separator"}
               %li
                 %a{:href => "#"} Separated link
+      - else
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to 'Iniciar Sesion', new_user_session_path
     / /.navbar-collapse
   / /.container-fluid
