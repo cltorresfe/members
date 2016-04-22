@@ -9,7 +9,11 @@
         .col-md-4
           = gravatar_image_tag(member.email, filetype: :png, rating: 'pg', size: 15, secure: false, gravatar: { default: :identicon } )
         .col-md-7
-          %h5= link_to member.name, edit_member_path(member)
+          %h5
+            - if user_signed_in?
+              = link_to member.name, edit_member_path(member)
+            - else
+              = member.name
           %dl.profile
             %dt Direccion:
             %dd= member.adress
