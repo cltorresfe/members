@@ -4,4 +4,7 @@ $(document).ready ->
     format: 'DD/MM/YYYY'
 
   $('#ministry_id').on 'change', ()->
-    $('#attendance-form').submit()
+    $('#attendance-index-form').submit()
+
+  $('#attendance_date').on 'dp.change', ()->
+    $('#attendance-index-form').submit()

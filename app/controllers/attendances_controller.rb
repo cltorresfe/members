@@ -2,9 +2,11 @@ class AttendancesController < ApplicationController
 
   def index
     # @attendance = Attendance.new
-    @ministries = Ministry.all
     @current_ministry = params[:ministry_id] ? Ministry.find(params[:ministry_id]) : Ministry.first
-    @attendance_date = params[:attendance_date] || Date.today
+    @attendance_date = params[:attendance_date] || Date.today.strftime('%d/%m/%Y')
+    @attendances = Attendance.where(ministry: @current_ministry, attendance_date: @attendance_date)
+
+    @ministries = Ministry.all
   end
 
   private
