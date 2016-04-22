@@ -4,8 +4,11 @@
       %label{for: 'ministry_id'} Ministerios
       = select_tag :ministry_id, options_from_collection_for_select(@ministries, "id", "name", @current_ministry.id), class: "form-control"
     .form-group.col-xs-4.col-xs-offset-2
-      %label{for: 'ministry_id'} Fecha
-      = text_field_tag :attendance_date, @attendance_date, class: "form-control"
+      %label{for: 'attendance_date'} Fecha
+      .input-group.date
+        = text_field_tag :attendance_date, @attendance_date, class: "form-control"
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
 
   - @current_ministry.charges.each do |charge|
     .form-group.col-xs-3
