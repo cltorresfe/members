@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member: one
+  ministry: one
+  attendance_date: 2016-04-22 11:15:58
+  present: false
+
+two:
+  member: two
+  ministry: two
+  attendance_date: 2016-04-22 11:15:58
+  present: false
