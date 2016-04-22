@@ -12,4 +12,6 @@
 class Charge < ActiveRecord::Base
   belongs_to :ministry
   belongs_to :responsibility
+  has_many :charge_members
+  has_many :members, through: :charge_members
 end

@@ -1,22 +1,23 @@
-= form_for @attendance do |f|
-  - if @attendance.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@attendance.errors.count, "error")} prohibited this attendance from being saved:"
-      %ul
-        - @attendance.errors.full_messages.each do |msg|
-          %li= msg
+.row
+  = form_tag(attendances_path, class: "form-inline", role: "form", id: 'attendance-form' ) do
+    .form-group.col-xs-4.col-xs-offset-2
+      %label{for: 'ministry_id'} Ministerios
+      = select_tag :ministry_id, options_from_collection_for_select(@ministries, "id", "name", @current_ministry.id), class: "form-control"
+    .form-group.col-xs-4.col-xs-offset-2
+      %label{for: 'ministry_id'} Fecha
+      = text_field_tag :attendance_date, @attendance_date, class: "form-control"
 
-  .field
-    = f.label :member
-    = f.text_field :member
-  .field
-    = f.label :ministry
-    = f.text_field :ministry
-  .field
-    = f.label :attendance_date
-    = f.datetime_select :attendance_date
-  .field
-    = f.label :present
-    = f.check_box :present
-  .actions
-    = f.submit 'Save'
+  - @current_ministry.charges.each do |charge|
+    .form-group.col-xs-3
+      .panel.panel-default
+        .panel-heading= charge.responsibility.name
+        .panel-body.form-group
+          - charge.members.each do |member|
+            - now = Time.now.to_f
+            = hidden_field_tag "attendance[#{now}][ministry_id]", @current_ministry.id
+            = hidden_field_tag "attendance[#{now}][attendance_date]", @attendance_date
+            = hidden_field_tag "attendance[#{now}][member_id]", member.id
+            .checkbox
+              %label
+                = check_box_tag "attendance[#{now}][present]", nil, false
+
