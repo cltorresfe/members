@@ -292,7 +292,7 @@ DEPENDENCIES
   faker
   gravatar_image_tag
   haml-rails
-  jbuilder (~> 2.0)
+  jbuilder
   jquery-rails
   listen (~> 3.0.5)
   pg
