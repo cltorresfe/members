@@ -42,7 +42,7 @@
                 %a{:href => "#"} One more separated link
       - if user_signed_in?
         .form-group.navbar-form.navbar-left
-          = form_tag(members_path, id: "search-form") do
+          = form_tag(members_path, method: "get", id: "search-form") do
             = text_field_tag :name, params[:name], placeholder: "Search Member", class: 'form-control'
             = submit_tag "Submit", class: 'btn btn-default'
         %ul.nav.navbar-nav.navbar-right
