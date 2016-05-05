@@ -10,6 +10,8 @@
         %span.input-group-addon
           %span.glyphicon.glyphicon-calendar
 = form_tag(attendances_path, method: :post, class: "form-inline", role: "form", id: 'attendance-new-form' ) do
+  = hidden_field_tag "ministry_id", @current_ministry.id
+  = hidden_field_tag "attendance_date", @attendance_date
   .row
     - @charges.each do |charge|
       - if charge.members.any?
@@ -19,12 +21,10 @@
             .panel-body.form-group
               - charge.members.each do |member|
                 - now = Time.now.to_f
-                = hidden_field_tag "attendance[#{now}][ministry_id]", @current_ministry.id
-                = hidden_field_tag "attendance[#{now}][attendance_date]", @attendance_date
-                = hidden_field_tag "attendance[#{now}][member_id]", member.id
+                = hidden_field_tag "attendance[][member_id]", member.id
                 .checkbox
                   %label
-                    = check_box_tag "attendance[#{now}][present]", nil, @attendances.exists?(member_id: 1, present: true)
+                    = check_box_tag "attendance[][present]", nil, @attendances.exists?(member_id: member.id, present: true)
                     = member.name
   .row
     .form-group
