@@ -9,7 +9,10 @@
 #  updated_at  :datetime         not null
 #
 
-class Ministry < ActiveRecord::Base
+class Ministry < ApplicationRecord
   has_many :charges
   has_many :responsibilities, through: :charges
+
+  has_many :attendances
+  has_many :member_attendances, through: :attendances
 end

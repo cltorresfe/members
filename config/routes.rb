@@ -1,6 +1,14 @@
 # == Route Map
 #
 #                         Prefix Verb       URI Pattern                               Controller#Action
+#                    attendances GET        /attendances(.:format)                    attendances#index
+#                                POST       /attendances(.:format)                    attendances#create
+#                 new_attendance GET        /attendances/new(.:format)                attendances#new
+#                edit_attendance GET        /attendances/:id/edit(.:format)           attendances#edit
+#                     attendance GET        /attendances/:id(.:format)                attendances#show
+#                                PATCH      /attendances/:id(.:format)                attendances#update
+#                                PUT        /attendances/:id(.:format)                attendances#update
+#                                DELETE     /attendances/:id(.:format)                attendances#destroy
 #         new_admin_user_session GET        /admin/login(.:format)                    active_admin/devise/sessions#new
 #             admin_user_session POST       /admin/login(.:format)                    active_admin/devise/sessions#create
 #     destroy_admin_user_session DELETE|GET /admin/logout(.:format)                   active_admin/devise/sessions#destroy
@@ -71,8 +79,7 @@
 #                                POST       /members(.:format)                        members#create
 #                     new_member GET        /members/new(.:format)                    members#new
 #                    edit_member GET        /members/:id/edit(.:format)               members#edit
-#                         member GET        /members/:id(.:format)                    members#show
-#                                PATCH      /members/:id(.:format)                    members#update
+#                         member PATCH      /members/:id(.:format)                    members#update
 #                                PUT        /members/:id(.:format)                    members#update
 #                                DELETE     /members/:id(.:format)                    members#destroy
 #                       churches GET        /churches(.:format)                       churches#index
@@ -87,8 +94,7 @@
 #                                POST       /ministries(.:format)                     ministries#create
 #                   new_ministry GET        /ministries/new(.:format)                 ministries#new
 #                  edit_ministry GET        /ministries/:id/edit(.:format)            ministries#edit
-#                       ministry GET        /ministries/:id(.:format)                 ministries#show
-#                                PATCH      /ministries/:id(.:format)                 ministries#update
+#                       ministry PATCH      /ministries/:id(.:format)                 ministries#update
 #                                PUT        /ministries/:id(.:format)                 ministries#update
 #                                DELETE     /ministries/:id(.:format)                 ministries#destroy
 #               new_user_session GET        /users/sign_in(.:format)                  devise/sessions#new
@@ -106,11 +112,11 @@
 #                                PATCH      /users(.:format)                          devise/registrations#update
 #                                PUT        /users(.:format)                          devise/registrations#update
 #                                DELETE     /users(.:format)                          devise/registrations#destroy
-#             authenticated_root GET        /                                         members#index
-#           unauthenticated_root GET        /                                         devise/sessions#new
+#                           root GET        /                                         members#index
 #
 
 Rails.application.routes.draw do
+  resources :attendances, only: [:index, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

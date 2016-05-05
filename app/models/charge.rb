@@ -9,7 +9,12 @@
 #  updated_at        :datetime         not null
 #
 
-class Charge < ActiveRecord::Base
+class Charge < ApplicationRecord
   belongs_to :ministry
   belongs_to :responsibility
+  has_many :charge_members
+  has_many :members, through: :charge_members
+
+  scope :non_administrative, -> { joins(:responsibility).where(responsibilities: {administrative: false}) }
+
 end

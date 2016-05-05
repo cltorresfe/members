@@ -1,0 +1,32 @@
+.row
+  = form_tag(attendances_path, method: :get, class: "form-inline", role: "form", id: 'attendance-index-form' ) do
+    .form-group.col-xs-4.col-xs-offset-2
+      %label{for: 'ministry_id'} Ministerios
+      = select_tag :ministry_id, options_from_collection_for_select(@ministries, "id", "name", @current_ministry.id), class: "form-control"
+    .form-group.col-xs-4.col-xs-offset-2
+      %label{for: 'attendance_date'} Fecha
+      .input-group.date
+        = text_field_tag :attendance_date, @attendance_date, class: "form-control"
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
+= form_tag(attendances_path, method: :post, class: "form-inline", role: "form", id: 'attendance-new-form' ) do
+  = hidden_field_tag "ministry_id", @current_ministry.id
+  = hidden_field_tag "attendance_date", @attendance_date
+  .row
+    - @charges.each do |charge|
+      - if charge.members.any?
+        .form-group.col-xs-3
+          .panel.panel-default
+            .panel-heading= charge.responsibility.name
+            .panel-body.form-group
+              - charge.members.each do |member|
+                - now = Time.now.to_f
+                = hidden_field_tag "attendance[][member_id]", member.id
+                .checkbox
+                  %label
+                    = check_box_tag "attendance[][present]", nil, @attendances.exists?(member_id: member.id, present: true)
+                    = member.name
+  .row
+    .form-group
+      .col-xs-offset-4
+        %input.btn.btn-primary{ type: :submit}

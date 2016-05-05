@@ -17,6 +17,8 @@
         - if user_signed_in?
           %li
             = link_to "Churches", churches_path
+          %li
+            = link_to "Asistencia", attendances_path
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               Actions
@@ -40,7 +42,7 @@
                 %a{:href => "#"} One more separated link
       - if user_signed_in?
         .form-group.navbar-form.navbar-left
-          = form_tag({controller: "members", action: "index"}, method: "get", id: "search-form") do
+          = form_tag(members_path, method: "get", id: "search-form") do
             = text_field_tag :name, params[:name], placeholder: "Search Member", class: 'form-control'
             = submit_tag "Submit", class: 'btn btn-default'
         %ul.nav.navbar-nav.navbar-right
