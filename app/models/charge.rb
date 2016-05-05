@@ -14,4 +14,7 @@ class Charge < ActiveRecord::Base
   belongs_to :responsibility
   has_many :charge_members
   has_many :members, through: :charge_members
+
+  scope :non_administrative, -> { joins(:responsibility).where(responsibilities: {administrative: false}) }
+
 end

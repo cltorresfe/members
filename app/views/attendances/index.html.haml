@@ -11,7 +11,7 @@
           %span.glyphicon.glyphicon-calendar
 = form_tag(attendances_path, method: :post, class: "form-inline", role: "form", id: 'attendance-new-form' ) do
   .row
-    - @current_ministry.charges.each do |charge|
+    - @charges.each do |charge|
       - if charge.members.any?
         .form-group.col-xs-3
           .panel.panel-default

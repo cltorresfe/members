@@ -69,6 +69,6 @@ class ResponsibilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def responsibility_params
-      params.require(:responsibility).permit(:name)
+      params.require(:responsibility).permit(:name, :administrative)
     end
 end

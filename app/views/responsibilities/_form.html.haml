@@ -6,7 +6,13 @@
         .col-xs-2.control-label
           = f.label :name
         .col-xs-8
-          = f.text_field :name, class: "form-control", placeholder: :name, autofocus: true
+          = f.text_field :name, class: "form-control", placeholder: :name
+      .form-group
+        .col-xs-offset-2.col-xs-8
+          .checkbox
+            = f.label :administrative do
+              = f.check_box :administrative
+              Cargo Administrativo
       .form-group
         .col-xs-offset-2.col-xs-10
           = f.submit class: "btn btn-primary btn-lg"
