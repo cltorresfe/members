@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 
-class ChargeMember < ActiveRecord::Base
+class ChargeMember < ApplicationRecord
   belongs_to :charge
   belongs_to :member
 end

@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-class Status < ActiveRecord::Base
+class Status < ApplicationRecord
 	has_many :members
 	validates :name, presence: true, uniqueness: true
 end

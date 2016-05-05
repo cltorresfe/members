@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-class Church < ActiveRecord::Base
+class Church < ApplicationRecord
   has_many :members, inverse_of: :order
   has_many :users
 

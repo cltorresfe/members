@@ -13,7 +13,7 @@
 #  status_id  :integer
 #
 
-class Member < ActiveRecord::Base
+class Member < ApplicationRecord
 	belongs_to :church
 	belongs_to :status
     has_many :charge_members

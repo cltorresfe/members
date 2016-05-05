@@ -8,6 +8,6 @@
 #  updated_at :datetime         not null
 #
 
-class Responsibility < ActiveRecord::Base
+class Responsibility < ApplicationRecord
 	validates :name, presence: true, uniqueness: true
 end
