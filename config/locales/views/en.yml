@@ -1,0 +1,59 @@
+en:
+  application: Members Application 
+  link:
+    back: Back
+    edit: Edit
+    destroy: Destroy
+    show: Show
+    members: Members
+    churches: Churches
+    menu_main: Menu
+    menu_options: Actions 
+    new_member: New Member
+    new_church: New Church
+    new_status: New Status
+    new_responsibility: New Responsibility
+    destroy_session: " Logout"
+  button:
+    search: Submit
+  placeholder:
+    search_members: Search Members
+  confirm:
+    message:
+      destroy: Are you sure?
+  members:
+    index:
+      title: 'Listing Members'
+    edit:
+      title: 'Editing Member'
+    new:
+      title: 'New Member'
+    show:
+      name: 'Name'
+      address: 'Address'
+      email: 'Email'
+      phone: 'Number Phone'
+      church: 'Church'
+      responsibilities: 'Cargos'
+      status: 'Estado'
+  churches:
+    index:
+      title: 'Listing Churches'
+    edit:
+      title: 'Editing Church'
+    new:
+      title: 'New Church'
+    show:
+      name: 'Name'
+      address: 'Address'
+      email: 'Email'
+      phone: 'Telephone'
+  responsibilities:
+    index:
+      title: Listing responsibilities
+    edit:
+      title: Editing Responsibility
+    new:
+      title: New Responsibility
+    show:
+      name: Name
