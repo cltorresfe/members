@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20160505193936) do
     t.text     "body"
     t.string   "resource_id",   null: false
     t.string   "resource_type", null: false
-    t.string   "author_type"
     t.integer  "author_id"
+    t.string   "author_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

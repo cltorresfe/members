@@ -7,7 +7,7 @@
     - @members.each do |member|
       .member.col-md-4
         .col-md-4
-          = gravatar_image_tag(member.email, filetype: :png, rating: 'pg', size: 15, secure: false, gravatar: { default: :identicon } )
+          = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', size: 15, secure: false, gravatar: { default: :identicon } ), edit_member_path(member)
         .col-md-7
           %h5
             - if user_signed_in?
