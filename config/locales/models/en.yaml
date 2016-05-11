@@ -1,0 +1,29 @@
+en:  
+  activerecord:
+    models:
+      church: 'Church'
+      member: 'Member'
+      responsibility: 'Responsibility'
+      status: 'Status'
+    attributes:
+      church:
+        name: 'Name'
+        email: 'Email'
+        adress: 'Address'
+        phone: 'Telephone'
+      member:
+        name: 'Name'
+        email: 'Email'
+        adress: 'Address'
+        phone: 'Telephone'
+        status: 'Status'
+        church: 'Church'
+        responsibility: "Responsibility"
+      responsibility:
+        name: 'Name'
+        errors:
+      messages:
+        record_invalid: "Record invalid: %{errors}"
+        restrict_dependent_destroy:
+          has_one: Could not remove the record because exist a %{record} dependent
+          has_many: Could not remove the record because exists %{record} dependents

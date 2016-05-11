@@ -1,19 +1,23 @@
 en:
-  will_paginate:
-    previous_label: "Anterior"
-    next_label: "Siguiente"
-    page_gap: "…"
   application: Members Application 
   link:
     back: Back
     edit: Edit
     destroy: Destroy
     show: Show
+    members: Members
+    churches: Churches
+    menu_main: Menu
+    menu_options: Actions 
     new_member: New Member
     new_church: New Church
     new_status: New Status
     new_responsibility: New Responsibility
     destroy_session: " Logout"
+  button:
+    search: Submit
+  placeholder:
+    search_members: Search Members
   confirm:
     message:
       destroy: Are you sure?
@@ -24,6 +28,14 @@ en:
       title: 'Editing Member'
     new:
       title: 'New Member'
+    show:
+      name: 'Name'
+      address: 'Address'
+      email: 'Email'
+      phone: 'Number Phone'
+      church: 'Church'
+      responsibilities: 'Cargos'
+      status: 'Estado'
   churches:
     index:
       title: 'Listing Churches'
@@ -45,26 +57,3 @@ en:
       title: New Responsibility
     show:
       name: Name
-  activerecord:
-    models:
-      church: 'Church'
-      member: 'Member'
-      responsibility: 'Responsibility'
-      status: 'Status'
-    attributes:
-      church:
-        name: 'Name'
-        email: 'Email'
-        adress: 'Address'
-        phone: 'Telephone'
-      member:
-        name: 'Name'
-        email: 'Email'
-        adress: 'Address'
-        phone: 'Telephone'
-        status: 'Status'
-        church: 'Church'
-        responsibility: "Responsibility"
-      responsibility:
-        name: 'Name'
-

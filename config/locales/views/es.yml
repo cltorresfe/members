@@ -5,11 +5,20 @@ es:
     edit: Editar
     destroy: Borrar
     show: Ver
+    members: Miembros
+    churches: Iglesias
+    menu_main: Menú
+    menu_options: Opciones 
     new_member: Nuevo Miembro
     new_church: Nueva Iglesia
     new_status: Nuevo Estado
     new_responsibility: Nuevo Cargo
     destroy_session: " Cerrar "
+    new_session: Iniciar Sesion
+  button:
+    search: Buscar
+  placeholder:
+    search_members: Buscar Miembros
   confirm:
     message:
       destroy: ¿Estás seguro?
