@@ -13,15 +13,15 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
-          = link_to "Members", members_path
+          = link_to t('link.members'), members_path
         - if user_signed_in?
           %li
-            = link_to "Churches", churches_path
+            = link_to t('link.churches'), churches_path
           %li
             = link_to "Asistencia", attendances_path
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              Actions
+              = t('link.menu_main')
               %span.caret
             %ul.dropdown-menu
               %li
@@ -43,12 +43,12 @@
       - if user_signed_in?
         .form-group.navbar-form.navbar-left
           = form_tag(members_path, method: "get", id: "search-form") do
-            = text_field_tag :name, params[:name], placeholder: "Search Member", class: 'form-control'
-            = submit_tag "Submit", class: 'btn btn-default'
+            = text_field_tag :name, params[:name], placeholder: t('placeholder.search_members'), class: 'form-control'
+            = submit_tag t('button.search'), class: 'btn btn-default'
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              Dropdown
+              = t('link.menu_options')
               %span.caret
             %ul.dropdown-menu
               %li
@@ -63,6 +63,6 @@
                 %a{:href => "#"} Separated link
       - else
         %ul.nav.navbar-nav.navbar-right
-          %li= link_to 'Iniciar Sesion', new_user_session_path
+          %li= link_to t('link.new_session'), new_user_session_path
     / /.navbar-collapse
   / /.container-fluid
