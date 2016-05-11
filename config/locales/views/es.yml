@@ -13,8 +13,10 @@ es:
     new_church: Nueva Iglesia
     new_status: Nuevo Estado
     new_responsibility: Nuevo Cargo
+    new_ministry: Nuevo Ministerio
     destroy_session: " Cerrar "
     new_session: Iniciar Sesion
+    attendance: Asistencia
   button:
     search: Buscar
   placeholder:

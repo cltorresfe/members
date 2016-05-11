@@ -13,7 +13,9 @@ en:
     new_church: New Church
     new_status: New Status
     new_responsibility: New Responsibility
+    new_ministry: New Ministry
     destroy_session: " Logout"
+    attendance: Attendance
   button:
     search: Submit
   placeholder:
@@ -34,7 +36,7 @@ en:
       email: 'Email'
       phone: 'Number Phone'
       church: 'Church'
-      responsibilities: 'Cargos'
+      responsibilities: 'Responsibilities'
       status: 'Estado'
   churches:
     index:

@@ -29,7 +29,7 @@
     - if @ministries
       .form-group
         .col-xs-3.control-label
-          = f.label :charge_ids, 'Cargos'
+          = f.label :charge_ids, t('members.show.responsibilities')
         .col-xs-7
           #accordion.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
             - @ministries.each do |ministry|

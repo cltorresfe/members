@@ -21,22 +21,6 @@ class MembersController < ApplicationController
     end
   end
 
-  def search
-    binding.pry
-    @members = Member.search(params[:search_member])
-    binding.pry
-    if members.present? && members.size == 1
-      binding.pry
-      redirect_to new_member_path(members.first)
-    else
-      @members = @members.paginate(page: params[:page], per_page: 18)
-      respond_to do |format|
-        format.html # index.html.erb
-      end
-    end
-    
-  end
-
   # GET /members/new
   def new
     @member = Member.new
