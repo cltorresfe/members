@@ -1,1 +1,70 @@
 en:
+  will_paginate:
+    previous_label: "Anterior"
+    next_label: "Siguiente"
+    page_gap: "…"
+  application: Members Application 
+  link:
+    back: Back
+    edit: Edit
+    destroy: Destroy
+    show: Show
+    new_member: New Member
+    new_church: New Church
+    new_status: New Status
+    new_responsibility: New Responsibility
+    destroy_session: " Logout"
+  confirm:
+    message:
+      destroy: Are you sure?
+  members:
+    index:
+      title: 'Listing Members'
+    edit:
+      title: 'Editing Member'
+    new:
+      title: 'New Member'
+  churches:
+    index:
+      title: 'Listing Churches'
+    edit:
+      title: 'Editing Church'
+    new:
+      title: 'New Church'
+    show:
+      name: 'Name'
+      address: 'Address'
+      email: 'Email'
+      phone: 'Telephone'
+  responsibilities:
+    index:
+      title: Listing responsibilities
+    edit:
+      title: Editing Responsibility
+    new:
+      title: New Responsibility
+    show:
+      name: Name
+  activerecord:
+    models:
+      church: 'Church'
+      member: 'Member'
+      responsibility: 'Responsibility'
+      status: 'Status'
+    attributes:
+      church:
+        name: 'Name'
+        email: 'Email'
+        adress: 'Address'
+        phone: 'Telephone'
+      member:
+        name: 'Name'
+        email: 'Email'
+        adress: 'Address'
+        phone: 'Telephone'
+        status: 'Status'
+        church: 'Church'
+        responsibility: "Responsibility"
+      responsibility:
+        name: 'Name'
+
