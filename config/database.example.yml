@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: members_development
+  username: root
+  password: password
+
+test:
+  <<: *default
+  database: members_test
+
+production:
+  <<: *default
+  database: members_production
