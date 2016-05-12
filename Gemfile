@@ -26,7 +26,6 @@ gem 'jbuilder'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'devise-i18n-views'
-gem 'faker'
 gem 'delayed_job_active_record'
 gem 'activeadmin', github: 'activeadmin'
 gem 'gravatar_image_tag'
@@ -36,16 +35,20 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem 'railroady'
+  gem 'awesome_print'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'guard-rspec'
   gem 'hirb'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'railroady'
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'sqlite3'
   gem 'quiet_assets'
-  gem 'pry-rails'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
   gem 'listen', '~> 3.0.5'
@@ -53,6 +56,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
 end
 
 group :production do
