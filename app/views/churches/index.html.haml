@@ -8,7 +8,7 @@
       %thead
         %tr
           %th= Member.human_attribute_name("name")
-          %th= Member.human_attribute_name("adress")
+          %th= Member.human_attribute_name("address")
           %th= Member.human_attribute_name("email")
           %th= Member.human_attribute_name("phone")
           %th{:colspan => "3"}
@@ -16,7 +16,7 @@
         - @churches.each do |church|
           %tr
             %td= church.name
-            %td= church.adress
+            %td= church.address
             %td= church.email
             %td= church.phone
             %td= link_to t('link.show'), church

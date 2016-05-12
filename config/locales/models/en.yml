@@ -1,4 +1,4 @@
-en:  
+en:
   activerecord:
     models:
       church: 'Church'
@@ -9,12 +9,12 @@ en:
       church:
         name: 'Name'
         email: 'Email'
-        adress: 'Address'
+        address: 'Address'
         phone: 'Telephone'
       member:
         name: 'Name'
         email: 'Email'
-        adress: 'Address'
+        address: 'Address'
         phone: 'Telephone'
         status: 'Status'
         church: 'Church'
