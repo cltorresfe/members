@@ -1,68 +1,11 @@
-%nav.navbar.navbar-default
-  .container-fluid
-    / Brand and toggle get grouped for better mobile display
-    .navbar-header
-      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to "Members Church", root_path , class: "navbar-brand", id: "logo"
-
-    / Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li
-          = link_to t('link.members'), members_path
-        - if user_signed_in?
-          %li
-            = link_to t('link.churches'), churches_path
-          %li
-            = link_to t('link.attendance'), attendances_path
-          %li.dropdown
-            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              = t('link.menu_main')
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                = link_to t('link.new_member'), new_member_path
-              %li
-                = link_to t('link.new_church'), new_church_path
-              %li
-                = link_to t('link.new_responsibility'), new_responsibility_path
-              %li
-                = link_to t('link.new_ministry'), new_ministry_path
-              %li
-                = link_to t('link.new_status'), new_status_path
-              %li.divider{:role => "separator"}
-              %li
-                %a{:href => "#"} Separated link
-              %li.divider{:role => "separator"}
-              %li
-                %a{:href => "#"} One more separated link
-      - if user_signed_in?
-        .form-group.navbar-form.navbar-left
-          = form_tag(members_path, method: "get", id: "search-form") do
-            = text_field_tag :name, params[:name], placeholder: t('placeholder.search_members'), class: 'form-control'
-            = submit_tag t('button.search'), class: 'btn btn-default'
-        %ul.nav.navbar-nav.navbar-right
-          %li.dropdown
-            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              = t('link.menu_options')
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                %a{:href => "#"} Action
-              %li
-                %a{:href => "#"} Another action
-              %li
-                %a{:href => "#"} Something else here
-              %li= link_to t('link.destroy_session'), destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-user"
-              %li.divider{:role => "separator"}
-              %li
-                %a{:href => "#"} Separated link
-      - else
-        %ul.nav.navbar-nav.navbar-right
-          %li= link_to t('link.new_session'), new_user_session_path
-    / /.navbar-collapse
-  / /.container-fluid
+%nav.navbar.navbar-default.navbar-static-top{:role => "navigation", :style => "margin-bottom: 0"}
+  .navbar-header
+    %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to "Members Church", root_path , class: "navbar-brand"
+  / /.navbar-header
+  = render 'layouts/topbar'
+  = render 'layouts/sidebar'

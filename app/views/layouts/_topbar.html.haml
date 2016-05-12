@@ -1,0 +1,25 @@
+%ul.nav.navbar-top-links.navbar-right
+  - if user_signed_in?
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.fa.fa-user.fa-fw
+        %i.fa.fa-caret-down
+      %ul.dropdown-menu.dropdown-user
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-user.fa-fw
+            User Profile
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-gear.fa-fw
+            Settings
+        %li.divider
+        %li
+          = link_to destroy_user_session_path, method: :delete do
+            %i.fa.fa-sign-out.fa-fw
+            = t('link.destroy_session')
+      / /.dropdown-user
+    / /.dropdown
+  - else
+    %li= link_to t('link.new_session'), new_user_session_path
+  / /.navbar-top-links
