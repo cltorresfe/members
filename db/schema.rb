@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505193936) do
+ActiveRecord::Schema.define(version: 20160512142612) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20160505193936) do
 
   create_table "churches", force: :cascade do |t|
     t.string   "name"
-    t.string   "adress"
+    t.string   "address"
     t.string   "email"
     t.integer  "phone"
     t.datetime "created_at", null: false
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20160505193936) do
 
   create_table "members", force: :cascade do |t|
     t.string   "name"
-    t.string   "adress"
+    t.string   "address"
     t.string   "email"
     t.integer  "phone"
     t.datetime "created_at", null: false

@@ -1,12 +1,12 @@
 ActiveAdmin.register Church do
-  permit_params :name, :adress, :email, :phone
+  permit_params :name, :address, :email, :phone
 
   show do
     columns do
       column do
         attributes_table do
           row :name
-          row :adress
+          row :address
           row :email
           row :phone
         end

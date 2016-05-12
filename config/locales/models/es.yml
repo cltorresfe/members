@@ -9,12 +9,12 @@ es:
       church:
         name: 'Nombre'
         email: 'Correo'
-        adress: 'Dirección'
+        address: 'Dirección'
         phone: 'Fono'
       member:
         name: 'Nombre'
         email: 'Correo'
-        adress: 'Dirección'
+        address: 'Dirección'
         phone: 'Fono'
         status: 'Estado'
         church: 'Iglesia'
