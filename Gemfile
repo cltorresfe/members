@@ -60,7 +60,11 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'launchy'
 end
 
 group :production do
