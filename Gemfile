@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 # Use Puma as the app server
 gem 'puma'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -34,6 +35,7 @@ gem 'haml-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+
 group :development, :test do
   gem 'awesome_print'
   gem 'factory_girl_rails'
@@ -47,7 +49,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'quiet_assets'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
@@ -68,7 +69,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
