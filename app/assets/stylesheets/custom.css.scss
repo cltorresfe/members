@@ -1,58 +1,50 @@
-$navbar-default-bg: #EBEBEB;
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-#logo{
-	float: left;
-	font-size: 1.7em;
-	color: #6A6676;
-	text-transform: uppercase;
-	letter-spacing: -1px;
-	font-weight: bold;
-}
-
-#logo:hover {
-	color: #46444D;
-	text-decoration: none;
-}
-
 .center {
-	text-align: center;
+  text-align: center;
 }
 
 .footer {
-	margin: 25px;
-	padding-top: 5px;
-	border-top: 1px solid #eaeaea;
-	color: #777;
+  margin: 25px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
 }
 
 .footer a:hover{
-	color: #222;
+  color: #222;
 }
 
 .footer small {
-	float: right;
-	list-style: none;
+  float: right;
+  list-style: none;
 }
 
 .footer ul li{
-	float: left;
-	margin-left: 15px;
+  float: left;
+  margin-left: 15px;
 }
 
 .profile dt{
-	font-size: 0.7em;
-	color: #6A6676;
-	letter-spacing: -1px;
-	font-weight: bold;
+  font-size: 0.7em;
+  color: #6A6676;
+  letter-spacing: -1px;
+  font-weight: bold;
 }
 
 .profile dd{
-	font-size: 0.9em;
-	color: #6A6676;
+  font-size: 0.9em;
+  color: #6A6676;
 }
 
 #member-list .member {
-	height: 140px;
+  height: 140px;
+}
+
+.navbar-top-links .dropdown-user {
+  right: auto;
+}
+
+@media(min-width:768px) {
+  .navbar-top-links .dropdown-user {
+    right: 0;
+  }
 }
