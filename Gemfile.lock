@@ -325,6 +325,8 @@ GEM
     simplecov-html (0.10.0)
     slop (3.6.0)
     spring (1.7.1)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
       spring (~> 1.2)
@@ -403,6 +405,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1)
   simplecov
   spring
+  spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   therubyracer
   turbolinks (~> 5.x)

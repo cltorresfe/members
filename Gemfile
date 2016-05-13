@@ -43,6 +43,7 @@ group :development, :test do
   gem 'guard-annotate', require: false
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false
+  gem 'spring-commands-rspec'
   gem 'hirb'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
