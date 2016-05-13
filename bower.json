@@ -20,6 +20,6 @@
     "jquery": "^2.2.3",
     "startbootstrap-sb-admin-2": "^1.0.8",
     "bootstrap": "^3.3.6",
-    "font-awesome": "^4.6.2"
+    "font-awesome": "^4.2.0"
   }
 }
