@@ -1,25 +1,25 @@
-- content_for :title do
-  = t('link.index_member')
-.panel.panel-info
-  .panel-heading
-    %h1.panel-title
-      %span.glyphicon.glyphicon-th-list{"aria-hidden" => "true"}
-      = t('.title')
-  #member-list.panel-body.row
-    - @members.each do |member|
-      .member.col-md-4
-        .col-md-4
-          = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', size: 15, secure: false, gravatar: { default: :identicon } ), edit_member_path(member)
-        .col-md-7
-          %h5
-            - if user_signed_in?
-              = link_to member.name, edit_member_path(member)
-            - else
-              = member.name
-          %dl.profile
-            %dt Direccion:
-            %dd= member.address
-            %dt Email:
-            %dd= member.email
-    .col-md-12
-      = will_paginate @members, :class => 'margin: 0px'
+.row
+  .col-lg-offset-1.col-lg-9
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title
+          %span.glyphicon.glyphicon-th-list{"aria-hidden" => "true"}
+          = t('.title')
+      #member-list.panel-body.row
+        - @members.each do |member|
+          .member.col-md-4
+            .col-md-4
+              = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', size: 15, secure: false, gravatar: { default: :identicon } ), edit_member_path(member)
+            .col-md-7
+              %h5
+                - if user_signed_in?
+                  = link_to member.name, edit_member_path(member)
+                - else
+                  = member.name
+              %dl.profile
+                %dt Direccion:
+                %dd= member.address
+                %dt Email:
+                %dd= member.email
+        .col-md-12
+          = will_paginate @members, :class => 'margin: 0px'

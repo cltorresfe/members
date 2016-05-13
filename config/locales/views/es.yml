@@ -7,20 +7,11 @@ es:
     destroy: Borrar
     destroy_session: Cerrar
     edit: Editar
-    index_church: Listar Iglesias
-    index_member: Listar Miembros
-    index_ministry: Listar Ministerios
-    index_responsibility: Listar Cargos
     members: Miembros
     menu_main: Menú
     menu_options: Opciones
     ministries: Ministerios
-    new_church: Nueva Iglesia
-    new_member: Nuevo Miembro
-    new_ministry: Nuevo Ministerio
-    new_responsibility: Nuevo Cargo
     new_session: Iniciar Sesion
-    new_status: Nuevo Estado
     responsibilities: Cargos
     show: Ver
   button:
@@ -34,7 +25,7 @@ es:
     index:
       title: 'Listado de Miembros'
     edit:
-      title: 'Editar Miembros'
+      title: 'Editar Miembro'
     new:
       title: 'Nuevo Miembro'
     show:
@@ -66,3 +57,10 @@ es:
       title: Nuevo Cargo
     show:
       name: Nombre
+  ministries:
+    index:
+      title: Listado de Ministerios
+    edit:
+      title: Editar Ministerio
+    new:
+      title: Nuevo Ministerio
