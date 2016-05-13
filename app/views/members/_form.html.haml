@@ -5,27 +5,27 @@
       .col-xs-3.control-label
         = f.label :name
       .col-xs-7
-        = f.text_field :name, class: "form-control", placeholder: :name, autofocus: true
+        = f.text_field :name, class: "form-control", placeholder: :name
     .form-group
       .col-xs-3.control-label
         = f.label :address
       .col-xs-7
-        = f.text_field :address, class: "form-control", placeholder: :address, autofocus: true
+        = f.text_field :address, class: "form-control", placeholder: :address
     .form-group
       .col-xs-3.control-label
         = f.label :email
       .col-xs-7
-        = f.text_field :email, class: "form-control", placeholder: :email, autofocus: true
+        = f.text_field :email, class: "form-control", placeholder: :email
     .form-group
       .col-xs-3.control-label
         = f.label :phone
       .col-xs-7
-        = f.text_field :phone, class: "form-control", placeholder: :phone, autofocus: true
+        = f.text_field :phone, class: "form-control", placeholder: :phone
     .form-group
       .col-xs-3.control-label
         = f.label :church
       .col-xs-7
-        = f.select(:church_id, churches_for_select, {:include_blank => '-select-'}, class: "form-control", autofocus: true)
+        = f.select(:church_id, churches_for_select, {:include_blank => '-select-'}, class: "form-control")
     - if @ministries
       .form-group
         .col-xs-3.control-label
@@ -48,9 +48,9 @@
 
     .form-group
       .col-xs-3.control-label
-        = f.label :status
+        = f.label :status, @member.status_name
       .col-xs-7
-        = f.select(:status_id, statuses_for_select, {:include_blank => '-select-'}, class: "form-control", autofocus: true)
+        = f.select(:status, Member.statuses_for_select, {:include_blank => 'Seleccione un estado'}, class: "form-control")
     .form-group
       .col-xs-offset-4
         = f.submit class: "btn btn-primary btn-lg"

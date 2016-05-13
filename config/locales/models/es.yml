@@ -19,6 +19,12 @@ es:
         status: 'Estado'
         church: 'Iglesia'
         responsibility: "Cargos"
+        status_name:
+          active: Activo
+          regular: Asistente regular
+          inactive: Inactivo
+          visitor: Invitado
+          transferred: Trasladado
       responsibility:
         name: 'Nombre'
     errors:

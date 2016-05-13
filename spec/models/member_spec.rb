@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Member, :type => :model do
 
   it { is_expected.to belong_to(:church) }
-  it { is_expected.to belong_to(:status) }
   it { is_expected.to have_many(:charge_members) }
   it { is_expected.to have_many(:charges).through(:charge_members) }
 
@@ -18,9 +17,9 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_length_of(:address)}
 
 
-  context '#search' do
-    let(:member) { create(:member, name: 'Homero')}
+  let!(:member) { create(:member)}
 
+  describe '#search' do
     it 'searches an existing member' do
       expect(Member.search('Homero')).to include member
     end
@@ -29,4 +28,31 @@ RSpec.describe Member, :type => :model do
       expect(Member.search('Marge')).not_to include member
     end
   end
+
+  describe '.status_name' do
+    it { expect(member.status_name).to eq 'Activo'}
+  end
+
+  describe '#get_status_name_for' do
+
+    it { expect(Member.get_status_name_for(:active)).to eq 'Activo'}
+    it { expect(Member.get_status_name_for(:regular)).to eq 'Asistente regular'}
+    it { expect(Member.get_status_name_for(:inactive)).to eq 'Inactivo'}
+    it { expect(Member.get_status_name_for(:visitor)).to eq 'Invitado'}
+    it { expect(Member.get_status_name_for(:transferred)).to eq 'Trasladado'}
+    it { expect(Member.get_status_name_for(:asdf)).to eq ''}
+  end
+
+  describe '#statuses_for_select' do
+
+    it 'returns an array with the statuses for a select tag' do
+      expect(Member.statuses_for_select).to eq([
+        ["Activo", "active"], ["Asistente regular", "regular"],
+        ["Inactivo", "inactive"], ["Invitado", "visitor"],
+        ["Trasladado", "transferred"]]
+      )
+    end
+
+  end
+
 end

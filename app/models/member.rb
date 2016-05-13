@@ -4,18 +4,21 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  address     :string
+#  address    :string
 #  email      :string
 #  phone      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  church_id  :integer
-#  status_id  :integer
+#  status     :integer
 #
 
 class Member < ApplicationRecord
+  include Decorators::Member
+
+  enum status: %i(active regular inactive visitor transferred)
+
   belongs_to :church
-  belongs_to :status
   has_many :charge_members
   has_many :charges, through: :charge_members
 
@@ -27,11 +30,14 @@ class Member < ApplicationRecord
   validates :address, length: { maximum: 50,
             too_long: "%{count} characters is the maximum allowed" }
 
+  scope :sorted, -> { order(:created_at) }
+
   def self.search(search)
     if search
-      where('name LIKE ?', "%#{search}%")
+      where('name LIKE ?', "%#{search}%").sorted
     else
       none
     end
   end
+
 end
