@@ -5,11 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-s1 = Status.find_or_create_by(name: 'Pasivo')
+s1 = Status.find_or_create_by(name: 'Activo')
 
 ch3 = Church.find_or_create_by!(name: 'Presbiteriana', email: Faker::Internet.email, address: Faker::Address.street_address, phone: Faker::Number.number(8))
-
-10.times do |u|
+r1= Responsibility.find_or_create_by(name: 'Profesor')
+r2= Responsibility.find_or_create_by(name: 'Alumno Adolescente')
+r3= Responsibility.find_or_create_by(name: 'Alumno Preadolescente')
+r4= Responsibility.find_or_create_by(name: 'Alumno Iniciales')
+20.times do |u|
   Member.create!(name: Faker::Name.name, email: Faker::Internet.email, address: Faker::Address.street_address,
   phone: Faker::Number.number(8), status: s1, church: ch3 )
 end
