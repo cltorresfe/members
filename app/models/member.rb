@@ -30,7 +30,14 @@ class Member < ApplicationRecord
   validates :address, length: { maximum: 50,
             too_long: "%{count} characters is the maximum allowed" }
 
-  scope :sorted, -> { order(:created_at) }
+  after_initialize :set_defaults
+
+  scope :sorted, -> { order(created_at: :desc) }
+
+
+  def set_defaults
+    self.status ||= :active
+  end
 
   def self.search(search)
     if search

@@ -48,7 +48,7 @@
 
     .form-group
       .col-xs-3.control-label
-        = f.label :status, @member.status_name
+        = f.label :status
       .col-xs-7
         = f.select(:status, Member.statuses_for_select, {:include_blank => 'Seleccione un estado'}, class: "form-control")
     .form-group
