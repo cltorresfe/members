@@ -68,3 +68,27 @@ guard :rspec, cmd: "bundle exec rspec" do
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
 end
+
+guard 'annotate', routes: true, run_at_start: false do
+  watch( 'db/schema.rb' )
+
+  # Uncomment the following line if you also want to run annotate anytime
+  # a model file changes
+  #watch( 'app/models/**/*.rb' )
+
+  # Uncomment the following line if you are running routes annotation
+  # with the ":routes => true" option
+  watch( 'config/routes.rb' )
+end
+
+guard :bundler do
+  require 'guard/bundler'
+  require 'guard/bundler/verify'
+  helper = Guard::Bundler::Verify.new
+
+  files = ['Gemfile']
+  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
+
+  # Assume files are symlinked from somewhere
+  files.each { |file| watch(helper.real_path(file)) }
+end

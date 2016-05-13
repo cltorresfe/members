@@ -40,7 +40,9 @@ group :development, :test do
   gem 'awesome_print'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'guard-rspec'
+  gem 'guard-annotate', require: false
+  gem 'guard-bundler', require: false
+  gem 'guard-rspec', require: false
   gem 'hirb'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
