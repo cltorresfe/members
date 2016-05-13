@@ -34,7 +34,7 @@ class Member < ApplicationRecord
 
   def self.search(search)
     if search
-      where('name LIKE ?', "%#{search}%").sorted
+      where('lower(name) LIKE ?', "%#{search.downcase}%").sorted
     else
       none
     end

@@ -64,3 +64,6 @@ es:
       title: Editar Ministerio
     new:
       title: Nuevo Ministerio
+  flash_messages:
+    no_found: No se encontraron resultados
+

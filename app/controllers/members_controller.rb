@@ -6,11 +6,14 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
+    flash.clear
     if params[:name].present?
       @members = Member.search(params[:name])
-      if(@members.present? && @members.size == 1)
+      if(@members.size == 1)
         redirect_to edit_member_path(@members.first)
         return
+      elsif(@members.blank?)
+        flash[:notice] = I18n.t('flash_messages.no_found')
       end
     else
       @members = Member.sorted

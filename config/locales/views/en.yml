@@ -59,3 +59,5 @@ en:
       title: New Responsibility
     show:
       name: Name
+  flash_messages:
+    no_found: No found results
