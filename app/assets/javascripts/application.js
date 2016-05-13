@@ -12,8 +12,11 @@
 //
 //= require jquery/dist/jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require bootstrap/dist/js/bootstrap
+//= require metisMenu/dist/metisMenu
 //= require moment/min/moment.min
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
+//= require startbootstrap-sb-admin-2/dist/js/sb-admin-2
 //= require turbolinks
-//= require_tree .
+//= require common
+//= require_tree ./routes/
