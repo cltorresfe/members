@@ -1,22 +1,19 @@
 es:
   application: Plataforma Miembros de Iglesia
   link:
-    back: Atrás
-    edit: Editar
-    destroy: Borrar
-    show: Ver
-    members: Miembros
-    churches: Iglesias
-    menu_main: Menú
-    menu_options: Opciones 
-    new_member: Nuevo Miembro
-    new_church: Nueva Iglesia
-    new_status: Nuevo Estado
-    new_responsibility: Nuevo Cargo
-    new_ministry: Nuevo Ministerio
-    destroy_session: " Cerrar "
-    new_session: Iniciar Sesion
     attendance: Asistencia
+    back: Atrás
+    churches: Iglesias
+    destroy: Borrar
+    destroy_session: Cerrar
+    edit: Editar
+    members: Miembros
+    menu_main: Menú
+    menu_options: Opciones
+    ministries: Ministerios
+    new_session: Iniciar Sesion
+    responsibilities: Cargos
+    show: Ver
   button:
     search: Buscar
   placeholder:
@@ -28,7 +25,7 @@ es:
     index:
       title: 'Listado de Miembros'
     edit:
-      title: 'Editar Miembros'
+      title: 'Editar Miembro'
     new:
       title: 'Nuevo Miembro'
     show:
@@ -60,3 +57,10 @@ es:
       title: Nuevo Cargo
     show:
       name: Nombre
+  ministries:
+    index:
+      title: Listado de Ministerios
+    edit:
+      title: Editar Ministerio
+    new:
+      title: Nuevo Ministerio

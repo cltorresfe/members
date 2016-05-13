@@ -1,14 +1,31 @@
 !!!
-%html
+%html{:lang => "en"}
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title= t('application')
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title= get_title
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   %body
-    = render 'layouts/navigation'
-    = render 'layouts/messages'
-    .container
-      = yield
-    = render 'layouts/footer'
+    #wrapper
+      = render 'layouts/navigation'
+      #page-wrapper
+        .row
+          .col-lg-12
+            %h1.page-header= i18n_title
+          / /.col-lg-12
+        / /.row
+        = render 'layouts/messages'
+        = yield
+
+      / /#page-wrapper
+    / /#wrapper
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
