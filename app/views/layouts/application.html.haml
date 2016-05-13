@@ -1,10 +1,4 @@
 !!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  %body
-
-!!!
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}/
@@ -12,12 +6,8 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
-    %title
-      - if content_for?(:title)
-        = "#{t('application')} - #{yield :title}"
-      -else
-        = t('application')
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    %title= get_title
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
     / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     / WARNING: Respond.js doesn't work if you view the page via file://
@@ -28,9 +18,14 @@
     #wrapper
       = render 'layouts/navigation'
       #page-wrapper
+        .row
+          .col-lg-12
+            %h1.page-header= i18n_title
+          / /.col-lg-12
+        / /.row
         = render 'layouts/messages'
-        .container
-          = yield
+        = yield
+
       / /#page-wrapper
     / /#wrapper
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
