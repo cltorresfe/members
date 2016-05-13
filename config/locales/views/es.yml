@@ -60,3 +60,5 @@ es:
       title: Nuevo Cargo
     show:
       name: Nombre
+  flash_messages:
+    no_found: No se encontraron resultados

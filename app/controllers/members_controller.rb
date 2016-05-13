@@ -10,11 +10,13 @@ class MembersController < ApplicationController
       @members = Member.search(params[:name])
       if(@members.present? && @members.size == 1)
         redirect_to edit_member_path(@members.first)
-      else
+      elsif(@members.present? && @members.size > 1)
         @members = @members.paginate(page: params[:page], per_page: 18)
         respond_to do |format|
           format.html # index.html.erb
         end
+      else
+        flash[:notice] = I18n.t('flash_messages.no_found')
       end
     else
       @members = Member.paginate(page: params[:page], per_page: 18)
