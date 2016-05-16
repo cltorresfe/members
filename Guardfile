@@ -78,7 +78,7 @@ guard 'annotate', routes: true, run_at_start: false do
 
   # Uncomment the following line if you are running routes annotation
   # with the ":routes => true" option
-  watch( 'config/routes.rb' )
+  # watch( 'config/routes.rb' )
 end
 
 guard :bundler do
