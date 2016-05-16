@@ -34,7 +34,7 @@ gem 'haml-rails'
 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
+gem "pundit"
 
 group :development, :test do
   gem 'awesome_print'
