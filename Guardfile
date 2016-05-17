@@ -69,7 +69,7 @@ guard :rspec, cmd: "bin/rspec" do
   end
 end
 
-guard 'annotate', routes: true, run_at_start: false do
+guard 'annotate', routes: 'after', run_at_start: false do
   watch( 'db/schema.rb' )
 
   # Uncomment the following line if you also want to run annotate anytime
