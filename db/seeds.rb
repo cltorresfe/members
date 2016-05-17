@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-s1 = Status.find_or_create_by(name: 'Activo')
 
 ch3 = Church.find_or_create_by!(name: 'Presbiteriana', email: Faker::Internet.email, address: Faker::Address.street_address, phone: Faker::Number.number(8))
 r1= Responsibility.find_or_create_by(name: 'Profesor')
@@ -14,7 +13,7 @@ r3= Responsibility.find_or_create_by(name: 'Alumno Preadolescente')
 r4= Responsibility.find_or_create_by(name: 'Alumno Iniciales')
 20.times do |u|
   Member.create!(name: Faker::Name.name, email: Faker::Internet.email, address: Faker::Address.street_address,
-  phone: Faker::Number.number(8), status: s1, church: ch3 )
+  phone: Faker::Number.number(8), status: Member.statuses.keys.sample, church: ch3 )
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

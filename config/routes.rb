@@ -3,12 +3,6 @@
 #                         Prefix Verb       URI Pattern                               Controller#Action
 #                    attendances GET        /attendances(.:format)                    attendances#index
 #                                POST       /attendances(.:format)                    attendances#create
-#                 new_attendance GET        /attendances/new(.:format)                attendances#new
-#                edit_attendance GET        /attendances/:id/edit(.:format)           attendances#edit
-#                     attendance GET        /attendances/:id(.:format)                attendances#show
-#                                PATCH      /attendances/:id(.:format)                attendances#update
-#                                PUT        /attendances/:id(.:format)                attendances#update
-#                                DELETE     /attendances/:id(.:format)                attendances#destroy
 #         new_admin_user_session GET        /admin/login(.:format)                    active_admin/devise/sessions#new
 #             admin_user_session POST       /admin/login(.:format)                    active_admin/devise/sessions#create
 #     destroy_admin_user_session DELETE|GET /admin/logout(.:format)                   active_admin/devise/sessions#destroy
@@ -59,14 +53,6 @@
 #                                POST       /admin/comments(.:format)                 admin/comments#create
 #                  admin_comment GET        /admin/comments/:id(.:format)             admin/comments#show
 #                                DELETE     /admin/comments/:id(.:format)             admin/comments#destroy
-#                       statuses GET        /statuses(.:format)                       statuses#index
-#                                POST       /statuses(.:format)                       statuses#create
-#                     new_status GET        /statuses/new(.:format)                   statuses#new
-#                    edit_status GET        /statuses/:id/edit(.:format)              statuses#edit
-#                         status GET        /statuses/:id(.:format)                   statuses#show
-#                                PATCH      /statuses/:id(.:format)                   statuses#update
-#                                PUT        /statuses/:id(.:format)                   statuses#update
-#                                DELETE     /statuses/:id(.:format)                   statuses#destroy
 #               responsibilities GET        /responsibilities(.:format)               responsibilities#index
 #                                POST       /responsibilities(.:format)               responsibilities#create
 #             new_responsibility GET        /responsibilities/new(.:format)           responsibilities#new
@@ -120,7 +106,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :statuses
   resources :responsibilities
   resources :members, except: :show
   resources :churches
