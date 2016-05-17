@@ -32,6 +32,12 @@ class User < ActiveRecord::Base
 
   after_initialize :set_default_role, :if => :new_record?
 
+  roles.each do |key, value|
+    define_method "#{key}?" do
+      self.role == key
+    end
+  end
+
   def set_default_role
     self.role ||= :common
   end

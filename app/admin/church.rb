@@ -15,7 +15,7 @@ ActiveAdmin.register Church do
         panel 'Users asociated' do
           table_for church.users do
             column :name do |user|
-              link_to user.name, admin_user_path(user)
+              link_to user.name, user_path(user)
             end
             column :email
           end

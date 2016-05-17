@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :set_locale, :authenticate_user!
 
+  def authenticate_active_admin!
+    unless current_user && current_user.admin?
+      redirect_to root_path
+    end
+  end
+
   private
 
     def set_locale
