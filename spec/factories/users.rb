@@ -20,28 +20,11 @@
 #  role                   :integer
 #
 
-class User < ActiveRecord::Base
-  belongs_to :church
-  enum role: %i(admin common)
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
-  validates_presence_of :email, :name
-  validates_uniqueness_of :email
-
-  before_create :set_default_role
-
-  roles.each do |key, value|
-    define_method "#{key}?" do
-      role == key
-    end
+FactoryGirl.define do
+  factory :user do
+    name 'Homero'
+    email { Faker::Internet.email }
+    password "password"
+    password_confirmation "password"
   end
-
-  def set_default_role
-    self.role ||= :common
-  end
-
 end
