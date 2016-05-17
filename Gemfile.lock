@@ -141,13 +141,6 @@ GEM
       pry (>= 0.9.12)
       shellany (~> 0.0)
       thor (>= 0.18.1)
-    guard-annotate (2.3)
-      annotate (~> 2.4, >= 2.4.0)
-      guard-compat (~> 1.2, >= 1.2.1)
-    guard-bundler (2.1.0)
-      bundler (~> 1.0)
-      guard (~> 2.2)
-      guard-compat (~> 1.1)
     guard-compat (1.2.1)
     guard-rspec (4.6.5)
       guard (~> 2.1)
@@ -325,8 +318,6 @@ GEM
     simplecov-html (0.10.0)
     slop (3.6.0)
     spring (1.7.1)
-    spring-commands-rspec (1.0.4)
-      spring (>= 0.9.1)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
       spring (~> 1.2)
@@ -382,8 +373,6 @@ DEPENDENCIES
   factory_girl_rails
   faker
   gravatar_image_tag
-  guard-annotate
-  guard-bundler
   guard-rspec
   haml-rails
   hirb
@@ -405,7 +394,6 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1)
   simplecov
   spring
-  spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   therubyracer
   turbolinks (~> 5.x)

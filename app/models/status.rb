@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: responsibilities
+# Table name: statuses
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-class Responsibility < ApplicationRecord
+class Status < ApplicationRecord
+	has_many :members
 	validates :name, presence: true, uniqueness: true
 end

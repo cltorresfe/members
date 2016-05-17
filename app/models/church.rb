@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  address    :string
+#  address     :string
 #  email      :string
 #  phone      :integer
 #  created_at :datetime         not null
