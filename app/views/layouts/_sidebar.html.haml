@@ -50,5 +50,11 @@
             %li= link_to t('responsibilities.index.title'), responsibilities_path
             %li= link_to t('responsibilities.new.title'), new_responsibility_path
           / /.nav-second-level
+        - if current_user.admin?
+          %li
+            = link_to admin_root_path do
+              %i.fa.fa-database.fa-fw
+              = t('link.admin')
+            / /.nav-second-level
     / /.sidebar-collapse
   / /.navbar-static-side

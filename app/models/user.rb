@@ -17,16 +17,31 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  church_id              :integer
+#  role                   :integer
 #
 
 class User < ActiveRecord::Base
   belongs_to :church
+  enum role: %i(admin common)
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :email, presence: true, uniqueness: true
 
+  validates_presence_of :email, :name
+  validates_uniqueness_of :email
+
+  before_create :set_default_role
+
+  roles.each do |key, value|
+    define_method "#{key}?" do
+      role == key
+    end
+  end
+
+  def set_default_role
+    self.role ||= :common
+  end
 
 end

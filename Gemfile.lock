@@ -99,6 +99,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    daemons (1.2.3)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     delayed_job (4.1.1)
@@ -116,6 +117,7 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
+    eventmachine (1.2.0.1)
     execjs (2.6.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -228,7 +230,8 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    puma (3.4.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (2.0.0.rc1)
@@ -340,12 +343,13 @@ GEM
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
+    thin (1.6.2)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
-    turbolinks (5.0.0.beta2)
-      turbolinks-source
-    turbolinks-source (5.0.0.beta4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -394,7 +398,7 @@ DEPENDENCIES
   pg
   pry-byebug
   pry-stack_explorer
-  puma
+  pundit
   quiet_assets
   railroady
   rails (>= 5.0.0.rc1, < 5.1)
@@ -408,7 +412,7 @@ DEPENDENCIES
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   therubyracer
-  turbolinks (~> 5.x)
+  thin
   uglifier (>= 1.3.0)
   web-console (~> 3.0)
   will_paginate

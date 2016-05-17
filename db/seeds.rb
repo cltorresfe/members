@@ -16,4 +16,6 @@ r4= Responsibility.find_or_create_by(name: 'Alumno Iniciales')
   phone: Faker::Number.number(8), status: Member.statuses.keys.sample, church: ch3 )
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+user = User.new(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+user.role = :admin
+user.save

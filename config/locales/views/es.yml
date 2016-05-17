@@ -2,6 +2,7 @@ es:
   application: Plataforma Miembros de Iglesia
   link:
     attendance: Asistencia
+    admin: Administración
     back: Atrás
     churches: Iglesias
     destroy: Borrar
@@ -11,7 +12,7 @@ es:
     menu_main: Menú
     menu_options: Opciones
     ministries: Ministerios
-    new_session: Iniciar Sesion
+    new_session: Iniciar Sesión
     responsibilities: Cargos
     show: Ver
   button:

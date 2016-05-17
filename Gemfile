@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.rc1', '< 5.1'
 # Use Puma as the app server
-gem 'puma'
+gem 'thin'
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -20,7 +20,7 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '~> 5.x'
+# gem 'turbolinks', '~> 5.x'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -34,7 +34,7 @@ gem 'haml-rails'
 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
+gem "pundit"
 
 group :development, :test do
   gem 'awesome_print'

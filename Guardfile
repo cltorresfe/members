@@ -69,7 +69,7 @@ guard :rspec, cmd: "bin/rspec" do
   end
 end
 
-guard 'annotate', routes: true, run_at_start: false do
+guard 'annotate', routes: 'after', run_at_start: false do
   watch( 'db/schema.rb' )
 
   # Uncomment the following line if you also want to run annotate anytime
@@ -78,7 +78,7 @@ guard 'annotate', routes: true, run_at_start: false do
 
   # Uncomment the following line if you are running routes annotation
   # with the ":routes => true" option
-  watch( 'config/routes.rb' )
+  # watch( 'config/routes.rb' )
 end
 
 guard :bundler do
