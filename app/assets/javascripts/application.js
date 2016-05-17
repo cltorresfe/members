@@ -17,6 +17,6 @@
 //= require moment/min/moment.min
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= require startbootstrap-sb-admin-2/dist/js/sb-admin-2
-//= require turbolinks
+//= #require turbolinks
 //= require common
 //= require_tree ./routes/
