@@ -10,22 +10,53 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
-	Para instalar capybara-webkit es necesario instalar:
+	Para instalar capybara-webkit en ubuntu es necesario instalar:
+	``` 
 	- sudo apt-get install libqtwebkit-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
+	```
 
-	Instalar bower
+	Para instalar capybara-webkit en os x es necesario:
+	``` 
+	- brew tap homebrew/versions
+	- brew install qt55
+	- brew link --force qt55
+	- which qmake
+	```
+
+	Instalar bower en Ubuntu
+	``` 
 	- apt-get update
 	- apt-get install build-essential libssl-dev
+    ```
 	- Primero hay que instalar nvm 
+	``` 
 	  curl https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
 	  nvm install stable
 	- sudo npm install -g bower
 	- installar gemas de bower
 	- bower init
 	- bower install
+    ```
 
+	Instalar bower en os x
+	``` 
+    - descargar nodejs.pkg
+	- sudo npm install -g bower
+    ```
+	Para instalar therubyracer
+	```
+	- gem uninstall libv8
+	- brew install v8
+	- gem install libv8 -v '3.16.14.13' -- --with-system-v8
+	- gem install therubyracer -- --with-v8-dir=/usr/local/opt/v8-315
+    ```
 * Database creation
 
+  Para instalar pg
+  ```
+  - brew install postgres
+  - pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+  ```
 * Database initialization
 
 * How to run the test suite
