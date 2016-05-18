@@ -1,41 +1,32 @@
-== README
+== Members
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Configuracion
+Para correr capybara-webkit en Ubuntu es necesario instalar:
 
-Things you may want to cover:
+```
+sudo apt-get install libqtwebkit-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
+```
 
-* Ruby version 2.2.2
+Instalar bower en Ubuntu:
 
-* System dependencies
+```
+apt-get update
+apt-get install build-essential libssl-dev
+# Primero hay que instalar nvm
+curl https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+nvm install stable
+sudo npm install -g bower
+installar gemas de bower
+bower init
+bower install
+```
 
-* Configuration
-	Para instalar capybara-webkit es necesario instalar:
-	- sudo apt-get install libqtwebkit-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
+## Heroku
+Para crear nueva instancia:
 
-	Instalar bower
-	- apt-get update
-	- apt-get install build-essential libssl-dev
-	- Primero hay que instalar nvm 
-	  curl https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
-	  nvm install stable
-	- sudo npm install -g bower
-	- installar gemas de bower
-	- bower init
-	- bower install
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```
+heroku create
+# Para poder compilar dependencias bower
+heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
+git push heroku master
+```
