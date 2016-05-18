@@ -1,4 +1,4 @@
-== Members
+# Members
 
 ## Configuracion
 Para correr capybara-webkit en Ubuntu es necesario instalar:
