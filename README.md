@@ -9,7 +9,7 @@ sudo apt-get install libqtwebkit-dev gstreamer1.0-plugins-base gstreamer1.0-tool
 
 Instalar bower en Ubuntu:
 
-```
+```shell
 apt-get update
 apt-get install build-essential libssl-dev
 # Primero hay que instalar nvm
@@ -24,7 +24,7 @@ bower install
 ## Heroku
 Para crear nueva instancia:
 
-```
+```shell
 heroku create
 # Para poder compilar dependencias bower
 heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
