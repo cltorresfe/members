@@ -1,17 +1,13 @@
-%h2= t('.sign_up', :default => "Sign up")
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %div
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %div= f.submit t('.sign_up', :default => "Sign up")
-= render "devise/shared/links"
+.container
+  .row
+    .col-sm-6.col-md-4.col-md-offset-4
+      %h1.text-center.login-title= t('.sign_up')
+      .account-wall
+        = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-signin'}) do |f|
+          = f.input :name, :placeholder => resource.class.human_attribute_name(:name), :label => false
+          = f.input :email, :placeholder => resource.class.human_attribute_name(:email), :label => false
+          = f.input :password, :placeholder => resource.class.human_attribute_name(:password), :label => false
+          = f.input :password_confirmation, :placeholder => resource.class.human_attribute_name(:password_confirmation), :label => false
+          %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"}= t('.sign_up')
+          %span.clearfix
+      = link_to t('link.new_session'), new_user_session_path, class: 'text-center new-account'

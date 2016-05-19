@@ -18,7 +18,7 @@ which qmake
 
 Instalar bower en Ubuntu:
 
-```
+```shell
 apt-get update
 apt-get install build-essential libssl-dev
 # Primero hay que instalar nvm
@@ -49,7 +49,7 @@ gem install therubyracer -- --with-v8-dir=/usr/local/opt/v8-#622424
 ## Heroku
 - Para crear nueva instancia:
 
-```
+```shell
 heroku create
 # Para poder compilar dependencias bower
 heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
