@@ -30,11 +30,10 @@ bower install
 ```
 
 Instalar bower en os x
-
+  descargar nodejs.pkg
 ``` 
-descargar nodejs.pkg
 sudo npm install -g bower
-    ```
+```
 Para instalar therubyracer
 ```
 gem uninstall libv8
@@ -42,3 +41,11 @@ brew install v8
 gem install libv8 -v '3.16.14.13' -- --with-system-v8
 gem install therubyracer -- --with-v8-dir=/usr/local/opt/v8-#622424
 ```
+## Heroku
+ Para crear nueva instancia:
+´´´
+heroku create
+#Para poder compilar dependencias bower:
+heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
+git push heroku master
+´´´
