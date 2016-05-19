@@ -33,13 +33,10 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-  include Warden::Test::Helpers
-  Warden.test_mode!
   config.include Warden::Test::Helpers
   config.before :suite do
     Warden.test_mode!
-
-end
+  end
 
   config.before :each do
     if Capybara.current_driver == :rack_test
