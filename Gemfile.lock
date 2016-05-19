@@ -193,6 +193,8 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     libv8 (3.16.14.13)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
@@ -233,6 +235,7 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    puma (3.4.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
@@ -404,10 +407,12 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   launchy
+  letter_opener
   listen (~> 3.0.5)
   pg
   pry-byebug
   pry-stack_explorer
+  puma
   pundit
   quiet_assets
   railroady

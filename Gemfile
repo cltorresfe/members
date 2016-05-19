@@ -41,6 +41,7 @@ end
 
 group :development do
   gem 'annotate', require: false
+  gem 'letter_opener'
   gem 'listen', '~> 3.0.5'
   gem 'quiet_assets'
   gem 'rubocop', require: false
@@ -58,6 +59,6 @@ group :test do
 end
 
 group :production do
-  # gem 'puma'
+  gem 'puma'
   gem 'rails_12factor'
 end
