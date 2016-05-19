@@ -1,7 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:edit, :update, :destroy]
   before_action :load_ministries, only: [:new, :edit]
-  skip_before_filter :authenticate_user!, only: :index
 
   # GET /members
   # GET /members.json
