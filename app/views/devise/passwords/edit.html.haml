@@ -1,14 +1,12 @@
-%h2= t('.change_your_password', :default => 'Change your password')
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  %div
-    = f.label :password, t('.new_password', :default => 'New password')
-    %br/
-    = f.password_field :password
-  %div
-    = f.label :password_confirmation, t('.confirm_new_password', :default => 'Confirm new password')
-    %br/
-    = f.password_field :password_confirmation
-  %div= f.submit t('.change_my_password', :default => 'Change my password')
-= render "devise/shared/links"
+.container
+  .row
+    .col-sm-6.col-md-4.col-md-offset-4
+      %h1.text-center.login-title= t('.change_your_password')
+      .account-wall
+        = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'form-signin', :method => :put }) do |f|
+          = devise_error_messages!
+          = f.hidden_field :reset_password_token
+          = f.input :password, :placeholder => t('.new_password'), :label => false
+          = f.input :password_confirmation, :placeholder => t('.confirm_new_password'), :label => false
+          %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"}= t('.change_my_password')
+          %span.clearfix
