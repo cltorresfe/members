@@ -80,7 +80,9 @@ es:
     sessions:
       already_signed_out: Sesión finalizada.
       new:
+        forgot_your_password: ¿Olvidó su contraseña?
         sign_in: Iniciar sesión
+        sign_up: Crear cuenta
       signed_in: Sesión iniciada.
       signed_out: Sesión finalizada.
     shared:
