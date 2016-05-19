@@ -4,7 +4,7 @@ describe "Member index", :type => :feature do
   let!(:member) { create(:member, name: 'Homero')}
   let!(:user) {create(:user)}
 
-  context "cuando el usuario está logeado" do
+  context "when user is signed in" do
     before do
       login_as user
     end
@@ -14,7 +14,7 @@ describe "Member index", :type => :feature do
     end
   end
 
-  context " cuando el usuario no está logeado" do |variable|
+  context " when user is logged out" do |variable|
     it 'loads message login' do
       visit root_path
       expect(page).to have_content 'iniciar sesión'
