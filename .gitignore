@@ -18,3 +18,4 @@
 vendor/assets/components
 
 config/database.yml
+.rmvrc
