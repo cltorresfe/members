@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'pundit'
 gem 'sass-rails', '~> 5.0'
+gem 'simple_form'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'therubyracer', platforms: :ruby
 gem 'thin'
