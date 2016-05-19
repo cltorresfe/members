@@ -233,7 +233,6 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    puma (3.4.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
@@ -406,7 +405,6 @@ DEPENDENCIES
   pg
   pry-byebug
   pry-stack_explorer
-  puma
   pundit
   quiet_assets
   railroady
