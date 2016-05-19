@@ -49,9 +49,9 @@ gem install therubyracer -- --with-v8-dir=/usr/local/opt/v8-#622424
 ## Heroku
 - Para crear nueva instancia:
 
-´´´
+```
 heroku create
 # Para poder compilar dependencias bower
 heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
 git push heroku master
-´´´
+```
