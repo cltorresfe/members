@@ -39,8 +39,9 @@ class Member < ApplicationRecord
     self.status ||= :active
   end
 
-  def self.search(search)
+  def self.search(search, church_id)
     if search
+      where(church_id: church_id).
       where('lower(name) LIKE ?', "%#{search.downcase}%").sorted
     else
       none

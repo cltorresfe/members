@@ -12,7 +12,7 @@
 #
 
 class Church < ApplicationRecord
-  has_many :members, inverse_of: :order
+  has_many :members
   has_many :users
 
   validates :name, :address, :email, :phone,  presence: true

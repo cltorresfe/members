@@ -21,11 +21,6 @@
         = f.label :phone
       .col-xs-7
         = f.text_field :phone, class: "form-control", placeholder: :phone
-    .form-group
-      .col-xs-3.control-label
-        = f.label :church
-      .col-xs-7
-        = f.select(:church_id, churches_for_select, {:include_blank => '-select-'}, class: "form-control")
     - if @ministries
       .form-group
         .col-xs-3.control-label
