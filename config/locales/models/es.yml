@@ -5,6 +5,7 @@ es:
       member: 'Miembro'
       responsibility: 'Cargo'
       status: 'Estado'
+      user: Usuario
     attributes:
       church:
         name: 'Nombre'
@@ -27,6 +28,13 @@ es:
           transferred: Trasladado
       responsibility:
         name: 'Nombre'
+      user:
+        name: Nombre
+        current_password: Contraseña actual
+        email: Correo electrónico
+        password: Contraseña
+        password_confirmation: Confirmación de la contraseña
+        remember_me: Recordarme
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
