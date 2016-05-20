@@ -1,0 +1,33 @@
+%h1 Listing families
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Married at
+      %th Address
+      %th Phone
+      %th City
+      %th Country
+      %th Church
+      %th
+      %th
+      %th
+
+  %tbody
+    - @families.each do |family|
+      %tr
+        %td= family.name
+        %td= family.married_at
+        %td= family.address
+        %td= family.phone
+        %td= family.city
+        %td= family.country
+        %td= family.church
+        %td= link_to 'Show', family
+        %td= link_to 'Edit', edit_family_path(family)
+        %td= link_to 'Destroy', family, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Family', new_family_path

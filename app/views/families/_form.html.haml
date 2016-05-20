@@ -1,0 +1,14 @@
+= simple_form_for(@family) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :married_at
+    = f.input :address
+    = f.input :phone
+    = f.input :city
+    = f.input :country
+    = f.association :church
+
+  .form-actions
+    = f.button :submit

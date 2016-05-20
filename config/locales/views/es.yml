@@ -65,6 +65,13 @@ es:
       title: Editar Ministerio
     new:
       title: Nuevo Ministerio
+  families:
+    index:
+      title: Listado de Familias
+    edit:
+      title: Editar Familia
+    new:
+      title: Nueva Familia
   flash_messages:
     no_found: No se encontraron resultados
 

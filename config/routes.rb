@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :members, except: :show
   resources :churches
   resources :ministries, except: :show
+  resources :families
 
   root 'members#index'
 
@@ -18,6 +19,14 @@ end
 # == Route Map
 #
 #                      Prefix Verb   URI Pattern                            Controller#Action
+#                    families GET    /families(.:format)                    families#index
+#                             POST   /families(.:format)                    families#create
+#                  new_family GET    /families/new(.:format)                families#new
+#                 edit_family GET    /families/:id/edit(.:format)           families#edit
+#                      family GET    /families/:id(.:format)                families#show
+#                             PATCH  /families/:id(.:format)                families#update
+#                             PUT    /families/:id(.:format)                families#update
+#                             DELETE /families/:id(.:format)                families#destroy
 #            new_user_session GET    /users/sign_in(.:format)               devise/sessions#new
 #                user_session POST   /users/sign_in(.:format)               devise/sessions#create
 #        destroy_user_session DELETE /users/sign_out(.:format)              devise/sessions#destroy
