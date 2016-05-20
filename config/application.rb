@@ -24,5 +24,6 @@ module Members
         address:'localhost',
         port: 1025
     }
+    config.app_generators.scaffold_controller = :scaffold_controller
   end
 end
