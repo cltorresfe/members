@@ -25,5 +25,7 @@ module Members
         port: 1025
     }
     config.app_generators.scaffold_controller = :scaffold_controller
+
+    config.autoload_paths << "#{Rails.root}/lib/members"
   end
 end
