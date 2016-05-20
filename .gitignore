@@ -18,3 +18,5 @@
 vendor/assets/components
 
 config/database.yml
+/coverage
+.rvmrc
