@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :members, except: :show
   resources :churches
   resources :ministries, except: :show
-  resources :families
+  resources :families, except: :show
 
   root 'members#index'
 

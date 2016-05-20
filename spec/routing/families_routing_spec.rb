@@ -11,10 +11,6 @@ RSpec.describe FamiliesController, :type => :routing do
       expect(:get => "/families/new").to route_to("families#new")
     end
 
-    it "routes to #show" do
-      expect(:get => "/families/1").to route_to("families#show", :id => "1")
-    end
-
     it "routes to #edit" do
       expect(:get => "/families/1/edit").to route_to("families#edit", :id => "1")
     end

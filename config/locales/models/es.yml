@@ -6,6 +6,7 @@ es:
       responsibility: 'Cargo'
       status: 'Estado'
       user: Usuario
+      family: Familia
     attributes:
       church:
         name: 'Nombre'
@@ -35,6 +36,13 @@ es:
         password: Contraseña
         password_confirmation: Confirmación de la contraseña
         remember_me: Recordarme
+      family:
+        name: 'Nombre'
+        address: 'Dirección'
+        phone: 'Fono'
+        married_at: Fecha de matrimonio
+        city: Ciudad
+        country: País
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

@@ -1,15 +1,10 @@
 class FamiliesController < ApplicationController
-  before_action :set_family, only: [:show, :edit, :update, :destroy]
+  before_action :set_family, only: [:edit, :update, :destroy]
 
   # GET /families
   # GET /families.json
   def index
     @families = Family.all
-  end
-
-  # GET /families/1
-  # GET /families/1.json
-  def show
   end
 
   # GET /families/new
@@ -25,29 +20,23 @@ class FamiliesController < ApplicationController
   # POST /families.json
   def create
     @family = Family.new(family_params)
+    @family.church = current_user.church
 
-    respond_to do |format|
-      if @family.save
-        format.html { redirect_to @family, notice: 'Family was successfully created.' }
-        format.json { render :show, status: :created, location: @family }
-      else
-        format.html { render :new }
-        format.json { render json: @family.errors, status: :unprocessable_entity }
-      end
+    if @family.save
+      flash[:notice] = t('.success', name: @family.name)
+      redirect_to action: :index
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /families/1
   # PATCH/PUT /families/1.json
   def update
-    respond_to do |format|
-      if @family.update(family_params)
-        format.html { redirect_to @family, notice: 'Family was successfully updated.' }
-        format.json { render :show, status: :ok, location: @family }
-      else
-        format.html { render :edit }
-        format.json { render json: @family.errors, status: :unprocessable_entity }
-      end
+    if @family.update(family_params)
+      redirect_to @family, notice: 'Family was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -55,10 +44,7 @@ class FamiliesController < ApplicationController
   # DELETE /families/1.json
   def destroy
     @family.destroy
-    respond_to do |format|
-      format.html { redirect_to families_url, notice: 'Family was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to families_url, notice: 'Family was successfully destroyed.'
   end
 
   private
@@ -69,6 +55,6 @@ class FamiliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def family_params
-      params.require(:family).permit(:name, :married_at, :address, :phone, :city, :country, :church_id)
+      params.require(:family).permit(:name, :married_at, :address, :phone, :city, :country)
     end
 end

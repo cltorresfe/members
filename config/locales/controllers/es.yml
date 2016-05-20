@@ -1,0 +1,4 @@
+es:
+  families:
+    create:
+      success: 'Familia "%{name}" ha sido creada exitosamente'
