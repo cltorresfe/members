@@ -2,7 +2,7 @@ module ApplicationHelper
 
   def get_title
     subtitle = content_for?(:title) ? content_for(:title) : i18n_title
-    "#{t('application')} #{ "- #{subtitle}" unless subtitle.blank?}"
+    "#{ "#{subtitle} - " unless subtitle.blank?} #{t('application')}"
   end
 
   def i18n_title
