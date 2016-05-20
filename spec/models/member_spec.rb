@@ -12,20 +12,25 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_presence_of(:phone)}
   it { is_expected.to validate_presence_of(:church)}
   it { is_expected.to validate_uniqueness_of(:email)}
-  it { is_expected.to validate_numericality_of(:phone)}
+  it { is_expected.to validate_length_of(:phone)}
   it { is_expected.to validate_length_of(:name)}
   it { is_expected.to validate_length_of(:address)}
 
 
-  let!(:member) { create(:member)}
+  
+  let!(:church) { create(:church)}
+  let!(:member) { create(:member, church: church)}
+  let!(:user) { create(:user, church: church)}
 
   describe '#search' do
+
     it 'searches an existing member' do
-      expect(Member.search('Homero')).to include member
+      # binding.pry
+      expect(Member.search('Homero', user.church)).to include member
     end
 
     it 'searches an unknown member' do
-      expect(Member.search('Marge')).not_to include member
+      expect(Member.search('Marge', user.church)).not_to include member
     end
   end
 

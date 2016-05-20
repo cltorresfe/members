@@ -22,9 +22,10 @@
 
 FactoryGirl.define do
   factory :user do
-    name 'Homero'
+    name { Faker::Internet.name }
     email { Faker::Internet.email }
     password "password"
     password_confirmation "password"
+    church
   end
 end

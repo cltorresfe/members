@@ -18,7 +18,7 @@ FactoryGirl.define do
     name 'Homero'
     address 'Springfield'
     email 'homero@simpsons.com'
-    phone 123456789
+    phone '123456789'
     status :active
     church
   end
