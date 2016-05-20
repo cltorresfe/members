@@ -34,7 +34,8 @@ class FamiliesController < ApplicationController
   # PATCH/PUT /families/1.json
   def update
     if @family.update(family_params)
-      redirect_to @family, notice: 'Family was successfully updated.'
+      flash[:notice] = t('.success', name: @family.name)
+      redirect_to action: :index
     else
       render :edit
     end

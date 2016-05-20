@@ -2,3 +2,5 @@ es:
   families:
     create:
       success: 'Familia "%{name}" ha sido creada exitosamente'
+    update:
+      success: 'Datos de familia "%{name}" han sido actualizados'
