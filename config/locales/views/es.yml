@@ -67,4 +67,5 @@ es:
       title: Nuevo Ministerio
   flash_messages:
     no_found: No se encontraron resultados
+    attendace_ministries_no_found: "No se encontraron ministerios para registrar una asistencia"
 
