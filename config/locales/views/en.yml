@@ -1,5 +1,5 @@
 en:
-  application: Members Application 
+  application: Members Application
   link:
     back: Back
     edit: Edit
@@ -8,7 +8,7 @@ en:
     members: Members
     churches: Churches
     menu_main: Menu
-    menu_options: Actions 
+    menu_options: Actions
     new_member: New Member
     new_church: New Church
     new_status: New Status
@@ -23,41 +23,5 @@ en:
   confirm:
     message:
       destroy: Are you sure?
-  members:
-    index:
-      title: 'Listing Members'
-    edit:
-      title: 'Editing Member'
-    new:
-      title: 'New Member'
-    show:
-      name: 'Name'
-      address: 'Address'
-      email: 'Email'
-      phone: 'Number Phone'
-      church: 'Church'
-      responsibilities: 'Responsibilities'
-      status: 'Estado'
-  churches:
-    index:
-      title: 'Listing Churches'
-    edit:
-      title: 'Editing Church'
-    new:
-      title: 'New Church'
-    show:
-      name: 'Name'
-      address: 'Address'
-      email: 'Email'
-      phone: 'Telephone'
-  responsibilities:
-    index:
-      title: Listing responsibilities
-    edit:
-      title: Editing Responsibility
-    new:
-      title: New Responsibility
-    show:
-      name: Name
   flash_messages:
     no_found: No found results
