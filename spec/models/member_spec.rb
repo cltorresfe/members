@@ -25,12 +25,11 @@ RSpec.describe Member, :type => :model do
   describe '#search' do
 
     it 'searches an existing member' do
-      # binding.pry
-      expect(Member.search('Homero', user.church)).to include member
+      expect(user.search_members(member.name)).to include member
     end
 
     it 'searches an unknown member' do
-      expect(Member.search('Marge', user.church)).not_to include member
+      expect(user.search_members('Marge')).not_to include member
     end
   end
 

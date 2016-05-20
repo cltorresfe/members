@@ -8,7 +8,7 @@ class MembersController < ApplicationController
     flash.clear
     # search specific of members
     if params[:name].present?
-      @members = Member.search(params[:name], current_user.church.id)
+      @members = current_user.search_members(params[:name])
       if(@members.size == 1)
         redirect_to edit_member_path(@members.first)
         return
