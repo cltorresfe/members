@@ -6,7 +6,6 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    flash.clear
     if params[:name].present?
       @members = Member.search(params[:name])
       if(@members.size == 1)
