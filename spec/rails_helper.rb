@@ -75,11 +75,9 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
 
   # Using until a new rspec version compatible with rails 5 comes.
-  [:controller, :view, :request].each do |type|
-    config.include ::Rails::Controller::Testing::TestProcess, :type => type
-    config.include ::Rails::Controller::Testing::TemplateAssertions, :type => type
-    config.include ::Rails::Controller::Testing::Integration, :type => type
-  end
+  config.include ::Rails::Controller::Testing::TestProcess, :type => :controller
+  config.include ::Rails::Controller::Testing::TemplateAssertions, :type => :controller
+  config.include ::Rails::Controller::Testing::Integration, :type => :controller
 end
 
 Capybara::Webkit.configure do |config|
