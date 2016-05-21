@@ -4,8 +4,12 @@ class AttendancesController < ApplicationController
     @current_ministry = params[:ministry_id] ? Ministry.find(params[:ministry_id]) : Ministry.first
     @attendance_date = params[:attendance_date] || Date.today.strftime('%d/%m/%Y')
     @attendances = Attendance.where(ministry: @current_ministry, attendance_date: Date.parse(@attendance_date).beginning_of_day)
-    @charges = @current_ministry.charges.non_administrative
     @ministries = Ministry.all
+    if(@current_ministry.present?)
+      @charges = @current_ministry.charges.non_administrative
+    else
+      flash[:alert] = I18n.t('flash_messages.attendace_ministries_no_found')
+    end
   end
 
   def create
