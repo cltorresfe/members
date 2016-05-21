@@ -4,6 +4,7 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'devise'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -70,6 +71,8 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  config.include Devise::TestHelpers, :type => :controller
 
   # Using until a new rspec version compatible with rails 5 comes.
   [:controller, :view, :request].each do |type|

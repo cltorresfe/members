@@ -20,49 +20,34 @@ require 'rails_helper'
 
 RSpec.describe FamiliesController, :type => :controller do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Family. As you add validations to Family, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes)   { attributes_for(:family) }
+  let(:invalid_attributes) { attributes_for(:family, name: nil) }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:church) { create(:church)}
+  let(:user)   { create(:user, church: church)}
+  let!(:family) { create(:family, church: church)}
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # FamiliesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before do
+    sign_in user
+  end
 
   describe "GET index" do
     it "assigns all families as @families" do
-      family = Family.create! valid_attributes
-      get :index, {}, valid_session
+      get :index
       expect(assigns(:families)).to eq([family])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested family as @family" do
-      family = Family.create! valid_attributes
-      get :show, {:id => family.to_param}, valid_session
-      expect(assigns(:family)).to eq(family)
     end
   end
 
   describe "GET new" do
     it "assigns a new family as @family" do
-      get :new, {}, valid_session
+      get :new
       expect(assigns(:family)).to be_a_new(Family)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested family as @family" do
-      family = Family.create! valid_attributes
-      get :edit, {:id => family.to_param}, valid_session
+      get :edit, params: {id: family.id}
       expect(assigns(:family)).to eq(family)
     end
   end
@@ -71,30 +56,30 @@ RSpec.describe FamiliesController, :type => :controller do
     describe "with valid params" do
       it "creates a new Family" do
         expect {
-          post :create, {:family => valid_attributes}, valid_session
+          post :create, params: { family: valid_attributes }
         }.to change(Family, :count).by(1)
       end
 
-      it "assigns a newly created family as @family" do
-        post :create, {:family => valid_attributes}, valid_session
+      it "assigns a newly created family as @family", focus: true do
+        post :create, params: { family: valid_attributes }
         expect(assigns(:family)).to be_a(Family)
         expect(assigns(:family)).to be_persisted
       end
 
       it "redirects to the created family" do
-        post :create, {:family => valid_attributes}, valid_session
-        expect(response).to redirect_to(Family.last)
+        post :create, params: { family: valid_attributes }
+        expect(response).to redirect_to(families_url)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved family as @family" do
-        post :create, {:family => invalid_attributes}, valid_session
+        post :create, params: { family: invalid_attributes }
         expect(assigns(:family)).to be_a_new(Family)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:family => invalid_attributes}, valid_session
+        post :create, params: { family: invalid_attributes }
         expect(response).to render_template("new")
       end
     end
@@ -102,56 +87,47 @@ RSpec.describe FamiliesController, :type => :controller do
 
   describe "PUT update" do
     describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) { { name: 'Foo' } }
 
       it "updates the requested family" do
-        family = Family.create! valid_attributes
-        put :update, {:id => family.to_param, :family => new_attributes}, valid_session
+        put :update, params: {id: family.id, :family => new_attributes}
         family.reload
-        skip("Add assertions for updated state")
+        expect(family.name).to eq 'Foo'
       end
 
       it "assigns the requested family as @family" do
-        family = Family.create! valid_attributes
-        put :update, {:id => family.to_param, :family => valid_attributes}, valid_session
+        put :update, params: {id: family.id, :family => valid_attributes}
         expect(assigns(:family)).to eq(family)
       end
 
       it "redirects to the family" do
-        family = Family.create! valid_attributes
-        put :update, {:id => family.to_param, :family => valid_attributes}, valid_session
-        expect(response).to redirect_to(family)
+        put :update, params: {id: family.id, :family => valid_attributes}
+        expect(response).to redirect_to(families_url)
       end
     end
 
     describe "with invalid params" do
       it "assigns the family as @family" do
-        family = Family.create! valid_attributes
-        put :update, {:id => family.to_param, :family => invalid_attributes}, valid_session
+        put :update, params: {id: family.id, :family => invalid_attributes}
         expect(assigns(:family)).to eq(family)
       end
 
       it "re-renders the 'edit' template" do
-        family = Family.create! valid_attributes
-        put :update, {:id => family.to_param, :family => invalid_attributes}, valid_session
+        put :update, params: {id: family.id, :family => invalid_attributes}
         expect(response).to render_template("edit")
       end
     end
   end
 
-  describe "DELETE destroy" do
+  describe "DELETE destroy", focus: true do
     it "destroys the requested family" do
-      family = Family.create! valid_attributes
       expect {
-        delete :destroy, {:id => family.to_param}, valid_session
+        delete :destroy, params: {id: family.id}
       }.to change(Family, :count).by(-1)
     end
 
     it "redirects to the families list" do
-      family = Family.create! valid_attributes
-      delete :destroy, {:id => family.to_param}, valid_session
+      delete :destroy, params: {id: family.id}
       expect(response).to redirect_to(families_url)
     end
   end

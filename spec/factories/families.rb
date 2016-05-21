@@ -22,6 +22,6 @@ FactoryGirl.define do
     phone "MyString"
     city "MyString"
     country "MyString"
-    church nil
+    church
   end
 end
