@@ -44,4 +44,8 @@ class User < ActiveRecord::Base
     self.role ||= :common
   end
 
+  def search_members(search)
+    church.members.search(search)
+  end
+
 end

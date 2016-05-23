@@ -12,12 +12,12 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_presence_of(:phone)}
   it { is_expected.to validate_presence_of(:church)}
   it { is_expected.to validate_uniqueness_of(:email)}
-  it { is_expected.to validate_numericality_of(:phone)}
+  it { is_expected.to validate_length_of(:phone)}
   it { is_expected.to validate_length_of(:name)}
   it { is_expected.to validate_length_of(:address)}
 
 
-  let!(:member) { create(:member)}
+  let!(:member) { create(:member, name: 'Homero')}
 
   describe '#search' do
     it 'searches an existing member' do
@@ -55,4 +55,12 @@ RSpec.describe Member, :type => :model do
 
   end
 
+  context 'change_to_format_phone' do
+    it 'returns a number when phone is present' do
+      member = create(:member, phone: '34333ffd2323')
+      expect(member.phone).to eq('343332323')
+    end
+  end
+
 end
+

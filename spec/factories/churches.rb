@@ -13,9 +13,9 @@
 
 FactoryGirl.define do
   factory :church do
-    name 'Inglesia'
+    name {Faker::Company.name}
     address 'Springfield'
-    email 'Inglesia@simpsons.com'
+    email { Faker::Internet.email }
     phone 123456789
   end
 end

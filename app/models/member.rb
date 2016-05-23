@@ -24,16 +24,14 @@ class Member < ApplicationRecord
 
   validates :name, :address, :email, :phone, :church, presence: true
   validates :email, uniqueness: true, email: true
-  validates :phone, numericality: { less_than_or_equal_to: 2147483647 }
-  validates :name, length: { maximum: 35,
-            too_long: "%{count} characters is the maximum allowed" }
-  validates :address, length: { maximum: 50,
-            too_long: "%{count} characters is the maximum allowed" }
+  validates :phone, length: { maximum: 12, minimum: 7 }
+  validates :name, length: { maximum: 35 }
+  validates :address, length: { maximum: 50}
 
   after_initialize :set_defaults
 
   scope :sorted, -> { order(created_at: :desc) }
-
+  before_validation :change_to_format_phone 
 
   def set_defaults
     self.status ||= :active
@@ -45,6 +43,11 @@ class Member < ApplicationRecord
     else
       none
     end
+  end
+
+  protected
+  def change_to_format_phone
+    self.phone = phone.gsub(/\D/, '') if attribute_present?("phone")
   end
 
 end
