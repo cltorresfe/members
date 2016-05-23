@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :members, except: :show
   resources :churches
   resources :ministries, except: :show
+  resources :families, except: :show
 
   root 'members#index'
 
@@ -98,5 +99,12 @@ end
 #                    ministry PATCH  /ministries/:id(.:format)              ministries#update
 #                             PUT    /ministries/:id(.:format)              ministries#update
 #                             DELETE /ministries/:id(.:format)              ministries#destroy
+#                    families GET    /families(.:format)                    families#index
+#                             POST   /families(.:format)                    families#create
+#                  new_family GET    /families/new(.:format)                families#new
+#                 edit_family GET    /families/:id/edit(.:format)           families#edit
+#                      family PATCH  /families/:id(.:format)                families#update
+#                             PUT    /families/:id(.:format)                families#update
+#                             DELETE /families/:id(.:format)                families#destroy
 #                        root GET    /                                      members#index
 #

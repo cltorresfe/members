@@ -4,6 +4,7 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'devise'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -25,8 +26,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -51,7 +50,6 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -73,6 +71,13 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  config.include Devise::TestHelpers, :type => :controller
+
+  # Using until a new rspec version compatible with rails 5 comes.
+  config.include ::Rails::Controller::Testing::TestProcess, :type => :controller
+  config.include ::Rails::Controller::Testing::TemplateAssertions, :type => :controller
+  config.include ::Rails::Controller::Testing::Integration, :type => :controller
 end
 
 Capybara::Webkit.configure do |config|

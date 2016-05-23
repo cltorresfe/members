@@ -3,13 +3,13 @@
 ## Configuracion
 Para correr capybara-webkit en Ubuntu es necesario instalar:
 
-```
+```shell
 sudo apt-get install libqtwebkit-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
 ```
 
 Para correr capybara-webkit en OS X es necesario:
-	
-``` 
+
+```shell
 brew tap homebrew/versions
 brew install qt55
 brew link --force qt55
@@ -32,14 +32,14 @@ bower install
 
 Instalar bower en os x
 
-``` 
+```shell
 brew install node
 sudo npm install -g bower
 ```
 
 Para instalar therubyracer
 
-```
+```shell
 gem uninstall libv8
 brew install v8
 gem install libv8 -v '3.16.14.13' -- --with-system-v8

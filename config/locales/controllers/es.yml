@@ -1,0 +1,57 @@
+es:
+  families:
+    create:
+      title: Nueva Familia
+      success: 'Familia "%{name}" ha sido creada exitosamente'
+    update:
+      title: Editar Familia
+      success: 'Datos de familia "%{name}" han sido actualizados'
+    index:
+      title: Listado de Familias
+    edit:
+      title: Editar Familia
+    new:
+      title: Nueva Familia
+  members:
+    index:
+      title: 'Listado de Miembros'
+    edit:
+      title: 'Editar Miembro'
+    new:
+      title: 'Nuevo Miembro'
+    show:
+      name: 'Nombre'
+      address: 'Dirección'
+      email: 'Correo'
+      phone: 'Fono'
+      church: 'Iglesia'
+      responsibilities: 'Cargos'
+      status: 'Estado'
+  churches:
+    index:
+      title: 'Listado de Iglesias'
+    edit:
+      title: 'Editar Iglesia'
+    new:
+      title: 'Nueva Iglesia'
+    show:
+      name: 'Nombre'
+      address: 'Dirección'
+      email: 'Correo'
+      phone: 'Fono'
+  responsibilities:
+    index:
+      title: Listado de Cargos
+    edit:
+      title: Editar Cargos
+    new:
+      title: Nuevo Cargo
+    show:
+      name: Nombre
+  ministries:
+    index:
+      title: Listado de Ministerios
+    edit:
+      title: Editar Ministerio
+    new:
+      title: Nuevo Ministerio

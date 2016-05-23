@@ -8,6 +8,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-will_paginate'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'country_select'
 gem 'delayed_job_active_record'
 gem 'devise'
 gem 'gravatar_image_tag'
@@ -54,6 +55,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
 end

@@ -1,0 +1,13 @@
+= simple_form_for @family, html: {class: 'form-horizontal'} do |f|
+  = f.error_notification
+
+  = f.input :name, placeholder: Family.human_attribute_name(:name)
+  = f.input :married_at, placeholder: Family.human_attribute_name(:married_at), as: :string
+  = f.input :address, placeholder: Family.human_attribute_name(:address)
+  = f.input :phone, placeholder: Family.human_attribute_name(:phone)
+  = f.input :city, placeholder: Family.human_attribute_name(:city)
+  = f.input :country, priority: Utils::PRIORITARY_COUNTRIES
+
+  .form-group
+    .col-xs-offset-4
+      = f.submit class: "btn btn-primary btn-lg"
