@@ -17,19 +17,15 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_length_of(:address)}
 
 
-  
-  let!(:church) { create(:church)}
-  let!(:member) { create(:member, church: church)}
-  let!(:user) { create(:user, church: church)}
+  let!(:member) { create(:member, name: 'Homero')}
 
   describe '#search' do
-
     it 'searches an existing member' do
-      expect(user.search_members(member.name)).to include member
+      expect(Member.search('Homero')).to include member
     end
 
     it 'searches an unknown member' do
-      expect(user.search_members('Marge')).not_to include member
+      expect(Member.search('Marge')).not_to include member
     end
   end
 
@@ -59,4 +55,12 @@ RSpec.describe Member, :type => :model do
 
   end
 
+  context 'change_to_format_phone' do
+    it 'returns a number when phone is present' do
+      member = create(:member, phone: '34333ffd2323')
+      expect(member.phone).to eq('343332323')
+    end
+  end
+
 end
+
