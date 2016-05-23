@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 describe "Member index", :type => :feature do
-  let!(:member) { create(:member, name: 'Homero')}
-  let!(:user) {create(:user)}
+  let!(:church) {create(:church)}
+  let!(:member) { create(:member, name: 'Homero', church: church)}
+  let!(:user) {create(:user, church: church)}
 
   context "when user is signed in" do
     before do

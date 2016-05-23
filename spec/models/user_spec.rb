@@ -31,4 +31,18 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  context '#checking search_members' do
+    let!(:church){ create(:church, name: 'Iglesia')}
+    let!(:member) { create(:member, name: 'Homero', church: church)}
+      
+    it 'searches an existing member' do
+      user = create(:user, church: church)
+      expect(user.search_members('Homero')).to include member
+    end
+
+    it 'searches an unknown member' do
+      expect(user.search_members('Margaret')).not_to include member
+    end
+  end
+
 end

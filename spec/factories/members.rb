@@ -15,10 +15,10 @@
 
 FactoryGirl.define do
   factory :member do
-    name 'Homero'
+    name { Faker::Name.name }
     address 'Springfield'
-    email 'homero@simpsons.com'
-    phone 123456789
+    email { Faker::Internet.email }
+    phone '123456789'
     status :active
     church
   end

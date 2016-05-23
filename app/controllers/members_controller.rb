@@ -5,16 +5,23 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
+    # search specific of members
     if params[:name].present?
-      @members = Member.search(params[:name])
+      @members = current_user.search_members(params[:name])
       if(@members.size == 1)
         redirect_to edit_member_path(@members.first)
         return
       elsif(@members.blank?)
         flash[:notice] = I18n.t('flash_messages.no_found')
       end
+    # List all members of the church 
     else
-      @members = Member.sorted
+      if(current_user.church.present? && current_user.church.members.present?)
+        @members = current_user.church.members.sorted
+      else
+        flash[:notice] = I18n.t('flash_messages.no_found')
+        return
+      end
     end
     @members = @members.paginate(page: params[:page], per_page: 18)
   end
@@ -32,7 +39,7 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     @member = Member.new(member_params)
-
+    @member.church = current_user.church
     respond_to do |format|
       if @member.save
         WelcomeMember.notify(@member).deliver_later!
@@ -74,7 +81,7 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:name, :address, :email, :phone, :status, :church_id, charge_ids:[])
+      params.require(:member).permit(:name, :address, :email, :phone, :status, charge_ids:[])
     end
 
     def load_ministries
