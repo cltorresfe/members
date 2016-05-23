@@ -11,14 +11,14 @@ describe "Member index", :type => :feature do
     end
     it 'loads all the members' do
       visit root_path
-      expect(page).to have_content 'Homero'
+      expect(page).to have_content member.name
     end
   end
 
-  context " when user is logged out" do |variable|
+  context " when user is logged out" do
     it 'loads message login' do
       visit root_path
-      expect(page).to have_content 'iniciar sesión'
+      expect(page).not_to have_content member.name
     end
   end
 

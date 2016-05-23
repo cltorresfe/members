@@ -5,7 +5,6 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    flash.clear
     # search specific of members
     if params[:name].present?
       @members = current_user.search_members(params[:name])
