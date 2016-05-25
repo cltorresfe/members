@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "users/registrations" }
   ActiveAdmin.routes(self)
 
   resources :attendances, only: [:index, :create]
@@ -27,13 +27,13 @@ end
 #          edit_user_password GET    /users/password/edit(.:format)         devise/passwords#edit
 #                             PATCH  /users/password(.:format)              devise/passwords#update
 #                             PUT    /users/password(.:format)              devise/passwords#update
-#    cancel_user_registration GET    /users/cancel(.:format)                devise/registrations#cancel
-#           user_registration POST   /users(.:format)                       devise/registrations#create
-#       new_user_registration GET    /users/sign_up(.:format)               devise/registrations#new
-#      edit_user_registration GET    /users/edit(.:format)                  devise/registrations#edit
-#                             PATCH  /users(.:format)                       devise/registrations#update
-#                             PUT    /users(.:format)                       devise/registrations#update
-#                             DELETE /users(.:format)                       devise/registrations#destroy
+#    cancel_user_registration GET    /users/cancel(.:format)                users/registrations#cancel
+#           user_registration POST   /users(.:format)                       users/registrations#create
+#       new_user_registration GET    /users/sign_up(.:format)               users/registrations#new
+#      edit_user_registration GET    /users/edit(.:format)                  users/registrations#edit
+#                             PATCH  /users(.:format)                       users/registrations#update
+#                             PUT    /users(.:format)                       users/registrations#update
+#                             DELETE /users(.:format)                       users/registrations#destroy
 #                  admin_root GET    /admin(.:format)                       admin/dashboard#index
 #    batch_action_admin_users POST   /admin/users/batch_action(.:format)    admin/users#batch_action
 #                 admin_users GET    /admin/users(.:format)                 admin/users#index
