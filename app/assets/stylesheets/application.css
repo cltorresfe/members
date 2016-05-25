@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * This is a manifest file that'll be compiled into application, which will include all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
@@ -16,5 +16,16 @@
  *= require metisMenu/dist/metisMenu
  *= require startbootstrap-sb-admin-2/dist/css/sb-admin-2
  *= require custom
+ *= require gentelella/production/css/maps/jquery-jvectormap-2.0.3
+ *= require gentelella/vendors/iCheck/skins/flat/green
+ *= require gentelella/production/css/animate.min
+ *= require gentelella/production/css/custom.css
+ *= require gentelella/vendors/normalize-css/normalize
+ *= require gentelella/vendors/nprogress/nprogress
+ *= require gentelella/vendors/ion.rangeSlider/css/ion.rangeSlider
+ *= require gentelella/vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat
+ *= require gentelella/production/css/floatexamples
+
+
  *= require_self
  */

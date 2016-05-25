@@ -19,4 +19,17 @@
 //= require sb-admin-2
 //= #require turbolinks
 //= require common
+//  gentelella
+//= require gentelella/vendors/nprogress/nprogress
+//= require gentelella/vendors/dropzone/dist/dropzone
+//= require gentelella/vendors/PACE/pace.min
+//= require gentelella/vendors/Chart.js/dist/Chart.min
+//= require gentelella/production/js/custom.js
+
+//= require gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min
+
+//= require gentelella/vendors/iCheck/icheck.min
+//= require gentelella/vendors/select2/dist/js/select2.full
+
+//= require gentelella/vendors/moment/min/moment.min
 //= require_tree ./routes/
