@@ -17,9 +17,10 @@ gem 'jbuilder'
 gem 'jquery-rails'
 gem 'pg'
 gem 'pundit'
+gem 'react_on_rails', '~> 5'
 gem 'sass-rails', '~> 5.0'
-gem 'simple_form'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'simple_form'
 gem 'therubyracer', platforms: :ruby
 gem 'thin'
 gem 'uglifier', '>= 1.3.0'
