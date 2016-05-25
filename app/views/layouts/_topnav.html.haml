@@ -9,21 +9,22 @@
         %li
           %a.user-profile.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "javascript:;"}
             = image_tag "avatar_2x.png"
-            John Doe
+            = current_user.name
             %span.fa.fa-angle-down
           %ul.dropdown-menu.dropdown-usermenu.pull-right
             %li
-              %a{:href => "javascript:;"} Profile
+              %a{:href => "javascript:;"} 
+                Profile
+                %i.fa.fa-edit.pull-right
+            - if current_user.admin?
+              %li
+                = link_to admin_root_path do
+                  %i.fa.fa-cog.pull-right
+                  %span=t('link.admin')
             %li
-              %a{:href => "javascript:;"}
-                %span.badge.bg-red.pull-right 50%
-                %span Settings
-            %li
-              %a{:href => "javascript:;"} Help
-            %li
-              %a{:href => "login.html"}
+              = link_to destroy_user_session_path, method: :delete do
                 %i.fa.fa-sign-out.pull-right
-                Log Out
+                = t('link.destroy_session')
         %li.dropdown{:role => "presentation"}
           %a.dropdown-toggle.info-number{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "javascript:;"}
             %i.fa.fa-envelope-o
