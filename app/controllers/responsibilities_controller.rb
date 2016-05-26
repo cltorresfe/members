@@ -6,7 +6,7 @@ class ResponsibilitiesController < ApplicationController
   def index
     @responsibilities = Responsibility.all
     if(@responsibilities.blank?)
-      flash[:alert] = I18n.t('flash_messages.no_found')
+      flash[:alert] = I18n.t('flash_messages.charges_no_found')
     end
   end
 
