@@ -27,6 +27,7 @@ gem 'will_paginate'
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-annotate', require: false
@@ -35,6 +36,7 @@ group :development, :test do
   gem 'hirb'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+  gem 'quiet_assets'
   gem 'railroady'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'

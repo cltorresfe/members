@@ -123,6 +123,10 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dotenv (2.1.1)
+    dotenv-rails (2.1.1)
+      dotenv (= 2.1.1)
+      railties (>= 4.0, < 5.1)
     erubis (2.7.0)
     execjs (2.6.0)
     factory_girl (4.7.0)
@@ -247,6 +251,8 @@ GEM
     puma (3.4.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (2.0.0.rc1)
       json
     rack-test (0.6.3)
@@ -413,6 +419,7 @@ DEPENDENCIES
   database_cleaner
   delayed_job_active_record
   devise
+  dotenv-rails
   factory_girl_rails
   faker
   gravatar_image_tag
@@ -431,6 +438,7 @@ DEPENDENCIES
   pry-stack_explorer
   puma
   pundit
+  quiet_assets
   railroady
   rails (>= 5.0.0.rc1, < 5.1)
   rails-controller-testing
