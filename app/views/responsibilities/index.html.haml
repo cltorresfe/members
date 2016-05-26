@@ -1,13 +1,40 @@
-%h1 Listing Responsibilities
-%table
-  %thead
-    %tr
-      %th Name
-      %th{:colspan => "3"}
-  %tbody
+-if(@responsibilities.present?)
+  .row
     - @responsibilities.each do |responsibility|
-      %tr
-        %td= responsibility.name
-        %td= link_to 'Show', responsibility
-        %td= link_to 'Edit', edit_responsibility_path(responsibility)
-        %td= link_to 'Destroy', responsibility, method: :delete, data: { confirm: 'Are you sure?' }
+      .col-md-12.col-sm-12.col-xs-12
+        .box-body.no-padding
+          .x_panel
+            .x_title
+              %h2
+                = link_to edit_responsibility_path(responsibility) do
+                  =responsibility.name
+                  .glyphicon.glyphicon-pencil
+                = link_to responsibility, method: :delete, data: { confirm: 'Are you sure?' } do
+                  .glyphicon.glyphicon-trash
+                %small
+                  -if(responsibility.members.present?)
+                    =responsibility.members.size
+                    miembros
+                  - else
+                    0 miembros
+              %ul.nav.navbar-right.panel_toolbox
+                %li
+                  %a.collapse-link
+                    %i.fa.fa-chevron-down
+                %li
+                  %a.close-link
+                    %i.fa.fa-close
+              .clearfix
+            .x_content{:style => "display: block;"}
+              .row
+                .clearfix
+                - responsibility.members.each do |member|
+                  .col-md-2.col-sm-2.col-xs-4
+                    .col-sm-12
+                      .text-center
+                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle profile_img', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
+                    .col-sm-12.text-center
+                      .emphasis
+                        = link_to edit_member_path(member) do
+                          = member.name
+                          %i.glyphicon.glyphicon-pencil
