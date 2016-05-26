@@ -9,7 +9,7 @@
                 = will_paginate @members, :class => 'margin: 0px'
               .clearfix
               - @members.each do |member|
-                .col-md-2.col-sm-4.col-xs-12.profile_details
+                .col-md-2.col-sm-2.col-xs-4
                   .col-sm-12
                     .text-center
                       = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle profile_img', secure: false, gravatar: { default: :mm } ), edit_member_path(member)

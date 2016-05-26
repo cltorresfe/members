@@ -16,24 +16,22 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   %body.nav-md
     .container.body
-%body.nav-md
-  .container.body
-    - if user_signed_in?
-      .main_container
-        = render "layouts/sidenav"
-        = render "layouts/topnav"
-        .right_col{role: :main}
-          .minim-height
-            .page-title
-              .title-left
-                %h3= i18n_title
-                = render 'layouts/messages'
-              .title-right
-                .pull-right.top_search
-            .clearfix
-            = yield
-      = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    - else
-      = render 'layouts/messages'
-      = yield
+      - if user_signed_in?
+        .main_container
+          = render "layouts/sidebar"
+          = render "layouts/topbar"
+          .right_col{role: :main}
+            .minim-height
+              .page-title
+                .title-left
+                  %h3= i18n_title
+                  = render 'layouts/messages'
+                .title-right
+                  .pull-right.top_search
+              .clearfix
+              = yield
+        = javascript_include_tag 'application', 'data-turbolinks-track' => true
+      - else
+        = render 'layouts/messages'
+        = yield
 

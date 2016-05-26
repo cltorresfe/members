@@ -13,23 +13,10 @@
 //= require jquery/dist/jquery
 //= require jquery_ujs
 //= require bootstrap/dist/js/bootstrap
-//= require metisMenu/dist/metisMenu
 //= require moment/min/moment.min
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
-//= require sb-admin-2
 //= #require turbolinks
 //= require common
-//  gentelella
-//= require gentelella/vendors/nprogress/nprogress
-//= require gentelella/vendors/dropzone/dist/dropzone
-//= require gentelella/vendors/PACE/pace.min
-//= require gentelella/vendors/Chart.js/dist/Chart.min
-//= require gentelella/production/js/custom.js
+//= require gentelella/production/js/custom
 
-//= require gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min
-
-//= require gentelella/vendors/iCheck/icheck.min
-//= require gentelella/vendors/select2/dist/js/select2.full
-
-//= require gentelella/vendors/moment/min/moment.min
 //= require_tree ./routes/
