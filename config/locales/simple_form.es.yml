@@ -7,3 +7,10 @@ es:
       mark: '*'
     error_notification:
       default_message: "Por favor revise los errores:"
+    placeholders:
+      user:
+        name: Nombre
+        current_password: Contraseña actual
+        email: Correo electrónico
+        password: Contraseña
+        password_confirmation: Confirmación de la contraseña

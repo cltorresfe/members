@@ -3,7 +3,7 @@
     .col-sm-6.col-md-4.col-md-offset-4
       %h1.text-center.login-title= t('.forgot_your_password')
       .account-wall
-        = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'form-signin'}) do |f|
-          = f.input :email, :placeholder => resource.class.human_attribute_name(:email), :label => false
+        = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'form-signin'}, :wrapper => :sign_form) do |f|
+          = f.input :email
           %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"}= t('.send_me_reset_password_instructions')
           %span.clearfix
