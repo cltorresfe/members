@@ -12,7 +12,8 @@
 class Ministry < ApplicationRecord
   has_many :charges
   has_many :responsibilities, through: :charges
-
+  belongs_to :church
   has_many :attendances
   has_many :member_attendances, through: :attendances
+  has_many :members, through: :charges
 end

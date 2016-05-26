@@ -3,10 +3,22 @@
     .col-md-12.col-sm-12.col-xs-12
       .box-body.no-padding
         .x_panel
+          .x_title
+            %h2
+              = current_user.church.name
+              %small
+                =current_user.church.members.size
+                miembros
+            %ul.nav.navbar-right.panel_toolbox
+              %li
+                %a.collapse-link
+                  %i.fa.fa-chevron-up
+              %li
+                %a.close-link
+                  %i.fa.fa-close
+            .clearfix
           .x_content
             .row
-              .col-md-12.col-sm-12.col-xs-12.text-center
-                = will_paginate @members, :class => 'margin: 0px'
               .clearfix
               - @members.each do |member|
                 .col-md-2.col-sm-2.col-xs-4
@@ -18,6 +30,8 @@
                       = link_to edit_member_path(member) do
                         = member.name
                         %i.glyphicon.glyphicon-pencil
+              .col-md-12.col-sm-12.col-xs-12.text-center
+                = will_paginate @members, :class => 'margin: 0px'
 
 
 
