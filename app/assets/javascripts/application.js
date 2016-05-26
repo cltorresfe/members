@@ -13,7 +13,6 @@
 //= require jquery/dist/jquery
 //= require jquery_ujs
 //= require bootstrap/dist/js/bootstrap
-//= require metisMenu/dist/metisMenu
 //= require moment/min/moment.min
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= #require turbolinks
