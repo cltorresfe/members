@@ -1,62 +1,74 @@
-- if user_signed_in?
-  .navbar-default.sidebar{:role => "navigation"}
-    .sidebar-nav.navbar-collapse
-      %ul#side-menu.nav
-        %li.sidebar-search
-          = form_tag(members_path, method: "get", id: "search-form") do
-            .input-group.custom-search-form
-              = text_field_tag :name, params[:name], placeholder: t('placeholder.search_members'), class: 'form-control'
-              %span.input-group-btn
-                %button.btn.btn-default{:type => "submit"}
-                  %i.fa.fa-search
-            / /input-group
-        %li
-          %a{:href => "#"}
-            %i.fa.fa-group.fa-fw
-            = t('link.members')
-            %span.fa.arrow
-          %ul.nav.nav-second-level
-            %li= link_to t('members.index.title'), members_path
-            %li= link_to t('members.new.title'), new_member_path
-            %li= link_to t('families.index.title'), families_path
-            %li= link_to t('families.new.title'), new_family_path
-          / /.nav-second-level
-        %li
-          %a{:href => "#"}
-            %i.fa.fa-home.fa-fw
-            = t('link.churches')
-            %span.fa.arrow
-          %ul.nav.nav-second-level
-            %li= link_to t('churches.index.title'), churches_path
-            %li= link_to t('churches.new.title'), new_church_path
-          / /.nav-second-level
-        %li
-          = link_to attendances_path do
-            %i.fa.fa-check-square-o.fa-fw
-            = t('link.attendance')
-        %li
-          %a{:href => "#"}
-            %i.fa.fa-building-o.fa-fw
-            = t('link.ministries')
-            %span.fa.arrow
-          %ul.nav.nav-second-level
-            %li= link_to t('ministries.index.title'), ministries_path
-            %li= link_to t('ministries.new.title'), new_ministry_path
-          / /.nav-second-level
-        %li
-          %a{:href => "#"}
-            %i.fa.fa-flag-o.fa-fw
-            = t('link.responsibilities')
-            %span.fa.arrow
-          %ul.nav.nav-second-level
-            %li= link_to t('responsibilities.index.title'), responsibilities_path
-            %li= link_to t('responsibilities.new.title'), new_responsibility_path
-          / /.nav-second-level
-        - if current_user.admin?
+.col-md-3.left_col
+  .left_col.scroll-view
+    .navbar.nav_title{:style => "border: 0;"}
+      = link_to root_path , class: "site_title" do
+        %i.fa.fa-paw
+        %span 
+          = t('application')
+    .clearfix
+    / menu profile quick info
+    .profile
+      .profile_pic
+        = image_tag "avatar_2x.png", :class => "img-circle profile_img"
+      .profile_info
+        %span Welcome,
+        %h2= current_user.name
+    / /menu profile quick info
+    / sidebar menu
+    .clearfix
+    #sidebar-menu.main_menu_side.hidden-print.main_menu
+      .menu_section
+        %h3 
+        %ul.nav.side-menu
           %li
-            = link_to admin_root_path do
-              %i.fa.fa-database.fa-fw
-              = t('link.admin')
-            / /.nav-second-level
-    / /.sidebar-collapse
-  / /.navbar-static-side
+            %a
+              %i.fa.fa-group.fa-fw
+              = t('link.members')
+              %span.fa.fa-chevron-down
+            %ul.nav.child_menu{:style => "display: none"}
+              %li= link_to t('members.index.title'), members_path
+              %li= link_to t('members.new.title'), new_member_path
+              %li= link_to t('families.index.title'), families_path
+              %li= link_to t('families.new.title'), new_family_path
+          %li
+            %a
+              %i.fa.fa-home.fa-fw
+              = t('link.churches')
+              %span.fa.fa-chevron-down
+            %ul.nav.child_menu{:style => "display: none"}
+              %li= link_to t('churches.index.title'), churches_path
+              %li= link_to t('churches.new.title'), new_church_path
+          %li
+            = link_to attendances_path do
+              %i.fa.fa-check-square-o.fa-fw
+              = t('link.attendance')
+          %li
+            %a
+              %i.fa.fa-building-o.fa-fw
+              = t('link.ministries')
+              %span.fa.fa-chevron-down
+            %ul.nav.child_menu{:style => "display: none"}
+              %li= link_to t('ministries.index.title'), ministries_path
+              %li= link_to t('ministries.new.title'), new_ministry_path
+          %li
+            %a
+              %i.fa.fa-flag-o.fa-fw
+              = t('link.responsibilities')
+              %span.fa.fa-chevron-down
+            %ul.nav.child_menu{:style => "display: none"}
+              %li= link_to t('responsibilities.index.title'), responsibilities_path
+              %li= link_to t('responsibilities.new.title'), new_responsibility_path
+
+    - if current_user.admin?
+      / /sidebar menu
+      / /menu footer buttons
+      .sidebar-footer.hidden-small
+        %a{"data-placement" => "top", "data-toggle" => "tooltip"}
+          %span.glyphicon.option-horizontal{"aria-hidden" => "true"}
+        = link_to admin_root_path, data: { toggle: 'tooltip', placement: 'top', title: t('link.admin') } do
+          %span.glyphicon.glyphicon-cog{"aria-hidden" => "true"}
+        = link_to destroy_user_session_path, method: :delete, data: { toggle: 'tooltip', placement: 'top', title: t('link.destroy_session') } do
+          %span.glyphicon.glyphicon-off{"aria-hidden" => "true"}
+        %a
+          %span.glyphicon.option-horizontal{"aria-hidden" => "true"}
+      / /menu footer buttons

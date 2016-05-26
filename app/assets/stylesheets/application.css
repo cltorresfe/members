@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * This is a manifest file that'll be compiled into application, which will include all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
@@ -13,8 +13,7 @@
  *= require bootstrap/dist/css/bootstrap
  *= require font-awesome/css/font-awesome
  *= require eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker
- *= require metisMenu/dist/metisMenu
- *= require startbootstrap-sb-admin-2/dist/css/sb-admin-2
  *= require custom
+ *= require gentelella/production/css/custom.css
  *= require_self
  */

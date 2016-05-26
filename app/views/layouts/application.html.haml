@@ -14,24 +14,24 @@
     /[if lt IE 9]
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  %body
-    - if user_signed_in?
-      #wrapper
-        = render 'layouts/navigation'
-        #page-wrapper
-          .row
-            .col-lg-12
-              %h1.page-header= i18n_title
-            / /.col-lg-12
-          / /.row
-          = render 'layouts/messages'
-          = yield
-        / /#page-wrapper
-        / /#wrapper
-      = javascript_include_tag 'application', 'data-turbolinks-track' => false
-    - else
-      = render 'layouts/messages'
-      = yield
-
-
+  %body.nav-md
+    .container.body
+      - if user_signed_in?
+        .main_container
+          = render "layouts/sidebar"
+          = render "layouts/topbar"
+          .right_col{role: :main}
+            .minim-height
+              .page-title
+                .title-left
+                  %h3= i18n_title
+                  = render 'layouts/messages'
+                .title-right
+                  .pull-right.top_search
+              .clearfix
+              = yield
+        = javascript_include_tag 'application', 'data-turbolinks-track' => true
+      - else
+        = render 'layouts/messages'
+        = yield
 

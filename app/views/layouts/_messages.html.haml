@@ -1,8 +1,16 @@
 - if notice
   .row
-    .col-xs-10.col-xs-offset-1
-      %p.alert.alert-success{:role => "alert"}= notice
+    .col-xs-6.col-xs-offset-1
+      .alert.alert-success.alert-dismissible.fade.in{:role => "alert"}
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %strong Mensaje:
+        = notice
 - if alert
   .row
-    .col-xs-10.col-xs-offset-1
-      %p.alert.alert-danger{:role => "alert"}= alert
+    .col-xs-6.col-xs-offset-1
+      .alert.alert-danger.alert-dismissible.fade.in{:role => "alert"}
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %strong Mensaje:
+        = alert

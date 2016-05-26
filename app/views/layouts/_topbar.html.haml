@@ -1,23 +1,28 @@
-%ul.nav.navbar-top-links.navbar-right
-  - if user_signed_in?
-    %li.dropdown
-      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-        = current_user.name
-        %i.fa.fa-caret-down
-      %ul.dropdown-menu.dropdown-user
+/ top navigation
+.top_nav
+  .nav_menu
+    %nav{:role => "navigation"}
+      .nav.toggle
+        %a#menu_toggle
+          %i.fa.fa-bars
+      %ul.nav.navbar-nav.navbar-right
         %li
-          %a{:href => "#"}
-            %i.fa.fa-user.fa-fw
-            Editar Perfil
-        %li
-          %a{:href => "#"}
-            %i.fa.fa-gear.fa-fw
-            Configuración
-        %li.divider
-        %li
-          = link_to destroy_user_session_path, method: :delete do
-            %i.fa.fa-sign-out.fa-fw
-            = t('link.destroy_session')
-      / /.dropdown-user
-    / /.dropdown
-
+          %a.user-profile.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "javascript:;"}
+            = image_tag "avatar_2x.png"
+            = current_user.name
+            %span.fa.fa-angle-down
+          %ul.dropdown-menu.dropdown-usermenu.pull-right
+            %li
+              %a{:href => "javascript:;"} 
+                Profile
+                %i.fa.fa-edit.pull-right
+            - if current_user.admin?
+              %li
+                = link_to admin_root_path do
+                  %i.fa.fa-cog.pull-right
+                  %span=t('link.admin')
+            %li
+              = link_to destroy_user_session_path, method: :delete do
+                %i.fa.fa-sign-out.pull-right
+                = t('link.destroy_session')
+/ /top navigation

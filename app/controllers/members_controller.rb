@@ -23,7 +23,7 @@ class MembersController < ApplicationController
         return
       end
     end
-    @members = @members.paginate(page: params[:page], per_page: 18)
+    @members = @members.paginate(page: params[:page], per_page: 24)
   end
 
   # GET /members/new
