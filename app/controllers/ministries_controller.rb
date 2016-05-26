@@ -6,7 +6,7 @@ class MinistriesController < ApplicationController
   def index
     @ministries = Ministry.paginate(page: params[:page], per_page: 18)
     if(@ministries.blank?)
-      flash[:alert] = I18n.t('flash_messages.attendace_ministries_no_found')
+      flash[:alert] = I18n.t('flash_messages.no_found')
     end
   end
 
