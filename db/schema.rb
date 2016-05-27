@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160526173014) do
+ActiveRecord::Schema.define(version: 20160527145301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,10 +101,25 @@ ActiveRecord::Schema.define(version: 20160526173014) do
     t.string   "address"
     t.string   "email"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "church_id"
     t.integer  "status"
+    t.string   "run"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.boolean  "sexo"
+    t.string   "city"
+    t.string   "country"
+    t.datetime "birthdate"
+    t.text     "testimony"
+    t.datetime "baptismdate"
+    t.datetime "membershipdate"
+    t.datetime "disciplinedate"
+    t.datetime "transferdate"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "skype"
     t.index ["church_id"], name: "index_members_on_church_id", using: :btree
     t.index ["status"], name: "index_members_on_status", using: :btree
   end
