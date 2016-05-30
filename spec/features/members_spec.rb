@@ -11,14 +11,14 @@ describe "Member index", :type => :feature do
     end
     it 'loads all the members' do
       visit root_path
-      expect(page).to have_content member.name
+      expect(page).to have_content member.first_name
     end
   end
 
   context " when user is logged out" do
     it 'loads message login' do
       visit root_path
-      expect(page).not_to have_content member.name
+      expect(page).not_to have_content member.first_name
     end
   end
 

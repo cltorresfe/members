@@ -10,15 +10,13 @@
     .x_content{:style => "display: block;"}
       = f.error_notification
 
-      = f.input :name, placeholder: Member.human_attribute_name(:name)
-      = f.input :middle_name, placeholder: Member.human_attribute_name(:middle_name)
+      = f.input :first_name, placeholder: Member.human_attribute_name(:first_name)
       = f.input :last_name, placeholder: Member.human_attribute_name(:last_name)
       = f.input :gender, 
               :collection => [[true, 'Femenino'], [false, 'Masculino']], 
               :label_method => :last, 
               :value_method => :first,
-              :as => :radio_buttons, 
-              :checked => false
+              :as => :radio_buttons
       = f.input :address, placeholder: Member.human_attribute_name(:address)
       = f.input :run, placeholder: Member.human_attribute_name(:run)
       = f.input :city, placeholder: Member.human_attribute_name(:city)

@@ -11,11 +11,11 @@
             %i.fa.fa-chevron-down
       .clearfix
     .x_content{:style => "display: none;"}       
-      = f.input :birth_date, placeholder: Member.human_attribute_name(:birth_date), as: :string
-      = f.input :baptism_date, placeholder: Member.human_attribute_name(:baptism_date), as: :string
-      = f.input :membership_date, placeholder: Member.human_attribute_name(:membership_date), as: :string
-      = f.input :transfer_date, placeholder: Member.human_attribute_name(:transfer_date), as: :string
-      = f.input :discipline_date, placeholder: Member.human_attribute_name(:discipline_date), as: :string
+      = f.input :birth_date, placeholder: Member.human_attribute_name(:birth_date), as: :date_time_picker
+      = f.input :baptism_date, placeholder: Member.human_attribute_name(:baptism_date), as: :date_time_picker
+      = f.input :membership_date, placeholder: Member.human_attribute_name(:membership_date), as: :date_time_picker
+      = f.input :transfer_date, placeholder: Member.human_attribute_name(:transfer_date), as: :date_time_picker
+      = f.input :discipline_date, placeholder: Member.human_attribute_name(:discipline_date), as: :date_time_picker
       = f.input :testimony, placeholder: Member.human_attribute_name(:testimony)
       = f.input :status,:collection => Member.statuses_for_select,:include_blank => false
 
