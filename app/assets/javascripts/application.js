@@ -18,5 +18,7 @@
 //= #require turbolinks
 //= require common
 //= require gentelella/production/js/custom
+//= require smart-wizard-init.js
+//= require gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard
 
 //= require_tree ./routes/
