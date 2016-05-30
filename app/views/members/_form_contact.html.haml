@@ -5,6 +5,9 @@
         %a.collapse-link.cursor
           .glyphicon.glyphicon-envelope
           Contacto
+          - if f.error_notification
+            %small
+              .badge.bg-red Error
       %ul.nav.navbar-right.panel_toolbox
         %li
           %a.collapse-link
@@ -16,4 +19,5 @@
       = f.input :twitter, placeholder: Member.human_attribute_name(:twitter)
       = f.input :facebook, placeholder: Member.human_attribute_name(:facebook)
       = f.input :skype, placeholder: Member.human_attribute_name(:skype)
+
 
