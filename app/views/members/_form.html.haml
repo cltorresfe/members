@@ -1,51 +1,15 @@
-= render 'shared/errors', obj: @member
 .row
-  = form_for(@member, :html => {class: "form-horizontal", role: "form"} ) do |f|
-    .form-group
-      .col-xs-3.control-label
-        = f.label :name
-      .col-xs-7
-        = f.text_field :name, class: "form-control", placeholder: :name
-    .form-group
-      .col-xs-3.control-label
-        = f.label :address
-      .col-xs-7
-        = f.text_field :address, class: "form-control", placeholder: :address
-    .form-group
-      .col-xs-3.control-label
-        = f.label :email
-      .col-xs-7
-        = f.text_field :email, class: "form-control", placeholder: :email
-    .form-group
-      .col-xs-3.control-label
-        = f.label :phone
-      .col-xs-7
-        = f.text_field :phone, class: "form-control", placeholder: :phone
-    - if @ministries
-      .form-group
-        .col-xs-3.control-label
-          = f.label :charge_ids, t('members.show.responsibilities')
-        .col-xs-7
-          #accordion.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
-            - @ministries.each do |ministry|
-              .panel.panel-default
-                .panel-heading{role: "tab", id: "heading-#{ministry.id}"}
-                  %h4.panel-title
-                    %a{"aria-controls" => "collapse-#{ministry.id}", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse-#{ministry.id}", :role => "button"}
-                      = ministry.name
-                .panel-collapse.collapse{"aria-labelledby" => "heading-#{ministry.id}", :role => "tabpanel", id: "collapse-#{ministry.id}"}
-                  .panel-body
-                    %ul
-                      - ministry.charges.each do |charge|
-                        %li
-                          = check_box_tag 'member[charge_ids][]', charge.id, @member.charges.include?(charge)
-                          = charge.responsibility.name
-
-    .form-group
-      .col-xs-3.control-label
-        = f.label :status
-      .col-xs-7
-        = f.select(:status, Member.statuses_for_select, {:include_blank => 'Seleccione un estado'}, class: "form-control")
-    .form-group
-      .col-xs-offset-4
+  = simple_form_for @member, html: {class: 'form-horizontal'} do |f| 
+    .row
+      = f.error_notification
+      .col-md-6.col-sm-12.col-xs-12
+        = render partial: 'form_info', locals: {f: f} 
+      .col-md-6.col-sm-12.col-xs-12
+        = render partial: 'form_contact', locals: {f: f}
+      .col-md-6.col-sm-12.col-xs-12
+        = render partial: 'form_membership', locals: {f: f}
+      .col-md-6.col-sm-12.col-xs-12
+        = render partial: 'form_charge', locals: {f: f}
+    .row
+      .col-md-12.col-sm-12.col-xs-12.text-center
         = f.submit class: "btn btn-primary btn-lg"

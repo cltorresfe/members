@@ -1,0 +1,27 @@
+.box-body.no-padding
+  .x_panel
+    .x_title
+      %h2
+        .glyphicon.glyphicon-info-sign
+        Información Personal
+        %small
+          * Campos Obligatorios
+      .clearfix
+    .x_content{:style => "display: block;"}
+      = f.error_notification
+
+      = f.input :name, placeholder: Member.human_attribute_name(:name)
+      = f.input :middle_name, placeholder: Member.human_attribute_name(:middle_name)
+      = f.input :last_name, placeholder: Member.human_attribute_name(:last_name)
+      = f.input :gender, 
+              :collection => [[true, 'Femenino'], [false, 'Masculino']], 
+              :label_method => :last, 
+              :value_method => :first,
+              :as => :radio_buttons, 
+              :checked => false
+      = f.input :address, placeholder: Member.human_attribute_name(:address)
+      = f.input :run, placeholder: Member.human_attribute_name(:run)
+      = f.input :city, placeholder: Member.human_attribute_name(:city)
+      = f.input :country, priority: Utils::PRIORITARY_COUNTRIES
+
+
