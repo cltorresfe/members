@@ -16,4 +16,5 @@ class Ministry < ApplicationRecord
   has_many :attendances
   has_many :member_attendances, through: :attendances
   has_many :members, through: :charges
+  validates :name, :responsibilities, presence: true
 end

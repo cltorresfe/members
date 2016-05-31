@@ -1,1 +1,14 @@
-= render 'form'
+.row
+  .col-md-12.col-sm-12.col-xs-12
+    .box-body.no-padding
+      .x_panel
+        .x_title
+          %h2
+            %a.collapse-link.cursor
+              .glyphicon.glyphicon.glyphicon-book
+              Iglesia
+              = current_user.church.name
+            %small
+              * Campos Obligatorios.
+          .clearfix
+        = render 'form'
