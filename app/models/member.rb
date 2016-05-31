@@ -26,7 +26,7 @@ class Member < ApplicationRecord
   validates :email, uniqueness: true, email: true
   validates :phone, length: { maximum: 12, minimum: 7 }
   validates :first_name, length: { maximum: 35 }
-  validates :address, length: { maximum: 50}
+  validates :address, length: { maximum: 100}
 
   after_initialize :set_defaults
 
