@@ -6,10 +6,9 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to have_many(:charge_members) }
   it { is_expected.to have_many(:charges).through(:charge_members) }
 
-  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:first_name) }
+  it { is_expected.to validate_presence_of(:last_name) }
   it { is_expected.to validate_presence_of(:address) }
-  it { is_expected.to validate_presence_of(:email) }
-  it { is_expected.to validate_presence_of(:phone)}
   it { is_expected.to validate_presence_of(:church)}
   it { is_expected.to validate_uniqueness_of(:email)}
   it { is_expected.to validate_length_of(:phone)}
@@ -17,7 +16,7 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_length_of(:address)}
 
 
-  let!(:member) { create(:member, name: 'Homero')}
+  let!(:member) { create(:member, first_name: 'Homero')}
 
   describe '#search' do
     it 'searches an existing member' do
