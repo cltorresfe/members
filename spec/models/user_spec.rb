@@ -33,11 +33,11 @@ RSpec.describe User, :type => :model do
 
   context '#checking search_members' do
     let!(:church){ create(:church, name: 'Iglesia')}
-    let!(:member) { create(:member, name: 'Homero', church: church)}
+    let!(:member) { create(:member, first_name: 'Plumero', church: church)}
       
     it 'searches an existing member' do
       user = create(:user, church: church)
-      expect(user.search_members('Homero')).to include member
+      expect(user.search_members('Plumero')).to include member
     end
 
     it 'searches an unknown member' do

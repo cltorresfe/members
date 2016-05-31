@@ -17,8 +17,8 @@
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= #require turbolinks
 //= require common
-//= require gentelella/production/js/custom
-//= require smart-wizard-init.js
-//= require gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard
+//= require gentelella/build/js/custom
+// require smart-wizard-init.js
+// require gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard
 
 //= require_tree ./routes/
