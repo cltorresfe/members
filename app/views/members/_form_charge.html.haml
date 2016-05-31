@@ -1,0 +1,30 @@
+.box-body.no-padding
+  .x_panel
+    .x_title
+      %h2
+        %a.collapse-link.cursor
+          .glyphicon.glyphicon-th-list
+          Cargos
+      %ul.nav.navbar-right.panel_toolbox
+        %li
+          %a.collapse-link
+            %i.fa.fa-chevron-down
+      .clearfix
+    .x_content{:style => "display: none;"}
+      - if @ministries
+        .form-group
+          .clearfix
+            .box-body.no-padding
+            - @ministries.each do |ministry|
+              .col-md-6.col-sm-6.col-xs-12
+                .box-body.no-padding
+                  .x_panel
+                    .x_title
+                      = ministry.name
+                
+                    - ministry.charges.each do |charge|
+                      .row
+                        .col-md-12.col-sm-12.col-xs-12
+                          = check_box_tag 'member[charge_ids][]', charge.id, @member.charges.include?(charge)
+                          = charge.responsibility.name
+

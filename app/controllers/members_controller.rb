@@ -7,7 +7,7 @@ class MembersController < ApplicationController
   def index
     # search specific of members
     if params[:name].present?
-      @members = current_user.search_members(params[:name])
+      @members = current_user.search_members(params[:first_name])
       if(@members.size == 1)
         redirect_to edit_member_path(@members.first)
         return
@@ -33,6 +33,7 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+
   end
 
   # POST /members
@@ -46,6 +47,7 @@ class MembersController < ApplicationController
         flash[:notice] = 'Member was successfully created.'
         format.html { redirect_to action: :index}
       else
+        load_ministries
         format.html { render :new }
       end
     end
@@ -59,6 +61,7 @@ class MembersController < ApplicationController
         flash[:notice] = 'Member was successfully updated.'
         format.html { redirect_to action: :index}
       else
+        load_ministries
         format.html { render :edit }
       end
     end
@@ -81,7 +84,9 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:name, :address, :email, :phone, :status, charge_ids:[])
+      params.require(:member).permit(:first_name, :last_name, :gender, :run, :city, 
+        :country, :birth_date, :testimony, :baptism_date, :membership_date, :discipline_date, 
+        :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone, :status, charge_ids:[])
     end
 
     def load_ministries

@@ -15,8 +15,9 @@
 
 FactoryGirl.define do
   factory :member do
-    name { Faker::Name.name }
-    address 'Springfield'
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    address { Faker::Address.street_address }
     email { Faker::Internet.email }
     phone '123456789'
     status :active

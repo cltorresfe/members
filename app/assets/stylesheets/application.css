@@ -14,6 +14,7 @@
  *= require font-awesome/css/font-awesome
  *= require eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker
  *= require custom
- *= require gentelella/production/css/custom.css
+ *= require gentelella/build/css/custom
+ * require gentelella/vendors/jQuery-Smart-Wizard/styles/smart_wizard.css
  *= require_self
  */
