@@ -22,10 +22,10 @@ class Member < ApplicationRecord
   has_many :charge_members
   has_many :charges, through: :charge_members
 
-  validates :name, :address, :email, :phone, :church, presence: true
+  validates :first_name, :last_name, :address, :church, presence: true
   validates :email, uniqueness: true, email: true
   validates :phone, length: { maximum: 12, minimum: 7 }
-  validates :name, length: { maximum: 35 }
+  validates :first_name, length: { maximum: 35 }
   validates :address, length: { maximum: 50}
 
   after_initialize :set_defaults
@@ -39,7 +39,7 @@ class Member < ApplicationRecord
 
   def self.search(search)
     if search
-      where('lower(name) LIKE ?', "%#{search.downcase}%").sorted
+      where('lower(first_name) LIKE ?', "%#{search.downcase}%").sorted
     else
       none
     end

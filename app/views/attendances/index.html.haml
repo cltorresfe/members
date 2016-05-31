@@ -26,7 +26,7 @@
                   .checkbox
                     %label
                       = check_box_tag "attendance[][present]", nil, @attendances.exists?(member_id: member.id, present: true)
-                      = member.name
+                      = member.first_name
     .row
       .form-group
         .col-xs-offset-4
