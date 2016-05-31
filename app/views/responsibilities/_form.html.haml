@@ -1,9 +1,21 @@
-.x_content{:style => "display: block;"}
-  .box-body.no-padding
-    .col-md-12.col-sm-12.col-xs-12
-      = simple_form_for @responsibility, html: {class: 'form-horizontal'} do |f|
-        = f.input :name, class: "form-control", placeholder: :name, autofocus: true, require: true
-        = f.input :administrative, class: "form-control"
-        .form-group
-          .col-xs-offset-4
-            = f.submit class: "btn btn-primary btn-lg"
+.row
+  .col-md-12.col-sm-12.col-xs-12
+    .box-body.no-padding
+      .x_panel
+        .x_title
+          %h2
+            %a.collapse-link.cursor
+              .glyphicon.glyphicon.glyphicon-book
+              Responsabilidades
+            %small
+              * Campos Obligatorios.
+          .clearfix
+        .x_content{:style => "display: block;"}
+          .box-body.no-padding
+            .col-md-12.col-sm-12.col-xs-12
+              = simple_form_for @responsibility, html: {class: 'form-horizontal'} do |f|
+                = f.input :name, class: "form-control", placeholder: :name, autofocus: true, require: true
+                = f.input :administrative, class: "form-control"
+                .form-group
+                  .col-xs-offset-4
+                    = f.submit class: "btn btn-primary btn-lg"
