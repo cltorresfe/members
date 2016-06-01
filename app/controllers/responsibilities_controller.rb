@@ -1,5 +1,5 @@
 class ResponsibilitiesController < ApplicationController
-  before_action :set_responsibility, only: [:show, :edit, :update, :destroy]
+  before_action :set_responsibility, only: [:edit, :update, :destroy]
 
   # GET /responsibilities
   # GET /responsibilities.json
@@ -8,11 +8,6 @@ class ResponsibilitiesController < ApplicationController
     if(@responsibilities.blank?)
       flash[:alert] = I18n.t('flash_messages.charges_no_found')
     end
-  end
-
-  # GET /responsibilities/1
-  # GET /responsibilities/1.json
-  def show
   end
 
   # GET /responsibilities/new
@@ -31,7 +26,7 @@ class ResponsibilitiesController < ApplicationController
 
     respond_to do |format|
       if @responsibility.save
-        format.html { redirect_to @responsibility, notice: 'Responsibility was successfully created.' }
+        format.html { redirect_to action: :index}
         format.json { render :show, status: :created, location: @responsibility }
       else
         format.html { render :new }
@@ -45,7 +40,7 @@ class ResponsibilitiesController < ApplicationController
   def update
     respond_to do |format|
       if @responsibility.update(responsibility_params)
-        format.html { redirect_to @responsibility, notice: 'Responsibility was successfully updated.' }
+        format.html { redirect_to action: :index}
         format.json { render :show, status: :ok, location: @responsibility }
       else
         format.html { render :edit }
