@@ -1,2 +1,79 @@
-%h1 Main#index
-%p Find me in app/views/main/index.html.erb
+.row.top_tiles
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+    .tile-stats.bg-aqua
+      .icon
+        %i.fa.fa-users
+      .count= Family.all.size
+      %h3 Familias
+      .small-box-footer
+        = link_to families_path do 
+          Más info
+          .glyphicon.glyphicon-circle-arrow-right
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+    .tile-stats.bg-green
+      .icon
+        %i.fa.fa-male
+      .count= Member.all.size
+      %h3 Miembros
+      .small-box-footer
+        = link_to members_path do 
+          Más info
+          .glyphicon.glyphicon-circle-arrow-right
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+    .tile-stats.bg-blue
+      .icon
+        %i.fa.fa-share-alt
+      .count= Ministry.all.size
+      %h3 Ministerios
+      .small-box-footer
+        = link_to ministries_path do 
+          Más info
+          .glyphicon.glyphicon-circle-arrow-right
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+    .tile-stats.bg-red
+      .icon
+        %%i.fa.fa-star
+      .count=Charge.all.size
+      %h3 Cargos
+      .clearfix
+      .small-box-footer
+        = link_to responsibilities_path do 
+          Más info
+          .glyphicon.glyphicon-circle-arrow-right
+.row
+  .col-md-6.col-sm-12.col-xs-12
+    .box-body.no-padding
+      .x_panel
+        .x_title
+          %h2
+            %a.collapse-link.cursor
+              .glyphicon.glyphicon.glyphicon-book
+              Total Miembros por Género
+          %ul.nav.navbar-right.panel_toolbox
+            %li
+              %a.collapse-link
+                %i.fa.fa-chevron-down
+          .clearfix
+        .x_content{:style => "display: block;"}
+          .box-body.no-padding
+            .col-md-12.col-sm-12.col-xs-12
+              #graph_donut{:style => "height: 250px;"}
+  .col-md-6.col-sm-12.col-xs-12
+    .box-body.no-padding
+      .x_panel
+        .x_title
+          %h2
+            %a.collapse-link.cursor
+              .glyphicon.glyphicon.glyphicon-book
+              Asistencia último mes
+          %ul.nav.navbar-right.panel_toolbox
+            %li
+              %a.collapse-link
+                %i.fa.fa-chevron-down
+          .clearfix
+        .x_content{:style => "display: block;"}
+          .box-body.no-padding
+            .col-md-12.col-sm-12.col-xs-12
+              #myfirstchart{:style => "height: 250px;"}
+
+

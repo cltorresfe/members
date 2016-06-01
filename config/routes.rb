@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :ministries, except: :show
   resources :families, except: :show
 
-  root 'members#index'
+  root 'main#index'
 
   # Serve websocket cable requests inprocess
   # mount ActionCable.server => '/cable'
