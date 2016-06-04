@@ -3,7 +3,7 @@
     .tile-stats.bg-aqua
       .icon
         %i.fa.fa-users
-      .count= Family.all.size
+      .count= @families.size
       %h3 Familias
       .small-box-footer
         = link_to families_path do 
@@ -13,7 +13,7 @@
     .tile-stats.bg-green
       .icon
         %i.fa.fa-male
-      .count= Member.all.size
+      .count= @members.size
       %h3 Miembros
       .small-box-footer
         = link_to members_path do 
@@ -23,7 +23,7 @@
     .tile-stats.bg-blue
       .icon
         %i.fa.fa-share-alt
-      .count= Ministry.all.size
+      .count= @ministries.size
       %h3 Ministerios
       .small-box-footer
         = link_to ministries_path do 
@@ -33,7 +33,7 @@
     .tile-stats.bg-red
       .icon
         %%i.fa.fa-star
-      .count=Charge.all.size
+      .count=@responsibilities.length
       %h3 Cargos
       .clearfix
       .small-box-footer
@@ -41,39 +41,56 @@
           Más info
           .glyphicon.glyphicon-circle-arrow-right
 .row
-  .col-md-6.col-sm-12.col-xs-12
+  .col-md-8.col-sm-12.col-xs-12
+    .row
+      .col-md-8.col-sm-12.col-xs-12
+        .box-body.no-padding
+          .x_panel
+            .x_title
+              %h2
+                %a.collapse-link.cursor
+                  .glyphicon.glyphicon.glyphicon-book
+                  Últimas personas agregadas
+              .clearfix
+            .x_content{:style => "display: block;"}
+              .box-body.no-padding
+                .row
+                  - @members_last.each do |member|
+                    .col-md-3.col-sm-2.col-xs-4
+                      .col-sm-12
+                        .text-center.profile_img
+                          = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', hight: 5, class:'img-circle profile_img', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
+                      .col-sm-12.text-center
+                        .emphasis.text-center.profile_img
+                          = link_to edit_member_path(member) do
+                            = member.first_name
+                            %i.glyphicon.glyphicon-pencil
+      .col-md-4.col-sm-12.col-xs-12
+        .box-body.no-padding
+          .x_panel
+            .x_title
+              %h2
+                %a.collapse-link.cursor
+                  .glyphicon.glyphicon.glyphicon-book
+                  Miembros
+              .clearfix
+            .x_content{:style => "display: block;"}
+              .box-body.no-padding
+                .col-md-12.col-sm-12.col-xs-12
+                  #graph_donut_range{:style => "height: 120px;"}
+                .col-md-12.col-sm-12.col-xs-12
+                  #graph_donut_gender{:style => "height: 120px;"}
+  .col-md-4.col-sm-12.col-xs-12
     .box-body.no-padding
       .x_panel
         .x_title
           %h2
             %a.collapse-link.cursor
               .glyphicon.glyphicon.glyphicon-book
-              Total Miembros por Género
-          %ul.nav.navbar-right.panel_toolbox
-            %li
-              %a.collapse-link
-                %i.fa.fa-chevron-down
+              Asistencia última semana
           .clearfix
         .x_content{:style => "display: block;"}
           .box-body.no-padding
             .col-md-12.col-sm-12.col-xs-12
-              #graph_donut{:style => "height: 250px;"}
-  .col-md-6.col-sm-12.col-xs-12
-    .box-body.no-padding
-      .x_panel
-        .x_title
-          %h2
-            %a.collapse-link.cursor
-              .glyphicon.glyphicon.glyphicon-book
-              Asistencia último mes
-          %ul.nav.navbar-right.panel_toolbox
-            %li
-              %a.collapse-link
-                %i.fa.fa-chevron-down
-          .clearfix
-        .x_content{:style => "display: block;"}
-          .box-body.no-padding
-            .col-md-12.col-sm-12.col-xs-12
-              #myfirstchart{:style => "height: 250px;"}
-
+              #myfirstchart{:style => "height: 240px;"}
 

@@ -19,6 +19,7 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     address { Faker::Address.street_address }
     email { Faker::Internet.email }
+    gender true
     phone '123456789'
     status :active
     church

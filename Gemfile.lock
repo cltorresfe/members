@@ -17,6 +17,17 @@ GIT
       sass-rails
       sprockets (< 4)
 
+GIT
+  remote: git://github.com/gazay/gon.git
+  revision: 3d221a0d81d8c5efe5ff590875b6fccb3819b773
+  branch: master
+  specs:
+    gon (6.0.1)
+      actionpack (>= 3.0)
+      json
+      multi_json
+      request_store (>= 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -140,11 +151,6 @@ GEM
     formtastic_i18n (0.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    gon (6.0.1)
-      actionpack (>= 3.0)
-      json
-      multi_json
-      request_store (>= 1.0)
     gravatar_image_tag (1.2.0)
     guard (2.13.0)
       formatador (>= 0.2.4)
@@ -420,7 +426,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
-  gon
+  gon!
   gravatar_image_tag
   guard-annotate
   guard-bundler
