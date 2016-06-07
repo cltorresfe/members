@@ -41,56 +41,116 @@
           Más info
           .glyphicon.glyphicon-circle-arrow-right
 .row
-  .col-md-8.col-sm-12.col-xs-12
-    .row
-      .col-md-8.col-sm-12.col-xs-12
-        .box-body.no-padding
-          .x_panel
-            .x_title
-              %h2
-                %a.collapse-link.cursor
-                  .glyphicon.glyphicon.glyphicon-book
-                  Últimas personas agregadas
-              .clearfix
-            .x_content{:style => "display: block;"}
-              .box-body.no-padding
-                .row
-                  - @members_last.each do |member|
-                    .col-md-3.col-sm-2.col-xs-4
-                      .col-sm-12
-                        .text-center.profile_img
-                          = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', hight: 5, class:'img-circle profile_img', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                      .col-sm-12.text-center
-                        .emphasis.text-center.profile_img
-                          = link_to edit_member_path(member) do
-                            = member.first_name
-                            %i.glyphicon.glyphicon-pencil
-      .col-md-4.col-sm-12.col-xs-12
-        .box-body.no-padding
-          .x_panel
-            .x_title
-              %h2
-                %a.collapse-link.cursor
-                  .glyphicon.glyphicon.glyphicon-book
-                  Miembros
-              .clearfix
-            .x_content{:style => "display: block;"}
-              .box-body.no-padding
-                .col-md-12.col-sm-12.col-xs-12
-                  #graph_donut_range{:style => "height: 120px;"}
-                .col-md-12.col-sm-12.col-xs-12
-                  #graph_donut_gender{:style => "height: 120px;"}
-  .col-md-4.col-sm-12.col-xs-12
+  .col-md-6.col-sm-12.col-xs-12
     .box-body.no-padding
       .x_panel
         .x_title
           %h2
             %a.collapse-link.cursor
-              .glyphicon.glyphicon.glyphicon-book
+              .glyphicon.glyphicon.glyphicon-saved
+              Últimas personas agregadas
+          .clearfix
+        .x_content{:style => "display: block;"}
+          .box-body.no-padding
+            .row
+              - @members_last.each do |member|
+                .col-md-3.col-sm-2.col-xs-4
+                  .col-sm-12
+                    .text-center
+                      = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
+                  .col-sm-12.text-center
+                    .emphasis.text-center
+                      = link_to edit_member_path(member) do
+                        = member.first_name
+                        %i.glyphicon.glyphicon-pencil
+  .col-md-3.col-sm-12.col-xs-12
+    .box-body.no-padding
+      .x_panel
+        .x_title
+          %h2
+            %a.collapse-link.cursor
+              .glyphicon.glyphicon.glyphicon-user
+              Miembros por edad
+          .clearfix
+        .x_content{:style => "display: block;"}
+          .box-body.no-padding
+            .col-md-12.col-sm-12.col-xs-12
+              #graph_donut_range{:style => "height: 220px;"}
+  .col-md-3.col-sm-12.col-xs-12
+    .box-body.no-padding
+      .x_panel
+        .x_title
+          %h2
+            %a.collapse-link.cursor
+              .fa.fa-female
+              Miembros por género
+          .clearfix
+        .x_content{:style => "display: block;"}
+          .box-body.no-padding
+            .col-md-12.col-sm-12.col-xs-12
+              #graph_donut_gender{:style => "height: 220px;"}
+.row
+  .col-md-5.col-sm-12.col-xs-12
+    .box-body.no-padding
+      .x_panel
+        .x_title
+          %h2
+            %a.collapse-link.cursor
+              .glyphicon.glyphicon.glyphicon-check
               Asistencia última semana
           .clearfix
         .x_content{:style => "display: block;"}
           .box-body.no-padding
             .col-md-12.col-sm-12.col-xs-12
-              #myfirstchart{:style => "height: 240px;"}
+              #myfirstchart{:style => "height: 200px;"}
+  - if (@families_married_date.present?)
+    .col-md-5.col-sm-12.col-xs-12
+      .box-body.no-padding
+        .x_panel
+          .x_title
+            %h2
+              %a.collapse-link.cursor
+                .glyphicon.glyphicon.glyphicon-bell
+                Aniversarios del mes
+            .clearfix
+          .x_content{:style => "display: block;"}
+            .box-body.no-padding
+              .row
+                .table-responsive
+                  %table.table.table-striped.table-bordered.bulk_action
+                    %thead
+                      %tr.headings
+                        %th.column-title= Family.human_attribute_name("name")
+                        %th.column-title= Family.human_attribute_name("married_at")
+                        %th.column-title= Family.human_attribute_name("phone")
+                    %tbody
+                      - @families_married_date.each do |family|
+                        %tr.odd.pointer
+                          %td= family.name
+                          %td= family.married_at.strftime("%d/%m/%Y")
+                          %td= family.phone
+  - if(@members_birth_date.present?)
+    .col-md-2.col-sm-12.col-xs-12
+      .box-body.no-padding
+        .x_panel
+          .x_title
+            %h2
+              %a.collapse-link.cursor
+                .fa.fa-birthday-cake
+                Cumpleaños
+            .clearfix
+          .x_content{:style => "display: block;"}
+            .box-body.no-padding
+              .row
+                - @members_birth_date.each do |member|
+                  .col-md-12.col-sm-2.col-xs-4
+                    .col-sm-12
+                      .text-center
+                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
+                    .col-sm-12.text-center
+                      .emphasis.text-center
+                        = link_to edit_member_path(member) do
+                          = member.first_name
+                        %br
+                        = member.birth_date.strftime("%d/%m/%Y")
 

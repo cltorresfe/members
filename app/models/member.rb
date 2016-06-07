@@ -32,7 +32,7 @@ class Member < ApplicationRecord
 
   enum status: %i(active regular inactive visitor transferred)
 
-  AGE_RANGES = [[0,14],[15,18],[19,29],[30,44],[45,60],[60,120]]
+  AGE_RANGES = [[0,14],[15,18],[19,29],[30,44],[45,59],[60,120]]
 
   belongs_to :church
   has_many :charge_members
@@ -48,6 +48,7 @@ class Member < ApplicationRecord
 
   scope :sorted, -> { order(created_at: :desc) }
   scope :with_birth_date, -> { where.not(birth_date: nil) }
+  scope :birth_date_by_month, -> {where('Extract(month from birth_date) = ? AND Extract(day from birth_date) >= ?',Time.zone.now.month, Time.zone.now.day) }
   before_validation :change_to_format_phone 
 
   def set_defaults
@@ -67,7 +68,7 @@ class Member < ApplicationRecord
   end
 
   def age
-    now = Time.now.utc.to_date
+    now = Time.zone.now
     now.year - birth_date.year - ((now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day)) ? 0 : 1)
   end
 

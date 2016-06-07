@@ -24,8 +24,4 @@ class Attendance < ApplicationRecord
     where(present: true).
     order('attendances.attendance_date')
   end
-
-  # def as_json
-  #   to_json
-  # end
 end

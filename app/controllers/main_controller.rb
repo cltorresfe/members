@@ -8,5 +8,7 @@ class MainController < ApplicationController
     gon.members_gender = current_user.church.members.by_gender
     gon.members_range = current_user.church.members.by_range
     @members_last = @members.last(8)
+    @members_birth_date = @members.birth_date_by_month
+    @families_married_date = @families.married_notification_by_month
   end
 end
