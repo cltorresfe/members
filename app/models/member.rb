@@ -77,11 +77,13 @@ class Member < ApplicationRecord
     total = self.with_birth_date.count
     AGE_RANGES.each do |age_group|
       count = where('birth_date > ? AND birth_date < ? ',age_group.last.years.ago, age_group.first.years.ago).count
-      list_age << {
-        label: "#{age_group.first} - #{age_group.last} años",
-        value: "#{count*100/total}%",
-        count: count
-      }
+      if(total > 0)
+        list_age << {
+          label: "#{age_group.first} - #{age_group.last} años",
+          value: "#{count*100/total}%",
+          count: count
+        }
+      end
     end
     list_age
   end
