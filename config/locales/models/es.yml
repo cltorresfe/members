@@ -14,7 +14,9 @@ es:
         address: 'Dirección'
         phone: 'Fono'
       member:
-        name: 'Nombre'
+        first_name: 'Nombres'
+        last_name: 'Apellidos'
+        run: Run
         email: 'Correo'
         address: 'Dirección'
         phone: 'Fono'
@@ -27,6 +29,16 @@ es:
           inactive: Inactivo
           visitor: Invitado
           transferred: Trasladado
+        gender: Sexo
+        city: Ciudad
+        country: País
+        birth_date: Fecha Nacimiento
+        baptism_date: Fecha Bautismo
+        membership_date: Fecha Membresía
+        transfer_date: Fecha Traslado
+        discipline_date: Fecha Disciplina
+        testimony: Testimonio
+
       responsibility:
         name: 'Nombre'
       user:
