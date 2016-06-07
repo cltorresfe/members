@@ -54,12 +54,53 @@ RSpec.describe Member, :type => :model do
 
   end
 
-  context 'change_to_format_phone' do
+  context '.change_to_format_phone' do
     it 'returns a number when phone is present' do
       member = create(:member, phone: '34333ffd2323')
       expect(member.phone).to eq('343332323')
     end
   end
 
+  context '#by_range' do
+    let!(:man_member){ create(:member, birth_date: 15.years.ago)}
+    it 'returns an object array with the count of age´s range' do
+      ranges = Member.by_range
+      expect(ranges[0][:count]).to eq 0
+      expect(ranges[1][:count]).to eq 1
+      expect(ranges[2][:count]).to eq 0
+      expect(ranges[3][:count]).to eq 0
+      expect(ranges[4][:count]).to eq 0
+      expect(ranges[5][:count]).to eq 0
+    end
+  end
+
+  describe '#by_gender' do
+
+    context 'members with gender assigned' do
+      let!(:man_member){ create(:member, gender: false)}
+      let!(:woman_member){ create(:member, gender: true)}
+      it 'returns an object array with the count of members by gender' do
+        genders = Member.by_gender
+        expect(genders[0][:value]).to eq 1
+        expect(genders[1][:value]).to eq 1
+
+      end
+    end
+    context 'member without gender assigned' do
+
+      it 'returns an object array with the count of members without gender ' do
+        genders = Member.by_gender
+        expect(genders[0][:value]).to eq 1
+
+      end
+    end
+  end
+
+  context '.age' do
+    let!(:member){ create(:member, birth_date: 15.years.ago)}
+    it 'returns the age' do
+      expect(member.age).to eq 15
+    end
+  end
 end
 
