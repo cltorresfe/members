@@ -24,6 +24,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'thin'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate'
+gem 'gon', github: 'gazay/gon', branch: :master
 
 group :development, :test do
   gem 'awesome_print'

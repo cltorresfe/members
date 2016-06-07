@@ -33,6 +33,7 @@ class FamiliesController < ApplicationController
   # PATCH/PUT /families/1
   # PATCH/PUT /families/1.json
   def update
+    @family.church = current_user.church
     if @family.update(family_params)
       flash[:notice] = t('.success', name: @family.name)
       redirect_to action: :index

@@ -1,32 +1,42 @@
-%h1 Listing families
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Married at
-      %th Address
-      %th Phone
-      %th City
-      %th Country
-      %th Church
-      %th
-      %th
-      %th
-
-  %tbody
-    - @families.each do |family|
-      %tr
-        %td= family.name
-        %td= family.married_at
-        %td= family.address
-        %td= family.phone
-        %td= family.city
-        %td= family.country
-        %td= family.church
-        %td= link_to 'Edit', edit_family_path(family)
-        %td= link_to 'Destroy', family, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Family', new_family_path
+- if (@families.present?)
+  .col-md-12.col-sm-12.col-xs-12
+    .box-body.no-padding
+      .x_panel
+        .x_content{:style => "display: block;"}
+          .box-body.no-padding
+            .row
+              .table-responsive
+                %table.table.table-striped.table-bordered.bulk_action
+                  %thead
+                    %tr.headings
+                      %th.column-title= Family.human_attribute_name("name")
+                      %th.column-title= Family.human_attribute_name("married_at")
+                      %th.column-title= Family.human_attribute_name("address")
+                      %th.column-title= Family.human_attribute_name("phone")
+                      %th.column-title= Family.human_attribute_name("city")
+                      %th.column-title= Family.human_attribute_name("country")
+                      %th.column-title= Family.human_attribute_name("church")
+                      %th.column-title.no-link.last
+                        %span.nobr Action
+                      %th.bulk-actions{:colspan => "7"}
+                        %a.antoo{:style => "color:#fff; font-weight:500;"}
+                          Bulk Actions (
+                          %span.action-cnt             )
+                          %i.fa.fa-chevron-down
+                  %tbody
+                    - @families.each do |family|
+                      %tr.odd.pointer
+                        %td= family.name
+                        %td= family.married_at.strftime("%d/%m/%Y")
+                        %td= family.address
+                        %td= family.phone
+                        %td= family.city
+                        %td= family.country
+                        %td= family.church
+                        %td.last
+                          =# link_to family, data: { toggle: 'tooltip', placement: 'top', title: t('link.show') } do
+                          /.glyphicon.glyphicon-home
+                          = link_to edit_family_path(family), data: { toggle: 'tooltip', placement: 'top', title: t('link.edit') } do
+                            .glyphicon.glyphicon-pencil
+                          = link_to family, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
+                            .glyphicon.glyphicon-trash
