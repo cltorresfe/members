@@ -4,7 +4,7 @@ class MinistriesController < ApplicationController
   # GET /ministries
   # GET /ministries.json
   def index
-    @ministries = Ministry.paginate(page: params[:page], per_page: 18)
+    @ministries = current_user.church.ministries.paginate(page: params[:page], per_page: 18)
     if(@ministries.blank?)
       flash[:alert] = I18n.t('flash_messages.ministries_no_found')
     end

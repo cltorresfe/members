@@ -4,7 +4,7 @@ class FamiliesController < ApplicationController
   # GET /families
   # GET /families.json
   def index
-    @families = Family.all
+    @families = current_user.church.families
     if(@families.blank?)
       flash[:alert] = I18n.t('flash_messages.families_no_found')
     end
