@@ -28,7 +28,7 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
-    @member = Member.new
+    @member = Member.new(status: :active)
   end
 
   # GET /members/1/edit
