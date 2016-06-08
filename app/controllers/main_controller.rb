@@ -5,7 +5,7 @@ class MainController < ApplicationController
     @responsibilities = Charge.by_responsibilities
     @families = current_user.church.families
     gon.attendances_week = Attendance.attendances_last_week(current_user.church)
-    gon.members_gender = current_user.church.members.gender_group
+    gon.members_gender = current_user.church.members.by_gender
     gon.members_range = current_user.church.members.by_range
     @members_last = @members.last(8)
     @members_birth_date = @members.birth_date_by_month

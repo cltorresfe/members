@@ -64,38 +64,22 @@ class Member < ApplicationRecord
   end
 
   def self.by_gender
-    select("gender, count(*) as value").group("gender")
+    by_genders = select("gender, count(*) as value").group("gender")
+    members_gender = []
+    by_genders.each do |m_gender|
+      label = case m_gender.gender
+              when true then "Femenino"
+              when false then "Masculino"
+              when nil then "Sin registro"
+              end
+      members_gender << { label: label, value: m_gender.value }
+    end
+    members_gender
   end
 
   def age
     now = Time.zone.now
     now.year - birth_date.year - ((now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day)) ? 0 : 1)
-  end
-
-  def self.gender_group
-    genders = self.by_gender
-    members_gender = []
-    genders.each do |m_gender|
-      if m_gender.gender
-        members_gender << {
-                label: "Femenino",
-                value: m_gender.value
-        }
-      end
-      if m_gender.gender == false
-        members_gender << {
-                label: "Masculino",
-                value: m_gender.value
-        }
-      end
-      if m_gender.gender == nil
-        members_gender << {
-                label: "Sin registro",
-                value: m_gender.value
-        }
-      end
-    end
-    members_gender
   end
 
   def self.by_range
