@@ -10,11 +10,7 @@
                   =ministry.name
                   .glyphicon.glyphicon-pencil
                 %small
-                  -if(ministry.members.present?)
-                    =ministry.members.size
-                    miembros
-                  - else
-                    0 miembros
+                  = pluralize(ministry.members.size, t('flash_messages.one_member'), t('flash_messages.many_members'))
               %ul.nav.navbar-right.panel_toolbox
                 %li
                   %a.collapse-link

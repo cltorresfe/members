@@ -12,11 +12,7 @@
                 = link_to responsibility, method: :delete, data: { confirm: 'Are you sure?' } do
                   .glyphicon.glyphicon-trash
                 %small
-                  -if(responsibility.members_by_church(current_user.church).present?)
-                    =responsibility.members_by_church(current_user.church).size
-                    miembros
-                  - else
-                    0 miembros
+                  = pluralize(responsibility.members_by_church(current_user.church).size, t('flash_messages.one_member'), t('flash_messages.many_members'))
               %ul.nav.navbar-right.panel_toolbox
                 %li
                   %a.collapse-link
@@ -28,14 +24,13 @@
             .x_content{:style => "display: block;"}
               .row
                 .clearfix
-                - if(responsibility.members_by_church(current_user.church).present?)
-                  - responsibility.members_by_church(current_user.church).each do |member|
-                    .col-md-2.col-sm-2.col-xs-4
-                      .col-sm-12
-                        .text-center
-                          = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle profile_img', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                      .col-sm-12.text-center
-                        .emphasis
-                          = link_to edit_member_path(member) do
-                            = member.first_name
-                            %i.glyphicon.glyphicon-pencil
+                - responsibility.members_by_church(current_user.church).each do |member|
+                  .col-md-2.col-sm-2.col-xs-4
+                    .col-sm-12
+                      .text-center
+                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle profile_img', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
+                    .col-sm-12.text-center
+                      .emphasis
+                        = link_to edit_member_path(member) do
+                          = member.first_name
+                          %i.glyphicon.glyphicon-pencil
