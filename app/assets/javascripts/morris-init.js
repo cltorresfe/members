@@ -38,13 +38,7 @@ donut_gender = Morris.Donut({
   element: 'graph_donut_gender',
   data: gon.members_gender,
   colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-  formatter: function (y, data) {
-    if(data.label == false)
-      data.label = 'Masculino'
-    if(data.label == true)
-      data.label = 'Femenino'
-    if(data.label == null)
-      data.label = 'Sin registrar'
+  formatter: function (y) {
     return y;
   },
   resize: true
