@@ -17,4 +17,13 @@ class Responsibility < ApplicationRecord
   def members_by_church(church)
     members.where(church: church)
   end
+
+  def self.by_church(church)
+    joins(:members).
+    joins("left join churches on members.church_id = churches.id").
+    where("churches.id = ?",church.id).
+    group(:name, :id).
+    select('responsibilities.id, responsibilities.name').
+    order('responsibilities.name')
+  end
 end
