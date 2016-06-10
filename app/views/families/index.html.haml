@@ -15,7 +15,6 @@
                       %th.column-title= Family.human_attribute_name("phone")
                       %th.column-title= Family.human_attribute_name("city")
                       %th.column-title= Family.human_attribute_name("country")
-                      %th.column-title= Family.human_attribute_name("church")
                       %th.column-title.no-link.last
                         %span.nobr Action
                       %th.bulk-actions{:colspan => "7"}
@@ -32,7 +31,6 @@
                         %td= family.phone
                         %td= family.city
                         %td= family.country
-                        %td= family.church
                         %td.last
                           =# link_to family, data: { toggle: 'tooltip', placement: 'top', title: t('link.show') } do
                           /.glyphicon.glyphicon-home
