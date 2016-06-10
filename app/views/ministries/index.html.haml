@@ -10,7 +10,7 @@
                   =ministry.name
                   .glyphicon.glyphicon-pencil
                 %small
-                  = pluralize(ministry.members.size, t('flash_messages.one_member'), t('flash_messages.many_members'))
+                  = t('common.member', count: ministry.members.size)
               %ul.nav.navbar-right.panel_toolbox
                 %li
                   %a.collapse-link

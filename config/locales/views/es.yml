@@ -29,7 +29,8 @@ es:
     ministries_no_found: "No se encontraron ministerios asociados"
     charges_no_found: "No se encontraron cargos asociados"
     families_no_found: No se encontraron familias ingresadas
-    new_church_not_allowed: No puedes crear más de una iglesia
-    one_member: miembro
-    many_members: miembros
-
+  common:
+    member:
+      zero: sin miembros
+      one: 1 miembro
+      other: "%{count} miembros"

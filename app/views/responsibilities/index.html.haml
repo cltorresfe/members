@@ -12,7 +12,7 @@
                 = link_to responsibility, method: :delete, data: { confirm: 'Are you sure?' } do
                   .glyphicon.glyphicon-trash
                 %small
-                  = pluralize(responsibility.members_by_church(current_user.church).size, t('flash_messages.one_member'), t('flash_messages.many_members'))
+                  = t('common.member', count: responsibility.members_by_church(current_user.church).size)
               %ul.nav.navbar-right.panel_toolbox
                 %li
                   %a.collapse-link
