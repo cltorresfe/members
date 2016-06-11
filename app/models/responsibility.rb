@@ -22,8 +22,6 @@ class Responsibility < ApplicationRecord
     joins(:members).
     joins("left join churches on members.church_id = churches.id").
     where("churches.id = ?",church.id).
-    group(:name, :id).
-    select('responsibilities.id, responsibilities.name').
-    order('responsibilities.name')
+    order('responsibilities.name').uniq
   end
 end
