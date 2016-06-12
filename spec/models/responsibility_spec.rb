@@ -10,10 +10,8 @@ RSpec.describe Responsibility, :type => :model do
     subject {Responsibility.by_church(church)}
 
     context 'returns an array with the responsibilities of church' do
-      let!(:responsibilities) {[responsibility]}
-      let!(:ministry) { create(:ministry, church: church, responsibilities: responsibilities)}
-      let!(:charge) { create(:charge, responsibility:responsibility, ministry: ministry )}
-      let!(:charge_member) { create(:charge_member, charge:charge, member: member )}
+      let!(:ministry) { create(:ministry, church: church, responsibilities: [responsibility])}
+      let!(:charge) { create(:charge, responsibility:responsibility, ministry: ministry, members: [member] )}
 
       it {is_expected.not_to be_empty}
     end
