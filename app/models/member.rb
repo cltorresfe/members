@@ -64,7 +64,17 @@ class Member < ApplicationRecord
   end
 
   def self.by_gender
-    select("gender as label, count(*) as value").group("gender")
+    by_genders = select("gender, count(*) as value").group("gender")
+    members_gender = []
+    by_genders.each do |m_gender|
+      label = case m_gender.gender
+              when true then "Femenino"
+              when false then "Masculino"
+              when nil then "Sin registro"
+              end
+      members_gender << { label: label, value: m_gender.value }
+    end
+    members_gender
   end
 
   def age
@@ -77,11 +87,13 @@ class Member < ApplicationRecord
     total = self.with_birth_date.count
     AGE_RANGES.each do |age_group|
       count = where('birth_date > ? AND birth_date < ? ',age_group.last.years.ago, age_group.first.years.ago).count
-      list_age << {
-        label: "#{age_group.first} - #{age_group.last} años",
-        value: "#{count*100/total}%",
-        count: count
-      }
+      if(total > 0)
+        list_age << {
+          label: "#{age_group.first} - #{age_group.last} años",
+          value: "#{count*100/total}%",
+          count: count
+        }
+      end
     end
     list_age
   end

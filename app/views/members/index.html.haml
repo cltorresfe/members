@@ -7,8 +7,7 @@
             %h2
               = current_user.church.name
               %small
-                =current_user.church.members.size
-                miembros
+                = t('common.member', count: current_user.church.members.size)
             %ul.nav.navbar-right.panel_toolbox
               %li
                 %a.collapse-link

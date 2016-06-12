@@ -12,11 +12,7 @@
                 = link_to responsibility, method: :delete, data: { confirm: 'Are you sure?' } do
                   .glyphicon.glyphicon-trash
                 %small
-                  -if(responsibility.members.present?)
-                    =responsibility.members.size
-                    miembros
-                  - else
-                    0 miembros
+                  = t('common.member', count: responsibility.members_by_church(current_user.church).size)
               %ul.nav.navbar-right.panel_toolbox
                 %li
                   %a.collapse-link
@@ -28,7 +24,7 @@
             .x_content{:style => "display: block;"}
               .row
                 .clearfix
-                - responsibility.members.each do |member|
+                - responsibility.members_by_church(current_user.church).each do |member|
                   .col-md-2.col-sm-2.col-xs-4
                     .col-sm-12
                       .text-center

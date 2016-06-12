@@ -83,7 +83,10 @@ RSpec.describe Member, :type => :model do
         genders = Member.by_gender
         expect(genders[0][:value]).to eq 1
         expect(genders[1][:value]).to eq 1
-
+        expect(genders[2][:value]).to eq 1
+        expect(genders[0][:label]).to eq "Sin registro"
+        expect(genders[1][:label]).to eq "Masculino"
+        expect(genders[2][:label]).to eq "Femenino"
       end
     end
     context 'member without gender assigned' do
@@ -91,6 +94,7 @@ RSpec.describe Member, :type => :model do
       it 'returns an object array with the count of members without gender ' do
         genders = Member.by_gender
         expect(genders[0][:value]).to eq 1
+        expect(genders[0][:label]).to eq "Sin registro"
 
       end
     end
