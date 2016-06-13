@@ -9,8 +9,6 @@
                 = link_to edit_responsibility_path(responsibility) do
                   =responsibility.name
                   .glyphicon.glyphicon-pencil
-                = link_to responsibility, method: :delete, data: { confirm: 'Are you sure?' } do
-                  .glyphicon.glyphicon-trash
                 %small
                   = t('common.member', count: responsibility.members_by_church(current_user.church).size)
               %ul.nav.navbar-right.panel_toolbox
