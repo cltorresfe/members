@@ -8,4 +8,9 @@ module ApplicationHelper
   def i18n_title
     I18n.t "#{controller.controller_name}.#{controller.action_name}.title", default: ''
   end
+
+  def prioritary_countries
+    %w(CL)
+  end
+
 end
