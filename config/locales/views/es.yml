@@ -15,6 +15,7 @@ es:
     new_session: Iniciar Sesión
     responsibilities: Cargos
     show: Ver
+    more_info: Más info
   button:
     search: Buscar
   placeholder:
@@ -27,4 +28,9 @@ es:
     attendace_ministries_no_found: "No se encontraron ministerios para registrar una asistencia"
     ministries_no_found: "No se encontraron ministerios asociados"
     charges_no_found: "No se encontraron cargos asociados"
-
+    families_no_found: No se encontraron familias ingresadas
+  common:
+    member:
+      zero: sin miembros
+      one: 1 miembro
+      other: "%{count} miembros"

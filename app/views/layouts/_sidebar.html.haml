@@ -31,14 +31,6 @@
               %li= link_to t('families.index.title'), families_path
               %li= link_to t('families.new.title'), new_family_path
           %li
-            %a
-              %i.fa.fa-home.fa-fw
-              = t('link.churches')
-              %span.fa.fa-chevron-down
-            %ul.nav.child_menu{:style => "display: none"}
-              %li= link_to t('churches.index.title'), churches_path
-              %li= link_to t('churches.new.title'), new_church_path
-          %li
             = link_to attendances_path do
               %i.fa.fa-check-square-o.fa-fw
               = t('link.attendance')

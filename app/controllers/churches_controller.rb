@@ -14,7 +14,12 @@ class ChurchesController < ApplicationController
 
   # GET /churches/new
   def new
-    @church = Church.new
+    if(current_user.church.blank?)
+      @church = Church.new
+    else
+      flash[:alert] = I18n.t('flash_messages.new_church_not_allowed')
+      redirect_to root_path
+    end
   end
 
   # GET /churches/1/edit
@@ -25,15 +30,11 @@ class ChurchesController < ApplicationController
   # POST /churches.json
   def create
     @church = Church.new(church_params)
-
-    respond_to do |format|
-      if @church.save
-        format.html { redirect_to @church, notice: 'Church was successfully created.' }
-        format.json { render :show, status: :created, location: @church }
-      else
-        format.html { render :new }
-        format.json { render json: @church.errors, status: :unprocessable_entity }
-      end
+    @church.users << current_user
+    if @church.save
+      redirect_to @church, notice: 'Church was successfully created.'
+    else
+      render :new
     end
   end
 

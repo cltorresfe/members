@@ -1,68 +1,73 @@
 .row.top_tiles
-  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-    .tile-stats.bg-aqua
-      .icon
-        %i.fa.fa-users
-      .count= @families.size
-      %h3 Familias
-      .small-box-footer
-        = link_to families_path do 
-          Más info
-          .glyphicon.glyphicon-circle-arrow-right
-  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-    .tile-stats.bg-green
-      .icon
-        %i.fa.fa-user-plus
-      .count= @members.size
-      %h3 Miembros
-      .small-box-footer
-        = link_to members_path do 
-          Más info
-          .glyphicon.glyphicon-circle-arrow-right
-  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-    .tile-stats.bg-blue
-      .icon
-        %i.fa.fa-share-alt
-      .count= @ministries.size
-      %h3 Ministerios
-      .small-box-footer
-        = link_to ministries_path do 
-          Más info
-          .glyphicon.glyphicon-circle-arrow-right
-  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-    .tile-stats.bg-red
-      .icon
-        %%i.fa.fa-star
-      .count=@responsibilities.length
-      %h3 Cargos
-      .clearfix
-      .small-box-footer
-        = link_to responsibilities_path do 
-          Más info
-          .glyphicon.glyphicon-circle-arrow-right
+  - if(@families.present?)
+    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+      .tile-stats.bg-aqua
+        .icon
+          %i.fa.fa-users
+        .count= @families.size
+        %h3= t('main.index.box_families')
+        .small-box-footer
+          = link_to families_path do 
+            = t('link.more_info')
+            .glyphicon.glyphicon-circle-arrow-right
+  - if(@members.present?)
+    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+      .tile-stats.bg-green
+        .icon
+          %i.fa.fa-user-plus
+        .count= @members.size
+        %h3= t('main.index.box_members')
+        .small-box-footer
+          = link_to members_path do 
+            = t('link.more_info')
+            .glyphicon.glyphicon-circle-arrow-right
+  - if(@ministries.present?)
+    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+      .tile-stats.bg-blue
+        .icon
+          %i.fa.fa-share-alt
+        .count= @ministries.size
+        %h3= t('main.index.box_ministries')
+        .small-box-footer
+          = link_to ministries_path do 
+            = t('link.more_info')
+            .glyphicon.glyphicon-circle-arrow-right
+  - if(@responsibilities.present?)
+    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+      .tile-stats.bg-red
+        .icon
+          %%i.fa.fa-star
+        .count=@responsibilities.length
+        %h3= t('main.index.box_charges')
+        .clearfix
+        .small-box-footer
+          = link_to responsibilities_path do 
+            = t('link.more_info')
+            .glyphicon.glyphicon-circle-arrow-right
 .row
-  .col-md-6.col-sm-12.col-xs-12
-    .box-body.no-padding
-      .x_panel
-        .x_title
-          %h2
-            %a.collapse-link.cursor
-              .glyphicon.glyphicon.glyphicon-saved
-              Últimas personas agregadas
-          .clearfix
-        .x_content{:style => "display: block;"}
-          .box-body.no-padding
-            .row
-              - @members_last.each do |member|
-                .col-md-3.col-sm-2.col-xs-4
-                  .col-sm-12
-                    .text-center
-                      = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                  .col-sm-12.text-center
-                    .emphasis.text-center
-                      = link_to edit_member_path(member) do
-                        = member.first_name
-                        %i.glyphicon.glyphicon-pencil
+  - if(@members_last.present?)
+    .col-md-6.col-sm-12.col-xs-12
+      .box-body.no-padding
+        .x_panel
+          .x_title
+            %h2
+              %a.collapse-link.cursor
+                .glyphicon.glyphicon.glyphicon-saved
+                = t('main.index.title_last_persons')
+            .clearfix
+          .x_content{:style => "display: block;"}
+            .box-body.no-padding
+              .row
+                - @members_last.each do |member|
+                  .col-md-3.col-sm-2.col-xs-4
+                    .col-sm-12
+                      .text-center
+                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
+                    .col-sm-12.text-center
+                      .emphasis.text-center
+                        = link_to edit_member_path(member) do
+                          = member.first_name
+                          %i.glyphicon.glyphicon-pencil
   .col-md-3.col-sm-12.col-xs-12
     .box-body.no-padding
       .x_panel
@@ -70,7 +75,7 @@
           %h2
             %a.collapse-link.cursor
               .fa.fa-pie-chart
-              Miembros por edad
+              = t('main.index.title_by_age')
           .clearfix
         .x_content{:style => "display: block;"}
           .box-body.no-padding
@@ -83,7 +88,7 @@
           %h2
             %a.collapse-link.cursor
               .fa.fa-venus-mars
-              Miembros por género
+              = t('main.index.title_by_gender')
           .clearfix
         .x_content{:style => "display: block;"}
           .box-body.no-padding
@@ -97,7 +102,7 @@
           %h2
             %a.collapse-link.cursor
               .glyphicon.glyphicon.glyphicon-check
-              Asistencia última semana
+              = t('main.index.title_last_attendance')
           .clearfix
         .x_content{:style => "display: block;"}
           .box-body.no-padding
@@ -111,7 +116,7 @@
             %h2
               %a.collapse-link.cursor
                 .glyphicon.glyphicon.glyphicon-bell
-                Aniversarios del mes
+                = t('main.index.title_notif_married_date')
             .clearfix
           .x_content{:style => "display: block;"}
             .box-body.no-padding
@@ -137,7 +142,7 @@
             %h2
               %a.collapse-link.cursor
                 .fa.fa-birthday-cake
-                Cumpleaños
+                = t('main.index.title_birth_date_notif')
             .clearfix
           .x_content{:style => "display: block;"}
             .box-body.no-padding

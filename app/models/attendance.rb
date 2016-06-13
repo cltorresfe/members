@@ -18,7 +18,7 @@ class Attendance < ApplicationRecord
   def self.attendances_last_week(church)
     joins(:ministry).
     joins("left join churches on ministries.church_id = churches.id").
-    group(:attendance_date).select('attendance_date, count (*)').
+    group(:attendance_date).select('attendances.attendance_date, count (*)').
     where("churches.id = ?",church.id).
     where("attendances.attendance_date > ?", 1.week.ago).
     where(present: true).
