@@ -26,6 +26,6 @@ module Members
     }
     config.app_generators.scaffold_controller = :scaffold_controller
 
-    config.autoload_paths << "#{Rails.root}/lib/members"
+    config.autoload_paths += Dir["#{config.root}/lib/members/**/"]
   end
 end
