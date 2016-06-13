@@ -13,6 +13,7 @@ class Responsibility < ApplicationRecord
 	validates :name, presence: true, uniqueness: true
   has_many :charges
   has_many :members, through: :charges
+  belongs_to :church
 
   def members_by_church(church)
     members.where(church: church)
