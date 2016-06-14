@@ -25,7 +25,8 @@ es:
       destroy: ¿Estás seguro?
   flash_messages:
     no_found: No se encontraron resultados
-    attendace_ministries_no_found: "No se encontraron ministerios para registrar una asistencia"
+    attendace_ministries_not_found: |
+      Para registrar asistencia, primero debe <a href="%{url}">crear un ministerio</a>
     ministries_no_found: "No se encontraron ministerios asociados"
     charges_no_found: "No se encontraron cargos asociados"
     families_no_found: No se encontraron familias ingresadas
