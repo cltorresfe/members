@@ -74,8 +74,7 @@ class Member < ApplicationRecord
               end
       members_gender << { label: label, value: m_gender.value }
     end
-    members_gender << { label: 'Sin información', value: 1 } if members_gender.empty?
-    members_gender
+    members_gender.presence || { label: 'Sin información', value: 1 }
   end
 
   def age
@@ -96,8 +95,7 @@ class Member < ApplicationRecord
         }
       end
     end
-    list_age << { label: 'Sin información', value: 1, count: 1 } if list_age.empty?
-    list_age
+    list_age.presence || { label: 'Sin información', value: 1, count: 1 }
   end
 
   protected
