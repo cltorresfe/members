@@ -1,9 +1,14 @@
 .row
-  .col-xs-offset-2.col-xs-6
-    .panel.panel-info
-      .panel-heading
-        %h1.panel-title
-          %span.glyphicon.glyphicon-th-list{"aria-hidden" => "true"}
-          = t('.title')
-= render 'form'
-= link_to t('link.back'), churches_path
+  .col-md-12.col-sm-12.col-xs-12
+    .box-body.no-padding
+      .x_panel
+        .x_title
+          %h2
+            %a.collapse-link.cursor
+              .glyphicon.glyphicon.glyphicon-book
+              Datos de la Iglesia
+            %small
+              * Campos Obligatorios.
+          .clearfix
+        .x_content{:style => "display: block;"}
+          = render 'form'
