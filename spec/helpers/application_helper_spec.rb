@@ -15,8 +15,8 @@ RSpec.describe ApplicationHelper do
 
     context 'title is not in context but has found a title by locale' do
       before do
-        controller.stub(:controller_name).and_return('members')
-        controller.stub(:action_name).and_return('index')
+        allow(controller).to receive(:controller_name).and_return('members')
+        allow(controller).to receive(:action_name).and_return('index')
       end
 
       it { is_expected.to eq('Listado de Miembros - Plataforma Miembros de Iglesia')}
@@ -33,8 +33,8 @@ RSpec.describe ApplicationHelper do
 
     context 'title is found in locale' do
       before do
-        controller.stub(:controller_name).and_return('members')
-        controller.stub(:action_name).and_return('index')
+        allow(controller).to receive(:controller_name).and_return('members')
+        allow(controller).to receive(:action_name).and_return('index')
       end
 
       it { is_expected.to eq("Listado de Miembros")}

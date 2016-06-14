@@ -39,7 +39,8 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'quiet_assets'
   gem 'railroady'
-  gem 'rspec-rails'
+  gem 'rspec', '~> 3.5.0.beta4'
+  gem 'rspec-rails', '~> 3.5.0.beta4'
   gem 'spring-commands-rspec'
 end
 
