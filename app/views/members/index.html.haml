@@ -20,17 +20,20 @@
             .row
               .clearfix
               - @members.each do |member|
-                .col-md-2.col-sm-2.col-xs-4
-                  .col-sm-12
-                    .text-center
-                      = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle profile_img', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                  .col-sm-12.text-center
-                    .emphasis
+                .col-md-2.col-sm-3.col-xs-4
+                  .thumbnail
+                    .image.view.view-first
+                      = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle profile_img', secure: false, gravatar: { default: :mm }, :style => "width: 60%; display: block;" ), edit_member_path(member)
+                      .mask
+                        %p
+                          = member.first_name+' '+member.last_name
+                          %br Email:
+                          = member.email
+                        .tools.tools-bottom
+                          = link_to edit_member_path(member) do
+                            %i.glyphicon.glyphicon-pencil
+                    .caption
                       = link_to edit_member_path(member) do
                         = member.first_name
-                        %i.glyphicon.glyphicon-pencil
               .col-md-12.col-sm-12.col-xs-12.text-center
                 = will_paginate @members, :class => 'margin: 0px'
-
-
-

@@ -1,5 +1,5 @@
 .row.top_tiles
-  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-6
     .tile-stats.bg-aqua
       .icon
         %i.fa.fa-users
@@ -10,7 +10,7 @@
           = t('link.more_info')
           .glyphicon.glyphicon-circle-arrow-right
 
-  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-6
     .tile-stats.bg-green
       .icon
         %i.fa.fa-user-plus
@@ -20,7 +20,7 @@
         = link_to members_path do 
           = t('link.more_info')
           .glyphicon.glyphicon-circle-arrow-right
-  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-6
     .tile-stats.bg-blue
       .icon
         %i.fa.fa-share-alt
@@ -30,7 +30,7 @@
         = link_to ministries_path do 
           = t('link.more_info')
           .glyphicon.glyphicon-circle-arrow-right
-  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-6
     .tile-stats.bg-red
       .icon
         %%i.fa.fa-star
@@ -56,15 +56,22 @@
             .box-body.no-padding
               .row
                 - @members_last.each do |member|
-                  .col-md-3.col-sm-2.col-xs-4
-                    .col-sm-12
-                      .text-center
-                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                    .col-sm-12.text-center
-                      .emphasis.text-center
-                        = link_to edit_member_path(member) do
-                          = member.first_name
-                          %i.glyphicon.glyphicon-pencil
+                  .col-md-3.col-sm-3.col-xs-4
+                    .thumbnail
+                      .last
+                        .image.view.view-first
+                          = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm }, :style => "width: 60%; display: block;" ), edit_member_path(member)
+                          .mask.mask-last
+                            %p
+                              = member.first_name+' '+member.last_name
+                              %br Ingreso:
+                              = member.created_at.strftime("%m/%d/%Y")
+                            .tools.tools-bottom
+                              = link_to edit_member_path(member) do
+                                %i.glyphicon.glyphicon-pencil
+                        .caption
+                          = link_to edit_member_path(member) do
+                            = member.first_name
   .col-md-3.col-sm-12.col-xs-12
     .box-body.no-padding
       .x_panel
@@ -77,7 +84,7 @@
         .x_content{:style => "display: block;"}
           .box-body.no-padding
             .col-md-12.col-sm-12.col-xs-12
-              #graph_donut_range{:style => "height: 220px;"}
+              #graph_donut_range{:style => "height: 240px;"}
   .col-md-3.col-sm-12.col-xs-12
     .box-body.no-padding
       .x_panel
@@ -90,7 +97,7 @@
         .x_content{:style => "display: block;"}
           .box-body.no-padding
             .col-md-12.col-sm-12.col-xs-12
-              #graph_donut_gender{:style => "height: 220px;"}
+              #graph_donut_gender{:style => "height: 240px;"}
 .row
   - if @attendances.present?
     .col-md-5.col-sm-12.col-xs-12
@@ -146,14 +153,22 @@
             .box-body.no-padding
               .row
                 - @members_birth_date.each do |member|
-                  .col-md-12.col-sm-2.col-xs-4
-                    .col-sm-12
-                      .text-center
-                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                    .col-sm-12.text-center
-                      .emphasis.text-center
-                        = link_to edit_member_path(member) do
-                          = member.first_name
-                        %br
-                        = member.birth_date.strftime("%d/%m/%Y")
-
+                  .col-md-12.col-sm-2.col-xs-3
+                    .thumbnail
+                      .last
+                        .image.view.view-first
+                          = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm }, :style => "width: 60%; display: block;" ), edit_member_path(member)
+                          .mask.mask-last
+                            %p
+                              = member.first_name+' '+member.last_name
+                              %br Fecha Nacimiento:
+                              = member.birth_date.strftime("%d/%m/%Y")
+                            .tools.tools-bottom
+                              = link_to edit_member_path(member) do
+                                %i.glyphicon.glyphicon-pencil
+                        .caption
+                          = link_to edit_member_path(member) do
+                            = member.first_name
+                          %p  
+                            = member.age
+                            años
