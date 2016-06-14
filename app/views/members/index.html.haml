@@ -26,7 +26,7 @@
                       = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle profile_img', secure: false, gravatar: { default: :mm }, :style => "width: 60%; display: block;" ), edit_member_path(member)
                       .mask
                         %p
-                          = member.first_name+' '+member.last_name
+                          = "#{member.first_name} #{member.last_name}"
                           %br Email:
                           = member.email
                         .tools.tools-bottom

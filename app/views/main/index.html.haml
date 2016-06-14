@@ -63,7 +63,7 @@
                           = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm }, :style => "width: 60%; display: block;" ), edit_member_path(member)
                           .mask.mask-last
                             %p
-                              = member.first_name+' '+member.last_name
+                              = "#{member.first_name} #{member.last_name}"
                               %br Ingreso:
                               = member.created_at.strftime("%m/%d/%Y")
                             .tools.tools-bottom
@@ -160,7 +160,7 @@
                           = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm }, :style => "width: 60%; display: block;" ), edit_member_path(member)
                           .mask.mask-last
                             %p
-                              = member.first_name+' '+member.last_name
+                              = "#{member.first_name} #{member.last_name}"
                               %br Fecha Nacimiento:
                               = member.birth_date.strftime("%d/%m/%Y")
                             .tools.tools-bottom
