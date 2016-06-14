@@ -23,7 +23,7 @@ class MinistriesController < ApplicationController
   # POST /ministries.json
   def create
     @ministry = Ministry.new(ministry_params)
-
+    @ministry.church = current_user.church
     respond_to do |format|
       if @ministry.save
         flash[:notice] = 'Ministry was successfully created.'
