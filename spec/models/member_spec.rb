@@ -72,6 +72,21 @@ RSpec.describe Member, :type => :model do
       expect(ranges[4][:count]).to eq 0
       expect(ranges[5][:count]).to eq 0
     end
+
+    context 'no members created' do
+      before do
+        Member.destroy_all
+      end
+
+      it 'returns an array with "no info" hash' do
+        ranges = Member.by_range
+        expect(ranges[0][:value]).to eq 1
+        expect(ranges[0][:count]).to eq 1
+        expect(ranges[0][:label]).to eq "Sin información"
+
+      end
+    end
+
   end
 
   describe '#by_gender' do
@@ -89,12 +104,26 @@ RSpec.describe Member, :type => :model do
         expect(genders[2][:label]).to eq "Femenino"
       end
     end
+
     context 'member without gender assigned' do
 
       it 'returns an object array with the count of members without gender ' do
         genders = Member.by_gender
         expect(genders[0][:value]).to eq 1
         expect(genders[0][:label]).to eq "Sin registro"
+
+      end
+    end
+
+    context 'no members created' do
+      before do
+        Member.destroy_all
+      end
+
+      it 'returns an array with "no info" hash' do
+        genders = Member.by_gender
+        expect(genders[0][:value]).to eq 1
+        expect(genders[0][:label]).to eq "Sin información"
 
       end
     end

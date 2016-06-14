@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :attendances, only: [:index, :create]
-  resources :responsibilities
+  resources :responsibilities, except: :destroy
   resources :members, except: :show
   resources :churches
   resources :ministries, except: :show

@@ -32,7 +32,7 @@ class ChurchesController < ApplicationController
     @church = Church.new(church_params)
     @church.users << current_user
     if @church.save
-      redirect_to @church, notice: 'Church was successfully created.'
+      redirect_to root_path, notice: 'Church was successfully created.'
     else
       render :new
     end
