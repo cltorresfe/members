@@ -17,7 +17,7 @@ class Church < ApplicationRecord
   has_many :ministries
   has_many :families
 
-  validates :name, :address, :email, :phone,  presence: true
+  validates :name, :address, presence: true
   validates :name, :email, uniqueness: true
 
 end
