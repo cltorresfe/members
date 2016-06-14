@@ -1,49 +1,46 @@
 .row.top_tiles
-  - if(@families.present?)
-    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-      .tile-stats.bg-aqua
-        .icon
-          %i.fa.fa-users
-        .count= @families.size
-        %h3= t('main.index.box_families')
-        .small-box-footer
-          = link_to families_path do 
-            = t('link.more_info')
-            .glyphicon.glyphicon-circle-arrow-right
-  - if(@members.present?)
-    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-      .tile-stats.bg-green
-        .icon
-          %i.fa.fa-user-plus
-        .count= @members.size
-        %h3= t('main.index.box_members')
-        .small-box-footer
-          = link_to members_path do 
-            = t('link.more_info')
-            .glyphicon.glyphicon-circle-arrow-right
-  - if(@ministries.present?)
-    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-      .tile-stats.bg-blue
-        .icon
-          %i.fa.fa-share-alt
-        .count= @ministries.size
-        %h3= t('main.index.box_ministries')
-        .small-box-footer
-          = link_to ministries_path do 
-            = t('link.more_info')
-            .glyphicon.glyphicon-circle-arrow-right
-  - if(@responsibilities.present?)
-    .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-      .tile-stats.bg-red
-        .icon
-          %%i.fa.fa-star
-        .count=@responsibilities.length
-        %h3= t('main.index.box_charges')
-        .clearfix
-        .small-box-footer
-          = link_to responsibilities_path do 
-            = t('link.more_info')
-            .glyphicon.glyphicon-circle-arrow-right
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+    .tile-stats.bg-aqua
+      .icon
+        %i.fa.fa-users
+      .count= @families.size
+      %h3= t('main.index.box_families')
+      .small-box-footer
+        = link_to families_path do 
+          = t('link.more_info')
+          .glyphicon.glyphicon-circle-arrow-right
+
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+    .tile-stats.bg-green
+      .icon
+        %i.fa.fa-user-plus
+      .count= @members.size
+      %h3= t('main.index.box_members')
+      .small-box-footer
+        = link_to members_path do 
+          = t('link.more_info')
+          .glyphicon.glyphicon-circle-arrow-right
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+    .tile-stats.bg-blue
+      .icon
+        %i.fa.fa-share-alt
+      .count= @ministries.size
+      %h3= t('main.index.box_ministries')
+      .small-box-footer
+        = link_to ministries_path do 
+          = t('link.more_info')
+          .glyphicon.glyphicon-circle-arrow-right
+  .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
+    .tile-stats.bg-red
+      .icon
+        %%i.fa.fa-star
+      .count=@responsibilities.length
+      %h3= t('main.index.box_charges')
+      .clearfix
+      .small-box-footer
+        = link_to responsibilities_path do 
+          = t('link.more_info')
+          .glyphicon.glyphicon-circle-arrow-right
 .row
   - if(@members_last.present?)
     .col-md-6.col-sm-12.col-xs-12
@@ -95,19 +92,20 @@
             .col-md-12.col-sm-12.col-xs-12
               #graph_donut_gender{:style => "height: 220px;"}
 .row
-  .col-md-5.col-sm-12.col-xs-12
-    .box-body.no-padding
-      .x_panel
-        .x_title
-          %h2
-            %a.collapse-link.cursor
-              .glyphicon.glyphicon.glyphicon-check
-              = t('main.index.title_last_attendance')
-          .clearfix
-        .x_content{:style => "display: block;"}
-          .box-body.no-padding
-            .col-md-12.col-sm-12.col-xs-12
-              #myfirstchart{:style => "height: 200px;"}
+  - if @attendances.present?
+    .col-md-5.col-sm-12.col-xs-12
+      .box-body.no-padding
+        .x_panel
+          .x_title
+            %h2
+              %a.collapse-link.cursor
+                .glyphicon.glyphicon.glyphicon-check
+                = t('main.index.title_last_attendance')
+            .clearfix
+          .x_content{:style => "display: block;"}
+            .box-body.no-padding
+              .col-md-12.col-sm-12.col-xs-12
+                #line_chart{:style => "height: 200px;"}
   - if (@families_married_date.present?)
     .col-md-5.col-sm-12.col-xs-12
       .box-body.no-padding
