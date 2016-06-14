@@ -13,15 +13,13 @@ class Responsibility < ApplicationRecord
 	validates :name, presence: true, uniqueness: true
   has_many :charges
   has_many :members, through: :charges
+  belongs_to :church
 
   def members_by_church(church)
     members.where(church: church)
   end
 
   def self.by_church(church)
-    joins(:members).
-    joins("left join churches on members.church_id = churches.id").
-    where("churches.id = ?",church.id).
-    order('responsibilities.name').distinct
+    where(church: church)
   end
 end

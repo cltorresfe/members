@@ -21,7 +21,7 @@ class ResponsibilitiesController < ApplicationController
   # POST /responsibilities.json
   def create
     @responsibility = Responsibility.new(responsibility_params)
-
+    @responsibility.church = current_user.church
     respond_to do |format|
       if @responsibility.save
         format.html { redirect_to action: :index}
