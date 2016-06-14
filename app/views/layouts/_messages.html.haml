@@ -5,7 +5,7 @@
         %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
           %span{"aria-hidden" => "true"} ×
         %strong Mensaje:
-        = notice
+        = notice.html_safe
 - if alert
   .row
     .col-xs-6.col-xs-offset-1
