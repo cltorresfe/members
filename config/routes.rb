@@ -76,7 +76,6 @@ end
 #              responsibility GET    /responsibilities/:id(.:format)        responsibilities#show
 #                             PATCH  /responsibilities/:id(.:format)        responsibilities#update
 #                             PUT    /responsibilities/:id(.:format)        responsibilities#update
-#                             DELETE /responsibilities/:id(.:format)        responsibilities#destroy
 #                     members GET    /members(.:format)                     members#index
 #                             POST   /members(.:format)                     members#create
 #                  new_member GET    /members/new(.:format)                 members#new
@@ -106,5 +105,5 @@ end
 #                      family PATCH  /families/:id(.:format)                families#update
 #                             PUT    /families/:id(.:format)                families#update
 #                             DELETE /families/:id(.:format)                families#destroy
-#                        root GET    /                                      members#index
+#                        root GET    /                                      main#index
 #
