@@ -49,7 +49,7 @@ class Member < ApplicationRecord
   scope :sorted, -> { order(created_at: :desc) }
   scope :with_birth_date, -> { where.not(birth_date: nil) }
   scope :birth_date_by_month, -> {where('Extract(month from birth_date) = ? AND Extract(day from birth_date) >= ?',Time.zone.now.month, Time.zone.now.day) }
-  before_validation :change_to_format_phone 
+  before_validation :change_to_format_phone
 
   def set_defaults
     self.status ||= :active
@@ -74,7 +74,7 @@ class Member < ApplicationRecord
               end
       members_gender << { label: label, value: m_gender.value }
     end
-    members_gender.presence || { label: 'Sin información', value: 1 }
+    members_gender.presence || [{ label: 'Sin información', value: 1 }]
   end
 
   def age
@@ -95,7 +95,7 @@ class Member < ApplicationRecord
         }
       end
     end
-    list_age.presence || { label: 'Sin información', value: 1, count: 1 }
+    list_age.presence || [{ label: 'Sin información', value: 1, count: 1 }]
   end
 
   protected
