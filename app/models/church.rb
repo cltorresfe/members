@@ -22,10 +22,6 @@ class Church < ApplicationRecord
   validates :phone, length: { maximum: 12, minimum: 7 }
   
   before_validation :change_to_format_phone
-
-  protected
-  def change_to_format_phone
-    self.phone = phone.gsub(/\D/, '') if attribute_present?("phone")
-  end
+  include ChangeFormatPhone
 
 end
