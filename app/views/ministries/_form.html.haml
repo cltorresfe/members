@@ -16,7 +16,7 @@
               = simple_form_for @ministry, html: {class: 'form-horizontal'} do |f|
                 = f.input :name, class: "form-control", placeholder: :name, autofocus: true, require: true
                 = f.input :description, class: "form-control", placeholder: :description, autofocus: true, rows: '5', as: :text
-                = f.association :responsibilities, require: true,  as: :check_boxes
+                = f.association :responsibilities, collection: @responsibilities, require: true, as: :check_boxes
                 .form-group
                   .col-xs-offset-4
                     = f.submit class: "btn btn-primary btn-lg"

@@ -13,10 +13,12 @@ class MinistriesController < ApplicationController
   # GET /ministries/new
   def new
     @ministry = Ministry.new
+    @responsibilities = Responsibility.by_church(current_user.church)
   end
 
   # GET /ministries/1/edit
   def edit
+    @responsibilities = Responsibility.by_church(current_user.church)
   end
 
   # POST /ministries
