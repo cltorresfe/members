@@ -5,6 +5,9 @@
         %a.collapse-link.cursor
           .glyphicon.glyphicon-envelope
           Contacto
+          - if f.error_notification
+            %small
+              .badge.bg-red Error
       %ul.nav.navbar-right.panel_toolbox
         %li
           %a.collapse-link
