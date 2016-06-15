@@ -16,6 +16,6 @@ FactoryGirl.define do
     name {Faker::Company.name}
     address 'Springfield'
     email { Faker::Internet.email }
-    phone 123456789
+    phone "123456789"
   end
 end

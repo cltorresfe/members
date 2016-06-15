@@ -29,6 +29,7 @@
 
 class Member < ApplicationRecord
   include Decorators::Member
+  include ChangeFormatPhone
 
   enum status: %i(active regular inactive visitor transferred)
 
@@ -96,11 +97,6 @@ class Member < ApplicationRecord
       end
     end
     list_age.presence || [{ label: 'Sin información', value: 1, count: 1 }]
-  end
-
-  protected
-  def change_to_format_phone
-    self.phone = phone.gsub(/\D/, '') if attribute_present?("phone")
   end
 
 end
