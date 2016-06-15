@@ -29,6 +29,7 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new(status: :active)
+
   end
 
   # GET /members/1/edit
@@ -86,7 +87,7 @@ class MembersController < ApplicationController
     end
 
     def load_ministries
-      @ministries = Ministry.all
+      @ministries = Ministry.by_church(current_user.church)
     end
 
 end
