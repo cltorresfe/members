@@ -12,6 +12,8 @@
 #
 
 class Church < ApplicationRecord
+  include ChangeFormatPhone
+
   has_many :members
   has_many :users
   has_many :ministries
@@ -22,6 +24,5 @@ class Church < ApplicationRecord
   validates :phone, length: { maximum: 12, minimum: 7 }
   
   before_validation :change_to_format_phone
-  include ChangeFormatPhone
 
 end

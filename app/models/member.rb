@@ -29,6 +29,7 @@
 
 class Member < ApplicationRecord
   include Decorators::Member
+  include ChangeFormatPhone
 
   enum status: %i(active regular inactive visitor transferred)
 
@@ -50,8 +51,6 @@ class Member < ApplicationRecord
   scope :with_birth_date, -> { where.not(birth_date: nil) }
   scope :birth_date_by_month, -> {where('Extract(month from birth_date) = ? AND Extract(day from birth_date) >= ?',Time.zone.now.month, Time.zone.now.day) }
   before_validation :change_to_format_phone
-
-  include ChangeFormatPhone
 
   def set_defaults
     self.status ||= :active
