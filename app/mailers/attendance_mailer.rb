@@ -5,10 +5,11 @@ class AttendanceMailer < ApplicationMailer
   #
   #   en.attendance_mailer.attendances_confirmation.subject
   #
-  def attendances_confirmation(attendance)
+  def attendances_confirmation(attendances, user)
     @greeting = "Hi"
-    @attendance = attendance
+    @attendances = attendances
+    @user = user
 
-    mail to: @attendance.member.email, subject: "Confirmación de registro de asistencia"
+    mail to: user.email, subject: "Confirmación de registro de asistencia"
   end
 end
