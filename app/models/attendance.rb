@@ -30,11 +30,9 @@ class Attendance < ApplicationRecord
 
   def self.by_date(attendance_date, church)
     joins(:member).
-    joins("left join churches on member.church_id = churches.id").
+    joins("left join churches on members.church_id = churches.id").
     where("churches.id = ?",church.id).
-    where("attendances.attendance_date =", attendance_date).
-    order('members.name').distinct
+    where("DATE(attendance_date) = ?",attendance_date.to_date).distinct
   end
-
 
 end

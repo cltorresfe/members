@@ -23,7 +23,7 @@
                 .col-md-2.col-sm-2.col-xs-4
                   .col-sm-12
                     .text-center
-                      = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
+                      = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
                   .col-sm-12
                     .emphasis
                       .text-center

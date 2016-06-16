@@ -1,15 +1,48 @@
 %h1
-  Hola!
+  Estimado administrador del ministerio
+  = @attendance.ministry.name
+  !
 
 %p
-  Este es el listado de miembros que asistieron el dia..
-
+  - if(@attendances.presence.present?)
+    Esta es la lista de miembros que asistieron el 
+    = @attendance.attendance_date.to_date
+    %table
+      %thead
+        %tr
+          %th= Member.human_attribute_name("first_name")
+          %th= Member.human_attribute_name("address")
+          %th= Member.human_attribute_name("email")
+          %th= Member.human_attribute_name("phone")
+      %tbody
+      - @attendances.presence.each do |attendance|
+        %tr
+          %td= attendance.member.first_name
+          %td= attendance.member.address
+          %td= attendance.member.email
+          %td= attendance.member.phone
+  - else
+    Lamentamos informar que para esta fecha no hubo ningún miembro que asistío a 
+    = @attendance.ministry.name
 %p
-  Estos son los miembros del ministerio ... que no asistieron. Por favor, llámalos!
-  Hola!
+  - if(@attendances.absence.present?)
+    Estos son los miembros del ministerio que no asistieron. Por favor, llámalos! 
+    %table
+      %thead
+        %tr
+          %th= Member.human_attribute_name("first_name")
+          %th= Member.human_attribute_name("address")
+          %th= Member.human_attribute_name("email")
+          %th= Member.human_attribute_name("phone")
+      %tbody
+      - @attendances.absence.each do |attendance|
+        %tr
+          %td= attendance.member.first_name
+          %td= attendance.member.address
+          %td= attendance.member.email
+          %td= attendance.member.phone
+  - else
+    En este día hubo asistencia completa. Felicidades, buen trabajo!
 
-
-%p
-  Muchas gracias y Saludos!
-  Atte. 
-  = @user.name
+%p Saluda Atte. 
+%p= @user.name

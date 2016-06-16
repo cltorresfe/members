@@ -9,6 +9,7 @@ class AttendanceMailer < ApplicationMailer
     @greeting = "Hi"
     @attendances = attendances
     @user = user
+    @attendance = @attendances.first
 
     mail to: user.email, subject: "Confirmación de registro de asistencia"
   end
