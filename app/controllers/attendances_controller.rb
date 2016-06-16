@@ -8,7 +8,7 @@ class AttendancesController < ApplicationController
     if(@current_ministry.present?)
       @charges = @current_ministry.charges.non_administrative
     else
-      flash[:notice] = I18n.t('flash_messages.attendace_ministries_not_found', url: new_ministry_path)
+      flash[:notice] = I18n.t('.not_found', url: new_ministry_path)
     end
   end
 

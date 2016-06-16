@@ -3,7 +3,7 @@
     .navbar.nav_title{:style => "border: 0;"}
       = link_to root_path , class: "site_title" do
         %i.glyphicon.glyphicon-grain
-        %span 
+        %span
           = t('application')
     .clearfix
     / menu profile quick info
@@ -18,12 +18,12 @@
     .clearfix
     #sidebar-menu.main_menu_side.hidden-print.main_menu
       .menu_section
-        %h3 
+        %h3
         %ul.nav.side-menu
           %li
             %a
               %i.fa.fa-group.fa-fw
-              = t('link.members')
+              = t('.members_link')
               %span.fa.fa-chevron-down
             %ul.nav.child_menu{:style => "display: none"}
               %li= link_to t('members.index.title'), members_path
@@ -33,11 +33,11 @@
           %li
             = link_to attendances_path do
               %i.fa.fa-check-square-o.fa-fw
-              = t('link.attendance')
+              = t('.attendance_link')
           %li
             %a
               %i.fa.fa-building-o.fa-fw
-              = t('link.ministries')
+              = t('.ministries_link')
               %span.fa.fa-chevron-down
             %ul.nav.child_menu{:style => "display: none"}
               %li= link_to t('ministries.index.title'), ministries_path
@@ -45,7 +45,7 @@
           %li
             %a
               %i.fa.fa-flag-o.fa-fw
-              = t('link.responsibilities')
+              = t('.responsibilities_link')
               %span.fa.fa-chevron-down
             %ul.nav.child_menu{:style => "display: none"}
               %li= link_to t('responsibilities.index.title'), responsibilities_path
@@ -57,9 +57,9 @@
       .sidebar-footer.hidden-small
         %a{"data-placement" => "top", "data-toggle" => "tooltip"}
           %span.glyphicon.option-horizontal{"aria-hidden" => "true"}
-        = link_to admin_root_path, data: { toggle: 'tooltip', placement: 'top', title: t('link.admin') } do
+        = link_to admin_root_path, data: { toggle: 'tooltip', placement: 'top', title: t('.admin_link') } do
           %span.glyphicon.glyphicon-cog{"aria-hidden" => "true"}
-        = link_to destroy_user_session_path, method: :delete, data: { toggle: 'tooltip', placement: 'top', title: t('link.destroy_session') } do
+        = link_to destroy_user_session_path, method: :delete, data: { toggle: 'tooltip', placement: 'top', title: t('.destroy_session_link') } do
           %span.glyphicon.glyphicon-off{"aria-hidden" => "true"}
         %a
           %span.glyphicon.option-horizontal{"aria-hidden" => "true"}

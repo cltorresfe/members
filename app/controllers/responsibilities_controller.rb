@@ -5,7 +5,7 @@ class ResponsibilitiesController < ApplicationController
   # GET /responsibilities.json
   def index
     @responsibilities = Responsibility.by_church(current_user.church)
-    flash[:alert] = I18n.t('flash_messages.charges_no_found') if @responsibilities.blank?
+    flash[:alert] = t('.not_found') if @responsibilities.blank?
   end
 
   # GET /responsibilities/new

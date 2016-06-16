@@ -1,37 +1,110 @@
 es:
+  # Common view translations
   application: Plataforma Miembros de Iglesia
   link:
-    attendance: Asistencia
-    admin: Administración
     back: Atrás
     churches: Iglesias
     destroy: Borrar
-    destroy_session: Cerrar
     edit: Editar
-    members: Miembros
-    menu_main: Menú
-    menu_options: Opciones
-    ministries: Ministerios
-    new_session: Iniciar Sesión
-    responsibilities: Cargos
     show: Ver
-    more_info: Más info
   button:
     search: Buscar
-  placeholder:
-    search_members: Buscar Miembros
   confirm:
     message:
       destroy: ¿Estás seguro?
-  flash_messages:
-    no_found: No se encontraron resultados
-    attendace_ministries_not_found: |
-      Para registrar asistencia, primero debe <a href="%{url}">crear un ministerio</a>
-    ministries_no_found: "No se encontraron ministerios asociados"
-    charges_no_found: "No se encontraron cargos asociados"
-    families_no_found: No se encontraron familias ingresadas
   common:
     member:
       zero: sin miembros
       one: 1 miembro
       other: "%{count} miembros"
+
+  # Specific view translations
+  layouts:
+    sidebar:
+      members_link: Miembros
+      attendance_link: Asistencia
+      ministries_link: Ministerios
+      responsibilities_link: Cargos
+      admin_link: Administración
+      destroy_session_link: Cerrar
+    topbar:
+      admin: Administración
+      destroy_session: Cerrar
+  attendances:
+    index:
+      not_found: |
+        Para registrar asistencia, primero debe <a href="%{url}">crear un ministerio</a>
+  families:
+    create:
+      title: Nueva Familia
+      success: 'Familia "%{name}" ha sido creada exitosamente'
+    update:
+      title: Editar Familia
+      success: 'Datos de familia "%{name}" han sido actualizados'
+    index:
+      title: Listado de Familias
+      not_found: No se encontraron familias ingresadas
+    edit:
+      title: Editar Familia
+    new:
+      title: Nueva Familia
+  members:
+    index:
+      title: 'Listado de Miembros'
+      not_found: No se encontraron miembros ingresados
+    edit:
+      title: 'Editar Miembro'
+    new:
+      title: 'Nuevo Miembro'
+    show:
+      name: 'Nombre'
+      address: 'Dirección'
+      email: 'Correo'
+      phone: 'Fono'
+      church: 'Iglesia'
+      responsibilities: 'Cargos'
+      status: 'Estado'
+  churches:
+    index:
+      title: 'Listado de Iglesias'
+    edit:
+      title: 'Editar Iglesia'
+    new:
+      title: 'Nueva Iglesia'
+    show:
+      name: 'Nombre'
+      address: 'Dirección'
+      email: 'Correo'
+      phone: 'Fono'
+  responsibilities:
+    index:
+      title: Listado de Cargos
+      not_found: "No se encontraron cargos asociados"
+    edit:
+      title: Editar Cargos
+    new:
+      title: Nuevo Cargo
+    show:
+      name: Nombre
+  ministries:
+    index:
+      title: Listado de Ministerios
+      not_found: "No se encontraron ministerios asociados"
+    edit:
+      title: Editar Ministerio
+    new:
+      title: Nuevo Ministerio
+  main:
+    index:
+      box_charges: Cargos
+      box_families: Familias
+      box_members: Miembros
+      box_ministries: Ministerios
+      more_info: Más info
+      title: Inicio
+      title_birth_date_notif: Cumpleaños
+      title_by_age: Miembros por edad
+      title_by_gender: Miembros por género
+      title_last_attendance: Asistencia última semana
+      title_last_persons: Últimas personas agregadas
+      title_notif_married_date: Aniversarios del mes

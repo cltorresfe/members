@@ -12,14 +12,14 @@ class MembersController < ApplicationController
         redirect_to edit_member_path(@members.first)
         return
       elsif(@members.blank?)
-        flash[:notice] = I18n.t('flash_messages.no_found')
+        flash[:notice] = t('.not_found')
       end
     # List all members of the church
     else
       if(current_user.church.present? && current_user.church.members.present?)
         @members = current_user.church.members.sorted
       else
-        flash[:notice] = I18n.t('flash_messages.no_found')
+        flash[:notice] = t('.not_found')
         return
       end
     end
