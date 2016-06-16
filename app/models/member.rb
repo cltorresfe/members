@@ -41,7 +41,7 @@ class Member < ApplicationRecord
 
   validates :first_name, :last_name, :church, presence: true
   validates :email, uniqueness: true, email: true, allow_blank: true
-  validates :phone, length: { maximum: 12, minimum: 7 }, allow_blank: true
+  validates :phone, length: { maximum: 15, minimum: 7 }, allow_blank: true
   validates :first_name, length: { maximum: 35 }
   validates :address, length: { maximum: 100}
 
