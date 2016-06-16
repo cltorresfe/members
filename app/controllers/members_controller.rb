@@ -43,7 +43,7 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
     @member.church = current_user.church
     if @member.save
-      WelcomeMember.notify(@member).deliver_later!
+      # WelcomeMember.notify(@member).deliver_later!
       flash[:notice] = 'Member was successfully created.'
       redirect_to action: :index
     else
