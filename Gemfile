@@ -8,8 +8,10 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-will_paginate'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'country_select'
+gem 'coveralls', require: false
 gem 'delayed_job_active_record'
 gem 'devise'
+gem 'gon', github: 'gazay/gon', branch: :master
 gem 'gravatar_image_tag'
 gem 'haml-rails'
 gem 'jbuilder'
@@ -24,7 +26,6 @@ gem 'simple_form'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate'
-gem 'gon', github: 'gazay/gon', branch: :master
 
 group :development, :test do
   gem 'awesome_print'
