@@ -2,8 +2,7 @@ require 'simplecov'
 require 'coveralls'
 require 'capybara/rspec'
 
-puts "ENV['CIRCLECI']:#{ENV['CIRCLECI']}"
-SimpleCov.formatter = Coveralls::SimpleCov::Formatter if ENV['CIRCLECI'] == 'true'
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter if ENV['CIRCLECI']
 SimpleCov.start 'rails'
 
 Capybara.javascript_driver = :webkit
