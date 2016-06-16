@@ -15,8 +15,8 @@ class Attendance < ApplicationRecord
   belongs_to :member
   belongs_to :ministry
 
-  scope :presence, -> { where(present: true ) }
-  scope :absence, -> { where(present: false) }
+  scope :present, -> { where(present: true ) }
+  scope :absent, -> { where(present: false) }
 
   def self.attendances_last_week(church)
     joins(:ministry).
@@ -28,11 +28,8 @@ class Attendance < ApplicationRecord
     order('attendances.attendance_date')
   end
 
-  def self.by_date(attendance_date, church)
-    joins(:member).
-    joins("left join churches on members.church_id = churches.id").
-    where("churches.id = ?",church.id).
-    where("DATE(attendance_date) = ?",attendance_date.to_date).distinct
+  def self.by_date_and_ministry(attendance_date, ministry_id)
+    where(attendance_date: attendance_date, ministry_id: ministry_id)
   end
 
 end

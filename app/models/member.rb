@@ -37,6 +37,7 @@ class Member < ApplicationRecord
   belongs_to :church
   has_many :charge_members
   has_many :charges, through: :charge_members
+  has_many :attendances
 
   validates :first_name, :last_name, :address, :church, presence: true
   validates :email, uniqueness: true, email: true
@@ -53,6 +54,12 @@ class Member < ApplicationRecord
 
   def set_defaults
     self.status ||= :active
+  end
+
+  def self.administrative_for_ministry(ministry_id)
+    joins(charges: [:ministry, :responsibility]).
+    where('ministries.id = ?', ministry_id).
+    where('responsibilities.administrative = ?', true)
   end
 
   def self.search(search)

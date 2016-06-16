@@ -25,8 +25,7 @@ class AttendancesController < ApplicationController
         attendance.present = attendance_params[:present].present?
         attendance.save
       end
-      @attendances_by_date = Attendance.by_date(attendance_date, current_user.church)
-      AttendanceMailer.attendances_confirmation(@attendances_by_date, current_user).deliver_now
+      AttendanceMailer.attendances_confirmation(attendance_date, params[:ministry_id], current_user.id).deliver_now
     end
 
     redirect_to action: :index, attendance_date: params[:attendance_date], ministry_id: params[:ministry_id]

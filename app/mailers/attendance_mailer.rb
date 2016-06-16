@@ -5,12 +5,14 @@ class AttendanceMailer < ApplicationMailer
   #
   #   en.attendance_mailer.attendances_confirmation.subject
   #
-  def attendances_confirmation(attendances, user)
-    @greeting = "Hi"
-    @attendances = attendances
-    @user = user
-    @attendance = @attendances.first
+  def attendances_confirmation(attendance_date, ministry_id, user_id)
+    @user = User.find(user_id)
+    @ministry = Ministry.find(ministry_id)
+    @administrative_members = Member.administrative_for_ministry(ministry_id)
+    @attendance_date = attendance_date
+    @present_attendances = Attendance.present.by_date_and_ministry(attendance_date, ministry_id)
+    @absent_attendances = Attendance.absent.by_date_and_ministry(attendance_date, ministry_id)
 
-    mail to: user.email, subject: "Confirmación de registro de asistencia"
+    mail to: @administrative_members.pluck(:email), subject: "Confirmación de registro de asistencia"
   end
 end

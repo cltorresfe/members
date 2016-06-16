@@ -1,43 +1,47 @@
 %h1
   Estimado administrador del ministerio
-  = @attendance.ministry.name
+  = @ministry.name
   !
 
 %p
-  - if(@attendances.presence.present?)
+  - if(@present_attendances.present?)
     Esta es la lista de miembros que asistieron el 
-    = @attendance.attendance_date.to_date
+    = @attendance_date.to_date
     %table
       %thead
         %tr
           %th= Member.human_attribute_name("first_name")
+          %th= Member.human_attribute_name("last_name")
           %th= Member.human_attribute_name("address")
           %th= Member.human_attribute_name("email")
           %th= Member.human_attribute_name("phone")
       %tbody
-      - @attendances.presence.each do |attendance|
+      - @present_attendances.each do |attendance|
         %tr
           %td= attendance.member.first_name
+          %td= attendance.member.last_name
           %td= attendance.member.address
           %td= attendance.member.email
           %td= attendance.member.phone
   - else
     Lamentamos informar que para esta fecha no hubo ningún miembro que asistío a 
-    = @attendance.ministry.name
+    = @ministry.name
 %p
-  - if(@attendances.absence.present?)
-    Estos son los miembros del ministerio que no asistieron. Por favor, llámalos! 
+  - if(@absent_attendances.present?)
+    Estos son los miembros que no asistieron. Por favor, llámalos! 
     %table
       %thead
         %tr
           %th= Member.human_attribute_name("first_name")
+          %th= Member.human_attribute_name("last_name")
           %th= Member.human_attribute_name("address")
           %th= Member.human_attribute_name("email")
           %th= Member.human_attribute_name("phone")
       %tbody
-      - @attendances.absence.each do |attendance|
+      - @absent_attendances.each do |attendance|
         %tr
           %td= attendance.member.first_name
+          %td= attendance.member.last_name
           %td= attendance.member.address
           %td= attendance.member.email
           %td= attendance.member.phone
