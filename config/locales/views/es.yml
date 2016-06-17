@@ -71,6 +71,7 @@ es:
       title: 'Editar Iglesia'
     new:
       title: 'Nueva Iglesia'
+      new_church_not_allowed: No es posible crear una nueva iglesia
     create:
       title: 'Nueva Iglesia'
     show:

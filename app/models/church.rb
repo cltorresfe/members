@@ -21,7 +21,7 @@ class Church < ApplicationRecord
 
   validates :name, :address, presence: true
   validates :name, :email, uniqueness: true
-  validates :phone, length: { maximum: 15, minimum: 7 }
+  validates :phone, length: { maximum: 15, minimum: 7 }, allow_blank: true
 
   before_validation :change_to_format_phone
 

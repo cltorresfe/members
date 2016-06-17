@@ -17,8 +17,7 @@ class ChurchesController < ApplicationController
     if(current_user.church.blank?)
       @church = Church.new
     else
-      flash[:alert] = I18n.t('flash_messages.new_church_not_allowed')
-      redirect_to root_path
+      redirect_to root_path, alert: t('.new_church_not_allowed')
     end
   end
 
