@@ -12,7 +12,7 @@ feature "Members pages" do
     context 'with members' do
       let!(:member){ create(:member, church: user.church) }
 
-      scenario "Displaying all the members" do
+      scenario "displaying all the members" do
         visit members_path
         expect(page).to have_content "Listado de Miembros"
         expect(page).to have_content user.church.name
@@ -21,7 +21,7 @@ feature "Members pages" do
         expect(page).not_to have_content 'No se encontraron miembros ingresados'
       end
 
-      scenario "Access to member details" do
+      scenario "access to member details" do
         visit members_path
         click_link member.first_name
         expect(page).to have_content "Editar Miembro"
@@ -73,7 +73,7 @@ feature "Members pages" do
       expect(page).to have_content "Homero"
     end
 
-    scenario "Tries to create member without name" do
+    scenario "tries to create member without name" do
       visit new_member_path
       click_button "Crear Miembro"
       # save_and_open_page

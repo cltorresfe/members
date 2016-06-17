@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Login" do
+feature "Sign in" do
   let!(:user) { create(:user) }
 
   describe "when user has signed in" do
@@ -21,7 +21,7 @@ feature "Login" do
     end
   end
 
-  describe " when user has logged out" do
+  describe "when user has logged out" do
     scenario 'loads message login' do
       visit root_path
       expect(page).not_to have_content 'Plataforma Miembros de Iglesia'

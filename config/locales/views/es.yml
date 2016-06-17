@@ -71,6 +71,8 @@ es:
       title: 'Editar Iglesia'
     new:
       title: 'Nueva Iglesia'
+    create:
+      title: 'Nueva Iglesia'
     show:
       name: 'Nombre'
       address: 'Dirección'
