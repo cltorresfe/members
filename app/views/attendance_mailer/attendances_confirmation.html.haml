@@ -1,52 +1,53 @@
-%h1
-  Estimado administrador del ministerio
-  = @ministry.name
-  !
-
-%p
-  - if(@present_attendances.present?)
-    Esta es la lista de miembros que asistieron el 
-    = @attendance_date.to_date
-    %table
-      %thead
-        %tr
-          %th= Member.human_attribute_name("first_name")
-          %th= Member.human_attribute_name("last_name")
-          %th= Member.human_attribute_name("address")
-          %th= Member.human_attribute_name("email")
-          %th= Member.human_attribute_name("phone")
-      %tbody
-      - @present_attendances.each do |attendance|
-        %tr
-          %td= attendance.member.first_name
-          %td= attendance.member.last_name
-          %td= attendance.member.address
-          %td= attendance.member.email
-          %td= attendance.member.phone
-  - else
-    Lamentamos informar que para esta fecha no hubo ningún miembro que asistío a 
+.title{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
+  %h2{:style => "padding-left: 23px;"}
+    Estimado administrador del ministerio
     = @ministry.name
-%p
-  - if(@absent_attendances.present?)
-    Estos son los miembros que no asistieron. Por favor, llámalos! 
-    %table
-      %thead
-        %tr
-          %th= Member.human_attribute_name("first_name")
-          %th= Member.human_attribute_name("last_name")
-          %th= Member.human_attribute_name("address")
-          %th= Member.human_attribute_name("email")
-          %th= Member.human_attribute_name("phone")
-      %tbody
-      - @absent_attendances.each do |attendance|
-        %tr
-          %td= attendance.member.first_name
-          %td= attendance.member.last_name
-          %td= attendance.member.address
-          %td= attendance.member.email
-          %td= attendance.member.phone
-  - else
-    En este día hubo asistencia completa. Felicidades, buen trabajo!
-
-%p Saluda Atte. 
-%p= @user.name
+.panel{:style => "padding-left: 23px;color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
+  .content{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
+    - if(@present_attendances.present?)
+      Esta es la lista de miembros que asistieron el
+      = @attendance_date.to_date
+      %p
+        %table{:style => "border:1px solid #2A3F54;width:80%;border-collapse:collapse; "}
+          %thead
+            %tr{:style => "margin: 25px;padding-top: 5px;border-top: 1px solid; #eaeaea;"}
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("first_name")
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("last_name")
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("address")
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("email")
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("phone")
+          %tbody
+          - @present_attendances.each do |attendance|
+            %tr
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.first_name
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.last_name
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.address
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.email
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.phone
+    - else
+      Lamentamos informar que para esta fecha no hubo ningún miembro que asistío a
+      = @ministry.name
+    - if(@absent_attendances.present?)
+      Estos son los miembros que no asistieron. Por favor, comunícate con ellos!
+      %p
+        %table{:style => "border:1px solid black;width:80%;border-collapse:collapse;color: #a94442; "}
+          %thead{:style => "margin: 25px;padding-top: 5px;border-top: 1px solid; #a94442;"}
+            %tr
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("first_name")
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("last_name")
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("address")
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("email")
+              %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("phone")
+          %tbody
+          - @absent_attendances.each do |attendance|
+            %tr
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.first_name
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.last_name
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.address
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.email
+              %td{:style => "border:1px solid;padding:5px;"}= attendance.member.phone
+    - else
+      En este día hubo asistencia completa. Felicidades, buen trabajo!
+  .footer{:style => "line-height: 0.4;padding-top: 15px;"}
+    %p Saluda Atte.
+    %p= @user.name
