@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20160615182858) do
     t.text     "body"
     t.string   "resource_id",   null: false
     t.string   "resource_type", null: false
-    t.integer  "author_id"
     t.string   "author_type"
+    t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
@@ -120,7 +120,6 @@ ActiveRecord::Schema.define(version: 20160615182858) do
     t.datetime "discipline_date"
     t.datetime "transfer_date"
     t.index ["church_id"], name: "index_members_on_church_id", using: :btree
-    t.index ["status"], name: "index_members_on_status", using: :btree
   end
 
   create_table "members_responsibilities", id: false, force: :cascade do |t|
@@ -169,7 +168,15 @@ ActiveRecord::Schema.define(version: 20160615182858) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "attendances", "members"
+  add_foreign_key "attendances", "ministries"
+  add_foreign_key "charge_members", "charges"
+  add_foreign_key "charge_members", "members"
+  add_foreign_key "charges", "ministries"
+  add_foreign_key "charges", "responsibilities"
   add_foreign_key "families", "churches"
+  add_foreign_key "members", "churches"
   add_foreign_key "ministries", "churches"
   add_foreign_key "responsibilities", "churches"
+  add_foreign_key "users", "churches"
 end
