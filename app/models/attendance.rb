@@ -18,6 +18,8 @@ class Attendance < ApplicationRecord
   scope :present, -> { where(present: true ) }
   scope :absent, -> { where(present: false) }
 
+  before_validation :format_date
+
   def self.attendances_last_week(church)
     joins(:ministry).
     joins("left join churches on ministries.church_id = churches.id").
@@ -30,6 +32,10 @@ class Attendance < ApplicationRecord
 
   def self.by_date_and_ministry(attendance_date, ministry_id)
     where(attendance_date: attendance_date, ministry_id: ministry_id)
+  end
+
+  def format_date
+    self.attendance_date = self.attendance_date.beginning_of_day if self.attendance_date.present?
   end
 
 end

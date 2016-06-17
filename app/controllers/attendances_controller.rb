@@ -14,7 +14,7 @@ class AttendancesController < ApplicationController
 
   def create
     attendances = params[:attendance]
-    attendance_date = Date.parse(params[:attendance_date]).beginning_of_day
+    attendance_date = Date.parse(params[:attendance_date])
     if attendances && attendances.any?
       attendances.each do |attendance_params|
         attendance = Attendance.find_or_initialize_by(
