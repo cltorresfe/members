@@ -6,8 +6,7 @@
           .x_panel
             .x_title
               %h2
-                = link_to edit_responsibility_path(responsibility), data: { toggle: 'tooltip', placement: 'top', title: t('link.show')}  do
-                  =responsibility.name
+                = link_to responsibility.name, edit_responsibility_path(responsibility), data: { toggle: 'tooltip', placement: 'top', title: t('link.show')}
                 = link_to responsibility, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
                   .glyphicon.glyphicon-trash
                 %small

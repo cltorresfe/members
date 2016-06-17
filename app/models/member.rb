@@ -45,12 +45,12 @@ class Member < ApplicationRecord
   validates :first_name, length: { maximum: 35 }
   validates :address, length: { maximum: 100}
 
+  before_validation :change_to_format_phone
   before_create :set_defaults
 
   scope :sorted, -> { order(created_at: :desc) }
   scope :with_birth_date, -> { where.not(birth_date: nil) }
   scope :birth_date_by_month, -> {where('Extract(month from birth_date) = ? AND Extract(day from birth_date) >= ?',Time.zone.now.month, Time.zone.now.day) }
-  before_validation :change_to_format_phone
 
   def set_defaults
     self.status ||= :active

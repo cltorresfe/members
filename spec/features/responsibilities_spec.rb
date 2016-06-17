@@ -47,7 +47,7 @@ feature 'Responsibilities pages' do
   end
 
   describe 'edit/update' do
-    let!(:responsibility){ create(:responsibility, church: user.church) }
+    let!(:responsibility){ create(:responsibility, church: user.church, name: 'Director') }
     background { visit edit_responsibility_path(responsibility) }
 
     scenario 'removing responsibility name' do
@@ -85,7 +85,7 @@ feature 'Responsibilities pages' do
         click_link('', href: "/responsibilities/#{responsibility.id}")
         expect(page).not_to have_content 'Cargo fue borrado exitosamente'
         expect(page).to have_content responsibility.name
-        expect(page).to have_content 'Cargo se encuentra asociado a un ministerio. Favor desasociar primero.'
+        expect(page).to have_content 'Uno o más ministerios se encuentran asociados a este cargo. Favor desasociar primero.'
       end
     end
   end

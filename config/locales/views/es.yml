@@ -91,7 +91,7 @@ es:
       name: Nombre
     destroy:
       success: Cargo fue borrado exitosamente.
-      invalid_foreign_key: Cargo se encuentra asociado a un ministerio. Favor desasociar primero.
+      invalid_foreign_key: Uno o más ministerios se encuentran asociados a este cargo. Favor desasociar primero.
   ministries:
     index:
       title: Listado de Ministerios
@@ -100,6 +100,9 @@ es:
       title: Editar Ministerio
     new:
       title: Nuevo Ministerio
+    destroy:
+      success: Ministerio fue borrado exitosamente.
+      invalid_foreign_key: Uno o más miembros se encuentran asociados a este ministerio. Favor desasociar primero.
   main:
     index:
       box_charges: Cargos

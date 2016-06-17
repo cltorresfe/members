@@ -6,9 +6,9 @@
           .x_panel
             .x_title
               %h2
-                = link_to edit_ministry_path(ministry) do
-                  =ministry.name
-                  .glyphicon.glyphicon-pencil
+                = link_to ministry.name, edit_ministry_path(ministry), data: { toggle: 'tooltip', placement: 'top', title: t('link.show')}
+                = link_to ministry, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
+                  .glyphicon.glyphicon-trash
                 %small
                   = t('common.member', count: ministry.members.size)
               .clearfix

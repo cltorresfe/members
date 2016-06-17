@@ -4,6 +4,7 @@ es:
       church: 'Iglesia'
       member: 'Miembro'
       responsibility: 'Cargo'
+      ministry: 'Ministerio'
       status: 'Estado'
       user: Usuario
       family: Familia

@@ -26,26 +26,23 @@ class MinistriesController < ApplicationController
   def create
     @ministry = Ministry.new(ministry_params)
     @ministry.church = current_user.church
-    respond_to do |format|
-      if @ministry.save
-        flash[:notice] = 'Ministry was successfully created.'
-        format.html { redirect_to action: :index}
-      else
-        format.html { render :new }
-      end
+
+    if @ministry.save
+      flash[:notice] = 'Ministry was successfully created.'
+      redirect_to action: :index
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /ministries/1
   # PATCH/PUT /ministries/1.json
   def update
-    respond_to do |format|
-      if @ministry.update(ministry_params)
-        flash[:notice] = 'Ministry was successfully created.'
-        format.html { redirect_to action: :index}
-      else
-        format.html { render :edit }
-      end
+    if @ministry.update(ministry_params)
+      flash[:notice] = 'Ministry was successfully created.'
+      redirect_to action: :index
+    else
+      render :edit
     end
   end
 
@@ -53,9 +50,11 @@ class MinistriesController < ApplicationController
   # DELETE /ministries/1.json
   def destroy
     @ministry.destroy
-    respond_to do |format|
-      format.html { redirect_to ministries_url, notice: 'Ministry was successfully destroyed.' }
-    end
+    flash[:notice] = t('.success')
+  rescue ActiveRecord::InvalidForeignKey
+    flash[:alert] = t('.invalid_foreign_key')
+  ensure
+    redirect_to ministries_url
   end
 
   private
