@@ -6,12 +6,14 @@
 #  name       :string
 #  address    :string
 #  email      :string
-#  phone      :integer
+#  phone      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Church < ApplicationRecord
+  include ChangeFormatPhone
+
   has_many :members
   has_many :users
   has_many :ministries
@@ -19,5 +21,8 @@ class Church < ApplicationRecord
 
   validates :name, :address, presence: true
   validates :name, :email, uniqueness: true
+  validates :phone, length: { maximum: 12, minimum: 7 }
+  
+  before_validation :change_to_format_phone
 
 end

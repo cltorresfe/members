@@ -6,7 +6,7 @@
 #  name       :string
 #  address    :string
 #  email      :string
-#  phone      :integer
+#  phone      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -16,6 +16,6 @@ FactoryGirl.define do
     name {Faker::Company.name}
     address 'Springfield'
     email { Faker::Internet.email }
-    phone 123456789
+    phone "123456789"
   end
 end
