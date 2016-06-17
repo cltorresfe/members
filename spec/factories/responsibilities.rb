@@ -13,5 +13,7 @@
 FactoryGirl.define do
   factory :responsibility do
     name "Director"
+    administrative true
+    church
   end
 end
