@@ -1,12 +1,12 @@
 .title{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
   %h2{:style => "padding-left: 23px;"}
-    Estimado administrador del ministerio
+    Estimado colaborador del ministerio
     = @ministry.name
 .panel{:style => "padding-left: 23px;color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
   .content{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
     - if(@present_attendances.present?)
       Esta es la lista de miembros que asistieron el
-      = @attendance_date.to_date
+      = @attendance_date.strftime("%d/%m/%Y")
       %p
         %table{:style => "border:1px solid #2A3F54;width:80%;border-collapse:collapse; "}
           %thead
