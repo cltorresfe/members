@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :attendances, only: [:index, :create]
-  resources :responsibilities, except: :destroy
+  resources :responsibilities
   resources :members, except: :show
   resources :churches, only: [:new, :create]
   resources :ministries, except: :show
@@ -76,6 +76,7 @@ end
 #              responsibility GET    /responsibilities/:id(.:format)        responsibilities#show
 #                             PATCH  /responsibilities/:id(.:format)        responsibilities#update
 #                             PUT    /responsibilities/:id(.:format)        responsibilities#update
+#                             DELETE /responsibilities/:id(.:format)        responsibilities#destroy
 #                     members GET    /members(.:format)                     members#index
 #                             POST   /members(.:format)                     members#create
 #                  new_member GET    /members/new(.:format)                 members#new
@@ -83,14 +84,8 @@ end
 #                      member PATCH  /members/:id(.:format)                 members#update
 #                             PUT    /members/:id(.:format)                 members#update
 #                             DELETE /members/:id(.:format)                 members#destroy
-#                    churches GET    /churches(.:format)                    churches#index
-#                             POST   /churches(.:format)                    churches#create
+#                    churches POST   /churches(.:format)                    churches#create
 #                  new_church GET    /churches/new(.:format)                churches#new
-#                 edit_church GET    /churches/:id/edit(.:format)           churches#edit
-#                      church GET    /churches/:id(.:format)                churches#show
-#                             PATCH  /churches/:id(.:format)                churches#update
-#                             PUT    /churches/:id(.:format)                churches#update
-#                             DELETE /churches/:id(.:format)                churches#destroy
 #                  ministries GET    /ministries(.:format)                  ministries#index
 #                             POST   /ministries(.:format)                  ministries#create
 #                new_ministry GET    /ministries/new(.:format)              ministries#new

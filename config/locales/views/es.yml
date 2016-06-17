@@ -6,7 +6,7 @@ es:
     churches: Iglesias
     destroy: Borrar
     edit: Editar
-    show: Ver
+    show: Ver detalles
   button:
     search: Buscar
   confirm:
@@ -84,11 +84,14 @@ es:
       title: Listado de Cargos
       not_found: "No se encontraron cargos asociados"
     edit:
-      title: Editar Cargos
+      title: Editar Cargo
     new:
       title: Nuevo Cargo
     show:
       name: Nombre
+    destroy:
+      success: Cargo fue borrado exitosamente.
+      invalid_foreign_key: Cargo se encuentra asociado a un ministerio. Favor desasociar primero.
   ministries:
     index:
       title: Listado de Ministerios

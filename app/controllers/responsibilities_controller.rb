@@ -22,28 +22,20 @@ class ResponsibilitiesController < ApplicationController
   def create
     @responsibility = Responsibility.new(responsibility_params)
     @responsibility.church = current_user.church
-    respond_to do |format|
-      if @responsibility.save
-        format.html { redirect_to action: :index}
-        format.json { render :show, status: :created, location: @responsibility }
-      else
-        format.html { render :new }
-        format.json { render json: @responsibility.errors, status: :unprocessable_entity }
-      end
+    if @responsibility.save
+      redirect_to action: :index
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /responsibilities/1
   # PATCH/PUT /responsibilities/1.json
   def update
-    respond_to do |format|
-      if @responsibility.update(responsibility_params)
-        format.html { redirect_to action: :index}
-        format.json { render :show, status: :ok, location: @responsibility }
-      else
-        format.html { render :edit }
-        format.json { render json: @responsibility.errors, status: :unprocessable_entity }
-      end
+    if @responsibility.update(responsibility_params)
+      redirect_to action: :index
+    else
+      render :edit
     end
   end
 
@@ -51,10 +43,11 @@ class ResponsibilitiesController < ApplicationController
   # DELETE /responsibilities/1.json
   def destroy
     @responsibility.destroy
-    respond_to do |format|
-      format.html { redirect_to responsibilities_url, notice: 'Responsibility was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = t('.success')
+  rescue ActiveRecord::InvalidForeignKey
+    flash[:alert] = t('.invalid_foreign_key')
+  ensure
+    redirect_to responsibilities_url
   end
 
   private

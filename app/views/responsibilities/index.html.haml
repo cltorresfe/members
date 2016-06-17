@@ -6,18 +6,12 @@
           .x_panel
             .x_title
               %h2
-                = link_to edit_responsibility_path(responsibility) do
+                = link_to edit_responsibility_path(responsibility), data: { toggle: 'tooltip', placement: 'top', title: t('link.show')}  do
                   =responsibility.name
-                  .glyphicon.glyphicon-pencil
+                = link_to responsibility, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
+                  .glyphicon.glyphicon-trash
                 %small
                   = t('common.member', count: responsibility.members_by_church(current_user.church).size)
-              %ul.nav.navbar-right.panel_toolbox
-                %li
-                  %a.collapse-link
-                    %i.fa.fa-chevron-down
-                %li
-                  %a.close-link
-                    %i.fa.fa-close
               .clearfix
             .x_content{:style => "display: block;"}
               .row
