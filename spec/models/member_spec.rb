@@ -15,7 +15,7 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_length_of(:address)}
 
 
-  let!(:member) { create(:member, first_name: 'Homero')}
+  let!(:member) { create(:member, first_name: 'Homero', last_name: 'Simpsons')}
 
   describe '#search' do
     it 'searches an existing member' do
@@ -130,6 +130,11 @@ RSpec.describe Member, :type => :model do
   context '.country_name' do
     subject{ member.country_name }
     it { is_expected.to eq 'Chile'}
+  end
+
+  context '.full_name' do
+    subject{ member.full_name }
+    it { is_expected.to eq 'Homero Simpsons'}
   end
 
 end

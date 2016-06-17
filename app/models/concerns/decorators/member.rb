@@ -19,6 +19,10 @@ module Decorators
         iso_country = ISO3166::Country[country]
         iso_country.translations[I18n.locale.to_s] || iso_country.name
       end
+
+      def full_name
+        "#{first_name} #{last_name}"
+      end
     end
   end
 end

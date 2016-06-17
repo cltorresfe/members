@@ -27,7 +27,7 @@
                   .col-sm-12.text-center
                     .emphasis
                       = link_to edit_member_path(member) do
-                        = member.first_name
+                        = member.full_name
                         %i.glyphicon.glyphicon-pencil
               .col-md-12.col-sm-12.col-xs-12.text-center
                 = will_paginate @members, :class => 'margin: 0px'
