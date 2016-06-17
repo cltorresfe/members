@@ -41,6 +41,10 @@ es:
 
       responsibility:
         name: 'Nombre'
+      ministry:
+        name: 'Nombre'
+        description: 'Descripción'
+        responsibilities: 'Responsabilidades'
       user:
         name: Nombre
         current_password: Contraseña actual

@@ -14,7 +14,7 @@ class MembersController < ApplicationController
       elsif(@members.blank?)
         flash[:notice] = I18n.t('flash_messages.no_found')
       end
-    # List all members of the church 
+    # List all members of the church
     else
       if(current_user.church.present? && current_user.church.members.present?)
         @members = current_user.church.members.sorted
@@ -29,6 +29,7 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new(status: :active)
+
   end
 
   # GET /members/1/edit
@@ -41,29 +42,25 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     @member.church = current_user.church
-    respond_to do |format|
-      if @member.save
-        WelcomeMember.notify(@member).deliver_later!
-        flash[:notice] = 'Member was successfully created.'
-        format.html { redirect_to action: :index}
-      else
-        load_ministries
-        format.html { render :new }
-      end
+    if @member.save
+      WelcomeMember.notify(@member).deliver_later!
+      flash[:notice] = 'Member was successfully created.'
+      redirect_to action: :index
+    else
+      load_ministries
+      render :new
     end
   end
 
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update
-    respond_to do |format|
-      if @member.update(member_params)
-        flash[:notice] = 'Member was successfully updated.'
-        format.html { redirect_to action: :index}
-      else
-        load_ministries
-        format.html { render :edit }
-      end
+    if @member.update(member_params)
+      flash[:notice] = 'Member was successfully updated.'
+      redirect_to action: :index
+    else
+      load_ministries
+      render :edit
     end
   end
 
@@ -84,13 +81,13 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:first_name, :last_name, :gender, :run, :city, 
-        :country, :birth_date, :testimony, :baptism_date, :membership_date, :discipline_date, 
+      params.require(:member).permit(:first_name, :last_name, :gender, :run, :city,
+        :country, :birth_date, :testimony, :baptism_date, :membership_date, :discipline_date,
         :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone, :status, charge_ids:[])
     end
 
     def load_ministries
-      @ministries = Ministry.all
+      @ministries = Ministry.by_church(current_user.church)
     end
 
 end

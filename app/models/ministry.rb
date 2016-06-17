@@ -21,4 +21,8 @@ class Ministry < ApplicationRecord
 
   validates :name, :responsibilities, presence: true
   validates :name, uniqueness: true
+
+  def self.by_church(church)
+    where(church: church)
+  end
 end

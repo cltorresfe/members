@@ -17,7 +17,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'puma'
 gem 'pundit'
-gem 'react_on_rails', "~> 6"#, github: 'shakacode/react_on_rails', branch: :master
+# gem 'react_on_rails', "~> 6"#, github: 'shakacode/react_on_rails', branch: :master
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
@@ -39,7 +39,8 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'quiet_assets'
   gem 'railroady'
-  gem 'rspec-rails'
+  gem 'rspec', '~> 3.5.0.beta4'
+  gem 'rspec-rails', '~> 3.5.0.beta4'
   gem 'spring-commands-rspec'
 end
 
