@@ -14,7 +14,7 @@ RSpec.describe AttendanceMailer, :type => :mailer do
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("listado")
+      expect(mail.body.encoded).to match("Estimado")
     end
   end
 
