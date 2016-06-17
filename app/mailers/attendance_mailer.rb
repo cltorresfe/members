@@ -13,6 +13,6 @@ class AttendanceMailer < ApplicationMailer
     @present_attendances = Attendance.present.by_date_and_ministry(attendance_date, ministry_id)
     @absent_attendances = Attendance.absent.by_date_and_ministry(attendance_date, ministry_id)
 
-    mail to: @administrative_members.pluck(:email), subject: "Confirmación de registro de asistencia"
+    mail bcc: @administrative_members.pluck(:email), subject: "Confirmación de registro de asistencia"
   end
 end
