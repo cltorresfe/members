@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :attendances, only: [:index, :create]
   resources :responsibilities, except: :destroy
   resources :members, except: :show
-  resources :churches
+  resources :churches, only: [:new, :create]
   resources :ministries, except: :show
   resources :families, except: :show
 
