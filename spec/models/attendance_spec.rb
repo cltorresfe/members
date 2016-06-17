@@ -20,5 +20,13 @@ RSpec.describe Attendance, :type => :model do
       expect(Attendance.by_date_and_ministry(2.days.ago.beginning_of_day, ministry.id)).not_to be_empty 
     end
   end
+  describe 'format_date' do
 
+    it 'date beginning of day' do
+      expect(attendance.format_date).to eq(2.days.ago.beginning_of_day)
+    end
+    it 'without format date' do
+      expect(attendance.format_date).not_to eq(2.days.ago)
+    end
+  end
 end
