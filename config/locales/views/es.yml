@@ -35,5 +35,3 @@ es:
       zero: sin miembros
       one: 1 miembro
       other: "%{count} miembros"
-    attendance:
-      title_panel: Asistencia por Ministerio

@@ -1,10 +1,5 @@
 class AttendanceMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.attendance_mailer.attendances_confirmation.subject
-  #
   def attendances_confirmation(attendance_date, ministry_id, user_id)
     @user = User.find(user_id)
     @ministry = Ministry.find(ministry_id)
@@ -13,6 +8,6 @@ class AttendanceMailer < ApplicationMailer
     @present_attendances = Attendance.present.by_date_and_ministry(attendance_date, ministry_id)
     @absent_attendances = Attendance.absent.by_date_and_ministry(attendance_date, ministry_id)
 
-    mail bcc: @administrative_members.pluck(:email), subject: "Confirmación de registro de asistencia"
+    mail bcc: @administrative_members.pluck(:email), subject: I18n.t('attendance_mailer.attendances_confirmation.subject')
   end
 end

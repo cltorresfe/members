@@ -1,28 +1,28 @@
-Estimado encargado del ministerio <%= @ministry.name %>
+<%= t('.title') %> <%= @ministry.name %>
 
 <% if(@present_attendances.present?) %>
-Esta es la lista de miembros que asistieron el <%= @attendance_date.strftime("%d/%m/%Y") %>
+<%= t('.content_attendance')%> <%= @attendance_date.strftime("%d/%m/%Y") %>
 
-  Nombre 	Teléfono
+  <%= t('.first_name')%>	<%= t('.address')%>				<%= t('.email')%>	<%= t('.phone')%>
   <% @present_attendances.each do |attendance| %>
-  <%=attendance.member.first_name %>  <%= attendance.member.address %>    <%= attendance.member.email %>  <%= attendance.member.phone %>
+  <%=attendance.member.first_name %>	<%= attendance.member.address %>			<%= attendance.member.email %>	<%= attendance.member.phone %>
   <% end %>
 
 <% else %>
-  Lamentamos informar que para esta fecha no hubo ningún miembro que asistío a <%= @ministry.name %>
+  <%= t('.content_empty_attendance')%> <%= @ministry.name %>
 <% end %>
 
 <% if(@absent_attendances.present?) %>
-Estos son los miembros que no asistieron. Por favor, comunícate con ellos!
+<%= t('.content_nonattendance')%>
 
-  Nombre  Dirección     Email 	Teléfono
+  <%= t('.first_name')%>	<%= t('.address')%>				<%= t('.email')%>	<%= t('.phone')%>
   <% @absent_attendances.each.each do |attendance| %>
-  <%=attendance.member.first_name %>  <%= attendance.member.address %>    <%= attendance.member.email %> 	<%= attendance.member.phone %>
+  <%=attendance.member.first_name %>	<%= attendance.member.address %>			<%= attendance.member.email %>	<%= attendance.member.phone %>
   <% end %>
 
 <% else %>
-  En este día hubo asistencia completa. Felicidades, buen trabajo!
+  <%= t('.content_full_attendance')%>
 <% end %>
 
-Saluda atte. 
+<%= t('.footer')%> 
 <%= @user.name %>

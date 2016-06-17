@@ -1,11 +1,11 @@
 .title{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
   %h2{:style => "padding-left: 23px;"}
-    Estimado colaborador del ministerio
+    = t('.title')
     = @ministry.name
 .panel{:style => "padding-left: 23px;color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
   .content{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
     - if(@present_attendances.present?)
-      Esta es la lista de miembros que asistieron el
+      = t('.content_attendance')
       = @attendance_date.strftime("%d/%m/%Y")
       %p
         %table{:style => "border:1px solid #2A3F54;width:80%;border-collapse:collapse; "}
@@ -25,10 +25,10 @@
               %td{:style => "border:1px solid;padding:5px;"}= attendance.member.email
               %td{:style => "border:1px solid;padding:5px;"}= attendance.member.phone
     - else
-      Lamentamos informar que para esta fecha no hubo ningún miembro que asistío a
+      = t('.content_empty_attendance')
       = @ministry.name
     - if(@absent_attendances.present?)
-      Estos son los miembros que no asistieron. Por favor, comunícate con ellos!
+      = t('.content_nonattendance')
       %p
         %table{:style => "border:1px solid black;width:80%;border-collapse:collapse;color: #a94442; "}
           %thead{:style => "margin: 25px;padding-top: 5px;border-top: 1px solid; #a94442;"}
@@ -47,7 +47,7 @@
               %td{:style => "border:1px solid;padding:5px;"}= attendance.member.email
               %td{:style => "border:1px solid;padding:5px;"}= attendance.member.phone
     - else
-      En este día hubo asistencia completa. Felicidades, buen trabajo!
+      =t('.content_full_attendance')
   .footer{:style => "line-height: 0.4;padding-top: 15px;"}
-    %p Saluda Atte.
+    %p= t('.footer')
     %p= @user.name

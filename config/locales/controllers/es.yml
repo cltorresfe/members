@@ -70,5 +70,6 @@ es:
   attendances:
     index:
       title: Registro de Asistencia
+      title_panel: Asistencia por Ministerio
       
 
