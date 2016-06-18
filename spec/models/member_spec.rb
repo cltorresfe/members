@@ -13,6 +13,8 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_length_of(:phone)}
   it { is_expected.to validate_length_of(:name)}
   it { is_expected.to validate_length_of(:address)}
+  it { is_expected.to allow_value('test@test.com').for(:email)}
+  it { is_expected.not_to allow_value('invalid').for(:email)}
 
   let!(:member) { create(:member, first_name: 'Homero', last_name: 'Simpsons')}
 
