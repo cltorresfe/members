@@ -64,6 +64,8 @@ es:
       church: 'Iglesia'
       responsibilities: 'Cargos'
       status: 'Estado'
+    destroy:
+      success: Miembro fue borrado exitosamente
   churches:
     index:
       title: 'Listado de Iglesias'

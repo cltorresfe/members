@@ -43,7 +43,6 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
     @member.church = current_user.church
     if @member.save
-      # WelcomeMember.notify(@member).deliver_later!
       flash[:notice] = 'Member was successfully created.'
       redirect_to action: :index
     else
@@ -68,9 +67,7 @@ class MembersController < ApplicationController
   # DELETE /members/1.json
   def destroy
     @member.destroy
-    respond_to do |format|
-      format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
-    end
+    redirect_to members_url, notice: t('.success')
   end
 
   private

@@ -2,15 +2,19 @@ require 'rails_helper'
 
 feature "Members pages" do
   let!(:user) { create(:user) }
+  let!(:director_resp){ create(:responsibility, church: user.church, name: 'Director') }
+  let!(:leader_resp){ create(:responsibility, church: user.church, name: 'Lider') }
+  let!(:ministry){
+    create(:ministry, church: user.church, responsibilities: [director_resp, leader_resp])
+  }
 
   background do
     log_in user
   end
 
   describe 'index' do
-
     context 'with members' do
-      let!(:member){ create(:member, church: user.church) }
+      let!(:member){ create(:member, church: user.church, charges: director_resp.charges) }
 
       scenario "displaying all the members" do
         visit members_path
@@ -51,6 +55,10 @@ feature "Members pages" do
         expect(page).to have_field('Testimonio', with: member.testimony, visible: false)
         expect(page).to have_select('Estado', selected: 'Activo', visible: false)
 
+        # Responsibilities
+        expect(page).to have_checked_field("member_charge_ids_#{director_resp.charges.last.id}", visible: false)
+        expect(page).not_to have_checked_field("member_charge_ids_#{leader_resp.charges.last.id}", visible: false)
+
       end
     end
 
@@ -81,4 +89,38 @@ feature "Members pages" do
     end
   end
 
+  describe 'edit/update' do
+    let!(:member){ create(:member, church: user.church, charges: director_resp.charges) }
+    background { visit edit_member_path(member) }
+
+    scenario 'removing member name' do
+      fill_in 'Nombres', with: ''
+      fill_in 'Apellidos', with: ''
+      click_button 'Actualizar Miembro'
+      expect(page).to have_content 'No puede estar en blanco'
+    end
+
+    scenario 'updating member name' do
+      expect(page).to have_field('Nombres', with: member.first_name)
+      expect(page).to have_field('Apellidos', with: member.last_name)
+      fill_in 'Nombres', with: 'Marge'
+      fill_in 'Apellidos', with: 'Simpsons'
+      click_button 'Actualizar Miembro'
+      expect(page).to have_content 'Marge Simpsons'
+    end
+  end
+
+  describe 'destroy' do
+    let!(:member){ create(:member, church: user.church, charges: director_resp.charges) }
+    background { visit members_path }
+
+    context 'member with no associations' do
+      scenario 'destroys the given member' do
+        expect(page).to have_content member.full_name
+        click_link('', href: "/members/#{member.id}")
+        expect(page).to have_content 'No se encontraron miembros ingresados'
+        expect(page).not_to have_content member.full_name
+      end
+    end
+  end
 end

@@ -36,7 +36,7 @@ class Member < ApplicationRecord
   AGE_RANGES = [[0,14],[15,18],[19,29],[30,44],[45,59],[60,120]]
 
   belongs_to :church
-  has_many :charge_members
+  has_many :charge_members, dependent: :destroy
   has_many :charges, through: :charge_members
 
   validates :first_name, :last_name, :church, presence: true
