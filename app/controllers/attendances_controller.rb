@@ -14,17 +14,20 @@ class AttendancesController < ApplicationController
 
   def create
     attendances = params[:attendance]
+    attendance_date = Date.parse(params[:attendance_date])
     if attendances && attendances.any?
       attendances.each do |attendance_params|
         attendance = Attendance.find_or_initialize_by(
           member_id: attendance_params[:member_id],
           ministry_id: params[:ministry_id],
-          attendance_date: Date.parse(params[:attendance_date]).beginning_of_day
+          attendance_date: attendance_date
         )
         attendance.present = attendance_params[:present].present?
         attendance.save
       end
+      AttendanceMailer.attendances_confirmation(attendance_date, params[:ministry_id], current_user.id).deliver_now if params[:send_mail].present?
     end
+
     redirect_to action: :index, attendance_date: params[:attendance_date], ministry_id: params[:ministry_id]
   end
 

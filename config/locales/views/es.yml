@@ -34,6 +34,8 @@ es:
     index:
       not_found: |
         Para registrar asistencia, primero debe <a href="%{url}">crear un ministerio</a>
+      title: Registro de Asistencia
+      title_panel: Asistencia por Ministerio
   families:
     create:
       title: Nueva Familia

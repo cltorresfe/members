@@ -14,7 +14,6 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_length_of(:name)}
   it { is_expected.to validate_length_of(:address)}
 
-
   let!(:member) { create(:member, first_name: 'Homero', last_name: 'Simpsons')}
 
   describe '#search' do
@@ -122,6 +121,7 @@ RSpec.describe Member, :type => :model do
 
   context '.age' do
     let!(:member){ create(:member, birth_date: 15.years.ago)}
+
     it 'returns the age' do
       expect(member.age).to eq 15
     end
@@ -137,4 +137,12 @@ RSpec.describe Member, :type => :model do
     it { is_expected.to eq 'Homero Simpsons'}
   end
 
+  describe '#administrative_for_ministry' do
+    let(:ministry){ create(:ministry) }
+
+    it 'returns an array of administrative members given a ministry' do
+      pending("queda pendiendte hasta que se cree estructura de factory girl con la asistencia")
+      expect(Member.administrative_for_ministry(ministry.id)).not_to be_empty
+    end
+  end
 end
