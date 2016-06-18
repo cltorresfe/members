@@ -1,0 +1,21 @@
+require "rails_helper"
+
+RSpec.describe AttendanceMailer, :type => :mailer do
+  describe "attendances_confirmation" do
+    let(:ministry){ create(:ministry)}
+    let(:user){ create(:user)}
+    let(:mail) { AttendanceMailer.attendances_confirmation( 1.day.ago, ministry.id, user.id) }
+
+    it "renders the headers" do
+      pending("queda pendiente hasta que tengamos la estructura del factory girl de asistencia")
+      expect(mail.subject).to eq("Confirmación de registro de asistencia")
+      expect(mail.to).to eq([""])
+      expect(mail.from).to eq(["no_reply@church.com"])
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match("Estimado")
+    end
+  end
+
+end

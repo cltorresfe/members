@@ -1,0 +1,28 @@
+<%= t('.title') %> <%= @ministry.name %>
+
+<% if(@present_attendances.present?) %>
+<%= t('.content_attendance')%> <%= @attendance_date.strftime("%d/%m/%Y") %>
+
+  <%= t('.first_name')%>	<%= t('.address')%>				<%= t('.email')%>	<%= t('.phone')%>
+  <% @present_attendances.each do |attendance| %>
+  <%=attendance.member.first_name %>	<%= attendance.member.address %>			<%= attendance.member.email %>	<%= attendance.member.phone %>
+  <% end %>
+
+<% else %>
+  <%= t('.content_empty_attendance')%> <%= @ministry.name %>
+<% end %>
+
+<% if(@absent_attendances.present?) %>
+<%= t('.content_nonattendance')%>
+
+  <%= t('.first_name')%>	<%= t('.address')%>				<%= t('.email')%>	<%= t('.phone')%>
+  <% @absent_attendances.each.each do |attendance| %>
+  <%=attendance.member.first_name %>	<%= attendance.member.address %>			<%= attendance.member.email %>	<%= attendance.member.phone %>
+  <% end %>
+
+<% else %>
+  <%= t('.content_full_attendance')%>
+<% end %>
+
+<%= t('.footer')%> 
+<%= @user.name %>

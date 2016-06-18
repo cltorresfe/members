@@ -26,9 +26,10 @@
                   .col-md-2.col-sm-2.col-xs-4
                     .col-sm-12
                       .text-center
-                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle profile_img', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                    .col-sm-12.text-center
-                      .emphasis
-                        = link_to edit_member_path(member) do
-                          = member.first_name
-                          %i.glyphicon.glyphicon-pencil
+                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
+                    .col-sm-12
+                      .text-center
+                        .emphasis
+                          = link_to edit_member_path(member) do
+                            = member.first_name
+                            %i.glyphicon.glyphicon-pencil

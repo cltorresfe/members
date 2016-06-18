@@ -23,4 +23,5 @@ class Responsibility < ApplicationRecord
   def self.by_church(church)
     where(church: church)
   end
+
 end

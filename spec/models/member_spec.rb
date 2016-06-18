@@ -134,5 +134,15 @@ RSpec.describe Member, :type => :model do
       expect(member.age).to eq 15
     end
   end
-end
 
+
+  describe '#administrative_for_ministry' do
+    let(:ministry){ create(:ministry) }
+
+    it 'returns an array of administrative members given a ministry' do
+      pending("queda pendiendte hasta que se cree estructura de factory girl con la asistencia")
+      expect(Member.administrative_for_ministry(ministry.id)).not_to be_empty 
+    end
+
+  end
+end
