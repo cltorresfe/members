@@ -5,9 +5,7 @@ class MinistriesController < ApplicationController
   # GET /ministries.json
   def index
     @ministries = current_user.church.ministries.paginate(page: params[:page], per_page: 18)
-    if(@ministries.blank?)
-      flash[:alert] = t('.not_found')
-    end
+    flash.now[:alert] = t('.not_found') if(@ministries.blank?)
   end
 
   # GET /ministries/new

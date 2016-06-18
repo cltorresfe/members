@@ -6,7 +6,7 @@ class FamiliesController < ApplicationController
   def index
     @families = current_user.church.families
     if(@families.blank?)
-      flash[:alert] = t('.not_found')
+      flash.now[:alert] = t('.not_found')
     end
   end
 
