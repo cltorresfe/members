@@ -3,7 +3,9 @@ require 'coveralls'
 require 'capybara/rspec'
 
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter if ENV['CIRCLECI']
-SimpleCov.start 'rails'
+SimpleCov.start('rails') do
+  add_filter 'app/admin'
+end
 
 Capybara.javascript_driver = :webkit
 
