@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :has_church_assigned
+  helper_method :current_church
 
   def authenticate_active_admin!
     unless current_user && current_user.admin?
@@ -12,8 +13,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_church
+    current_user.church if current_user
+  end
+
   def has_church_assigned
-    if current_user && current_user.church.blank? && controller_name != 'churches' && !['new', 'create'].include?( action_name )
+    if current_user && current_church.blank? && controller_name != 'churches' && !['new', 'create'].include?( action_name )
       redirect_to new_church_path
     end
   end

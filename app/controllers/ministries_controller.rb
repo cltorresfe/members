@@ -4,26 +4,26 @@ class MinistriesController < ApplicationController
   # GET /ministries
   # GET /ministries.json
   def index
-    @ministries = current_user.church.ministries.paginate(page: params[:page], per_page: 18)
+    @ministries = current_church.ministries.paginate(page: params[:page], per_page: 18)
     flash.now[:alert] = t('.not_found') if(@ministries.blank?)
   end
 
   # GET /ministries/new
   def new
     @ministry = Ministry.new
-    @responsibilities = Responsibility.by_church(current_user.church)
+    @responsibilities = Responsibility.by_church(current_church)
   end
 
   # GET /ministries/1/edit
   def edit
-    @responsibilities = Responsibility.by_church(current_user.church)
+    @responsibilities = Responsibility.by_church(current_church)
   end
 
   # POST /ministries
   # POST /ministries.json
   def create
     @ministry = Ministry.new(ministry_params)
-    @ministry.church = current_user.church
+    @ministry.church = current_church
 
     if @ministry.save
       flash[:notice] = 'Ministry was successfully created.'

@@ -1,10 +1,10 @@
 class AttendancesController < ApplicationController
 
   def index
-    @current_ministry = params[:ministry_id] ? Ministry.find(params[:ministry_id]) : current_user.church.ministries.first
+    @current_ministry = params[:ministry_id] ? Ministry.find(params[:ministry_id]) : current_church.ministries.first
     @attendance_date = params[:attendance_date] || Date.current.strftime('%d/%m/%Y')
     @attendances = Attendance.where(ministry: @current_ministry, attendance_date: Date.parse(@attendance_date).beginning_of_day)
-    @ministries = current_user.church.ministries
+    @ministries = current_church.ministries
     if(@current_ministry.present?)
       @charges = @current_ministry.charges.non_administrative
     else
