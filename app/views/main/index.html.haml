@@ -54,17 +54,7 @@
             .clearfix
           .x_content{:style => "display: block;"}
             .box-body.no-padding
-              .row
-                - @members_last.each do |member|
-                  .col-md-3.col-sm-2.col-xs-4
-                    .col-sm-12
-                      .text-center
-                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                    .col-sm-12.text-center
-                      .emphasis.text-center
-                        = link_to edit_member_path(member) do
-                          = member.first_name
-                          %i.glyphicon.glyphicon-pencil
+              .row= render partial: 'members/member', collection: @members_last, locals: {small_size: true}
   .col-md-3.col-sm-12.col-xs-12
     .box-body.no-padding
       .x_panel

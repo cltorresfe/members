@@ -12,17 +12,6 @@
           .x_content
             .row
               .clearfix
-              - @members.each do |member|
-                .col-md-2.col-sm-2.col-xs-4
-                  .col-sm-12
-                    .text-center
-                      = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member), data: { toggle: 'tooltip', placement: 'top', title: t('link.show')}
-                  .col-sm-12.text-center
-                    .emphasis
-                      .text-center
-                        = link_to member.full_name, edit_member_path(member), data: { toggle: 'tooltip', placement: 'top', title: t('link.show')}
-                        = link_to member, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
-                          .glyphicon.glyphicon-trash
-
+              = render partial: 'member', collection: @members, locals: {allow_deletion: true}
               .col-md-12.col-sm-12.col-xs-12
                 .text-center= will_paginate @members, :class => 'margin: 0px'
