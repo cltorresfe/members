@@ -2,6 +2,7 @@
 
 ## Estado
 [![Coverage Status](https://coveralls.io/repos/github/cltorresfe/members/badge.svg?branch=master)](https://coveralls.io/github/cltorresfe/members?branch=master)
+[![CircleCI](https://circleci.com/gh/cltorresfe/members.svg?style=shield&circle-token=5c9cea46dc919158430b7a9956276e05ca0033bb)](https://circleci.com/gh/cltorresfe/members)
 
 ## Configuracion
 Para correr capybara-webkit en Ubuntu es necesario instalar:
