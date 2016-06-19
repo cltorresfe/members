@@ -4,7 +4,7 @@ class FamiliesController < ApplicationController
   # GET /families
   # GET /families.json
   def index
-    @families = current_user.church.families
+    @families = current_church.families
     if(@families.blank?)
       flash.now[:alert] = t('.not_found')
     end
@@ -23,7 +23,7 @@ class FamiliesController < ApplicationController
   # POST /families.json
   def create
     @family = Family.new(family_params)
-    @family.church = current_user.church
+    @family.church = current_church
 
     if @family.save
       flash[:notice] = t('.success', name: @family.name)
@@ -36,7 +36,7 @@ class FamiliesController < ApplicationController
   # PATCH/PUT /families/1
   # PATCH/PUT /families/1.json
   def update
-    @family.church = current_user.church
+    @family.church = current_church
     if @family.update(family_params)
       flash[:notice] = t('.success', name: @family.name)
       redirect_to action: :index

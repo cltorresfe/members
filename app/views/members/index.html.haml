@@ -5,9 +5,9 @@
         .x_panel
           .x_title
             %h2
-              = current_user.church.name
+              = current_church.name
               %small
-                = t('common.member', count: current_user.church.members.size)
+                = t('common.member', count: current_church.members.size)
             .clearfix
           .x_content
             .row

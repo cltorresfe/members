@@ -4,7 +4,7 @@ class ResponsibilitiesController < ApplicationController
   # GET /responsibilities
   # GET /responsibilities.json
   def index
-    @responsibilities = Responsibility.by_church(current_user.church)
+    @responsibilities = Responsibility.by_church(current_church)
     flash.now[:alert] = t('.not_found') if @responsibilities.blank?
   end
 
@@ -21,7 +21,7 @@ class ResponsibilitiesController < ApplicationController
   # POST /responsibilities.json
   def create
     @responsibility = Responsibility.new(responsibility_params)
-    @responsibility.church = current_user.church
+    @responsibility.church = current_church
     if @responsibility.save
       redirect_to action: :index
     else
