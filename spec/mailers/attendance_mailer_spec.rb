@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe AttendanceMailer, :type => :mailer do
   describe "attendances_confirmation" do
-    let(:ministry){ create(:ministry)}
+    let(:ministry) { create(:ministry, :with_responsibilities)}
     let(:user){ create(:user)}
     let(:mail) { AttendanceMailer.attendances_confirmation( 1.day.ago, ministry.id, user.id) }
 

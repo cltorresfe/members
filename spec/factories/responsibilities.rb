@@ -12,6 +12,10 @@
 
 FactoryGirl.define do
   factory :responsibility do
-    name "Director"
+    sequence :name do |n|
+      "Cargo #{n}"
+    end
+    administrative true
+    church
   end
 end

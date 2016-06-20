@@ -36,22 +36,22 @@ class Member < ApplicationRecord
   AGE_RANGES = [[0,14],[15,18],[19,29],[30,44],[45,59],[60,120]]
 
   belongs_to :church
-  has_many :charge_members
+  has_many :charge_members, dependent: :destroy
   has_many :charges, through: :charge_members
   has_many :attendances
 
   validates :first_name, :last_name, :church, presence: true
   validates :email, uniqueness: true, email: true, allow_blank: true
-  validates :phone, length: { maximum: 12, minimum: 7 }, allow_blank: true
+  validates :phone, length: { maximum: 15, minimum: 7 }, allow_blank: true
   validates :first_name, length: { maximum: 35 }
   validates :address, length: { maximum: 100}
 
+  before_validation :change_to_format_phone
   before_create :set_defaults
 
   scope :sorted, -> { order(created_at: :desc) }
   scope :with_birth_date, -> { where.not(birth_date: nil) }
   scope :birth_date_by_month, -> {where('Extract(month from birth_date) = ? AND Extract(day from birth_date) >= ?',Time.zone.now.month, Time.zone.now.day) }
-  before_validation :change_to_format_phone
 
   def set_defaults
     self.status ||= :active

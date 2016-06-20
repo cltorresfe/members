@@ -6,30 +6,13 @@
           .x_panel
             .x_title
               %h2
-                = link_to edit_ministry_path(ministry) do
-                  =ministry.name
-                  .glyphicon.glyphicon-pencil
+                = link_to ministry.name, edit_ministry_path(ministry), data: { toggle: 'tooltip', placement: 'top', title: t('link.show')}
+                = link_to ministry, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
+                  %i.glyphicon.glyphicon-trash
                 %small
                   = t('common.member', count: ministry.members.size)
-              %ul.nav.navbar-right.panel_toolbox
-                %li
-                  %a.collapse-link
-                    %i.fa.fa-chevron-down
-                %li
-                  %a.close-link
-                    %i.fa.fa-close
               .clearfix
             .x_content{:style => "display: block;"}
               .row
                 .clearfix
-                - ministry.members.each do |member|
-                  .col-md-2.col-sm-2.col-xs-4
-                    .col-sm-12
-                      .text-center
-                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                    .col-sm-12
-                      .text-center
-                        .emphasis
-                          = link_to edit_member_path(member) do
-                            = member.first_name
-                            %i.glyphicon.glyphicon-pencil
+                = render ministry.members

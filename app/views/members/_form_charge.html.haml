@@ -21,10 +21,9 @@
                   .x_panel
                     .x_title
                       = ministry.name
-                
+
                     - ministry.charges.each do |charge|
                       .row
                         .col-md-12.col-sm-12.col-xs-12
-                          = check_box_tag 'member[charge_ids][]', charge.id, @member.charges.include?(charge)
+                          = check_box_tag 'member[charge_ids][]', charge.id, @member.charges.include?(charge), id: "member_charge_ids_#{charge.id}"
                           = charge.responsibility.name
-
