@@ -30,6 +30,7 @@ es:
           inactive: Inactivo
           visitor: Invitado
           transferred: Trasladado
+          deceased: Fallecido
         gender: Sexo
         city: Ciudad
         country: País
