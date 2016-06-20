@@ -4,10 +4,10 @@
       .icon
         %i.fa.fa-users
       .count= @families.size
-      %h3= t('main.index.box_families')
+      %h3= t('.box_families')
       .small-box-footer
-        = link_to families_path do 
-          = t('link.more_info')
+        = link_to families_path do
+          = t('.more_info')
           .glyphicon.glyphicon-circle-arrow-right
 
   .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
@@ -15,31 +15,31 @@
       .icon
         %i.fa.fa-user-plus
       .count= @members.size
-      %h3= t('main.index.box_members')
+      %h3= t('.box_members')
       .small-box-footer
-        = link_to members_path do 
-          = t('link.more_info')
+        = link_to members_path do
+          = t('.more_info')
           .glyphicon.glyphicon-circle-arrow-right
   .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
     .tile-stats.bg-blue
       .icon
         %i.fa.fa-share-alt
       .count= @ministries.size
-      %h3= t('main.index.box_ministries')
+      %h3= t('.box_ministries')
       .small-box-footer
-        = link_to ministries_path do 
-          = t('link.more_info')
+        = link_to ministries_path do
+          = t('.more_info')
           .glyphicon.glyphicon-circle-arrow-right
   .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
     .tile-stats.bg-red
       .icon
         %%i.fa.fa-star
       .count=@responsibilities.length
-      %h3= t('main.index.box_charges')
+      %h3= t('.box_charges')
       .clearfix
       .small-box-footer
-        = link_to responsibilities_path do 
-          = t('link.more_info')
+        = link_to responsibilities_path do
+          = t('.more_info')
           .glyphicon.glyphicon-circle-arrow-right
 .row
   - if(@members_last.present?)
@@ -50,21 +50,11 @@
             %h2
               %a.collapse-link.cursor
                 .glyphicon.glyphicon.glyphicon-saved
-                = t('main.index.title_last_persons')
+                = t('.title_last_persons')
             .clearfix
           .x_content{:style => "display: block;"}
             .box-body.no-padding
-              .row
-                - @members_last.each do |member|
-                  .col-md-3.col-sm-2.col-xs-4
-                    .col-sm-12
-                      .text-center
-                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
-                    .col-sm-12.text-center
-                      .emphasis.text-center
-                        = link_to edit_member_path(member) do
-                          = member.first_name
-                          %i.glyphicon.glyphicon-pencil
+              .row= render partial: 'members/member', collection: @members_last, locals: {small_size: true}
   .col-md-3.col-sm-12.col-xs-12
     .box-body.no-padding
       .x_panel
@@ -72,7 +62,7 @@
           %h2
             %a.collapse-link.cursor
               .fa.fa-pie-chart
-              = t('main.index.title_by_age')
+              = t('.title_by_age')
           .clearfix
         .x_content{:style => "display: block;"}
           .box-body.no-padding
@@ -85,7 +75,7 @@
           %h2
             %a.collapse-link.cursor
               .fa.fa-venus-mars
-              = t('main.index.title_by_gender')
+              = t('.title_by_gender')
           .clearfix
         .x_content{:style => "display: block;"}
           .box-body.no-padding
@@ -100,7 +90,7 @@
             %h2
               %a.collapse-link.cursor
                 .glyphicon.glyphicon.glyphicon-check
-                = t('main.index.title_last_attendance')
+                = t('.title_last_attendance')
             .clearfix
           .x_content{:style => "display: block;"}
             .box-body.no-padding
@@ -114,7 +104,7 @@
             %h2
               %a.collapse-link.cursor
                 .glyphicon.glyphicon.glyphicon-bell
-                = t('main.index.title_notif_married_date')
+                = t('.title_notif_married_date')
             .clearfix
           .x_content{:style => "display: block;"}
             .box-body.no-padding
@@ -140,7 +130,7 @@
             %h2
               %a.collapse-link.cursor
                 .fa.fa-birthday-cake
-                = t('main.index.title_birth_date_notif')
+                = t('.title_birth_date_notif')
             .clearfix
           .x_content{:style => "display: block;"}
             .box-body.no-padding
@@ -149,7 +139,7 @@
                   .col-md-12.col-sm-2.col-xs-4
                     .col-sm-12
                       .text-center
-                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-responsive img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
+                        = link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-container', secure: false, gravatar: { default: :mm } ), edit_member_path(member)
                     .col-sm-12.text-center
                       .emphasis.text-center
                         = link_to edit_member_path(member) do

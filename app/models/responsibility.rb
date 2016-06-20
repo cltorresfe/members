@@ -11,7 +11,9 @@
 #
 
 class Responsibility < ApplicationRecord
-	validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: {scope: :church_id}
+  validates :church, presence: true
+
   has_many :charges
   has_many :members, through: :charges
   belongs_to :church
@@ -23,4 +25,5 @@ class Responsibility < ApplicationRecord
   def self.by_church(church)
     where(church: church)
   end
+
 end

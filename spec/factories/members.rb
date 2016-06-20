@@ -33,8 +33,23 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     address { Faker::Address.street_address }
     email { Faker::Internet.email }
-    phone '123456789'
+    phone { Faker::PhoneNumber.phone_number }
+    gender { [true, false].sample }
     status :active
+
+    run { Faker::Number.number(10) }
+    city { Faker::Address.city }
+    country 'CL'
+    testimony { Faker::Lorem.sentence }
+    facebook { Faker::Internet.url }
+    twitter { Faker::Internet.url }
+    skype { Faker::Internet.slug }
+    birth_date { Faker::Date.between(10.years.ago, Date.today) }
+    baptism_date { Faker::Date.between(10.years.ago, Date.today) }
+    membership_date { Faker::Date.between(10.years.ago, Date.today) }
+    discipline_date { Faker::Date.between(10.years.ago, Date.today) }
+    transfer_date { Faker::Date.between(10.years.ago, Date.today) }
+
     church
   end
 end

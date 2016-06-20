@@ -11,9 +11,18 @@
 
 FactoryGirl.define do
   factory :ministry do
-    name { Faker::Company.name }
+    name 'Escuela Biblica'
     description { Faker::Lorem.sentence }
     church
-    responsibilities {[FactoryGirl.create(:responsibility)]}
+
+    trait :with_responsibilities do
+      transient do
+        number_of_events 3
+      end
+
+      before :create do |ministry, evaluator|
+        ministry.responsibilities = create_list :responsibility, evaluator.number_of_events, church: ministry.church
+      end
+    end
   end
 end

@@ -10,7 +10,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'country_select'
 gem 'coveralls', require: false
 gem 'delayed_job_active_record'
-gem 'devise'
+gem 'devise', '~> 4.1.1'
 gem 'gon', github: 'gazay/gon', branch: :master
 gem 'gravatar_image_tag'
 gem 'haml-rails'
@@ -18,7 +18,7 @@ gem 'jbuilder'
 gem 'jquery-rails'
 gem 'pg'
 gem 'puma'
-gem 'pundit'
+# gem 'pundit'
 # gem 'react_on_rails', "~> 6"#, github: 'shakacode/react_on_rails', branch: :master
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc

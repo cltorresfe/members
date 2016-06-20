@@ -11,12 +11,14 @@
 #
 
 class Ministry < ApplicationRecord
-  has_many :charges
+  has_many :charges, dependent: :destroy
   has_many :responsibilities, through: :charges
   has_many :attendances
   has_many :member_attendances, through: :attendances
   has_many :members, -> { distinct }, through: :charges
+
   belongs_to :church
+
   validates :name, :responsibilities, presence: true
   validates :name, uniqueness: true
 

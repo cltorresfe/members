@@ -13,9 +13,10 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_length_of(:phone)}
   it { is_expected.to validate_length_of(:name)}
   it { is_expected.to validate_length_of(:address)}
+  it { is_expected.to allow_value('test@test.com').for(:email)}
+  it { is_expected.not_to allow_value('invalid').for(:email)}
 
-
-  let!(:member) { create(:member, first_name: 'Homero')}
+  let!(:member) { create(:member, first_name: 'Homero', last_name: 'Simpsons')}
 
   describe '#search' do
     it 'searches an existing member' do
@@ -61,7 +62,7 @@ RSpec.describe Member, :type => :model do
   end
 
   context '#by_range' do
-    let!(:man_member){ create(:member, birth_date: 15.years.ago)}
+    let!(:member){ create(:member, birth_date: 15.years.ago)}
     it 'returns an object array with the count of age´s range' do
       ranges = Member.by_range
       expect(ranges[0][:count]).to eq 0
@@ -90,9 +91,11 @@ RSpec.describe Member, :type => :model do
 
   describe '#by_gender' do
 
-    context 'members with gender assigned' do
+    context 'members created' do
+      let!(:member) { create(:member, gender: nil)}
       let!(:man_member){ create(:member, gender: false)}
       let!(:woman_member){ create(:member, gender: true)}
+
       it 'returns an object array with the count of members by gender' do
         genders = Member.by_gender
         expect(genders[0][:value]).to eq 1
@@ -101,16 +104,6 @@ RSpec.describe Member, :type => :model do
         expect(genders[0][:label]).to eq "Sin registro"
         expect(genders[1][:label]).to eq "Masculino"
         expect(genders[2][:label]).to eq "Femenino"
-      end
-    end
-
-    context 'member without gender assigned' do
-
-      it 'returns an object array with the count of members without gender ' do
-        genders = Member.by_gender
-        expect(genders[0][:value]).to eq 1
-        expect(genders[0][:label]).to eq "Sin registro"
-
       end
     end
 
@@ -130,9 +123,28 @@ RSpec.describe Member, :type => :model do
 
   context '.age' do
     let!(:member){ create(:member, birth_date: 15.years.ago)}
+
     it 'returns the age' do
       expect(member.age).to eq 15
     end
   end
-end
 
+  context '.country_name' do
+    subject{ member.country_name }
+    it { is_expected.to eq 'Chile'}
+  end
+
+  context '.full_name' do
+    subject{ member.full_name }
+    it { is_expected.to eq 'Homero Simpsons'}
+  end
+
+  describe '#administrative_for_ministry' do
+    let(:ministry){ create(:ministry) }
+
+    it 'returns an array of administrative members given a ministry' do
+      pending("queda pendiendte hasta que se cree estructura de factory girl con la asistencia")
+      expect(Member.administrative_for_ministry(ministry.id)).not_to be_empty
+    end
+  end
+end
