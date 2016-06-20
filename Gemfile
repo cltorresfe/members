@@ -10,7 +10,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'country_select'
 gem 'coveralls', require: false
 gem 'delayed_job_active_record'
-gem 'devise'
+gem 'devise', '~> 4.1.1'
 gem 'gon', github: 'gazay/gon', branch: :master
 gem 'gravatar_image_tag'
 gem 'haml-rails'
