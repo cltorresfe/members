@@ -49,7 +49,7 @@ RSpec.describe Member, :type => :model do
       expect(Member.statuses_for_select).to eq([
         ["Activo", "active"], ["Asistente regular", "regular"],
         ["Inactivo", "inactive"], ["Invitado", "visitor"],
-        ["Trasladado", "transferred"]]
+        ["Trasladado", "transferred"], ["Fallecido", "deceased"]]
       )
     end
 
