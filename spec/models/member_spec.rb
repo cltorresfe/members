@@ -39,6 +39,7 @@ RSpec.describe Member, :type => :model do
     it { expect(Member.get_status_name_for(:inactive)).to eq 'Inactivo'}
     it { expect(Member.get_status_name_for(:visitor)).to eq 'Invitado'}
     it { expect(Member.get_status_name_for(:transferred)).to eq 'Trasladado'}
+    it { expect(Member.get_status_name_for(:deceased)).to eq 'Fallecido'}
     it { expect(Member.get_status_name_for(:asdf)).to eq ''}
   end
 
@@ -48,7 +49,7 @@ RSpec.describe Member, :type => :model do
       expect(Member.statuses_for_select).to eq([
         ["Activo", "active"], ["Asistente regular", "regular"],
         ["Inactivo", "inactive"], ["Invitado", "visitor"],
-        ["Trasladado", "transferred"]]
+        ["Trasladado", "transferred"], ["Fallecido", "deceased"]]
       )
     end
 

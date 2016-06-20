@@ -31,7 +31,7 @@ class Member < ApplicationRecord
   include Decorators::Member
   include ChangeFormatPhone
 
-  enum status: %i(active regular inactive visitor transferred)
+  enum status: %i(active regular inactive visitor transferred deceased)
 
   AGE_RANGES = [[0,14],[15,18],[19,29],[30,44],[45,59],[60,120]]
 
