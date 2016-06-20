@@ -39,6 +39,7 @@ RSpec.describe Member, :type => :model do
     it { expect(Member.get_status_name_for(:inactive)).to eq 'Inactivo'}
     it { expect(Member.get_status_name_for(:visitor)).to eq 'Invitado'}
     it { expect(Member.get_status_name_for(:transferred)).to eq 'Trasladado'}
+    it { expect(Member.get_status_name_for(:deceased)).to eq 'Fallecido'}
     it { expect(Member.get_status_name_for(:asdf)).to eq ''}
   end
 
