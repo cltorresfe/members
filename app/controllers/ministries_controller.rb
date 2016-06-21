@@ -1,5 +1,6 @@
 class MinistriesController < ApplicationController
   before_action :set_ministry, only: [:edit, :update, :destroy]
+  before_action :set_responsibilities, only: [:new, :create, :edit, :update]
 
   # GET /ministries
   # GET /ministries.json
@@ -11,12 +12,11 @@ class MinistriesController < ApplicationController
   # GET /ministries/new
   def new
     @ministry = Ministry.new
-    @responsibilities = Responsibility.by_church(current_user.church)
   end
 
   # GET /ministries/1/edit
   def edit
-    @responsibilities = Responsibility.by_church(current_user.church)
+
   end
 
   # POST /ministries
@@ -59,6 +59,10 @@ class MinistriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ministry
       @ministry = Ministry.find(params[:id])
+    end
+
+    def set_responsibilities
+      @responsibilities = Responsibility.by_church(current_user.church)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
