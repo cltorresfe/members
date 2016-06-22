@@ -53,6 +53,7 @@ class Member < ApplicationRecord
   scope :with_birth_date, -> { where.not(birth_date: nil) }
   scope :birth_date_by_month, -> {where('Extract(month from birth_date) = ? AND Extract(day from birth_date) >= ?',Time.zone.now.month, Time.zone.now.day) }
   scope :with_email, -> { where.not(email: nil) }
+  
   def set_defaults
     self.status ||= :active
   end
