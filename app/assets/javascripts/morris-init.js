@@ -48,3 +48,7 @@ if (typeof gon !== 'undefined'){
     resize: true
   });
 }
+
+$(document).ready(function() {
+  $('.progress .progress-bar').progressbar({display_text: 'fill'});
+});

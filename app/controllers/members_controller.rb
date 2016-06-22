@@ -1,9 +1,12 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :load_ministries, only: [:new, :edit]
 
   # GET /members
   # GET /members.json
+  def show
+    
+  end
   def index
     # search specific of members
     if params[:name].present?

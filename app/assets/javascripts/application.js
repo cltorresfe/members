@@ -17,10 +17,11 @@
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= #require turbolinks
 //= require common
-//= require gentelella/build/js/custom
 //= require gentelella/vendors/raphael/raphael.min
 //= require gentelella/vendors/morris.js/morris.min
+//= require gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar
 //= require morris-init
+//= require gentelella/build/js/custom
 // require smart-wizard-init
 // require gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard
 
