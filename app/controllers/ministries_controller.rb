@@ -36,6 +36,12 @@ class MinistriesController < ApplicationController
   # PATCH/PUT /ministries/1
   # PATCH/PUT /ministries/1.json
   def update
+    @ministry.charges.each do |charge|
+      unless params[:ministry][:responsibility_ids].include? charge.responsibility_id.to_s
+        charge.charge_members.destroy_all
+      end
+    end
+
     if @ministry.update(ministry_params)
       flash[:notice] = 'Ministry was successfully created.'
       redirect_to action: :index
