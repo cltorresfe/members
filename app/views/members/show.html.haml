@@ -16,15 +16,18 @@
             / end of image cropping
           %h3= @member.full_name
           %ul.list-unstyled.user_data
-            %li
-              %i.fa.fa-map-marker.user-profile-icon
-              = "#{@member.address}, #{@member.city}, #{@member.country} "
-            %li
-              %i.fa.fa-briefcase.user-profile-icon
-              = "Fecha Nacimiento: #{@member.birth_date.strftime("%d/%m/%Y")}"
-            %li.m-top-xs
-              %i.fa.fa-external-link.user-profile-icon
-              = "Fecha Bautismo: #{@member.baptism_date.strftime("%d/%m/%Y")}"
+            - if(@member.address.present?)
+              %li
+                %i.fa.fa-map-marker.user-profile-icon
+                = "#{@member.address}, #{@member.city}, #{@member.country} " 
+            - if(@member.birth_date.present?)
+              %li
+                %i.fa.fa-briefcase.user-profile-icon
+                = "Fecha Nacimiento: #{@member.birth_date.strftime("%d/%m/%Y")}"
+            - if(@member.birth_date.present?)
+              %li.m-top-xs
+                %i.fa.fa-external-link.user-profile-icon
+                = "Fecha Bautismo: #{@member.baptism_date.strftime("%d/%m/%Y")}"
           = link_to edit_member_path(@member) do
             .btn.btn-success
               %i.fa.fa-edit.m-right-xs
@@ -33,10 +36,11 @@
             / start skills
             %h4 Ministerios
             %ul.list-unstyled.user_data
-              %li
-                %p Web Applications
-                .progress
-                  .progress-bar{"aria-valuenow" => "69", "data-transitiongoal" => "75", :role => "progressbar"}
+              - @ministries.each do |ministry| 
+                %li
+                  %p= ministry.name
+                  .progress
+                    .progress-bar{"aria-valuenow" => "69", "data-transitiongoal" => "75", :role => "progressbar"}
             / end of skills
         .col-md-9.col-sm-9.col-xs-12
           .profile_title

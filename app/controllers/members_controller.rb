@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def show
-    
+    @ministries = @member.ministries
   end
   def index
     # search specific of members

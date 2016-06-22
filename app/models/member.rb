@@ -39,6 +39,7 @@ class Member < ApplicationRecord
   has_many :charge_members, dependent: :destroy
   has_many :charges, through: :charge_members
   has_many :attendances
+  has_many :ministries, -> { distinct }, through: :charges
 
   validates :first_name, :last_name, :church, presence: true
   validates :email, uniqueness: true, email: true, allow_blank: true
