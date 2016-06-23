@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   before_create :set_default_role
 
-  roles.each do |key, value|
+  roles.each do |key, _value|
     define_method "#{key}?" do
       role == key
     end
