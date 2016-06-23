@@ -7,7 +7,7 @@ $(document).ready(function() {
     labelPrevious: 'Anterior',
     labelFinish: 'Guardar',
     ajaxType: "POST",
-    onFinish: null,  // triggers when Finish button is clicked
+    onFinish: null  // triggers when Finish button is clicked
   });
 
   $('.buttonNext').addClass('btn btn-success');

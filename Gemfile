@@ -3,7 +3,7 @@ ruby '2.3.1'
 
 gem 'rails', '>= 5.0.0.rc1', '< 5.1'
 
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-will_paginate'
 gem 'coffee-rails', '~> 4.1.0'
@@ -11,7 +11,7 @@ gem 'country_select'
 gem 'coveralls', require: false
 gem 'delayed_job_active_record'
 gem 'devise', '~> 4.1.1'
-gem 'gon', github: 'gazay/gon', branch: :master
+gem 'gon', git: 'https://github.com/gazay/gon.git', branch: :master
 gem 'gravatar_image_tag'
 gem 'haml-rails'
 gem 'jbuilder'
@@ -52,6 +52,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console'
 end
 
 group :test do

@@ -8,7 +8,7 @@ module Decorators
       end
 
       def self.statuses_for_select
-        statuses.map { |k, v| [ get_status_name_for(k), k] }
+        statuses.map { |k, _v| [ get_status_name_for(k), k] }
       end
 
       def self.get_status_name_for(status)
