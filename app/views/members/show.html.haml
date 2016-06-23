@@ -28,13 +28,16 @@
               %li.m-top-xs
                 %i.fa.fa-external-link.user-profile-icon
                 = "Fecha Bautismo: #{@member.baptism_date.strftime("%d/%m/%Y")}"
+            - @responsibilities.each do |responsibility|
+              %span.label.label-info
+                = responsibility.name
           = link_to edit_member_path(@member) do
             .btn.btn-success
               %i.fa.fa-edit.m-right-xs
               Editar Datos
           %br
             / start skills
-            %h4 Ministerios
+            %h4 Asistencia a Ministerios
             %ul.list-unstyled.user_data
               - @ministries.each do |ministry| 
                 %li
