@@ -24,7 +24,7 @@
               %li
                 %i.fa.fa-briefcase.user-profile-icon
                 = "Fecha Nacimiento: #{@member.birth_date.strftime("%d/%m/%Y")}"
-            - if(@member.birth_date.present?)
+            - if(@member.baptism_date.present?)
               %li.m-top-xs
                 %i.fa.fa-external-link.user-profile-icon
                 = "Fecha Bautismo: #{@member.baptism_date.strftime("%d/%m/%Y")}"
@@ -43,7 +43,7 @@
                 %li
                   %p= ministry.name
                   .progress
-                    .progress-bar{"aria-valuenow" => "69", "data-transitiongoal" => "75", :role => "progressbar"}
+                    .progress-bar{"aria-valuemin" => "1", "data-transitiongoal" => "#{ministry.attendances_by_member(@member).present.size}", "aria-valuemax" => "#{ministry.attendances_by_member(@member).size}", :role => "progressbar"}
             / end of skills
         .col-md-9.col-sm-9.col-xs-12
           .profile_title

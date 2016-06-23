@@ -50,5 +50,5 @@ if (typeof gon !== 'undefined'){
 }
 
 $(document).ready(function() {
-  $('.progress .progress-bar').progressbar({display_text: 'fill'});
+  $('.progress .progress-bar').progressbar({display_text: 'fill', use_percentage: false, refresh_speed: 500});
 });

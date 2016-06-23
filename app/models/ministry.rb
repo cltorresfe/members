@@ -25,4 +25,8 @@ class Ministry < ApplicationRecord
   def self.by_church(church)
     where(church: church)
   end
+
+  def attendances_by_member(member)
+    attendances.where('attendances.member_id = ?', member.id)
+  end
 end
