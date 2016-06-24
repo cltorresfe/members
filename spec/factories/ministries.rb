@@ -11,7 +11,9 @@
 
 FactoryGirl.define do
   factory :ministry do
-    name 'Escuela Biblica'
+    sequence :name do |n|
+      "Escuela Biblica #{n}"
+    end
     description { Faker::Lorem.sentence }
     church
 

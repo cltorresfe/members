@@ -15,7 +15,7 @@ class Responsibility < ApplicationRecord
   validates :church, presence: true
 
   has_many :charges
-  has_many :members, through: :charges
+  has_many :members, -> { distinct }, through: :charges
   belongs_to :church
 
   def members_by_church(church)
