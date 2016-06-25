@@ -6,6 +6,7 @@ RSpec.describe Church, :type => :model do
   it { is_expected.to have_many(:users) }
   it { is_expected.to have_many(:ministries)}
   it { is_expected.to have_many(:families)}
+  it { is_expected.to have_many(:responsibilities)}
 
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:address) }

@@ -4,7 +4,7 @@ class ResponsibilitiesController < ApplicationController
   # GET /responsibilities
   # GET /responsibilities.json
   def index
-    @responsibilities = Responsibility.by_church(current_church)
+    @responsibilities = current_church.responsibilities.sorted
     flash.now[:alert] = t('.not_found') if @responsibilities.blank?
   end
 

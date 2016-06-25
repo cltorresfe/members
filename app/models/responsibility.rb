@@ -14,16 +14,14 @@ class Responsibility < ApplicationRecord
   validates :name, presence: true, uniqueness: {scope: :church_id}
   validates :church, presence: true
 
+  belongs_to :church
   has_many :charges
   has_many :members, -> { distinct }, through: :charges
-  belongs_to :church
+
+  scope :sorted, -> { order(:name) }
 
   def members_by_church(church)
     members.where(church: church)
-  end
-
-  def self.by_church(church)
-    where(church: church)
   end
 
 end

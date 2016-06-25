@@ -2,7 +2,7 @@ class MainController < ApplicationController
   def index
     @members = current_church.members
     @ministries = current_church.ministries
-    @responsibilities = Responsibility.by_church(current_church)
+    @responsibilities = current_church.responsibilities
     @families = current_church.families
     @attendances = Attendance.attendances_last_week(current_church)
     @members_last = @members.last(8)

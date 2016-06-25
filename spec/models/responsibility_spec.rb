@@ -12,20 +12,6 @@ RSpec.describe Responsibility, :type => :model do
 
   let!(:church) { create(:church)}
 
-  describe '#by_church' do
-    subject {Responsibility.by_church(church)}
-
-    context 'returns an array with the responsibilities of church' do
-      let!(:responsibility) { create(:responsibility, church: church)}
-
-      it {is_expected.not_to be_empty}
-    end
-
-    context 'returns an array empty without loaded responsibilities to church associated' do
-      it {is_expected.to be_empty}
-    end
-  end
-
   context 'return an array with members distinct through charges' do
     let!(:responsibilities) { create_list(:responsibility, 3, church: church)}
     let!(:ministry_1) { create(:ministry, responsibilities: responsibilities, church: church )}
