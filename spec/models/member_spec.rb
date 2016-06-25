@@ -140,6 +140,11 @@ RSpec.describe Member, :type => :model do
     it { is_expected.to eq 'Homero Simpsons'}
   end
 
+  context '.semi_full_name' do
+    subject{ member.semi_full_name }
+    it { is_expected.to eq 'Homero S.'}
+  end
+
   describe '#administrative_for_ministry' do
     let(:ministry){ create(:ministry) }
 
