@@ -7,7 +7,7 @@ class MembersController < ApplicationController
   def show
     @ministries = @member.ministries
     @responsibilities = @member.responsibilities
-    @attendances = @member.attendances.by_attendance_date.paginate(page: params[:page], per_page: 6)
+    @attendances = @member.attendances.by_attendance_date.paginate(page: params[:page], per_page: 12)
   end
 
   def index
