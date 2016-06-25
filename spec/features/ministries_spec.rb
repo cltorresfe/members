@@ -61,7 +61,7 @@ feature 'ministries pages' do
     end
 
     scenario 'updating ministry name' do
-      expect(page).to have_field('Nombre', with: 'Escuela Biblica')
+      expect(page).to have_field('Nombre', with: ministry.name)
       fill_in 'Nombre', with: 'Grupo de Jovenes'
       click_button 'Actualizar Ministerio'
       expect(page).to have_content 'Grupo de Jovenes'

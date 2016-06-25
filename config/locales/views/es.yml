@@ -89,6 +89,7 @@ es:
     index:
       title: Listado de Cargos
       not_found: "No se encontraron cargos asociados"
+      admin: Cargo administrativo
     edit:
       title: Editar Cargo
     new:

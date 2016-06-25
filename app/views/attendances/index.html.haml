@@ -38,7 +38,7 @@
                             .checkbox
                               %label
                                 = check_box_tag "attendance[][present]", nil, @attendances.exists?(member_id: member.id, present: true)
-                                = member.first_name
+                                %span{title: member.full_name}= member.semi_full_name
         .row.text-center
           .form-group
             .col-xs-12

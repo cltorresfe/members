@@ -11,16 +11,17 @@
 #
 
 class Ministry < ApplicationRecord
-  has_many :charges, dependent: :destroy
-  has_many :responsibilities, through: :charges
+  belongs_to :church
   has_many :attendances
+  has_many :charges, dependent: :destroy
   has_many :member_attendances, through: :attendances, source: :member
   has_many :members, -> { distinct }, through: :charges
-
-  belongs_to :church
+  has_many :responsibilities, through: :charges
 
   validates :name, :responsibilities, :church, presence: true
   validates :name, uniqueness: { scope: :church_id }
+
+  scope :sorted, -> { order(:name) }
 
   def self.by_church(church)
     where(church: church)

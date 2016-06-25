@@ -2,7 +2,7 @@ class ChurchesController < ApplicationController
 
   # GET /churches/new
   def new
-    if(current_user.church.blank?)
+    if(current_church.blank?)
       @church = Church.new
     else
       redirect_to root_path, alert: t('.new_church_not_allowed')

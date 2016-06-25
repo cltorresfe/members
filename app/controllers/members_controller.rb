@@ -22,8 +22,8 @@ class MembersController < ApplicationController
       end
     # List all members of the church
     else
-      if(current_user.church.present? && current_user.church.members.present?)
-        @members = current_user.church.members.sorted
+      if(current_church.present? && current_church.members.present?)
+        @members = current_church.members.sorted
       else
         flash.now[:notice] = t('.not_found')
         return
@@ -47,7 +47,7 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     @member = Member.new(member_params)
-    @member.church = current_user.church
+    @member.church = current_church
     if @member.save
       flash[:notice] = 'Member was successfully created.'
       redirect_to action: :index
@@ -90,7 +90,7 @@ class MembersController < ApplicationController
     end
 
     def load_ministries
-      @ministries = Ministry.by_church(current_user.church)
+      @ministries = Ministry.by_church(current_church)
     end
 
 end

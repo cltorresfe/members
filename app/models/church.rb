@@ -14,10 +14,11 @@
 class Church < ApplicationRecord
   include ChangeFormatPhone
 
-  has_many :members
-  has_many :users
-  has_many :ministries
   has_many :families
+  has_many :members
+  has_many :ministries
+  has_many :responsibilities
+  has_many :users
 
   validates :name, :address, presence: true
   validates :name, :email, uniqueness: true
