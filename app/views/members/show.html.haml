@@ -9,103 +9,57 @@
       .x_content
         .col-md-3.col-sm-3.col-xs-12.profile_left
           .profile_img
-            / end of image cropping
             #crop-avatar
-              / Current avatar
               = gravatar_image_tag(@member.email, filetype: :png, rating: 'pg', class:'img img-responsive avatar-view', secure: false, gravatar: { default: :mm } )
-            / end of image cropping
           %h3= @member.full_name
           %ul.list-unstyled.user_data
+            - if(@member.birth_date.present?)
+              %li
+                %i.fa.fa-calendar-o
+                = "#{@member.age} años"
             - if(@member.address.present?)
               %li
                 %i.fa.fa-map-marker.user-profile-icon
                 = "#{@member.address}, #{@member.city}, #{@member.country} " 
-            - if(@member.birth_date.present?)
+            - if(@member.phone.present?)
               %li
-                %i.fa.fa-briefcase.user-profile-icon
-                = "Fecha Nacimiento: #{@member.birth_date.strftime("%d/%m/%Y")}"
+                %i.glyphicon.glyphicon-earphone
+                = @member.phone
             - if(@member.baptism_date.present?)
               %li.m-top-xs
                 %i.fa.fa-external-link.user-profile-icon
-                = "Fecha Bautismo: #{@member.baptism_date.strftime("%d/%m/%Y")}"
-            - @responsibilities.each do |responsibility|
-              %span.label.label-info
-                = responsibility.name
+                = "Bautismo: #{@member.baptism_date.strftime("%d/%m/%Y")}"
           = link_to edit_member_path(@member) do
             .btn.btn-success
               %i.fa.fa-edit.m-right-xs
               Editar Datos
+          - if(@responsibilities.present?)
+            %h4 Cargos:
+            - @responsibilities.each do |responsibility|
+              %span.label.label-info
+                = responsibility.name
           %br
-            / start skills
+          - if(@ministries.present?)
             %h4 Asistencia a Ministerios
             %ul.list-unstyled.user_data
               - @ministries.each do |ministry| 
                 %li
-                  %p= ministry.name
+                  %p= "#{ministry.name} (#{ministry.attendances_by_member(@member).present.size} de #{ministry.attendances_by_member(@member).size})"
                   .progress
-                    .progress-bar{"aria-valuemin" => "1", "data-transitiongoal" => "#{ministry.attendances_by_member(@member).present.size}", "aria-valuemax" => "#{ministry.attendances_by_member(@member).size}", :role => "progressbar"}
-            / end of skills
+                    .progress-bar{"aria-valuemax" => "#{ministry.attendances_by_member(@member).size}", "aria-valuemin" => "0", "aria-valuenow" => "#{ministry.attendances_by_member(@member).present.size}", :role => "progressbar", :style => "width: #{ministry.percent_attendances_by_member(@member)}%;"}
+                      = "#{ministry.percent_attendances_by_member(@member)}%"
         .col-md-9.col-sm-9.col-xs-12
           .profile_title
             .col-md-6
               %h2 Datos y estadísticas
-          / start of user-activity-graph
-
-          / end of user-activity-graph
           %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
             %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
               %li.active{:role => "presentation"}
-                %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"} Recent Activity
+                %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"} Actividad Reciente
               %li{:role => "presentation"}
-                %a#profile-tab{"aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab_content2", :role => "tab"} Projects Worked on
-              %li{:role => "presentation"}
-                %a#profile-tab2{"aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab_content3", :role => "tab"} Profile
+                %a#profile-tab{"aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab_content2", :role => "tab"} Otros datos
             #myTabContent.tab-content
               #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
-                / start recent activity
                 
-                / end recent activity
               #tab_content2.tab-pane.fade{"aria-labelledby" => "profile-tab", :role => "tabpanel"}
-                / start user projects
-                %table.data.table.table-striped.no-margin
-                  %thead
-                    %tr
-                      %th #
-                      %th Project Name
-                      %th Client Company
-                      %th.hidden-phone Hours Spent
-                      %th Contribution
-                  %tbody
-                    %tr
-                      %td 1
-                      %td New Company Takeover Review
-                      %td Deveint Inc
-                      %td.hidden-phone 18
-                      %td.vertical-align-mid
-                        .progress
-                          .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
-                    %tr
-                      %td 2
-                      %td New Partner Contracts Consultanci
-                      %td Deveint Inc
-                      %td.hidden-phone 13
-                      %td.vertical-align-mid
-                        .progress
-                          .progress-bar.progress-bar-danger{"aria-valuenow" => "15", "data-transitiongoal" => "15", :style => "width: 15%;"}
-                    %tr
-                      %td 3
-                      %td Partners and Inverstors report
-                      %td Deveint Inc
-                      %td.hidden-phone 30
-                      %td.vertical-align-mid
-                        .progress
-                          .progress-bar.progress-bar-success{"aria-valuenow" => "45", "data-transitiongoal" => "45", :style => "width: 45%;"}
-                    %tr
-                      %td 4
-                      %td New Company Takeover Review
-                      %td Deveint Inc
-                      %td.hidden-phone 28
-                      %td.vertical-align-mid
-                        .progress
-                          .progress-bar.progress-bar-success{"aria-valuenow" => "75", "data-transitiongoal" => "75", :style => "width: 75%;"}
-                / end user projects
+

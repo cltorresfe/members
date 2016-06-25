@@ -19,9 +19,8 @@
 //= require common
 //= require gentelella/vendors/raphael/raphael.min
 //= require gentelella/vendors/morris.js/morris.min
-//= require gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar
+//= require custom
 //= require morris-init
-//= require gentelella/build/js/custom
 // require smart-wizard-init
 // require gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard
 
