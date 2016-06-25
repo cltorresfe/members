@@ -66,6 +66,8 @@ es:
       church: 'Iglesia'
       responsibilities: 'Cargos'
       status: 'Estado'
+      present: 'Presente'
+      absent: 'Ausente'
     destroy:
       success: Miembro fue borrado exitosamente
   churches:

@@ -60,6 +60,20 @@
                 %a#profile-tab{"aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab_content2", :role => "tab"} Otros datos
             #myTabContent.tab-content
               #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
-                
+                %table.data.table.table-striped.no-margin
+                  %thead
+                    %tr
+                      %th Asistencia Ministerio
+                      %th Fecha
+                      %th Estado
+                    %tbody
+                      - @attendances.each do |attendance|
+                        %tr
+                          %td= attendance.ministry.name
+                          %td= attendance.attendance_date.strftime("%d/%m/%Y")
+                          %td= attendance.human_present
+                          / %td.vertical-align-mid
+                          /   .progress
+                          /     .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
               #tab_content2.tab-pane.fade{"aria-labelledby" => "profile-tab", :role => "tabpanel"}
 

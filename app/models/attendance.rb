@@ -34,8 +34,16 @@ class Attendance < ApplicationRecord
     where(attendance_date: attendance_date, ministry_id: ministry_id)
   end
 
+  def self.by_attendance_date
+    order('attendance_date desc')
+  end
+
   def format_date
     self.attendance_date = self.attendance_date.beginning_of_day if self.attendance_date.present?
+  end
+
+  def human_present
+    I18n.t("members.show.#{present ? 'present' : 'absent'}")
   end
 
 end

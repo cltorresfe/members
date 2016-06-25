@@ -8,6 +8,7 @@ es:
       status: 'Estado'
       user: Usuario
       family: Familia
+      attendance: Asistencia
     attributes:
       church:
         name: 'Nombre'
@@ -40,7 +41,6 @@ es:
         transfer_date: Fecha Traslado
         discipline_date: Fecha Disciplina
         testimony: Testimonio
-
       responsibility:
         name: 'Nombre'
       ministry:

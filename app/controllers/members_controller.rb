@@ -7,8 +7,9 @@ class MembersController < ApplicationController
   def show
     @ministries = @member.ministries
     @responsibilities = @member.responsibilities
+    @attendances = @member.attendances.by_attendance_date
   end
-  
+
   def index
     # search specific of members
     if params[:name].present?
