@@ -13,6 +13,10 @@
               = gravatar_image_tag(@member.email, filetype: :png, rating: 'pg', class:'img img-responsive avatar-view', secure: false, gravatar: { default: :mm } )
           %h3= @member.full_name
           %ul.list-unstyled.user_data
+            - if(@member.run.present?)
+              %li
+                %i.fa.fa-indent
+                = "Run:#{@member.run}"
             - if(@member.birth_date.present?)
               %li
                 %i.fa.fa-calendar-o
@@ -29,6 +33,19 @@
               %li.m-top-xs
                 %i.fa.fa-external-link.user-profile-icon
                 = "Bautismo: #{@member.baptism_date.strftime("%d/%m/%Y")}"
+            %ul.list-inline
+              %li
+                = link_to "http://#{@member.facebook}", :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.facebook}"} do
+                  %i.fa.fa-facebook-square.fa-3
+              %li
+                = link_to "http://#{@member.twitter}", :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.twitter}"} do
+                  %i.fa.fa-twitter
+              %li
+                = link_to '#', :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.email}"} do
+                  %i.fa.fa-envelope-o
+              %li
+                = link_to '#', :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.skype}"} do
+                  %i.fa.fa-skype
           = link_to edit_member_path(@member) do
             .btn.btn-success
               %i.fa.fa-edit.m-right-xs
@@ -49,9 +66,6 @@
                     .progress-bar{"aria-valuemax" => "#{ministry.attendances_by_member(@member).size}", "aria-valuemin" => "0", "aria-valuenow" => "#{ministry.attendances_by_member(@member).present.size}", :role => "progressbar", :style => "width: #{ministry.percent_attendances_by_member(@member)}%;"}
                       = "#{ministry.percent_attendances_by_member(@member)}%"
         .col-md-9.col-sm-9.col-xs-12
-          .profile_title
-            .col-md-6
-              %h2 Datos y estadísticas
           %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
             %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
               %li.active{:role => "presentation"}
