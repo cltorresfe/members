@@ -5,7 +5,7 @@ class MinistriesController < ApplicationController
   # GET /ministries
   # GET /ministries.json
   def index
-    @ministries = current_user.church.ministries.paginate(page: params[:page], per_page: 18)
+    @ministries = current_church.ministries.sorted
     flash.now[:alert] = t('.not_found') if(@ministries.blank?)
   end
 
@@ -16,14 +16,13 @@ class MinistriesController < ApplicationController
 
   # GET /ministries/1/edit
   def edit
-
   end
 
   # POST /ministries
   # POST /ministries.json
   def create
     @ministry = Ministry.new(ministry_params)
-    @ministry.church = current_user.church
+    @ministry.church = current_church
 
     if @ministry.save
       flash[:notice] = 'Ministry was successfully created.'
@@ -68,7 +67,7 @@ class MinistriesController < ApplicationController
     end
 
     def set_responsibilities
-      @responsibilities = Responsibility.by_church(current_user.church)
+      @responsibilities = current_church.responsibilities
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

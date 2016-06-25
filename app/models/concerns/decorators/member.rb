@@ -23,6 +23,10 @@ module Decorators
       def full_name
         "#{first_name} #{last_name}"
       end
+
+      def semi_full_name
+        "#{first_name} #{last_name.first + '.' if last_name}"
+      end
     end
   end
 end

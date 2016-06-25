@@ -47,11 +47,11 @@ feature "Members pages" do
         expect(page).to have_field('Skype', with: member.skype, visible: false)
 
         # Membership info
-        expect(page).to have_field('Fecha Nacimiento', with: I18n.l(member.birth_date, format: :just_time), visible: false)
-        expect(page).to have_field('Fecha Bautismo', with: I18n.l(member.baptism_date, format: :just_time), visible: false)
-        expect(page).to have_field('Fecha Membresía', with: I18n.l(member.membership_date, format: :just_time), visible: false)
-        expect(page).to have_field('Fecha Traslado', with: I18n.l(member.transfer_date, format: :just_time), visible: false)
-        expect(page).to have_field('Fecha Disciplina', with: I18n.l(member.discipline_date, format: :just_time), visible: false)
+        expect(page).to have_field('Fecha Nacimiento', with: I18n.l(member.birth_date, format: :just_date), visible: false)
+        expect(page).to have_field('Fecha Bautismo', with: I18n.l(member.baptism_date, format: :just_date), visible: false)
+        expect(page).to have_field('Fecha Membresía', with: I18n.l(member.membership_date, format: :just_date), visible: false)
+        expect(page).to have_field('Fecha Traslado', with: I18n.l(member.transfer_date, format: :just_date), visible: false)
+        expect(page).to have_field('Fecha Disciplina', with: I18n.l(member.discipline_date, format: :just_date), visible: false)
         expect(page).to have_field('Testimonio', with: member.testimony, visible: false)
         expect(page).to have_select('Estado', selected: 'Activo', visible: false)
 
