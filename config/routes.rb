@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :attendances, only: [:index, :create]
-  resources :responsibilities
-  resources :members, except: :show
   resources :churches, only: [:new, :create]
-  resources :ministries, except: :show
   resources :families, except: :show
+  resources :members, except: :show
+  resources :ministries, except: :show
+  resources :responsibilities
+
+  get 'profile', to: 'users#edit', as: :edit_profile
+  put 'profile', to: 'users#update', as: :profile
 
   root 'main#index'
 
@@ -69,6 +72,29 @@ end
 #                             DELETE /admin/comments/:id(.:format)          admin/comments#destroy
 #                 attendances GET    /attendances(.:format)                 attendances#index
 #                             POST   /attendances(.:format)                 attendances#create
+#                    churches POST   /churches(.:format)                    churches#create
+#                  new_church GET    /churches/new(.:format)                churches#new
+#                    families GET    /families(.:format)                    families#index
+#                             POST   /families(.:format)                    families#create
+#                  new_family GET    /families/new(.:format)                families#new
+#                 edit_family GET    /families/:id/edit(.:format)           families#edit
+#                      family PATCH  /families/:id(.:format)                families#update
+#                             PUT    /families/:id(.:format)                families#update
+#                             DELETE /families/:id(.:format)                families#destroy
+#                     members GET    /members(.:format)                     members#index
+#                             POST   /members(.:format)                     members#create
+#                  new_member GET    /members/new(.:format)                 members#new
+#                 edit_member GET    /members/:id/edit(.:format)            members#edit
+#                      member PATCH  /members/:id(.:format)                 members#update
+#                             PUT    /members/:id(.:format)                 members#update
+#                             DELETE /members/:id(.:format)                 members#destroy
+#                  ministries GET    /ministries(.:format)                  ministries#index
+#                             POST   /ministries(.:format)                  ministries#create
+#                new_ministry GET    /ministries/new(.:format)              ministries#new
+#               edit_ministry GET    /ministries/:id/edit(.:format)         ministries#edit
+#                    ministry PATCH  /ministries/:id(.:format)              ministries#update
+#                             PUT    /ministries/:id(.:format)              ministries#update
+#                             DELETE /ministries/:id(.:format)              ministries#destroy
 #            responsibilities GET    /responsibilities(.:format)            responsibilities#index
 #                             POST   /responsibilities(.:format)            responsibilities#create
 #          new_responsibility GET    /responsibilities/new(.:format)        responsibilities#new
@@ -77,28 +103,7 @@ end
 #                             PATCH  /responsibilities/:id(.:format)        responsibilities#update
 #                             PUT    /responsibilities/:id(.:format)        responsibilities#update
 #                             DELETE /responsibilities/:id(.:format)        responsibilities#destroy
-#                     members GET    /members(.:format)                     members#index
-#                             POST   /members(.:format)                     members#create
-#                  new_member GET    /members/new(.:format)                 members#new
-#                 edit_member GET    /members/:id/edit(.:format)            members#edit
-#                      member PATCH  /members/:id(.:format)                 members#update
-#                             PUT    /members/:id(.:format)                 members#update
-#                             DELETE /members/:id(.:format)                 members#destroy
-#                    churches POST   /churches(.:format)                    churches#create
-#                  new_church GET    /churches/new(.:format)                churches#new
-#                  ministries GET    /ministries(.:format)                  ministries#index
-#                             POST   /ministries(.:format)                  ministries#create
-#                new_ministry GET    /ministries/new(.:format)              ministries#new
-#               edit_ministry GET    /ministries/:id/edit(.:format)         ministries#edit
-#                    ministry PATCH  /ministries/:id(.:format)              ministries#update
-#                             PUT    /ministries/:id(.:format)              ministries#update
-#                             DELETE /ministries/:id(.:format)              ministries#destroy
-#                    families GET    /families(.:format)                    families#index
-#                             POST   /families(.:format)                    families#create
-#                  new_family GET    /families/new(.:format)                families#new
-#                 edit_family GET    /families/:id/edit(.:format)           families#edit
-#                      family PATCH  /families/:id(.:format)                families#update
-#                             PUT    /families/:id(.:format)                families#update
-#                             DELETE /families/:id(.:format)                families#destroy
+#                edit_profile GET    /profile(.:format)                     users#edit
+#                     profile PUT    /profile(.:format)                     users#update
 #                        root GET    /                                      main#index
 #

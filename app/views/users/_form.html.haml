@@ -1,0 +1,46 @@
+.row
+  = simple_form_for(@user, :url => profile_path, :html => {:class => 'form-horizontal', :method => :put }) do |f|
+    .col-md-6.col-sm-12.col-xs-12
+      .box-body.no-padding
+        .x_panel
+          .x_title
+            %h2
+              .glyphicon.glyphicon.glyphicon-book
+              Usuario
+              %small
+                * Campos Obligatorios.
+            .clearfix
+          .x_content{:style => "display: block;"}
+            .box-body.no-padding
+              .col-md-12.col-sm-12.col-xs-12
+                = f.input :name, class: "form-control"
+                = f.input :email, class: "form-control"
+                = f.input :password, class: "form-control", required: true
+                = f.input :password_confirmation, class: "form-control", required: true
+    = f.simple_fields_for :church do |c|
+      .col-md-6.col-sm-12.col-xs-12
+        .box-body.no-padding
+          .x_panel
+            .x_title
+              %h2
+                .glyphicon.glyphicon.glyphicon-book
+                Iglesia
+                %small
+                  * Campos Obligatorios.
+              .clearfix
+            .x_content{:style => "display: block;"}
+              .box-body.no-padding
+                .col-md-12.col-sm-12.col-xs-12
+                  = c.input :name, class: "form-control"
+                  = c.input :email, class: "form-control"
+                  = c.input :address, class: "form-control"
+                  = c.input :phone, class: "form-control"
+    .col-md-12.col-sm-12.col-xs-12
+      .box-body.no-padding
+        .x_panel
+          .x_content{:style => "display: block;"}
+            .box-body.no-padding
+              .col-md-12.col-sm-12.col-xs-12
+                .form-group
+                  .col-xs-offset-4
+                    = f.submit class: "btn btn-primary btn-lg"
