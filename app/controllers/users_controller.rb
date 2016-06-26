@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   # PUT /profile
   def update
-    params[:user][:church_attributes][:id] = current_church.id
+    params[:user][:church_attributes][:id] = current_church.id if params[:user] && params[:user][:church_attributes]
     if @user.update(user_params)
       sign_in @user, :bypass => true
       redirect_to root_path, notice: t('.success')
