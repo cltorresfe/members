@@ -70,8 +70,6 @@
             %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
               %li.active{:role => "presentation"}
                 %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"} Actividad Reciente
-              %li{:role => "presentation"}
-                %a#profile-tab{"aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab_content2", :role => "tab"} Otros datos
             #myTabContent.tab-content
               #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
                 %table.data.table.table-striped.no-margin
@@ -90,5 +88,3 @@
                           /   .progress
                           /     .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
                 .text-center= will_paginate @attendances, :class => 'margin: 0px'
-              #tab_content2.tab-pane.fade{"aria-labelledby" => "profile-tab", :role => "tabpanel"}
-
