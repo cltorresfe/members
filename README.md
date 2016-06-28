@@ -4,6 +4,10 @@
 [![Code Climate](https://codeclimate.com/github/cltorresfe/members/badges/gpa.svg)](https://codeclimate.com/github/cltorresfe/members)
 [![Stories in Ready](https://badge.waffle.io/cltorresfe/members.svg?label=ready&title=Ready)](http://waffle.io/cltorresfe/members)
 
+## Requerimientos
+- PostgreSQL
+- Redis
+
 ## Configuracion
 Para correr capybara-webkit en Ubuntu es necesario instalar:
 

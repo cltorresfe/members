@@ -21,7 +21,9 @@ gem 'puma'
 # gem 'react_on_rails', "~> 6"#, github: 'shakacode/react_on_rails', branch: :master
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sidekiq'
 gem 'simple_form'
+gem 'sinatra', git: 'https://github.com/sinatra/sinatra.git', :require => false
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate'
