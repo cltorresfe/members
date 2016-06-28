@@ -33,6 +33,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'foreman'
   gem 'guard-annotate', require: false
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false

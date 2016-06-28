@@ -159,6 +159,8 @@ GEM
     faker (1.6.3)
       i18n (~> 0.5)
     ffi (1.9.10)
+    foreman (0.82.0)
+      thor (~> 0.19.1)
     formatador (0.2.5)
     formtastic (3.1.4)
       actionpack (>= 3.2.13)
@@ -455,6 +457,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
+  foreman
   gon!
   gravatar_image_tag
   guard-annotate

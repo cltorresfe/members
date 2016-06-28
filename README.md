@@ -56,7 +56,14 @@ gem install libv8 -v '3.16.14.13' -- --with-system-v8
 gem install therubyracer -- --with-v8-dir=/usr/local/opt/v8-#622424
 ```
 
-## Heroku
+## Ejecución
+
+### Desarrollo
+
+Puede ser con `rails s` para ejecutar solo el servicio web.
+En caso de querer ejecutar además el servicio de sidekiq, ejecutar `foreman start`
+
+### Heroku
 - Para crear nueva instancia:
 
 ```shell
