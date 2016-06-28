@@ -9,7 +9,6 @@ gem 'bootstrap-will_paginate'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'country_select'
 gem 'coveralls', require: false
-gem 'delayed_job_active_record'
 gem 'devise', '~> 4.1.1'
 gem 'gon', git: 'https://github.com/gazay/gon.git', branch: :master
 gem 'gravatar_image_tag'
