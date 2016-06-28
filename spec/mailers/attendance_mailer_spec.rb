@@ -4,7 +4,7 @@ RSpec.describe AttendanceMailer, :type => :mailer do
   describe "attendances_confirmation" do
     let(:ministry) { create(:ministry, :with_responsibilities)}
     let(:user){ create(:user)}
-    let(:mail) { AttendanceMailer.attendances_confirmation( 1.day.ago, ministry.id, user.id) }
+    let(:mail) { AttendanceMailer.attendances_confirmation( '28/06/2015', ministry.id, user.id) }
 
     it "renders the headers" do
       pending("queda pendiente hasta que tengamos la estructura del factory girl de asistencia")
