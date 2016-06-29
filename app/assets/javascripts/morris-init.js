@@ -48,4 +48,3 @@ if (typeof gon !== 'undefined'){
     resize: true
   });
 }
-

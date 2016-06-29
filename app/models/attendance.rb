@@ -17,6 +17,7 @@ class Attendance < ApplicationRecord
 
   scope :present, -> { where(present: true ) }
   scope :absent, -> { where(present: false) }
+  scope :sorted, -> { order(attendance_date: :desc) }
 
   before_validation :format_date
 
@@ -32,10 +33,6 @@ class Attendance < ApplicationRecord
 
   def self.by_date_and_ministry(attendance_date, ministry_id)
     where(attendance_date: attendance_date, ministry_id: ministry_id)
-  end
-
-  def self.by_attendance_date
-    order('attendance_date desc')
   end
 
   def format_date
