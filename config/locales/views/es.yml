@@ -29,6 +29,7 @@ es:
       destroy_session_link: Cerrar
     topbar:
       admin: Administración
+      profile: Editar Perfil
       destroy_session: Cerrar
   attendances:
     index:
@@ -108,6 +109,12 @@ es:
     destroy:
       success: Ministerio fue borrado exitosamente.
       invalid_foreign_key: Uno o más miembros se encuentran asociados a este ministerio. Favor desasociar primero.
+  users:
+    edit:
+      title: Editar Perfil
+    update:
+      title: Editar Perfil
+      success: Perfil ha sido actualizado
   main:
     index:
       box_charges: Cargos

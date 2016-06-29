@@ -21,13 +21,15 @@
 #
 
 class User < ActiveRecord::Base
-  belongs_to :church
-  enum role: %i(admin common)
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  enum role: %i(admin common)
+
+  belongs_to :church
+
+  accepts_nested_attributes_for :church
 
   validates_presence_of :email, :name
   validates_uniqueness_of :email
