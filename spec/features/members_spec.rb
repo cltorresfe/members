@@ -27,7 +27,21 @@ feature "Members pages" do
 
       scenario "access to member details" do
         visit members_path
-        click_link member.first_name
+        click_link('', href: "/members/#{member.id}")
+        expect(page).to have_content "Información del Miembro"
+        expect(page).to have_content member.first_name
+        expect(page).to have_content member.last_name
+      end
+    end
+  end
+
+  describe 'show' do
+    context 'with members' do
+      let!(:member){ create(:member, church: user.church, charges: director_resp.charges) }
+
+      scenario "access to member edit" do
+        visit member_path(member)
+        click_link('', href: "/members/#{member.id}/edit")
         expect(page).to have_content "Editar Miembro"
 
         # Basic info
@@ -112,7 +126,7 @@ feature "Members pages" do
 
   describe 'destroy' do
     let!(:member){ create(:member, church: user.church, charges: director_resp.charges) }
-    background { visit members_path }
+    background { visit member_path(member) }
 
     context 'member with no associations' do
       scenario 'destroys the given member' do
