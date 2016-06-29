@@ -13,9 +13,9 @@
             %span.fa.fa-angle-down
           %ul.dropdown-menu.dropdown-usermenu.pull-right
             %li
-              %a{:href => "javascript:;"}
-                Profile
+              = link_to edit_profile_path do
                 %i.fa.fa-edit.pull-right
+                = t('.profile')
             - if current_user.admin?
               %li
                 = link_to admin_root_path do
