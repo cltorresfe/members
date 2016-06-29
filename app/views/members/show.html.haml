@@ -3,8 +3,8 @@
     .x_panel
       .x_title
         %h2
-          Información del Miembro
-          %small Datos y Estadísticas
+          = t('.title')
+          %small= t('.title_small')
         .clearfix
       .x_content
         .col-md-3.col-sm-3.col-xs-12.profile_left
@@ -53,19 +53,19 @@
           = link_to edit_member_path(@member) do
             .btn.btn-success
               %i.glyphicon.glyphicon-pencil
-              Editar
+              = t('link.edit')
           = link_to @member, method: :delete, data: { confirm: t('confirm.message.destroy')} do
             .btn.btn-danger
               %i.glyphicon.glyphicon-trash
-              Borrar
+              = t('link.destroy')
           - if(@responsibilities.present?)
-            %h4 Cargos:
+            %h4= t('.title_charges')
             - @responsibilities.each do |responsibility|
               %span.label.label-info
                 = responsibility.name
           %br
           - if(@ministries.present?)
-            %h4 Asistencia a Ministerios
+            %h4= t('.title_attendances')
             %ul.list-unstyled.user_data
               - @ministries.each do |ministry| 
                 %li
@@ -77,15 +77,16 @@
           %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
             %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
               %li.active{:role => "presentation"}
-                %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"} Actividad Reciente
+                %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"}
+                = t('.content_activity')
             #myTabContent.tab-content
               #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
                 %table.data.table.table-striped.no-margin
                   %thead
                     %tr
-                      %th Asistencia Ministerio
-                      %th Fecha
-                      %th Estado
+                      %th= t('.data_column_attendance')
+                      %th= t('.data_column_date')
+                      %th= t('.data_column_present')
                     %tbody
                       - @attendances.each do |attendance|
                         %tr
