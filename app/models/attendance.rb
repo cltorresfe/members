@@ -40,7 +40,7 @@ class Attendance < ApplicationRecord
   end
 
   def human_present
-    I18n.t("members.show.#{present ? 'present' : 'absent'}")
+    self.class.human_attribute_name("present.#{present}")
   end
 
 end
