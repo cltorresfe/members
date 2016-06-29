@@ -34,24 +34,30 @@
                 %i.fa.fa-external-link.user-profile-icon
                 = "Bautismo: #{@member.baptism_date.strftime("%d/%m/%Y")}"
             %ul.list-inline
-              %li
-                = link_to "http://#{@member.facebook}", :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.facebook}"} do
-                  %i.fa.fa-facebook-square.fa-3
-              %li
-                = link_to "http://#{@member.twitter}", :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.twitter}"} do
-                  %i.fa.fa-twitter
-              %li
-                = link_to '#', :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.email}"} do
-                  %i.fa.fa-envelope-o
-              %li
-                = link_to '#', :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.skype}"} do
-                  %i.fa.fa-skype
-          = link_to edit_member_path(@member), data: { toggle: 'tooltip', placement: 'top', title: t('link.edit')} do
+              - if @member.facebook.present?
+                %li
+                  = link_to "http://#{@member.facebook}", :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.facebook}"} do
+                    %i.fa.fa-facebook-square.fa-3
+              - if @member.twitter.present?
+                %li
+                  = link_to "http://#{@member.twitter}", :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.twitter}"} do
+                    %i.fa.fa-twitter
+              - if @member.email.present?
+                %li
+                  = link_to '#', data: { toggle: 'tooltip', placement: 'top', title: "#{@member.email}"} do
+                    %i.fa.fa-envelope-o
+              - if @member.skype.present?
+                %li
+                  = link_to '#', data: { toggle: 'tooltip', placement: 'top', title: "#{@member.skype}"} do
+                    %i.fa.fa-skype
+          = link_to edit_member_path(@member) do
             .btn.btn-success
               %i.glyphicon.glyphicon-pencil
-          = link_to @member, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
+              Editar
+          = link_to @member, method: :delete, data: { confirm: t('confirm.message.destroy')} do
             .btn.btn-danger
               %i.glyphicon.glyphicon-trash
+              Borrar
           - if(@responsibilities.present?)
             %h4 Cargos:
             - @responsibilities.each do |responsibility|
