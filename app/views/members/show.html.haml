@@ -46,10 +46,12 @@
               %li
                 = link_to '#', :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.skype}"} do
                   %i.fa.fa-skype
-          = link_to edit_member_path(@member) do
+          = link_to edit_member_path(@member), data: { toggle: 'tooltip', placement: 'top', title: t('link.edit')} do
             .btn.btn-success
-              %i.fa.fa-edit.m-right-xs
-              Editar Datos
+              %i.glyphicon.glyphicon-pencil
+          = link_to @member, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
+            .btn.btn-danger
+              %i.glyphicon.glyphicon-trash
           - if(@responsibilities.present?)
             %h4 Cargos:
             - @responsibilities.each do |responsibility|
