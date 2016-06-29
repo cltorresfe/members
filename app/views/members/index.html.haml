@@ -12,6 +12,6 @@
           .x_content
             .row
               .clearfix
-              = render partial: 'member', collection: @members, locals: {allow_deletion: true}
+              = render partial: 'member', collection: @members
               .col-md-12.col-sm-12.col-xs-12
                 .text-center= will_paginate @members, :class => 'margin: 0px'
