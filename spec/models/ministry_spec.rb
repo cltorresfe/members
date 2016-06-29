@@ -37,4 +37,21 @@ RSpec.describe Ministry, :type => :model do
 
     it { expect(ministry.members.length).to eq(1) }
   end
+
+  describe '.attendances_by_member' do
+
+    let!(:ministry) { create(:ministry, :with_responsibilities, church: church )}
+    let!(:member) { create(:member, church: church)}
+    subject {ministry.attendances_by_member(member)}
+
+    context 'returns an array with the attendance of member' do
+      let!(:attendance) { create(:attendance, member: member, ministry: ministry)}
+
+      it {is_expected.not_to be_empty}
+    end
+
+    context 'returns an array empty without loaded attendances to member associated' do
+      it {is_expected.to be_empty}
+    end
+  end
 end
