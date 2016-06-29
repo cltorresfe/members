@@ -17,6 +17,5 @@
  *= require gentelella/build/css/custom
  *= require gentelella/vendors/morris.js/morris
  * require gentelella/vendors/jQuery-Smart-Wizard/styles/smart_wizard
- * require gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4
  *= require_self
  */
