@@ -18,6 +18,10 @@
                 %i.fa.fa-edit.pull-right
             - if current_user.admin?
               %li
+                = link_to sidekiq_web_path do
+                  %i.fa.fa-signal.pull-right
+                  = t('.sidekiq')
+              %li
                 = link_to admin_root_path do
                   %i.fa.fa-cog.pull-right
                   = t('.admin')

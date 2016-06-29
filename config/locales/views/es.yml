@@ -29,6 +29,7 @@ es:
       destroy_session_link: Cerrar
     topbar:
       admin: Administración
+      sidekiq: Monitor Sidekiq
       destroy_session: Cerrar
   attendances:
     index:
