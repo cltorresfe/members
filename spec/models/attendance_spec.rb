@@ -31,14 +31,13 @@ RSpec.describe Attendance, :type => :model do
   end
 
   describe 'human_present' do
-    it 'human present' do
+    it 'returns present value' do
       expect(attendance.human_present).to eq('Presente')
     end
 
-    let!(:attendance_absent) { create(:attendance, present: false, ministry: ministry)}
-
-    it 'human absent' do
-      expect(attendance_absent.human_present).to eq('Ausente')
+    it 'returns absent value' do
+      attendance.present = false
+      expect(attendance.human_present).to eq('Ausente')
     end
   end
 end
