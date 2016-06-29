@@ -4,7 +4,5 @@
   .col-sm-12
     .text-center
       .emphasis
-        = link_to member.full_name, edit_member_path(member)
-        - if defined?(allow_deletion) && allow_deletion
-          = link_to member, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
-            %i.glyphicon.glyphicon-trash
+        = link_to member.full_name, member_path(member)
+        = member.status_name
