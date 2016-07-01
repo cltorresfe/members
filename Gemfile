@@ -3,7 +3,6 @@ ruby '2.3.1'
 
 gem 'rails', '>= 5.0.0', '< 5.1'
 
-# gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-will_paginate'
 gem 'coffee-rails', '~> 4.1.0'

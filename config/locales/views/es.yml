@@ -25,10 +25,8 @@ es:
       attendance_link: Asistencia
       ministries_link: Ministerios
       responsibilities_link: Cargos
-      admin_link: Administración
       destroy_session_link: Cerrar
     topbar:
-      admin: Administración
       profile: Editar Perfil
       destroy_session: Cerrar
   attendances:
