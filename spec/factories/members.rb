@@ -41,8 +41,8 @@ FactoryGirl.define do
     city { Faker::Address.city }
     country 'CL'
     testimony { Faker::Lorem.sentence }
-    facebook { Faker::Internet.url }
-    twitter { Faker::Internet.url }
+    facebook ''
+    twitter ''
     skype { Faker::Internet.slug }
     birth_date { Faker::Date.between(10.years.ago, Date.today) }
     baptism_date { Faker::Date.between(10.years.ago, Date.today) }
