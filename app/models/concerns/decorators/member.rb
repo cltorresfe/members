@@ -27,6 +27,14 @@ module Decorators
       def semi_full_name
         "#{first_name} #{last_name.first + '.' if last_name}"
       end
+
+      def facebook_url
+        "https://www.facebook.com/#{facebook}"
+      end
+
+      def twitter_url
+        "https://www.twitter.com/#{twitter}"
+      end
     end
   end
 end

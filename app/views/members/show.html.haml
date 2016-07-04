@@ -36,11 +36,11 @@
             %ul.list-inline
               - if @member.facebook.present?
                 %li
-                  = link_to "http://#{@member.facebook}", :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.facebook}"} do
+                  = link_to @member.facebook_url, :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.facebook}"} do
                     %i.fa.fa-facebook-square.fa-3
               - if @member.twitter.present?
                 %li
-                  = link_to "http://#{@member.twitter}", :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.twitter}"} do
+                  = link_to @member.twitter_url, :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.twitter}"} do
                     %i.fa.fa-twitter
               - if @member.email.present?
                 %li
