@@ -16,11 +16,6 @@
               = link_to edit_profile_path do
                 %i.fa.fa-edit.pull-right
                 = t('.profile')
-            - if current_user.admin?
-              %li
-                = link_to admin_root_path do
-                  %i.fa.fa-cog.pull-right
-                  = t('.admin')
             %li
               = link_to destroy_user_session_path, method: :delete do
                 %i.fa.fa-sign-out.pull-right
