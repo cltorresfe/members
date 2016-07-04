@@ -25,12 +25,11 @@ es:
       attendance_link: Asistencia
       ministries_link: Ministerios
       responsibilities_link: Cargos
-      admin_link: Administración
       destroy_session_link: Cerrar
     topbar:
-      admin: Administración
-      sidekiq: Monitor Sidekiq
       destroy_session: Cerrar
+      profile: Editar Perfil
+      sidekiq: Monitor Sidekiq
   attendances:
     index:
       not_found: |
@@ -109,6 +108,12 @@ es:
     destroy:
       success: Ministerio fue borrado exitosamente.
       invalid_foreign_key: Uno o más miembros se encuentran asociados a este ministerio. Favor desasociar primero.
+  users:
+    edit:
+      title: Editar Perfil
+    update:
+      title: Editar Perfil
+      success: Perfil ha sido actualizado
   main:
     index:
       box_charges: Cargos

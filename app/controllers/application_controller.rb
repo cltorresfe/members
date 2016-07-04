@@ -3,12 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :has_church_assigned
   helper_method :current_church
 
-  def authenticate_active_admin!
-    unless current_user && current_user.admin?
-      redirect_to root_path
-    end
-  end
-
   def current_church
     current_user.church if current_user
   end

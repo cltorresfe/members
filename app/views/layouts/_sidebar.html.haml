@@ -57,8 +57,6 @@
       .sidebar-footer.hidden-small
         %a{"data-placement" => "top", "data-toggle" => "tooltip"}
           %span.glyphicon.option-horizontal{"aria-hidden" => "true"}
-        = link_to admin_root_path, data: { toggle: 'tooltip', placement: 'top', title: t('.admin_link') } do
-          %span.glyphicon.glyphicon-cog{"aria-hidden" => "true"}
         = link_to destroy_user_session_path, method: :delete, data: { toggle: 'tooltip', placement: 'top', title: t('.destroy_session_link') } do
           %span.glyphicon.glyphicon-off{"aria-hidden" => "true"}
         %a

@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'rails', '>= 5.0.0.rc2', '< 5.1'
+gem 'rails', '>= 5.0.0', '< 5.1'
 
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-will_paginate'
 gem 'coffee-rails', '~> 4.1.0'
@@ -19,7 +18,7 @@ gem 'pg'
 gem 'puma'
 # gem 'pundit'
 # gem 'react_on_rails', "~> 6"#, github: 'shakacode/react_on_rails', branch: :master
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.5'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sidekiq'
 gem 'simple_form'
@@ -40,7 +39,6 @@ group :development, :test do
   gem 'hirb'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
-  gem 'quiet_assets'
   gem 'railroady'
   gem 'rspec', '~> 3.5.0.beta4'
   gem 'rspec-rails', '~> 3.5.0.beta4'
