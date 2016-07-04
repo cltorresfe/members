@@ -4,7 +4,7 @@ RSpec.describe AttendanceMailer, :type => :mailer do
   describe "attendances_confirmation" do
     let(:ministry) { create(:ministry, :with_responsibilities)}
     let(:user){ create(:user)}
-    let(:mail) { AttendanceMailer.attendances_confirmation( 1.day.ago, ministry.id, user.id) }
+    let(:mail) { AttendanceMailer.attendances_confirmation( 1.day.ago.to_s, ministry.id, user.id) }
 
     it "renders the headers" do
       pending("queda pendiente hasta que tengamos la estructura del factory girl de asistencia")
@@ -15,6 +15,13 @@ RSpec.describe AttendanceMailer, :type => :mailer do
 
     it "renders the body" do
       expect(mail.body.encoded).to match("Estimado")
+    end
+
+    it "sends the email" do
+      pending("queda pendiente hasta que tengamos la estructura del factory girl de asistencia")
+      expect {
+        mail.deliver
+      }.to have_enqueued_job.on_queue('mailers')
     end
   end
 

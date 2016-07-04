@@ -19,6 +19,16 @@ feature "Sign in" do
       expect(page).not_to have_content 'Plataforma Miembros de Iglesia'
       expect(page).to have_content 'Iniciar sesión'
     end
+
+    context 'without church created' do
+      let!(:user) { create(:user, church: nil) }
+
+      scenario 'logs out from the app' do
+        log_out
+        expect(page).not_to have_content 'Plataforma Miembros de Iglesia'
+        expect(page).to have_content 'Iniciar sesión'
+      end
+    end
   end
 
   describe "when user has logged out" do

@@ -1,8 +1,4 @@
 class ApplicationController < ActionController::Base
-  # include Pundit
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :has_church_assigned
   helper_method :current_church
@@ -12,9 +8,8 @@ class ApplicationController < ActionController::Base
   end
 
   def has_church_assigned
-    if current_user && current_church.blank? && controller_name != 'churches' && !['new', 'create'].include?( action_name )
+    if current_user && current_church.blank? && !%w(churches sessions).include?(controller_name)
       redirect_to new_church_path
     end
   end
-
 end

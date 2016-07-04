@@ -27,8 +27,9 @@ es:
       responsibilities_link: Cargos
       destroy_session_link: Cerrar
     topbar:
-      profile: Editar Perfil
       destroy_session: Cerrar
+      profile: Editar Perfil
+      sidekiq: Monitor Sidekiq
   attendances:
     index:
       not_found: |

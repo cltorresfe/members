@@ -1,5 +1,9 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   resources :attendances, only: [:index, :create]
@@ -18,9 +22,11 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
 end
 
+
 # == Route Map
 #
 #                   Prefix Verb   URI Pattern                          Controller#Action
+#              sidekiq_web        /sidekiq                             Sidekiq::Web
 #         new_user_session GET    /users/sign_in(.:format)             devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)             devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)            devise/sessions#destroy
