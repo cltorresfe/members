@@ -1,7 +1,7 @@
 <%= t('.title') %> <%= @ministry.name %>
 
 <% if(@present_attendances.present?) %>
-<%= t('.content_attendance')%> <%= @attendance_date.strftime("%d/%m/%Y") %>
+<%= t('.content_attendance')%> <%= @attendance_date.strftime("%d/%m/%Y") %> <%= t('.content_percent')%> <%= @percent_attendances %>% <%= t('.content_percent_last')%>
 
   <%= t('.first_name')%>	<%= t('.address')%>				<%= t('.email')%>	<%= t('.phone')%>
   <% @present_attendances.each do |attendance| %>
