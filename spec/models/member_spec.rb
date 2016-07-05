@@ -144,6 +144,18 @@ RSpec.describe Member, :type => :model do
     it { is_expected.to eq 'Homero S.'}
   end
 
+  context '.facebook_url' do
+    let!(:member_f){ create(:member, facebook: 'homeros')}
+    subject{ member_f.facebook_url }
+    it { is_expected.to eq 'https://www.facebook.com/homeros'}
+  end
+
+  context '.twitter_url' do
+    let!(:member_t){ create(:member, twitter: 'homeros')}
+    subject{ member_t.twitter_url }
+    it { is_expected.to eq 'https://www.twitter.com/homeros'}
+  end
+
   describe '#administrative_for_ministry' do
     let(:ministry){ create(:ministry) }
 
