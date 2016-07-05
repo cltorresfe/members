@@ -36,11 +36,13 @@ class Ministry < ApplicationRecord
   end
 
   def percent_attendances_by_member(member)
-    attendances_by_member(member).present.size*100/attendances_by_member(member).size if(attendances_by_member(member).size > 0)
+    attendances_member = attendances_by_member(member)
+    attendances_member.present.size*100/attendances_member.size if(attendances_member.size > 0)
   end
 
   def percent_attendances_by_date(date_l, date_r)
-    attendances_by_date(date_l, date_r).present.size*100/attendances_by_date(date_l, date_r).size if(attendances_by_date(date_l, date_r).size > 0)
+    attendances_date = attendances_by_date(date_l, date_r)
+    attendances_date.present.size*100/attendances_date.size if(attendances_date.size > 0)
   end
 
 end
