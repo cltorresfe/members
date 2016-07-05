@@ -1,9 +1,15 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :load_ministries, only: [:new, :edit]
 
   # GET /members
   # GET /members.json
+  def show
+    @ministries = @member.ministries
+    @responsibilities = @member.responsibilities
+    @attendances = @member.attendances.sorted.paginate(page: params[:page], per_page: 12)
+  end
+
   def index
     # search specific of members
     if params[:name].present?

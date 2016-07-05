@@ -29,4 +29,15 @@ RSpec.describe Attendance, :type => :model do
       expect(attendance.format_date).not_to eq(2.days.ago)
     end
   end
+
+  describe 'human_present' do
+    it 'returns present value' do
+      expect(attendance.human_present).to eq('Presente')
+    end
+
+    it 'returns absent value' do
+      attendance.present = false
+      expect(attendance.human_present).to eq('Ausente')
+    end
+  end
 end

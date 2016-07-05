@@ -9,7 +9,6 @@ RSpec.describe Member, :type => :model do
   it { is_expected.to validate_presence_of(:first_name) }
   it { is_expected.to validate_presence_of(:last_name) }
   it { is_expected.to validate_presence_of(:church)}
-  it { is_expected.to validate_uniqueness_of(:email)}
   it { is_expected.to validate_length_of(:phone)}
   it { is_expected.to validate_length_of(:name)}
   it { is_expected.to validate_length_of(:address)}
@@ -143,6 +142,18 @@ RSpec.describe Member, :type => :model do
   context '.semi_full_name' do
     subject{ member.semi_full_name }
     it { is_expected.to eq 'Homero S.'}
+  end
+
+  context '.facebook_url' do
+    let!(:member_f){ create(:member, facebook: 'homeros')}
+    subject{ member_f.facebook_url }
+    it { is_expected.to eq 'https://www.facebook.com/homeros'}
+  end
+
+  context '.twitter_url' do
+    let!(:member_t){ create(:member, twitter: 'homeros')}
+    subject{ member_t.twitter_url }
+    it { is_expected.to eq 'https://www.twitter.com/homeros'}
   end
 
   describe '#administrative_for_ministry' do

@@ -8,6 +8,7 @@ es:
       status: 'Estado'
       user: Usuario
       family: Familia
+      attendance: Asistencia
     attributes:
       church:
         name: 'Nombre'
@@ -40,7 +41,6 @@ es:
         transfer_date: Fecha Traslado
         discipline_date: Fecha Disciplina
         testimony: Testimonio
-
       responsibility:
         name: 'Nombre'
       ministry:
@@ -61,7 +61,17 @@ es:
         married_at: Fecha de matrimonio
         city: Ciudad
         country: País
+      'attendance/present':
+        'true': 'Presente'
+        'false': 'Ausente'
     errors:
+      models:
+        member:
+          attributes:
+            facebook:
+              invalid: Nombre de usuario inválido
+            twitter:
+              invalid: Nombre de usuario inválido
       messages:
         record_invalid: "La validación falló: %{errors}"
         restrict_dependent_destroy:

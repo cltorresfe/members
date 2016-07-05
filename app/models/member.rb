@@ -39,12 +39,16 @@ class Member < ApplicationRecord
   has_many :charge_members, dependent: :destroy
   has_many :charges, through: :charge_members
   has_many :attendances
+  has_many :ministries, -> { distinct }, through: :charges
+  has_many :responsibilities, -> { distinct }, through: :charges
 
   validates :first_name, :last_name, :church, presence: true
-  validates :email, uniqueness: true, email: true, allow_blank: true
+  validates :email, email: true, allow_blank: true
   validates :phone, length: { maximum: 15, minimum: 7 }, allow_blank: true
   validates :first_name, length: { maximum: 35 }
   validates :address, length: { maximum: 100}
+  validates :facebook, facebook: true, allow_blank: true
+  validates :twitter, twitter: true, allow_blank: true
 
   before_validation :change_to_format_phone
   before_create :set_defaults
@@ -53,7 +57,7 @@ class Member < ApplicationRecord
   scope :with_birth_date, -> { where.not(birth_date: nil) }
   scope :birth_date_by_month, -> {where('Extract(month from birth_date) = ? AND Extract(day from birth_date) >= ?',Time.zone.now.month, Time.zone.now.day) }
   scope :with_email, -> { where.not(email: nil) }
-  
+
   def set_defaults
     self.status ||= :active
   end

@@ -17,6 +17,7 @@ class Attendance < ApplicationRecord
 
   scope :present, -> { where(present: true ) }
   scope :absent, -> { where(present: false) }
+  scope :sorted, -> { order(attendance_date: :desc) }
 
   before_validation :format_date
 
@@ -36,6 +37,10 @@ class Attendance < ApplicationRecord
 
   def format_date
     self.attendance_date = self.attendance_date.beginning_of_day if self.attendance_date.present?
+  end
+
+  def human_present
+    self.class.human_attribute_name("present.#{present}")
   end
 
 end

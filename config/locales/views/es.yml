@@ -59,6 +59,14 @@ es:
     new:
       title: 'Nuevo Miembro'
     show:
+      title: Información del Miembro
+      title_small: datos y Estadísticas
+      title_charges: Cargos
+      title_attendances: Asistencia a Ministerios
+      content_activity: Actividad Reciente
+      data_column_attendance: Asistencia Ministerio
+      data_column_date: Fecha
+      data_column_present: Estado
       name: 'Nombre'
       address: 'Dirección'
       email: 'Correo'

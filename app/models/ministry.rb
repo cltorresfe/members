@@ -26,4 +26,13 @@ class Ministry < ApplicationRecord
   def self.by_church(church)
     where(church: church)
   end
+
+  def attendances_by_member(member)
+    attendances.where('attendances.member_id = ?', member.id)
+  end
+
+  def percent_attendances_by_member(member)
+    attendances_by_member(member).present.size*100/attendances_by_member(member).size if(attendances_by_member(member).size > 0)
+  end
+
 end

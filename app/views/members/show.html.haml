@@ -1,0 +1,99 @@
+.row
+  .col-md-12.col-sm-12.col-xs-12
+    .x_panel
+      .x_title
+        %h2
+          = t('.title')
+          %small= t('.title_small')
+        .clearfix
+      .x_content
+        .col-md-3.col-sm-3.col-xs-12.profile_left
+          .profile_img
+            #crop-avatar
+              = gravatar_image_tag(@member.email, filetype: :png, rating: 'pg', class:'img img-responsive avatar-view', secure: false, gravatar: { default: :mm } )
+          %h3= @member.full_name
+          %ul.list-unstyled.user_data
+            - if(@member.run.present?)
+              %li
+                %i.fa.fa-indent
+                = "Run:#{@member.run}"
+            - if(@member.birth_date.present?)
+              %li
+                %i.fa.fa-calendar-o
+                = "#{@member.age} años"
+            - if(@member.address.present?)
+              %li
+                %i.fa.fa-map-marker.user-profile-icon
+                = "#{@member.address}, #{@member.city}, #{@member.country} " 
+            - if(@member.phone.present?)
+              %li
+                %i.glyphicon.glyphicon-earphone
+                = @member.phone
+            - if(@member.baptism_date.present?)
+              %li.m-top-xs
+                %i.fa.fa-external-link.user-profile-icon
+                = "Bautismo: #{@member.baptism_date.strftime("%d/%m/%Y")}"
+            %ul.list-inline
+              - if @member.facebook.present?
+                %li
+                  = link_to @member.facebook_url, :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.facebook}"} do
+                    %i.fa.fa-facebook-square.fa-3
+              - if @member.twitter.present?
+                %li
+                  = link_to @member.twitter_url, :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.twitter}"} do
+                    %i.fa.fa-twitter
+              - if @member.email.present?
+                %li
+                  = link_to '#', data: { toggle: 'tooltip', placement: 'top', title: "#{@member.email}"} do
+                    %i.fa.fa-envelope-o
+              - if @member.skype.present?
+                %li
+                  = link_to '#', data: { toggle: 'tooltip', placement: 'top', title: "#{@member.skype}"} do
+                    %i.fa.fa-skype
+          = link_to edit_member_path(@member) do
+            .btn.btn-success
+              %i.glyphicon.glyphicon-pencil
+              = t('link.edit')
+          = link_to @member, method: :delete, data: { confirm: t('confirm.message.destroy')} do
+            .btn.btn-danger
+              %i.glyphicon.glyphicon-trash
+              = t('link.destroy')
+          - if(@responsibilities.present?)
+            %h4= t('.title_charges')
+            - @responsibilities.each do |responsibility|
+              %span.label.label-info
+                = responsibility.name
+          %br
+          - if(@ministries.present?)
+            %h4= t('.title_attendances')
+            %ul.list-unstyled.user_data
+              - @ministries.each do |ministry| 
+                %li
+                  %p= "#{ministry.name} (#{ministry.attendances_by_member(@member).present.size} de #{ministry.attendances_by_member(@member).size})"
+                  .progress
+                    .progress-bar{"aria-valuemax" => "#{ministry.attendances_by_member(@member).size}", "aria-valuemin" => "0", "aria-valuenow" => "#{ministry.attendances_by_member(@member).present.size}", :role => "progressbar", :style => "width: #{ministry.percent_attendances_by_member(@member)}%;"}
+                      = "#{ministry.percent_attendances_by_member(@member)}%"
+        .col-md-9.col-sm-9.col-xs-12
+          %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+            %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
+              %li.active{:role => "presentation"}
+                %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"}
+                = t('.content_activity')
+            #myTabContent.tab-content
+              #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
+                %table.data.table.table-striped.no-margin
+                  %thead
+                    %tr
+                      %th= t('.data_column_attendance')
+                      %th= t('.data_column_date')
+                      %th= t('.data_column_present')
+                    %tbody
+                      - @attendances.each do |attendance|
+                        %tr
+                          %td= attendance.ministry.name
+                          %td= attendance.attendance_date.strftime("%d/%m/%Y")
+                          %td= attendance.human_present
+                          / %td.vertical-align-mid
+                          /   .progress
+                          /     .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
+                .text-center= will_paginate @attendances, :class => 'margin: 0px'
