@@ -2,9 +2,7 @@ es:
   attendance_mailer:
     attendances_confirmation:
       subject: Confirmación de registro de asistencia
-      content_attendance: Esta es la lista de miembros que asistieron el
-      content_percent: correspondiente a un
-      content_percent_last: de asistencia.
+      content_attendance: Esta es la lista de miembros que asistieron el %{date} correspondiente a un %{percent}% de asistencia.
       title: "Estimado colaborador del ministerio"
       content_empty_attendance: Lamentamos informar que para esta fecha no hubo ningún miembro que asistío a
       content_nonattendance: "Estos son los miembros que no asistieron. Por favor, comunícate con ellos!"
