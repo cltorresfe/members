@@ -55,6 +55,23 @@ RSpec.describe Ministry, :type => :model do
     end
   end
 
+  describe '.attendances_by_date' do
+
+    let!(:ministry) { create(:ministry, :with_responsibilities)}
+    let!(:date) { 1.day.ago.beginning_of_day }
+    subject {ministry.attendances_by_date(date, date)}
+
+    context 'returns an array with the attendance of a day' do
+      let!(:attendance) { create(:attendance, ministry: ministry, attendance_date: date)}
+
+      it {is_expected.not_to be_empty}
+    end
+
+    context 'returns an array empty without loaded attendances to member associated' do
+      it {is_expected.to be_empty}
+    end
+  end
+
   describe '.percent_attendances_by_member' do
 
     let!(:ministry) { create(:ministry, :with_responsibilities, church: church )}
@@ -77,4 +94,27 @@ RSpec.describe Ministry, :type => :model do
       it {is_expected.to eq(nil)}
     end
   end
+
+  describe '.percent_attendances_by_date' do
+
+    let!(:ministry) { create(:ministry, :with_responsibilities )}
+    let!(:date) { 1.day.ago.beginning_of_day }
+    subject {ministry.percent_attendances_by_date(date, date)}
+
+    context 'returns a percent with the attendance of a day' do
+      let!(:attendance) { create(:attendance, ministry: ministry, attendance_date: date)}
+      it {is_expected.to eq(100)}
+    end
+
+    context 'returns a percent valid without the attendance of a day' do
+      let!(:attendance) { create(:attendance, ministry: ministry, attendance_date: date, present: false)}
+
+      it {is_expected.to eq(0)}
+    end
+
+    context 'returns nil without loaded attendances to member associated' do
+      it {is_expected.to eq(nil)}
+    end
+  end
+
 end
