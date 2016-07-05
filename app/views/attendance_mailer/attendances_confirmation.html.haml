@@ -5,8 +5,7 @@
 .panel{:style => "padding-left: 23px;color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
   .content{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
     - if(@present_attendances.present?)
-      = t('.content_attendance')
-      = @attendance_date.strftime("%d/%m/%Y")
+      = t('.content_attendance', percent: @percent_attendances, date: @attendance_date.strftime("%d/%m/%Y"))
       %p
         %table{:style => "border:1px solid #2A3F54;width:80%;border-collapse:collapse; "}
           %thead
