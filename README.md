@@ -47,6 +47,13 @@ brew install node
 sudo npm install -g bower
 ```
 
+Instalar redis en os x
+
+```shell
+brew install redis
+brew services start redis
+```
+
 Para instalar therubyracer
 
 ```shell
@@ -60,8 +67,9 @@ gem install therubyracer -- --with-v8-dir=/usr/local/opt/v8-#622424
 
 ### Desarrollo
 
-Puede ser con `rails s` para ejecutar solo el servicio web.
-En caso de querer ejecutar además el servicio de sidekiq, ejecutar `foreman start`
+- Para ejecutar el servicio web, desde la consola escribir `rails s`.
+- Para ejecutar el servicio de sidekiq escribir `bundle exec sidekiq`
+- En caso de querer ejecutar ambos servicios escribir `foreman start`.
 
 ### Heroku
 - Para crear nueva instancia:
