@@ -10,7 +10,7 @@
         .col-md-3.col-sm-3.col-xs-12.profile_left
           .profile_img
             #crop-avatar
-              = gravatar_image_tag(@member.email, filetype: :png, rating: 'pg', class:'img img-responsive avatar-view', secure: false, gravatar: { default: :mm } )
+              = link_to( image_for(@member, size: 220), member_path(@member))
           %h3= @member.full_name
           %ul.list-unstyled.user_data
             - if(@member.run.present?)
