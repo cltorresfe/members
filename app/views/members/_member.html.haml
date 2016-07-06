@@ -1,6 +1,6 @@
 .col-sm-3.col-xs-4{ class: "col-md-#{defined?(small_size) ? '3' : '2'}"}
   .col-sm-12{ data: { toggle: 'tooltip', placement: 'top', title: t('link.show')} }
-    .text-center= link_to gravatar_image_tag(member.email, filetype: :png, rating: 'pg', class:'img-circle img-container', secure: false, gravatar: { default: :mm } ), member_path(member)
+    .text-center= link_to( avatar_for(member), member_path(member))
   .col-sm-12
     .text-center
       .emphasis
