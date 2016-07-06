@@ -30,6 +30,7 @@
 class Member < ApplicationRecord
   include Decorators::Member
   include ChangeFormatPhone
+  mount_uploader :avatar, AvatarUploader
 
   enum status: %i(active regular inactive visitor transferred deceased)
 

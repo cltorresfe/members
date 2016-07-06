@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701021851) do
+ActiveRecord::Schema.define(version: 20160706155121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20160701021851) do
     t.datetime "membership_date"
     t.datetime "discipline_date"
     t.datetime "transfer_date"
+    t.string   "avatar"
     t.index ["church_id"], name: "index_members_on_church_id", using: :btree
   end
 
