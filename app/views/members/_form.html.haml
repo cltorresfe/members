@@ -1,5 +1,5 @@
 .row
-  = simple_form_for @member, html: {class: 'form-horizontal'} do |f| 
+  = simple_form_for @member, html: {class: 'form-horizontal', multipart: true} do |f| 
     .col-md-6.col-sm-12.col-xs-12
       = render partial: 'form_info', locals: {f: f} 
     .col-md-6.col-sm-12.col-xs-12

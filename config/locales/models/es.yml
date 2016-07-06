@@ -24,6 +24,7 @@ es:
         phone: 'Fono'
         status: 'Estado'
         church: 'Iglesia'
+        avatar: 'Imagen'
         responsibility: "Cargos"
         status_name:
           active: Activo

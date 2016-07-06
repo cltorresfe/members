@@ -86,7 +86,7 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:first_name, :last_name, :gender, :run, :city,
         :country, :birth_date, :testimony, :baptism_date, :membership_date, :discipline_date,
-        :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone, :status, charge_ids:[])
+        :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone, :status, :avatar, charge_ids:[])
     end
 
     def load_ministries
