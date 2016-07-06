@@ -131,7 +131,7 @@ feature "Members pages" do
     context 'member with no associations' do
       scenario 'destroys the given member' do
         expect(page).to have_content member.full_name
-        click_link('', href: "/members/#{member.id}")
+        click_link('Borrar')
         expect(page).to have_content 'No se encontraron miembros ingresados'
         expect(page).not_to have_content member.full_name
       end
