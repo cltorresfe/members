@@ -157,27 +157,24 @@ RSpec.describe Member, :type => :model do
   end
 
   describe '.avatar_url' do
+    subject{ member.avatar_url }
 
     context 'return member url' do
       let!(:member){ create(:member)}
-      subject{ member.avatar_url }
-      it { is_expected.to include 'default_avatar.png'}
+      it { is_expected.to include 'user-m.png'}
     end
 
     context 'return default male url' do
       let!(:member){ create(:member, avatar: nil, gender: false)}
-      subject{ member.avatar_url }
       it { is_expected.to eq 'default_avatar_male.png'}
     end
     context 'return default female url' do
       let!(:member){ create(:member, avatar: nil, gender: true)}
-      subject{ member.avatar_url }
       it { is_expected.to eq 'default_avatar_female.png'}
     end
 
     context 'return default url' do
       let!(:member){ create(:member, avatar: nil, gender: nil)}
-      subject{ member.avatar_url }
       it { is_expected.to eq 'default_avatar.png'}
     end
 
