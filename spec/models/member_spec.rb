@@ -156,6 +156,30 @@ RSpec.describe Member, :type => :model do
     it { is_expected.to eq 'https://www.twitter.com/homeros'}
   end
 
+  describe '.avatar_url' do
+    subject{ member.avatar_url }
+
+    context 'return member url' do
+      let!(:member){ create(:member)}
+      it { is_expected.to include 'user-m.png'}
+    end
+
+    context 'return default male url' do
+      let!(:member){ create(:member, avatar: nil, gender: false)}
+      it { is_expected.to eq 'default_avatar_male.png'}
+    end
+    context 'return default female url' do
+      let!(:member){ create(:member, avatar: nil, gender: true)}
+      it { is_expected.to eq 'default_avatar_female.png'}
+    end
+
+    context 'return default url' do
+      let!(:member){ create(:member, avatar: nil, gender: nil)}
+      it { is_expected.to eq 'default_avatar.png'}
+    end
+
+  end
+
   describe '#administrative_for_ministry' do
     let(:ministry){ create(:ministry) }
 

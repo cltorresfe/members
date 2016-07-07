@@ -30,6 +30,7 @@
 class Member < ApplicationRecord
   include Decorators::Member
   include ChangeFormatPhone
+  mount_uploader :avatar, AvatarUploader
 
   enum status: %i(active regular inactive visitor transferred deceased)
 
@@ -38,7 +39,7 @@ class Member < ApplicationRecord
   belongs_to :church
   has_many :charge_members, dependent: :destroy
   has_many :charges, through: :charge_members
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_many :ministries, -> { distinct }, through: :charges
   has_many :responsibilities, -> { distinct }, through: :charges
 

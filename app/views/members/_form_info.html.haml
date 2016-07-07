@@ -17,6 +17,11 @@
               :label_method => :last,
               :value_method => :first,
               :as => :radio_buttons
+      .form-group
+        .col-sm-3.control-label
+          = f.label :avatar
+        .col-sm-7
+          = f.file_field :avatar, label: 'Imagen'
       = f.input :address, placeholder: Member.human_attribute_name(:address)
       = f.input :run, placeholder: Member.human_attribute_name(:run)
       = f.input :city, placeholder: Member.human_attribute_name(:city)

@@ -43,12 +43,25 @@ RSpec.describe ApplicationHelper do
     context 'title is not found' do
       it { is_expected.to eq('')}
     end
-
   end
 
   describe '#prioritary_countries' do
     subject{ helper.prioritary_countries }
 
     it { is_expected.to eq(['CL'])}
+  end
+
+  describe '#avatar_for' do
+    let!(:member){ create(:member, gender: false)}
+    subject{ helper.avatar_for(member) }
+
+    it { is_expected.to include('img-circle')}
+  end
+
+  describe '#image_for' do
+    let!(:member){ create(:member, gender: false)}
+    subject{ helper.image_for(member) }
+
+    it { is_expected.to include('img-responsive')}
   end
 end

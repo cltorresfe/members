@@ -13,4 +13,12 @@ module ApplicationHelper
     %w(CL)
   end
 
+  def avatar_for(member, options = { size: 80})
+    image_tag member.avatar_url(:thumb), class:'img-circle img-container', width: options[:size]
+  end
+
+  def image_for(member, options = { size: 80})
+    image_tag member.avatar_url, class:'img img-responsive avatar-view', width: options[:size]
+  end
+
 end

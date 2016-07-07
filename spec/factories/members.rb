@@ -34,9 +34,9 @@ FactoryGirl.define do
     address { Faker::Address.street_address }
     email { Faker::Internet.email }
     phone { Faker::PhoneNumber.phone_number }
-    gender { [true, false].sample }
+    gender { [true, false, nil].sample }
     status :active
-
+    avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'user-m.png')) }
     run { Faker::Number.number(10) }
     city { Faker::Address.city }
     country 'CL'
