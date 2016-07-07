@@ -35,6 +35,18 @@ module Decorators
       def twitter_url
         "https://www.twitter.com/#{twitter}"
       end
+
+      def avatar_url(version = nil)
+        if avatar?
+          avatar.url(version)
+        else
+          case gender
+          when true then "default_avatar_female.png"
+          when false then "default_avatar_male.png"
+          when nil then "default_avatar.png"
+          end
+        end
+      end
     end
   end
 end
