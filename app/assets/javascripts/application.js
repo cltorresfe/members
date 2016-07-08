@@ -23,5 +23,5 @@
 //= require morris-init
 // require smart-wizard-init
 // require gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard
-
+//= require ckeditor/init
 //= require_tree ./routes/
