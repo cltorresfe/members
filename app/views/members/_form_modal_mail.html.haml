@@ -1,0 +1,20 @@
+.row
+  .modal-dialog
+    .modal-content
+      / header
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} &times;
+        %h3.modal-title Send Email
+      = form_for @member, remote: true, html: { style: "display:inline;" } do |fa|
+        / body (form)
+        .modal-body
+          %ul.errors
+          .form-group
+            = fa.label :first_name, class:"control-label"
+            = fa.text_field :first_name, class: "form-control"
+          .form-group
+            = fa.label :last_name, class: "control-label"
+            = fa.text_field :last_name, class: "form-control"
+        / submit
+        .modal-footer
+          = fa.submit class: "btn btn-primary btn-block", data: {dismiss: "modal"}
