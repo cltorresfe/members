@@ -28,6 +28,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'ckeditor'
 
 group :development, :test do
   gem 'awesome_print'
