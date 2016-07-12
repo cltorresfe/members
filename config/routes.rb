@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   resources :attendances, only: [:index, :create]
   resources :churches, only: [:new, :create]
   resources :families, except: :show
-  resources :members
+  resources :members do
+    member do
+      post :send_mail
+    end
+  end
   resources :ministries, except: :show
   resources :responsibilities
 
@@ -17,6 +21,7 @@ Rails.application.routes.draw do
   put 'profile', to: 'users#update', as: :profile
 
   root 'main#index'
+
 
   # Serve websocket cable requests inprocess
   # mount ActionCable.server => '/cable'
