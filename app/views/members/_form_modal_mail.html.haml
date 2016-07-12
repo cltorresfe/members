@@ -4,17 +4,19 @@
       / header
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} &times;
-        %h3.modal-title Send Email
-      = form_for @member, remote: true, html: { style: "display:inline;" } do |fa|
+        %h3.modal-title= t('common.title_modal_mail')
+        = @member.full_name
+        = "<#{@member.email}>"
+      = form_tag(send_mail_member_path(@member.id), remote: true, style: "display:inline;" ) do
         / body (form)
         .modal-body
           %ul.errors
           .form-group
-            = fa.label :first_name, class:"control-label"
-            = fa.text_field :first_name, class: "form-control"
+            = label_tag :subject, nil, class:"control-label"
+            = text_field_tag :subject, nil, class: "form-control"
           .form-group
-            = fa.label :last_name, class: "control-label"
-            = fa.text_field :last_name, class: "form-control"
+            = label_tag :body, nil, class: "control-label"
+            = cktext_area_tag :body, nil, class: "form-control"
         / submit
         .modal-footer
-          = fa.submit class: "btn btn-primary btn-block", data: {dismiss: "modal"}
+          = submit_tag t('button.send_mail'), class: "btn btn-primary btn-block"
