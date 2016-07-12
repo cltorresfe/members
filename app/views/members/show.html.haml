@@ -13,7 +13,7 @@
               = link_to( image_for(@member, size: 220), member_path(@member))
           %h3= @member.full_name
           - if @member.email.present?
-            %button.btn.btn-default.btn-block{"data-target" => "#modal", "data-toggle" => "modal", :type => "button"}
+            %button.btn.btn-default.btn-block{"data-target" => "#modal_init", "data-toggle" => "modal", :type => "button"}
               %i.glyphicon.glyphicon-envelope
               = t('.button_mail')
           %ul.list-unstyled.user_data
@@ -98,5 +98,5 @@
                           /   .progress
                           /     .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
                 .text-center= will_paginate @attendances, :class => 'margin: 0px'
-#modal.modal{"aria-hidden" => "true"}
+#modal_init.modal{"aria-hidden" => "true"}
   = render 'form_modal_mail'
