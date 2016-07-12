@@ -9,6 +9,7 @@ es:
     show: Ver detalles
   button:
     search: Buscar
+    send_mail: Enviar Correo
   confirm:
     message:
       destroy: ¿Estás seguro?
@@ -17,7 +18,7 @@ es:
       zero: sin miembros
       one: 1 miembro
       other: "%{count} miembros"
-
+    title_modal_mail: Enviar Correo
   # Specific view translations
   layouts:
     sidebar:
@@ -74,6 +75,10 @@ es:
       church: 'Iglesia'
       responsibilities: 'Cargos'
       status: 'Estado'
+      button_mail: Enviar Mensaje
+    send_mail:
+      success: Se ha enviado el correo satisfactoriamente.
+      error: Lamentablemente no se ha podido enviar el correo en forma exitosa.
     destroy:
       success: Miembro fue borrado exitosamente
   churches:
