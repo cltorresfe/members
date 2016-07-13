@@ -137,4 +137,24 @@ feature "Members pages" do
       end
     end
   end
+
+  describe 'send_mail' do
+    background { visit member_path(member) }
+    
+    context 'member with email' do
+      let!(:member){ create(:member, church: user.church) }
+      scenario 'sends email to member', js: true do
+        click_button('Enviar Mensaje')
+        click_button('Enviar Correo')
+        expect(page).to have_content 'Se ha enviado el correo satisfactoriamente.'
+      end
+    end
+
+    context 'member without email' do
+      let!(:member){ create(:member, church: user.church, email: nil) }
+      scenario 'sends email to member', js: true do
+        expect(page).not_to have_content 'Enviar Mensaje'
+      end
+    end
+  end
 end
