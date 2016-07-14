@@ -7,13 +7,13 @@
         %h3.modal-title= t('common.title_modal_mail')
         = @member.full_name
         = "<#{@member.email}>"
-      = form_tag(send_mail_member_path(@member.id), remote: true, style: "display:inline;" ) do
+        #flash_messages_error
+      = form_tag(send_mail_member_path(@member.id), remote: true, id: 'email_form', style: "display:inline;" ) do
         / body (form)
         .modal-body
-          %ul.errors
           .form-group
             = label_tag :subject, nil, class:"control-label"
-            = text_field_tag :subject, nil, class: "form-control"
+            = text_field_tag :subject, nil, class: "form-control "
           .form-group
             = label_tag :body, nil, class: "control-label"
             = cktext_area_tag :body, nil, class: "form-control"

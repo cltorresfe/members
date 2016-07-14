@@ -76,8 +76,8 @@ class MembersController < ApplicationController
   end
 
   def send_mail
-    if MemberMailer.send_message(params[:subject], params[:body], params[:id], current_user.id).deliver_later
-      flash.now[:notice] = t('.success')
+    if (params[:subject].present? && (MemberMailer.send_message(params[:subject], params[:body], params[:id], current_user.id).deliver_later))
+        flash.now[:notice] = t('.success')
     else
       flash.now[:alert] = t('.error')
     end
