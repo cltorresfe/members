@@ -24,6 +24,10 @@ module Decorators
         "#{first_name} #{last_name}"
       end
 
+      def full_name_and_mail
+        "#{first_name} #{last_name} <#{email}>"
+      end
+
       def semi_full_name
         "#{first_name} #{last_name.first + '.' if last_name}"
       end
