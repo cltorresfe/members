@@ -145,7 +145,7 @@ feature "Members pages" do
       let!(:member){ create(:member, church: user.church, ) }
       scenario 'sends email to member', js: true do
         click_button('Enviar Mensaje')
-        fill_in 'Subject', with: 'subject'
+        fill_in 'Asunto', with: 'subject'
         click_button('Enviar Correo')
         expect(page).to have_content 'Se ha enviado el correo satisfactoriamente.'
       end
