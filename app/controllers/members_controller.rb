@@ -76,9 +76,14 @@ class MembersController < ApplicationController
   end
 
   def send_mail
-    @member = Member.find(params[:id])
-    if (current_church == @member.church && params[:subject].present? && (MemberMailer.send_message(params[:subject], params[:body], @member.id , current_user.id).deliver_later))
-      flash.now[:notice] = t('.success')
+    if (params[:subject].present?)
+      @member = Member.find(params[:id])
+      if (current_church.members.include?(@member))
+        MemberMailer.send_message(params[:subject], params[:body], @member.id , current_user.id).deliver_later
+        flash.now[:notice] = t('.success')
+      else
+        render status: :forbidden
+      end
     else
       flash.now[:alert] = t('.error')
       render status: :unprocessable_entity
