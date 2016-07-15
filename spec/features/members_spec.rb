@@ -162,7 +162,7 @@ feature "Members pages" do
 
     context 'member without email' do
       let!(:member){ create(:member, church: user.church, email: nil) }
-      scenario 'sends email to member', js: true do
+      scenario 'sends email to member' do
         expect(page).not_to have_content 'Enviar Mensaje'
       end
     end
