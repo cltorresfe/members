@@ -21,7 +21,7 @@ module ApplicationHelper
     image_tag member.avatar_url, class:'img img-responsive avatar-view', width: options[:size]
   end
 
-  def bootstrap_class_for flash_type
+  def bootstrap_class_for(flash_type)
     { alert: "alert-warning", notice: "alert-info" }[flash_type.to_sym] || flash_type.to_s
   end
 
