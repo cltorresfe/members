@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :families, except: :show
   resources :members do
     member do
-      post :send_mail
+      post :send_mail, format: :js
     end
   end
   resources :ministries, except: :show
