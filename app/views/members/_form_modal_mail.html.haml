@@ -1,0 +1,21 @@
+.row
+  .modal-dialog
+    .modal-content
+      / header
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} &times;
+        %h3.modal-title= t('common.title_modal_mail')
+        = t('.send_to', member: @member.full_name_and_mail)
+        #flash_messages_error
+      = form_tag(send_mail_member_path(@member.id), remote: true, id: 'email_form', style: "display:inline;" ) do
+        / body (form)
+        .modal-body
+          .form-group
+            = label_tag :subject, t('.subject'), class:"control-label"
+            = text_field_tag :subject, nil, class: "form-control "
+          .form-group
+            = label_tag :body, t('.body'), class: "control-label"
+            = cktext_area_tag :body, nil, class: "form-control"
+        / submit
+        .modal-footer
+          = submit_tag t('button.send_mail'), class: "btn btn-primary btn-block"

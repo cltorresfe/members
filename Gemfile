@@ -8,7 +8,7 @@ gem 'bootstrap-will_paginate'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'country_select'
 gem 'coveralls', require: false
-gem 'devise', '~> 4.1.1'
+gem 'devise', '~> 4.2.0'
 gem 'gon', git: 'https://github.com/gazay/gon.git', branch: :master
 gem 'gravatar_image_tag'
 gem 'haml-rails'
@@ -28,6 +28,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'ckeditor'
 
 group :development, :test do
   gem 'awesome_print'

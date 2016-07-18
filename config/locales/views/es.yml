@@ -9,6 +9,7 @@ es:
     show: Ver detalles
   button:
     search: Buscar
+    send_mail: Enviar Correo
   confirm:
     message:
       destroy: ¿Estás seguro?
@@ -17,7 +18,7 @@ es:
       zero: sin miembros
       one: 1 miembro
       other: "%{count} miembros"
-
+    title_modal_mail: Enviar Correo
   # Specific view translations
   layouts:
     sidebar:
@@ -60,7 +61,7 @@ es:
       title: 'Nuevo Miembro'
     show:
       title: Información del Miembro
-      title_small: datos y Estadísticas
+      title_small: Datos y Estadísticas
       title_charges: Cargos
       title_attendances: Asistencia a Ministerios
       content_activity: Actividad Reciente
@@ -74,6 +75,14 @@ es:
       church: 'Iglesia'
       responsibilities: 'Cargos'
       status: 'Estado'
+      button_mail: Enviar Mensaje
+    form_modal_mail:
+      subject: Asunto
+      body: Mensaje
+      send_to: 'Para: %{member}'
+    send_mail:
+      success: Se ha enviado el correo satisfactoriamente.
+      error: Lamentablemente no se ha podido enviar el correo en forma exitosa.
     destroy:
       success: Miembro fue borrado exitosamente
   churches:

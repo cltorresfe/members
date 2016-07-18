@@ -118,3 +118,15 @@
 .label {
   margin-right: 2.1px !important;
 }
+
+body .modal-dialog {
+  width: 60%;
+  left: 6%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.form-group label.error  {
+  color: #dd4b39 !important;
+  font-size: 0.8em;
+}

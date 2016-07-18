@@ -12,6 +12,7 @@
 //
 //= require jquery/dist/jquery
 //= require jquery_ujs
+//= require jquery-validation/dist/jquery.validate.min
 //= require bootstrap/dist/js/bootstrap
 //= require moment/min/moment.min
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
@@ -23,5 +24,5 @@
 //= require morris-init
 // require smart-wizard-init
 // require gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard
-
+//= require ckeditor/init
 //= require_tree ./routes/

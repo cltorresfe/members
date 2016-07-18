@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   resources :attendances, only: [:index, :create]
   resources :churches, only: [:new, :create]
   resources :families, except: :show
-  resources :members
+  resources :members do
+    member do
+      post :send_mail, format: :js
+    end
+  end
   resources :ministries, except: :show
   resources :responsibilities
 

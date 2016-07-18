@@ -1,0 +1,9 @@
+
+<% flash.each do |type, message| %>
+  <% if type == 'notice' %>
+    $('#modal_init').modal('hide'); 
+    $("#flash_messages").html("<div class='alert <%= bootstrap_class_for(type) %> alert-dismissible' role='alert'><button class='close' data-dismiss='alert'>×</button><%= message.html_safe %></div>")
+  <%else%> 
+    $("#flash_messages_error").html("<span class='label label-danger'><%= message.html_safe %></span>")
+  <% end %>
+<% end %>

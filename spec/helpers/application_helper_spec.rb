@@ -64,4 +64,10 @@ RSpec.describe ApplicationHelper do
 
     it { is_expected.to include('img-responsive')}
   end
+
+  describe '#bootstrap_class_for' do
+    subject{ helper.bootstrap_class_for 'notice' }
+
+    it { is_expected.to eq('alert-info')}
+  end
 end

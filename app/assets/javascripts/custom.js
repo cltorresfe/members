@@ -3,6 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$(document).ready(function() {
+    $('#email_form')
+        .validate({
+            ignore: [],
+            rules: {
+                subject: {
+                    minlength: 2,
+                    required: true
+                }
+            },
+            messages: {
+                subject: {
+                    required: 'Campo requerido',
+                    minlength: jQuery.validator.format("Necesitas {0} caracteres mínimo")
+                }
+            }
+        })
+});
 
 var CURRENT_URL = window.location.href.split('?')[0],
     $BODY = $('body'),
