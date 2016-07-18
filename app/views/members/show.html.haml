@@ -40,19 +40,19 @@
             %ul.list-inline
               - if @member.facebook.present?
                 %li
-                  = link_to @member.facebook_url, :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.facebook}"} do
+                  = link_to @member.facebook_url, :target => :blank, data: { toggle: 'tooltip', placement: 'right', title: "#{@member.facebook}"} do
                     %i.fa.fa-facebook-square.fa-3
               - if @member.twitter.present?
                 %li
-                  = link_to @member.twitter_url, :target => :blank, data: { toggle: 'tooltip', placement: 'top', title: "#{@member.twitter}"} do
+                  = link_to @member.twitter_url, :target => :blank, data: { toggle: 'tooltip', placement: 'right', title: "#{@member.twitter}"} do
                     %i.fa.fa-twitter
               - if @member.email.present?
                 %li
-                  = link_to '#', data: { toggle: 'tooltip', placement: 'top', title: "#{@member.email}"} do
+                  = link_to '#', data: { toggle: 'tooltip', placement: 'right', title: "#{@member.email}"} do
                     %i.fa.fa-envelope-o
               - if @member.skype.present?
                 %li
-                  = link_to '#', data: { toggle: 'tooltip', placement: 'top', title: "#{@member.skype}"} do
+                  = link_to '#', data: { toggle: 'tooltip', placement: 'right', title: "#{@member.skype}"} do
                     %i.fa.fa-skype
           = link_to edit_member_path(@member) do
             .btn.btn-success
