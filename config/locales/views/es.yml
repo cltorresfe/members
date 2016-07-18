@@ -79,7 +79,7 @@ es:
     form_modal_mail:
       subject: Asunto
       body: Mensaje
-      send_to: 'Para:'
+      send_to: 'Para: %{member}'
     send_mail:
       success: Se ha enviado el correo satisfactoriamente.
       error: Lamentablemente no se ha podido enviar el correo en forma exitosa.
