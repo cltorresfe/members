@@ -31,6 +31,8 @@ module Members
         password: ENV["GMAIL_PASSWORD"]
     }
     config.app_generators.scaffold_controller = :scaffold_controller
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w( ckeditor/* )
 
     # config.autoload_paths += Dir["#{config.root}/lib/members/**/"]
   end
