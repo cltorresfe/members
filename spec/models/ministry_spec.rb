@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: ministries
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  church_id   :integer
+#
+
 require 'rails_helper'
 
 RSpec.describe Ministry, :type => :model do

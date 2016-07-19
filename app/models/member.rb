@@ -25,6 +25,9 @@
 #  membership_date :datetime
 #  discipline_date :datetime
 #  transfer_date   :datetime
+#  avatar          :string
+#  role            :integer
+#  family_id       :integer
 #
 
 class Member < ApplicationRecord
