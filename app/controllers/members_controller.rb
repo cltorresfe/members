@@ -8,11 +8,14 @@ class MembersController < ApplicationController
     @ministries = @member.ministries
     @responsibilities = @member.responsibilities
     @attendances = @member.attendances.sorted.paginate(page: params[:page], per_page: 12)
-    @family = Family.new
-    @family.address = @member.address
-    @family.phone = @member.phone
-    @family.city = @member.city
-    @family.country = @member.country
+    @family = @member.family
+    unless(@family.present?)
+      @family = Family.new
+      @family.address = @member.address
+      @family.phone = @member.phone
+      @family.city = @member.city
+      @family.country = @member.country
+    end
   end
 
   def index
@@ -73,6 +76,20 @@ class MembersController < ApplicationController
     end
   end
 
+  def associated_family
+    @family = Family.first
+    @member = current_church.members.where(id: params[:id]).first #Member.find(params[:id])
+    if @member
+      @member.family = @family
+      if @member.update(member_params)
+        flash[:notice] = 'Member was successfully updated.'
+        redirect_to action: :index
+      else
+        render :edit
+      end
+    end
+  end
+
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
@@ -105,7 +122,7 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:first_name, :last_name, :gender, :run, :city,
         :country, :birth_date, :testimony, :baptism_date, :membership_date, :discipline_date,
-        :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone, :status, :avatar, charge_ids:[])
+        :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone, :status, :role, :avatar, charge_ids:[])
     end
 
     def load_ministries

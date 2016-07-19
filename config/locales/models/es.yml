@@ -33,6 +33,14 @@ es:
           visitor: Invitado
           transferred: Trasladado
           deceased: Fallecido
+        role_name:
+          head_family: Jefe de Familia
+          father: Padre
+          mother: Madre
+          son: Hijo
+          daughter: Hija
+          spouse: Cónyuge
+          relative: Pariente
         gender: Sexo
         city: Ciudad
         country: País

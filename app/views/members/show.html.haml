@@ -114,8 +114,8 @@
         .modal-header
           %button.close{"data-dismiss" => "modal", :type => "button"} &times;
           %h3.modal-title
-            Nueva Familia
+            Asocia Familia
           #flash_messages_error
           / body (form)
         .modal-body
-          ffff
+          = render 'form_add_to_family', family: @family, member: @member, locals: { remote: true }
