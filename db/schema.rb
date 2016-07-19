@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706155121) do
+ActiveRecord::Schema.define(version: 20160719192217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,7 +90,10 @@ ActiveRecord::Schema.define(version: 20160706155121) do
     t.datetime "discipline_date"
     t.datetime "transfer_date"
     t.string   "avatar"
+    t.integer  "role"
+    t.integer  "family_id"
     t.index ["church_id"], name: "index_members_on_church_id", using: :btree
+    t.index ["family_id"], name: "index_members_on_family_id", using: :btree
   end
 
   create_table "members_responsibilities", id: false, force: :cascade do |t|
@@ -147,6 +150,7 @@ ActiveRecord::Schema.define(version: 20160706155121) do
   add_foreign_key "charges", "responsibilities"
   add_foreign_key "families", "churches"
   add_foreign_key "members", "churches"
+  add_foreign_key "members", "families"
   add_foreign_key "ministries", "churches"
   add_foreign_key "responsibilities", "churches"
   add_foreign_key "users", "churches"
