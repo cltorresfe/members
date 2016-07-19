@@ -49,7 +49,7 @@ FactoryGirl.define do
     membership_date { Faker::Date.between(10.years.ago, Date.today) }
     discipline_date { Faker::Date.between(10.years.ago, Date.today) }
     transfer_date { Faker::Date.between(10.years.ago, Date.today) }
-
+    family
     church
   end
 end

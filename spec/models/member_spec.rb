@@ -35,6 +35,7 @@ require 'rails_helper'
 RSpec.describe Member, :type => :model do
 
   it { is_expected.to belong_to(:church) }
+  it { is_expected.to belong_to(:family) }
   it { is_expected.to have_many(:charge_members) }
   it { is_expected.to have_many(:charges).through(:charge_members) }
 
