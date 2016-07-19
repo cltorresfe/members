@@ -8,6 +8,11 @@ class MembersController < ApplicationController
     @ministries = @member.ministries
     @responsibilities = @member.responsibilities
     @attendances = @member.attendances.sorted.paginate(page: params[:page], per_page: 12)
+    @family = Family.new
+    @family.address = @member.address
+    @family.phone = @member.phone
+    @family.city = @member.city
+    @family.country = @member.country
   end
 
   def index

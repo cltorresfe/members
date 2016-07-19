@@ -79,6 +79,11 @@
                       = "#{ministry.percent_attendances_by_member(@member)}%"
         .col-md-9.col-sm-9.col-xs-12
           %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+            %button.btn.btn-default.btn-block{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
+              %i.glyphicon.glyphicon-plus-sign
+              Asociar Familia
+        .col-md-9.col-sm-9.col-xs-12
+          %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
             #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
               #flash_messages
               - if @attendances.present?
@@ -98,5 +103,19 @@
                           /   .progress
                           /     .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
                 .text-center= will_paginate @attendances, :class => 'margin: 0px'
+
 #modal_init.modal{"aria-hidden" => "true"}
   = render 'form_modal_mail'
+#modal_new_family.modal{"aria-hidden" => "true"}
+  .row
+    .modal-dialog
+      .modal-content
+        / header
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} &times;
+          %h3.modal-title
+            Nueva Familia
+          #flash_messages_error
+          / body (form)
+        .modal-body
+          ffff

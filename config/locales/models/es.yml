@@ -56,7 +56,7 @@ es:
         password_confirmation: Confirmación de la contraseña
         remember_me: Recordarme
       family:
-        name: 'Nombre'
+        name: 'Nombre familia'
         address: 'Dirección'
         phone: 'Fono'
         married_at: Fecha de matrimonio
