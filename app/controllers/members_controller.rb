@@ -83,7 +83,7 @@ class MembersController < ApplicationController
       @member.family = @family
       if @member.update(member_params)
         flash[:notice] = 'Member was successfully updated.'
-        redirect_to action: :index
+        redirect_to action: :show
       else
         render :edit
       end
