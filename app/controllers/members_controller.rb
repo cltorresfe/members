@@ -78,7 +78,7 @@ class MembersController < ApplicationController
   end
 
   def associated_family
-    @family = current_church.families.where(id: params[:member][:family]).first
+    @family = current_church.families.where(id: params[:member][:family_id]).first
     @member = current_church.members.where(id: params[:id]).first #Member.find(params[:id])
     if @member
       @member.family = @family
