@@ -26,7 +26,7 @@
                     - @families.each do |family|
                       %tr.odd.pointer
                         %td= family.name
-                        %td= family.married_at.strftime("%d/%m/%Y")
+                        %td= family.married_at.strftime("%d/%m/%Y") if family.married_at
                         %td= family.address
                         %td= family.phone
                         %td= family.city

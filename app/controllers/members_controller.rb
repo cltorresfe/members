@@ -8,6 +8,7 @@ class MembersController < ApplicationController
     @ministries = @member.ministries
     @responsibilities = @member.responsibilities
     @attendances = @member.attendances.sorted.paginate(page: params[:page], per_page: 12)
+    @families = current_church.families
     @family = @member.family
     unless(@family.present?)
       @family = Family.new
