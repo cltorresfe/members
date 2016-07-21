@@ -99,9 +99,9 @@
             %button.btn.btn-success{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
               %i.glyphicon.glyphicon-plus-sign
               -if @family.present?
-                Cambiar Familia
+                = t('.button_change_family')
               - else
-                Asociar Familia
+                = t('.button_add_family')
             - if @attendances.present?
               .row
                 .col-md-12.col-sm-12.col-xs-12
@@ -109,7 +109,7 @@
                     .x_panel
                       .x_title
                         %h2
-                          = t('.data_title_attendance')
+                          = t('.title_attendances')
                         .clearfix
                       .x_content
                         %table.data.table.table-striped.no-margin
@@ -139,7 +139,7 @@
         .modal-header
           %button.close{"data-dismiss" => "modal", :type => "button"} &times;
           %h3.modal-title
-            Asocia Familia
+            = t('.title_family')
           #flash_messages_error
           / body (form)
         .modal-body

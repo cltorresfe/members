@@ -64,8 +64,9 @@ es:
       title_small: Datos y Estadísticas
       title_charges: Cargos
       title_attendances: Asistencia a Ministerios
+      title_family: 'Cambia Familia'
       content_activity: Actividad Reciente
-      data_column_attendance: Asistencia Ministerio
+      data_column_attendance: Detalle
       data_column_date: Fecha
       data_column_present: Estado
       name: 'Nombre'
@@ -76,6 +77,8 @@ es:
       responsibilities: 'Cargos'
       status: 'Estado'
       button_mail: Enviar Mensaje
+      button_add_family: Asociar Familia
+      button_change_family: Cambiar Familia
     form_modal_mail:
       subject: Asunto
       body: Mensaje

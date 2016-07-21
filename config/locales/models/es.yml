@@ -26,6 +26,8 @@ es:
         church: 'Iglesia'
         avatar: 'Imagen'
         responsibility: "Cargos"
+        role: Rol
+        family_id: Familia
         status_name:
           active: Activo
           regular: Asistente regular
