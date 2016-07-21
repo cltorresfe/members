@@ -79,30 +79,55 @@
                       = "#{ministry.percent_attendances_by_member(@member)}%"
         .col-md-9.col-sm-9.col-xs-12
           %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
-            %button.btn.btn-default.btn-block{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
-              %i.glyphicon.glyphicon-plus-sign
-              Asociar Familia
-        .col-md-9.col-sm-9.col-xs-12
-          %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
             #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
               #flash_messages
-              - if @attendances.present?
-                %table.data.table.table-striped.no-margin
-                  %thead
-                    %tr
-                      %th= t('.data_column_attendance')
-                      %th= t('.data_column_date')
-                      %th= t('.data_column_present')
-                    %tbody
-                      - @attendances.each do |attendance|
-                        %tr
-                          %td= attendance.ministry.name
-                          %td= attendance.attendance_date.strftime("%d/%m/%Y")
-                          %td= attendance.human_present
-                          / %td.vertical-align-mid
-                          /   .progress
-                          /     .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
-                .text-center= will_paginate @attendances, :class => 'margin: 0px'
+              - if(@members_family.present?)
+                .row
+                  .col-md-12.col-sm-12.col-xs-12
+                    .box-body.no-padding
+                      .x_panel
+                        .x_title
+                          %h2
+                            = "Integrantes Familia #{@family.name} "
+                            %small
+                              = t('common.member', count: @members_family.size)
+                          .clearfix
+                        .x_content
+                          .row
+                            .clearfix
+                            = render partial: 'member', collection: @members_family
+            %button.btn.btn-success{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
+              %i.glyphicon.glyphicon-plus-sign
+              -if @family.present?
+                Cambiar Familia
+              - else
+                Asociar Familia
+            - if @attendances.present?
+              .row
+                .col-md-12.col-sm-12.col-xs-12
+                  .box-body.no-padding
+                    .x_panel
+                      .x_title
+                        %h2
+                          = t('.data_title_attendance')
+                        .clearfix
+                      .x_content
+                        %table.data.table.table-striped.no-margin
+                          %thead
+                            %tr
+                              %th= t('.data_column_attendance')
+                              %th= t('.data_column_date')
+                              %th= t('.data_column_present')
+                            %tbody
+                              - @attendances.each do |attendance|
+                                %tr
+                                  %td= attendance.ministry.name
+                                  %td= attendance.attendance_date.strftime("%d/%m/%Y")
+                                  %td= attendance.human_present
+                                  / %td.vertical-align-mid
+                                  /   .progress
+                                  /     .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
+                        .text-center= will_paginate @attendances, :class => 'margin: 0px'
 
 #modal_init.modal{"aria-hidden" => "true"}
   = render 'form_modal_mail'
