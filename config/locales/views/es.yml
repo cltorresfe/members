@@ -69,6 +69,7 @@ es:
       data_column_attendance: Detalle
       data_column_date: Fecha
       data_column_present: Estado
+      title_table_family: Integrantes Familia %{title_family}
       name: 'Nombre'
       address: 'Dirección'
       email: 'Correo'

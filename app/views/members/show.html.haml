@@ -88,9 +88,9 @@
                       .x_panel
                         .x_title
                           %h2
-                            = "Integrantes Familia #{@family.name} "
+                            = t('.title_table_family',title_family: @family.name)
                             %small
-                              = t('common.member', count: @members_family.size)
+                              =t('common.member', count: @members_family.size)
                           .clearfix
                         .x_content
                           .row
