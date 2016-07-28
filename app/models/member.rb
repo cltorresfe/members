@@ -73,6 +73,10 @@ class Member < ApplicationRecord
     self.role = nil unless family
   end
 
+  def head_family
+    family.members.where('role = ?', 0) if family
+  end
+
   def self.administrative_for_ministry(ministry_id)
     joins(charges: [:ministry, :responsibility]).
     where('ministries.id = ?', ministry_id).

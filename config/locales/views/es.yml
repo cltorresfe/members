@@ -90,6 +90,7 @@ es:
       error: Lamentablemente no se ha podido enviar el correo en forma exitosa.
     associated_family:
       success: Miembro ha sido actualizado satisfactoriamente.
+      error_head_family: '%{member} ya es un Jefe de Familia.'
     update:
       success: Miembro ha sido actualizado satisfactoriamente.
     create:

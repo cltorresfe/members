@@ -75,14 +75,19 @@ class MembersController < ApplicationController
 
   def associated_family
     @family = current_church.families.where(id: params[:member][:family_id]).first
-    @member = current_church.members.where(id: params[:id]).first #Member.find(params[:id])
+    @member = current_church.members.where(id: params[:id]).first 
+
     if @member
       @member.family = @family
-      if @member.update(member_params)
-        flash[:notice] = t('.success')
-        redirect_to action: :show
+      @member_head = @member.head_family.first if @family
+      if params[:member][:role] != 'head_family' || @member_head == nil
+        if @member.update(member_params)
+          flash[:notice] = t('.success')
+          redirect_to action: :show
+        end
       else
-        render :edit
+        flash[:alert] = t('.error_head_family', member: @member_head.full_name)
+        redirect_to action: :show
       end
     end
   end
