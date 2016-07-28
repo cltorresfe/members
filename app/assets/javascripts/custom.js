@@ -292,6 +292,6 @@ if (typeof NProgress != 'undefined') {
 })(jQuery,'smartresize');
 
 $('#modal_new_family').on('shown.bs.modal', function () {
-        $('.chosen-select', this).chosen();
+        $('.chosen-select', this).chosen({allow_single_deselect: true});
         $(".chosen-select-disable-search", this).chosen({disable_search_threshold: 10});
     });
