@@ -152,7 +152,7 @@ feature "Members pages" do
     end
 
     context 'member with email and without subject' do
-      let!(:member){ create(:member, church: user.church, ) }
+      let!(:member){ create(:member, church: user.church ) }
       scenario 'sends email to member', js: true do
         click_button('Enviar Mensaje')
         click_button('Enviar Correo')
@@ -164,6 +164,33 @@ feature "Members pages" do
       let!(:member){ create(:member, church: user.church, email: nil) }
       scenario 'sends email to member' do
         expect(page).not_to have_content 'Enviar Mensaje'
+      end
+    end
+  end
+
+  describe 'associated_family' do
+    background { visit member_path(member) }
+    let!(:family) { create(:family, church: user.church, name: "familiaT")}
+
+    context 'member without family associated' do
+      let!(:member){ create(:member, church: user.church, family: nil ) }
+      scenario 'associated family to member' do
+        click_button('Asociar Familia')
+        select('Padre', :from => 'Rol')
+        have_select('Familia', selected: family.name)
+        click_button('Actualizar Miembro')
+        expect(page).to have_content 'Miembro ha sido actualizado satisfactoriamente.'
+      end
+    end
+
+    context 'member with family associated' do
+      let!(:member){ create(:member, church: user.church, family: family ) }
+      scenario 'associated family to member' do
+        click_button('Cambiar Familia')
+        select('Padre', :from => 'Rol')
+        have_select('Familia', selected: family.name)
+        click_button('Actualizar Miembro')
+        expect(page).to have_content 'Miembro ha sido actualizado satisfactoriamente.'
       end
     end
   end
