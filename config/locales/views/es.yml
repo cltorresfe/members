@@ -64,7 +64,8 @@ es:
       title_small: Datos y Estadísticas
       title_charges: Cargos
       title_attendances: Asistencia a Ministerios
-      title_family: 'Cambia Familia'
+      title_family_change: 'Cambia Familia'
+      title_family: 'Asocia Familia'
       content_activity: Actividad Reciente
       data_column_attendance: Detalle
       data_column_date: Fecha

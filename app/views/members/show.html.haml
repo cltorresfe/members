@@ -141,7 +141,7 @@
         .modal-header
           %button.close{"data-dismiss" => "modal", :type => "button"} &times;
           %h3.modal-title
-            = t('.title_family')
+            = @family.present? ? t('.title_family_change') : t('.title_family')
           #flash_messages_error
           / body (form)
         .modal-body
