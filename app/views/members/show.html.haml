@@ -96,11 +96,13 @@
                           .row
                             .clearfix
                             = render partial: 'member', collection: @members_family
-            %button.btn.btn-success{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
-              %i.glyphicon.glyphicon-plus-sign
-              -if @family.present?
+            -if @family.present?
+              %button.btn.btn-success{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
+                %i.glyphicon.glyphicon-plus-sign
                 = t('.button_change_family')
-              - else
+            - else
+              %button.btn.btn-success{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
+                %i.glyphicon.glyphicon-plus-sign
                 = t('.button_add_family')
             - if @attendances.present?
               .row

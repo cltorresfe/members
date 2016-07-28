@@ -53,7 +53,7 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
     @member.church = current_church
     if @member.save
-      flash[:notice] = 'Member was successfully created.'
+      flash[:notice] = t('.success')
       redirect_to action: :index
     else
       load_ministries
@@ -65,7 +65,7 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1.json
   def update
     if @member.update(member_params)
-      flash[:notice] = 'Member was successfully updated.'
+      flash[:notice] = t('.success')
       redirect_to action: :index
     else
       load_ministries
@@ -79,7 +79,7 @@ class MembersController < ApplicationController
     if @member
       @member.family = @family
       if @member.update(member_params)
-        flash[:notice] = 'Member was successfully updated.'
+        flash[:notice] = t('.success')
         redirect_to action: :show
       else
         render :edit

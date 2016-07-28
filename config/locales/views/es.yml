@@ -87,6 +87,12 @@ es:
     send_mail:
       success: Se ha enviado el correo satisfactoriamente.
       error: Lamentablemente no se ha podido enviar el correo en forma exitosa.
+    associated_family:
+      success: Miembro ha sido actualizado satisfactoriamente.
+    update:
+      success: Miembro ha sido actualizado satisfactoriamente.
+    create:
+      success: Miembro ha sido creado satisfactoriamente.
     destroy:
       success: Miembro fue borrado exitosamente
   churches:
