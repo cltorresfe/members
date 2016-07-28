@@ -193,5 +193,17 @@ feature "Members pages" do
         expect(page).to have_content 'Miembro ha sido actualizado satisfactoriamente.'
       end
     end
+
+    context 'member with head family associated' do
+      let!(:member_head){ create(:member, church: user.church, family: family, role: :head_family ) }
+      let!(:member){ create(:member, church: user.church, family: family ) }
+      scenario 'associated family to member' do
+        click_button('Cambiar Familia')
+        select('Jefe de Familia', :from => 'Rol')
+        have_select('Familia', selected: family.name)
+        click_button('Actualizar Miembro')
+        expect(page).to have_content 'ya es un Jefe de Familia'
+      end
+    end
   end
 end
