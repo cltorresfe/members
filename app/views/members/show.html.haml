@@ -95,7 +95,7 @@
                         .x_content
                           .row
                             .clearfix
-                            = render partial: 'member', collection: @members_family
+                            = render partial: 'member', collection: @members_family, locals: {role_name: true, semi_full_name: true}
             -if @family.present?
               %button.btn.btn-success{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
                 %i.glyphicon.glyphicon-plus-sign
