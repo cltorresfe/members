@@ -1,8 +1,14 @@
 .col-sm-3.col-xs-4{ class: "col-md-#{defined?(small_size) ? '3' : '2'}"}
   .col-sm-12{ data: { toggle: 'tooltip', placement: 'top', title: t('link.show')} }
-    .text-center= link_to( avatar_for(member), member_path(member))
+    .text-center
+      = link_to( member_path(member), class: 'dropdown-toggle info-number') do
+        = avatar_for(member)
+        - if (member.status == 'transferred' || member.status == 'deceased' || member.status == 'inactive')
+          %span.badge.bg-red
+            = member.status_name
   .col-sm-12
     .text-center
       .emphasis
-        = link_to defined?(semi_full_name) ? member.semi_full_name : member.full_name, member_path(member)
-        = defined?(role_name) ? "(#{member.role_name})" : ''
+        = link_to member_path(member) do
+          = defined?(semi_full_name) ? member.semi_full_name : member.full_name
+        = "(#{member.role_name})" if defined?(role_name)
