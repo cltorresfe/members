@@ -1,7 +1,7 @@
 
 var days = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ];
 if (typeof gon !== 'undefined'){
-  if (gon.attendances_week !== null){
+  if (gon.attendances_week != null){
       line_week = new Morris.Line({
       // ID of the element in which to draw the chart.
       element: 'line_chart',
@@ -23,28 +23,30 @@ if (typeof gon !== 'undefined'){
       labels: ['Personas']
     });
   }
+  if (gon.members_range != null){
+    donut_range_age = Morris.Donut({
 
-  donut_range_age = Morris.Donut({
+      element: 'graph_donut_range',
+      data: gon.members_range,
+      colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+      formatter: function (y, data) {
+        if( data.label === 'Sin información') return ''
+        return data.count+' / '+y;
+      },
+      resize: true
+    });
+  }
+  if (gon.members_gender != null){
+    donut_gender = Morris.Donut({
 
-    element: 'graph_donut_range',
-    data: gon.members_range,
-    colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-    formatter: function (y, data) {
-      if( data.label === 'Sin información') return ''
-      return data.count+' / '+y;
-    },
-    resize: true
-  });
-
-  donut_gender = Morris.Donut({
-
-    element: 'graph_donut_gender',
-    data: gon.members_gender,
-    colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-    formatter: function (y, data) {
-      if( data.label === 'Sin información') return ''
-      return y;
-    },
-    resize: true
-  });
+      element: 'graph_donut_gender',
+      data: gon.members_gender,
+      colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+      formatter: function (y, data) {
+        if( data.label === 'Sin información') return ''
+        return y;
+      },
+      resize: true
+    });
+  }
 }

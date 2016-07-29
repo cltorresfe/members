@@ -9,6 +9,5 @@
   .col-sm-12
     .text-center
       .emphasis
-        = link_to member_path(member) do
-          = defined?(semi_full_name) ? member.semi_full_name : member.full_name
+        = link_to( defined?(semi_full_name) ? member.semi_full_name : member.full_name, member_path(member))
         = "(#{member.role_name})" if defined?(role_name)
