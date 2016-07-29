@@ -7,11 +7,11 @@
             %h2
               = current_church.name
               %small
-                = t('common.member', count: current_church.members.active_service.size)
+                = t('common.member', count: current_church.members.size)
             .clearfix
           .x_content
             .row
               .clearfix
-              = render partial: 'member', collection: @members.active_service
+              = render partial: 'member', collection: @members
               .col-md-12.col-sm-12.col-xs-12
                 .text-center= will_paginate @members, :class => 'margin: 0px'
