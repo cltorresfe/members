@@ -10,9 +10,9 @@
                 = link_to ministry, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
                   %i.glyphicon.glyphicon-trash
                 %small
-                  = t('common.member', count: ministry.members.size)
+                  = t('common.member', count: ministry.members.active_service.size)
               .clearfix
             .x_content{:style => "display: block;"}
               .row
                 .clearfix
-                = render ministry.members
+                = render ministry.members.active_service
