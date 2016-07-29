@@ -146,4 +146,22 @@
                           = member.first_name
                         %br
                         = member.birth_date.strftime("%d/%m/%Y")
-
+  .col-md-3.col-sm-6.col-xs-6
+    .box-body.no-padding
+      .x_panel
+        .x_title
+          %h2
+            %a.collapse-link.cursor
+              .fa.fa-info-circle
+              Tabla de estados
+          .clearfix
+        .x_content{:style => "display: block;"}
+          .box-body.no-padding
+            .row
+              %table.table
+                %tbody
+                  - Member.statuses_for_badge.each do |status|
+                    %tr
+                      %td
+                        %span.badge{ class: "#{status[2]}"}= status[1]
+                      %td=status[0]
