@@ -1,8 +1,41 @@
+# == Schema Information
+#
+# Table name: members
+#
+#  id              :integer          not null, primary key
+#  first_name      :string
+#  address         :string
+#  email           :string
+#  phone           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  church_id       :integer
+#  status          :integer
+#  run             :string
+#  last_name       :string
+#  gender          :boolean
+#  city            :string
+#  country         :string
+#  testimony       :text
+#  facebook        :string
+#  twitter         :string
+#  skype           :string
+#  birth_date      :datetime
+#  baptism_date    :datetime
+#  membership_date :datetime
+#  discipline_date :datetime
+#  transfer_date   :datetime
+#  avatar          :string
+#  role            :integer
+#  family_id       :integer
+#
+
 require 'rails_helper'
 
 RSpec.describe Member, :type => :model do
 
   it { is_expected.to belong_to(:church) }
+  it { is_expected.to belong_to(:family) }
   it { is_expected.to have_many(:charge_members) }
   it { is_expected.to have_many(:charges).through(:charge_members) }
 

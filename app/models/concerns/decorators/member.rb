@@ -15,6 +15,18 @@ module Decorators
         I18n.t("activerecord.attributes.member.status_name.#{status}", default: '')
       end
 
+      def role_name
+        self.class.get_role_name_for(role)
+      end
+
+      def self.role_for_select
+        roles.map { |k, _v| [ get_role_name_for(k), k] }
+      end
+
+      def self.get_role_name_for(role)
+        I18n.t("activerecord.attributes.member.role_name.#{role}", default: '')
+      end
+
       def country_name
         iso_country = ISO3166::Country[country]
         iso_country.translations[I18n.locale.to_s] || iso_country.name

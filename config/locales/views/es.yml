@@ -64,10 +64,13 @@ es:
       title_small: Datos y Estadísticas
       title_charges: Cargos
       title_attendances: Asistencia a Ministerios
+      title_family_change: 'Cambia Familia'
+      title_family: 'Asocia Familia'
       content_activity: Actividad Reciente
-      data_column_attendance: Asistencia Ministerio
+      data_column_attendance: Detalle
       data_column_date: Fecha
       data_column_present: Estado
+      title_table_family: Integrantes Familia %{title_family}
       name: 'Nombre'
       address: 'Dirección'
       email: 'Correo'
@@ -76,6 +79,8 @@ es:
       responsibilities: 'Cargos'
       status: 'Estado'
       button_mail: Enviar Mensaje
+      button_add_family: Asociar Familia
+      button_change_family: Cambiar Familia
     form_modal_mail:
       subject: Asunto
       body: Mensaje
@@ -83,6 +88,13 @@ es:
     send_mail:
       success: Se ha enviado el correo satisfactoriamente.
       error: Lamentablemente no se ha podido enviar el correo en forma exitosa.
+    associated_family:
+      success: Miembro ha sido actualizado satisfactoriamente.
+      error_head_family: '%{member} ya es un Jefe de Familia.'
+    update:
+      success: Miembro ha sido actualizado satisfactoriamente.
+    create:
+      success: Miembro ha sido creado satisfactoriamente.
     destroy:
       success: Miembro fue borrado exitosamente
   churches:

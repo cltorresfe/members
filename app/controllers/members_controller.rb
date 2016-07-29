@@ -8,6 +8,11 @@ class MembersController < ApplicationController
     @ministries = @member.ministries
     @responsibilities = @member.responsibilities
     @attendances = @member.attendances.sorted.paginate(page: params[:page], per_page: 12)
+    @families = current_church.families
+    if(@member.family)
+      @family = @member.family
+      @members_family = @family.members
+    end
   end
 
   def index
@@ -48,7 +53,7 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
     @member.church = current_church
     if @member.save
-      flash[:notice] = 'Member was successfully created.'
+      flash[:notice] = t('.success')
       redirect_to action: :index
     else
       load_ministries
@@ -60,11 +65,30 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1.json
   def update
     if @member.update(member_params)
-      flash[:notice] = 'Member was successfully updated.'
+      flash[:notice] = t('.success')
       redirect_to action: :index
     else
       load_ministries
       render :edit
+    end
+  end
+
+  def associated_family
+    @family = current_church.families.where(id: params[:member][:family_id]).first
+    @member = current_church.members.where(id: params[:id]).first 
+
+    if @member
+      @member.family = @family
+      @member_head = @member.head_family.first if @family
+      if params[:member][:role] != 'head_family' || @member_head == nil
+        if @member.update(member_params)
+          flash[:notice] = t('.success')
+          redirect_to action: :show
+        end
+      else
+        flash[:alert] = t('.error_head_family', member: @member_head.full_name)
+        redirect_to action: :show
+      end
     end
   end
 
@@ -100,7 +124,7 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:first_name, :last_name, :gender, :run, :city,
         :country, :birth_date, :testimony, :baptism_date, :membership_date, :discipline_date,
-        :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone, :status, :avatar, charge_ids:[])
+        :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone, :status, :role, :avatar, charge_ids:[])
     end
 
     def load_ministries

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: attendances
+#
+#  id              :integer          not null, primary key
+#  member_id       :integer
+#  ministry_id     :integer
+#  attendance_date :datetime
+#  present         :boolean
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Attendance, :type => :model do

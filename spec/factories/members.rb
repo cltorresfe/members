@@ -25,6 +25,9 @@
 #  membership_date :datetime
 #  discipline_date :datetime
 #  transfer_date   :datetime
+#  avatar          :string
+#  role            :integer
+#  family_id       :integer
 #
 
 FactoryGirl.define do
@@ -36,6 +39,7 @@ FactoryGirl.define do
     phone { Faker::PhoneNumber.phone_number }
     gender { [true, false].sample }
     status :active
+    role :father
     avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'user-m.png')) }
     run { Faker::Number.number(10) }
     city { Faker::Address.city }
@@ -49,7 +53,7 @@ FactoryGirl.define do
     membership_date { Faker::Date.between(10.years.ago, Date.today) }
     discipline_date { Faker::Date.between(10.years.ago, Date.today) }
     transfer_date { Faker::Date.between(10.years.ago, Date.today) }
-
+    family
     church
   end
 end

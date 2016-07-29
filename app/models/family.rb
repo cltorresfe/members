@@ -16,6 +16,7 @@
 
 class Family < ApplicationRecord
   belongs_to :church
+  has_many :members
   validates :name, presence: true
   scope :married_notification_by_month, -> {where('Extract(month from married_at) = ? ',Time.zone.now.month) }
 end

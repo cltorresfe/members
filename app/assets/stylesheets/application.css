@@ -17,5 +17,6 @@
  *= require gentelella/build/css/custom
  *= require gentelella/vendors/morris.js/morris
  * require gentelella/vendors/jQuery-Smart-Wizard/styles/smart_wizard
+*= require chosen/chosen
  *= require_self
  */

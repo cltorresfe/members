@@ -81,22 +81,69 @@
           %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
             #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
               #flash_messages
-              - if @attendances.present?
-                %table.data.table.table-striped.no-margin
-                  %thead
-                    %tr
-                      %th= t('.data_column_attendance')
-                      %th= t('.data_column_date')
-                      %th= t('.data_column_present')
-                    %tbody
-                      - @attendances.each do |attendance|
-                        %tr
-                          %td= attendance.ministry.name
-                          %td= attendance.attendance_date.strftime("%d/%m/%Y")
-                          %td= attendance.human_present
-                          / %td.vertical-align-mid
-                          /   .progress
-                          /     .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
-                .text-center= will_paginate @attendances, :class => 'margin: 0px'
+              - if(@members_family.present?)
+                .row
+                  .col-md-12.col-sm-12.col-xs-12
+                    .box-body.no-padding
+                      .x_panel
+                        .x_title
+                          %h2
+                            = t('.title_table_family',title_family: @family.name)
+                            %small
+                              =t('common.member', count: @members_family.size)
+                          .clearfix
+                        .x_content
+                          .row
+                            .clearfix
+                            = render partial: 'member', collection: @members_family, locals: {role_name: true, semi_full_name: true}
+                        .x_content.text-center
+                          -if @family.present?
+                            %button.btn.btn-success{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
+                              %i.glyphicon.glyphicon-plus-sign
+                              = t('.button_change_family')
+            -unless @family.present?
+              %button.btn.btn-success{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
+                %i.glyphicon.glyphicon-plus-sign
+                = t('.button_add_family')
+            - if @attendances.present?
+              .row
+                .col-md-12.col-sm-12.col-xs-12
+                  .box-body.no-padding
+                    .x_panel
+                      .x_title
+                        %h2
+                          = t('.title_attendances')
+                        .clearfix
+                      .x_content
+                        %table.data.table.table-striped.no-margin
+                          %thead
+                            %tr
+                              %th= t('.data_column_attendance')
+                              %th= t('.data_column_date')
+                              %th= t('.data_column_present')
+                            %tbody
+                              - @attendances.each do |attendance|
+                                %tr
+                                  %td= attendance.ministry.name
+                                  %td= attendance.attendance_date.strftime("%d/%m/%Y")
+                                  %td= attendance.human_present
+                                  / %td.vertical-align-mid
+                                  /   .progress
+                                  /     .progress-bar.progress-bar-success{"aria-valuenow" => "35", "data-transitiongoal" => "35", :style => "width: 35%;"}
+                        .text-center= will_paginate @attendances, :class => 'margin: 0px'
+
 #modal_init.modal{"aria-hidden" => "true"}
   = render 'form_modal_mail'
+#modal_new_family.modal{"aria-hidden" => "true"}
+  .row
+    .modal-dialog
+      .modal-content
+        / header
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} &times;
+          %h3.modal-title
+            = @family.present? ? t('.title_family_change') : t('.title_family')
+          #flash_messages_error
+          / body (form)
+        .modal-body
+          = render 'form_add_to_family', family: @family, member: @member, locals: { remote: true }

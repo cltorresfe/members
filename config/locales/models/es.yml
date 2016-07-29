@@ -26,6 +26,8 @@ es:
         church: 'Iglesia'
         avatar: 'Imagen'
         responsibility: "Cargos"
+        role: Rol
+        family_id: Familia
         status_name:
           active: Activo
           regular: Asistente regular
@@ -33,6 +35,14 @@ es:
           visitor: Invitado
           transferred: Trasladado
           deceased: Fallecido
+        role_name:
+          head_family: Jefe de Familia
+          father: Padre
+          mother: Madre
+          son: Hijo
+          daughter: Hija
+          spouse: Cónyuge
+          relative: Pariente
         gender: Sexo
         city: Ciudad
         country: País
@@ -56,7 +66,7 @@ es:
         password_confirmation: Confirmación de la contraseña
         remember_me: Recordarme
       family:
-        name: 'Nombre'
+        name: 'Nombre familia'
         address: 'Dirección'
         phone: 'Fono'
         married_at: Fecha de matrimonio

@@ -25,6 +25,9 @@
 #  membership_date :datetime
 #  discipline_date :datetime
 #  transfer_date   :datetime
+#  avatar          :string
+#  role            :integer
+#  family_id       :integer
 #
 
 class Member < ApplicationRecord
@@ -33,10 +36,12 @@ class Member < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   enum status: %i(active regular inactive visitor transferred deceased)
+  enum role: %i(head_family father mother son daughter spouse relative)
 
   AGE_RANGES = [[0,14],[15,18],[19,29],[30,44],[45,59],[60,120]]
 
   belongs_to :church
+  belongs_to :family
   has_many :charge_members, dependent: :destroy
   has_many :charges, through: :charge_members
   has_many :attendances, dependent: :destroy
@@ -53,6 +58,7 @@ class Member < ApplicationRecord
 
   before_validation :change_to_format_phone
   before_create :set_defaults
+  before_update :set_role
 
   scope :sorted, -> { order(created_at: :desc) }
   scope :with_birth_date, -> { where.not(birth_date: nil) }
@@ -61,6 +67,14 @@ class Member < ApplicationRecord
 
   def set_defaults
     self.status ||= :active
+  end
+
+  def set_role
+    self.role = nil unless family
+  end
+
+  def head_family
+    family.members.where('role = ?', 0) if family
   end
 
   def self.administrative_for_ministry(ministry_id)
