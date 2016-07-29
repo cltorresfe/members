@@ -7,12 +7,24 @@ module Decorators
         self.class.get_status_name_for(status)
       end
 
+      def status_name_abbv
+        self.class.generate_abbv_for(status)
+      end
+
       def self.statuses_for_select
         statuses.map { |k, _v| [ get_status_name_for(k), k] }
       end
 
+      def self.statuses_for_badge
+        statuses.map{|k, _v| [get_status_name_for(k), generate_abbv_for(k), (_v < 2 || _v == 3) ? 'bg-green' : 'bg-red']}
+      end
+
       def self.get_status_name_for(status)
         I18n.t("activerecord.attributes.member.status_name.#{status}", default: '')
+      end
+
+      def self.generate_abbv_for(status)
+        get_status_name_for(status).split(" ").map {|name| name[0].chr }.join.upcase
       end
 
       def role_name

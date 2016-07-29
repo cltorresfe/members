@@ -78,6 +78,10 @@ class Member < ApplicationRecord
     family.members.where('role = ?', 0) if family
   end
 
+  def passive_status?
+    (status == 'transferred' || status == 'deceased' || status == 'inactive')
+  end
+
   def self.administrative_for_ministry(ministry_id)
     joins(charges: [:ministry, :responsibility]).
     where('ministries.id = ?', ministry_id).
