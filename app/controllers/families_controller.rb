@@ -5,9 +5,7 @@ class FamiliesController < ApplicationController
   # GET /families.json
   def index
     @families = current_church.families
-    if(@families.blank?)
-      flash.now[:alert] = t('.not_found')
-    end
+    flash.now[:alert] = t('.not_found') if @families.blank?
   end
 
   # GET /families/new
@@ -53,13 +51,14 @@ class FamiliesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_family
-      @family = Family.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def family_params
-      params.require(:family).permit(:name, :married_at, :address, :phone, :city, :country)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_family
+    @family = Family.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def family_params
+    params.require(:family).permit(:name, :married_at, :address, :phone, :city, :country)
+  end
 end

@@ -25,5 +25,4 @@ class Church < ApplicationRecord
   validates :phone, length: { maximum: 15, minimum: 7 }, allow_blank: true
 
   before_validation :change_to_format_phone
-
 end

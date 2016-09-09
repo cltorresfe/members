@@ -50,13 +50,13 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
   end
 
@@ -68,7 +68,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "members_#{Rails.env}"
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = {
-      host: 'cryptic-citadel-38456.herokuapp.com'
+    host: 'cryptic-citadel-38456.herokuapp.com'
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.

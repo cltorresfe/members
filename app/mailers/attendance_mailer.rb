@@ -1,5 +1,4 @@
 class AttendanceMailer < ApplicationMailer
-
   def attendances_confirmation(attendance_date, ministry_id, user_id)
     @user = User.find(user_id)
     @ministry = Ministry.find(ministry_id)

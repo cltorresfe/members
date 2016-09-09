@@ -1,10 +1,10 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  authenticate :user, lambda { |u| u.admin? } do
+  authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
-  devise_for :users, :controllers => { :registrations => "users/registrations" }
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :attendances, only: [:index, :create]
   resources :churches, only: [:new, :create]
@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   # Serve websocket cable requests inprocess
   # mount ActionCable.server => '/cable'
 end
-
 
 # == Route Map
 #

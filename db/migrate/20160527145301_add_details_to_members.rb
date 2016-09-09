@@ -15,6 +15,5 @@ class AddDetailsToMembers < ActiveRecord::Migration[5.0]
     add_column :members, :membership_date, :datetime
     add_column :members, :discipline_date, :datetime
     add_column :members, :transfer_date, :datetime
-
   end
 end

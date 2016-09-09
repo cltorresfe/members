@@ -38,7 +38,8 @@ class Member < ApplicationRecord
   enum status: %i(active regular inactive visitor transferred deceased)
   enum role: %i(head_family father mother son daughter spouse relative)
 
-  AGE_RANGES = [[0,14],[15,18],[19,29],[30,44],[45,59],[60,120]]
+  AGE_RANGES = [[0, 14], [15, 18], [19, 29], [30, 44], [45, 59],
+                [60, 120]].freeze
 
   belongs_to :church
   belongs_to :family
@@ -52,7 +53,7 @@ class Member < ApplicationRecord
   validates :email, email: true, allow_blank: true
   validates :phone, length: { maximum: 15, minimum: 7 }, allow_blank: true
   validates :first_name, length: { maximum: 35 }
-  validates :address, length: { maximum: 100}
+  validates :address, length: { maximum: 100 }
   validates :facebook, facebook: true, allow_blank: true
   validates :twitter, twitter: true, allow_blank: true
 
@@ -62,7 +63,6 @@ class Member < ApplicationRecord
 
   scope :sorted, -> { order(created_at: :desc) }
   scope :with_birth_date, -> { where.not(birth_date: nil) }
-  scope :birth_date_by_month, -> {where('Extract(month from birth_date) = ? AND Extract(day from birth_date) >= ?',Time.zone.now.month, Time.zone.now.day) }
   scope :with_email, -> { where.not(email: nil) }
 
   def set_defaults
@@ -78,9 +78,9 @@ class Member < ApplicationRecord
   end
 
   def self.administrative_for_ministry(ministry_id)
-    joins(charges: [:ministry, :responsibility]).
-    where('ministries.id = ?', ministry_id).
-    where('responsibilities.administrative = ?', true)
+    joins(charges: [:ministry, :responsibility])
+      .where('ministries.id = ?', ministry_id)
+      .where('responsibilities.administrative = ?', true)
   end
 
   def self.search(search)
@@ -91,18 +91,28 @@ class Member < ApplicationRecord
     end
   end
 
+  def self.birth_date_by_month
+    where('Extract(month from birth_date) = ?
+          AND Extract(day from birth_date) >= ?',
+          Time.zone.now.month, Time.zone.now.day)
+  end
+
   def self.by_gender
-    by_genders = select("gender, count(*) as value").group("gender")
+    by_genders = select('gender, count(*) as value').group('gender')
     members_gender = []
     by_genders.each do |m_gender|
-      label = case m_gender.gender
-              when true then "Femenino"
-              when false then "Masculino"
-              when nil then "Sin registro"
-              end
+      label = m_gender.gender_humanized
       members_gender << { label: label, value: m_gender.value }
     end
     members_gender.presence || [{ label: 'Sin información', value: 1 }]
+  end
+
+  def gender_humanized
+    case gender
+    when true then 'Femenino'
+    when false then 'Masculino'
+    when nil then 'Sin registro'
+    end
   end
 
   def age
@@ -112,18 +122,14 @@ class Member < ApplicationRecord
 
   def self.by_range
     list_age = []
-    total = self.with_birth_date.count
+    total = with_birth_date.count
     AGE_RANGES.each do |age_group|
-      count = where('birth_date > ? AND birth_date < ? ',age_group.last.years.ago, age_group.first.years.ago).count
-      if(total > 0)
-        list_age << {
-          label: "#{age_group.first} - #{age_group.last} años",
-          value: "#{count*100/total}%",
-          count: count
-        }
-      end
+      count = where('birth_date > ? AND birth_date < ? ',
+                    age_group.last.years.ago, age_group.first.years.ago).count
+      next unless total > 0
+      list_age << { label: "#{age_group.first} - #{age_group.last} años",
+                    value: "#{count * 100 / total}%", count: count }
     end
     list_age.presence || [{ label: 'Sin información', value: 1, count: 1 }]
   end
-
 end

@@ -17,18 +17,18 @@ module Members
 
     config.active_job.queue_adapter = :sidekiq
     config.action_mailer.default_url_options = {
-        host: 'localhost',
-        port: 3000
+      host: 'localhost',
+      port: 3000
     }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-        address: "smtp.gmail.com",
-        port: 587,
-        domain: "example.com",
-        authentication: "plain",
-        enable_starttls_auto: true,
-        user_name: ENV["GMAIL_USERNAME"],
-        password: ENV["GMAIL_PASSWORD"]
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: 'example.com',
+      authentication: 'plain',
+      enable_starttls_auto: true,
+      user_name: ENV['GMAIL_USERNAME'],
+      password: ENV['GMAIL_PASSWORD']
     }
     config.app_generators.scaffold_controller = :scaffold_controller
     config.assets.precompile += Ckeditor.assets

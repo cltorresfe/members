@@ -6,7 +6,7 @@ class MinistriesController < ApplicationController
   # GET /ministries.json
   def index
     @ministries = current_church.ministries.sorted
-    flash.now[:alert] = t('.not_found') if(@ministries.blank?)
+    flash.now[:alert] = t('.not_found') if @ministries.blank?
   end
 
   # GET /ministries/new
@@ -61,17 +61,18 @@ class MinistriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ministry
-      @ministry = Ministry.find(params[:id])
-    end
 
-    def set_responsibilities
-      @responsibilities = current_church.responsibilities
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ministry
+    @ministry = Ministry.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def ministry_params
-      params.require(:ministry).permit(:name, :description, responsibility_ids: [])
-    end
+  def set_responsibilities
+    @responsibilities = current_church.responsibilities
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def ministry_params
+    params.require(:ministry).permit(:name, :description, responsibility_ids: [])
+  end
 end

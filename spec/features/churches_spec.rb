@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Churches" do
+feature 'Churches' do
   let!(:user) { create(:user, church: nil) }
 
   background do
@@ -9,14 +9,14 @@ feature "Churches" do
 
   scenario 'rejects access to other sections until user church is created' do
     click_link 'Plataforma Miembros de Iglesia'
-    expect(page).not_to have_content "Inicio"
-    expect(page).to have_content "Nueva Iglesia"
+    expect(page).not_to have_content 'Inicio'
+    expect(page).to have_content 'Nueva Iglesia'
   end
 
   scenario 'creating an invalid church' do
     click_button 'Crear Iglesia'
-    expect(page).to have_content "Nueva Iglesia"
-    expect(page).to have_content "No puede estar en blanco"
+    expect(page).to have_content 'Nueva Iglesia'
+    expect(page).to have_content 'No puede estar en blanco'
   end
 
   scenario 'creating a valid church' do
@@ -25,8 +25,8 @@ feature "Churches" do
     fill_in 'Correo', with: 'presbiteriana@iglesia.cl'
     fill_in 'Fono', with: '123456789'
     click_button 'Crear Iglesia'
-    expect(page).not_to have_content "Nueva Iglesia"
-    expect(page).to have_content "Inicio"
+    expect(page).not_to have_content 'Nueva Iglesia'
+    expect(page).to have_content 'Inicio'
   end
 
   describe 'user with created church' do
@@ -36,6 +36,5 @@ feature "Churches" do
       visit new_church_path
       expect(page).to have_content 'No es posible crear una nueva iglesia'
     end
-
   end
 end

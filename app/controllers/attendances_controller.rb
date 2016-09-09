@@ -1,11 +1,10 @@
 class AttendancesController < ApplicationController
-
   def index
     @current_ministry = params[:ministry_id] ? Ministry.find(params[:ministry_id]) : current_church.ministries.first
     @attendance_date = params[:attendance_date] || Date.current.strftime('%d/%m/%Y')
     @attendances = Attendance.where(ministry: @current_ministry, attendance_date: Date.parse(@attendance_date).beginning_of_day)
     @ministries = current_church.ministries
-    if(@current_ministry.present?)
+    if @current_ministry.present?
       @charges = @current_ministry.charges.non_administrative
     else
       flash.now[:notice] = t('.not_found', url: new_ministry_path)
@@ -33,7 +32,7 @@ class AttendancesController < ApplicationController
 
   private
 
-    def attendance_params
-      params.require(:attendance).permit(:member_id, :ministry_id, :attendance_date, :present)
-    end
+  def attendance_params
+    params.require(:attendance).permit(:member_id, :ministry_id, :attendance_date, :present)
+  end
 end

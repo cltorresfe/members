@@ -13,8 +13,8 @@ feature 'Responsibilities pages' do
     end
 
     context 'with responsibilities' do
-      let!(:responsibility){ create(:responsibility, church: user.church) }
-      background { visit responsibilities_path}
+      let!(:responsibility) { create(:responsibility, church: user.church) }
+      background { visit responsibilities_path }
 
       scenario 'displaying all the responsibilities' do
         expect(page).to have_content responsibility.name
@@ -43,11 +43,10 @@ feature 'Responsibilities pages' do
       click_button 'Crear Cargo'
       expect(page).to have_content 'Lider'
     end
-
   end
 
   describe 'edit/update' do
-    let!(:responsibility){ create(:responsibility, church: user.church, name: 'Director') }
+    let!(:responsibility) { create(:responsibility, church: user.church, name: 'Director') }
     background { visit edit_responsibility_path(responsibility) }
 
     scenario 'removing responsibility name' do
@@ -65,7 +64,7 @@ feature 'Responsibilities pages' do
   end
 
   describe 'destroy' do
-    let!(:responsibility){ create(:responsibility, church: user.church) }
+    let!(:responsibility) { create(:responsibility, church: user.church) }
     background { visit responsibilities_path }
 
     context 'responsibility with no associations' do
@@ -79,7 +78,7 @@ feature 'Responsibilities pages' do
     end
 
     context 'responsibility with ministries associated' do
-      let!(:ministry){ create(:ministry, church: user.church, responsibilities: [responsibility]) }
+      let!(:ministry) { create(:ministry, church: user.church, responsibilities: [responsibility]) }
 
       scenario 'rejects responsibility destroyal' do
         click_link('', href: "/responsibilities/#{responsibility.id}")
