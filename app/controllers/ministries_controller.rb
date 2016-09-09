@@ -71,7 +71,6 @@ class MinistriesController < ApplicationController
     @responsibilities = current_church.responsibilities
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def ministry_params
     params.require(:ministry).permit(:name, :description, responsibility_ids: [])
   end
