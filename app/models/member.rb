@@ -81,6 +81,7 @@ class Member < ApplicationRecord
     joins(charges: [:ministry, :responsibility])
       .where('ministries.id = ?', ministry_id)
       .where('responsibilities.administrative = ?', true)
+      .with_email
   end
 
   def self.search(search)

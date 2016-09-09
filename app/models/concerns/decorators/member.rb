@@ -12,7 +12,8 @@ module Decorators
       end
 
       def self.get_status_name_for(status)
-        I18n.t("activerecord.attributes.member.status_name.#{status}", default: '')
+        I18n.t("activerecord.attributes.member.status_name.#{status}",
+               default: '')
       end
 
       def role_name

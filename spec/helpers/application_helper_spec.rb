@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper do
-  describe '#get_title' do
-    subject { helper.get_title }
+  describe '#full_title' do
+    subject { helper.full_title }
 
     context 'title is in context' do
       before do

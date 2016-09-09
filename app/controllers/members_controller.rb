@@ -7,7 +7,8 @@ class MembersController < ApplicationController
   def show
     @ministries = @member.ministries
     @responsibilities = @member.responsibilities
-    @attendances = @member.attendances.sorted.paginate(page: params[:page], per_page: 12)
+    @attendances = @member.attendances.sorted
+                          .paginate(page: params[:page], per_page: 12)
     @families = current_church.families
     if @member.family
       @family = @member.family
@@ -26,13 +27,11 @@ class MembersController < ApplicationController
         flash.now[:notice] = t('.not_found')
       end
     # List all members of the church
+    elsif current_church.present? && current_church.members.present?
+      @members = current_church.members.sorted
     else
-      if current_church.present? && current_church.members.present?
-        @members = current_church.members.sorted
-      else
-        flash.now[:notice] = t('.not_found')
-        return
-      end
+      flash.now[:notice] = t('.not_found')
+      return
     end
     @members = @members.paginate(page: params[:page], per_page: 24)
   end
@@ -73,7 +72,8 @@ class MembersController < ApplicationController
   end
 
   def associated_family
-    @family = current_church.families.where(id: params[:member][:family_id]).first
+    @family = current_church.families
+                            .where(id: params[:member][:family_id]).first
     @member = current_church.members.where(id: params[:id]).first
 
     if @member
@@ -102,7 +102,8 @@ class MembersController < ApplicationController
     if params[:subject].present?
       @member = Member.find(params[:id])
       if current_church.members.include?(@member)
-        MemberMailer.send_message(params[:subject], params[:body], @member.id, current_user.id).deliver_later
+        MemberMailer.send_message(params[:subject], params[:body], @member.id,
+                                  current_user.id).deliver_later
         flash.now[:notice] = t('.success')
       else
         render status: :forbidden
@@ -122,9 +123,12 @@ class MembersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def member_params
-    params.require(:member).permit(:first_name, :last_name, :gender, :run, :city,
-                                   :country, :birth_date, :testimony, :baptism_date, :membership_date, :discipline_date,
-                                   :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone, :status, :role, :avatar, charge_ids: [])
+    params.require(:member).permit(
+      :first_name, :last_name, :gender, :run, :city, :country, :birth_date,
+      :testimony, :baptism_date, :membership_date, :discipline_date,
+      :transfer_date, :facebook, :twitter, :skype, :address, :email, :phone,
+      :status, :role, :avatar, charge_ids: []
+    )
   end
 
   def load_ministries
