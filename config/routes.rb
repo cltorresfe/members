@@ -58,11 +58,13 @@ end
 #                   family PATCH  /families/:id(.:format)              families#update
 #                          PUT    /families/:id(.:format)              families#update
 #                          DELETE /families/:id(.:format)              families#destroy
+#         send_mail_member POST   /members/:id/send_mail(.:format)     members#send_mail
 #                  members GET    /members(.:format)                   members#index
 #                          POST   /members(.:format)                   members#create
 #               new_member GET    /members/new(.:format)               members#new
 #              edit_member GET    /members/:id/edit(.:format)          members#edit
-#                   member PATCH  /members/:id(.:format)               members#update
+#                   member GET    /members/:id(.:format)               members#show
+#                          PATCH  /members/:id(.:format)               members#update
 #                          PUT    /members/:id(.:format)               members#update
 #                          DELETE /members/:id(.:format)               members#destroy
 #               ministries GET    /ministries(.:format)                ministries#index
