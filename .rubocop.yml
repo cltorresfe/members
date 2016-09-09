@@ -1,0 +1,10 @@
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+
+Metrics/LineLength:
+  Include:
+    - 'app/**/*'
+
+Documentation:
+  Enabled: false
