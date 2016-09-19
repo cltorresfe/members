@@ -4,7 +4,7 @@
     = @ministry.name
 .panel{:style => "padding-left: 23px;color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
   .content{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
-    - if(@present_attendances.present?)
+    - if(@attendances.present.present?)
       = t('.content_attendance', percent: @percent_attendances, date: @attendance_date.strftime("%d/%m/%Y"))
       %p
         %table{:style => "border:1px solid #2A3F54;width:80%;border-collapse:collapse; "}
@@ -16,7 +16,7 @@
               %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("email")
               %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("phone")
           %tbody
-          - @present_attendances.each do |attendance|
+          - @attendances.present.each do |attendance|
             %tr
               %td{:style => "border:1px solid;padding:5px;"}= attendance.member.first_name
               %td{:style => "border:1px solid;padding:5px;"}= attendance.member.last_name
@@ -26,7 +26,7 @@
     - else
       = t('.content_empty_attendance')
       = @ministry.name
-    - if(@absent_attendances.present?)
+    - if(@attendances.absent.present?)
       = t('.content_nonattendance')
       %p
         %table{:style => "border:1px solid black;width:80%;border-collapse:collapse;color: #a94442; "}
@@ -38,7 +38,7 @@
               %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("email")
               %th{:style => "border:1px solid;padding:5px;"}= Member.human_attribute_name("phone")
           %tbody
-          - @absent_attendances.each do |attendance|
+          - @attendances.absent.each do |attendance|
             %tr
               %td{:style => "border:1px solid;padding:5px;"}= attendance.member.first_name
               %td{:style => "border:1px solid;padding:5px;"}= attendance.member.last_name

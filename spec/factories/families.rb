@@ -16,12 +16,12 @@
 
 FactoryGirl.define do
   factory :family do
-    name "MyString"
-    married_at "2016-05-20 10:49:30"
-    address "MyString"
-    phone "MyString"
-    city "MyString"
-    country "MyString"
+    name 'MyString'
+    married_at '2016-05-20 10:49:30'
+    address 'MyString'
+    phone 'MyString'
+    city 'MyString'
+    country 'MyString'
     church
   end
 end

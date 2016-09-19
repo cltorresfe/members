@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'ministries pages' do
   let!(:user) { create(:user) }
-  let!(:director_resp){ create(:responsibility, church: user.church, name: 'Director') }
-  let!(:leader_resp){ create(:responsibility, church: user.church, name: 'Lider') }
+  let!(:director_resp) { create(:responsibility, church: user.church, name: 'Director') }
+  let!(:leader_resp) { create(:responsibility, church: user.church, name: 'Lider') }
   background { log_in user }
 
   describe 'index/show' do
@@ -15,8 +15,8 @@ feature 'ministries pages' do
     end
 
     context 'with ministries' do
-      let!(:ministry){ create(:ministry, church: user.church, responsibilities: [director_resp]) }
-      background { visit ministries_path}
+      let!(:ministry) { create(:ministry, church: user.church, responsibilities: [director_resp]) }
+      background { visit ministries_path }
 
       scenario 'displaying all the ministries' do
         expect(page).to have_content ministry.name
@@ -47,11 +47,10 @@ feature 'ministries pages' do
       click_button 'Crear Ministerio'
       expect(page).to have_content 'Escuela Biblica'
     end
-
   end
 
   describe 'edit/update' do
-    let!(:ministry){ create(:ministry, church: user.church, responsibilities: [director_resp]) }
+    let!(:ministry) { create(:ministry, church: user.church, responsibilities: [director_resp]) }
     background { visit edit_ministry_path(ministry) }
 
     scenario 'removing ministry name' do
@@ -69,7 +68,7 @@ feature 'ministries pages' do
   end
 
   describe 'destroy' do
-    let!(:ministry){ create(:ministry, church: user.church, responsibilities: [director_resp]) }
+    let!(:ministry) { create(:ministry, church: user.church, responsibilities: [director_resp]) }
     background { visit ministries_path }
 
     context 'ministry with no associations' do
@@ -83,8 +82,8 @@ feature 'ministries pages' do
     end
 
     context 'ministry with associated members' do
-      let!(:ministry){ create(:ministry, church: user.church, responsibilities: [director_resp]) }
-      let!(:member){ create(:member, church: user.church, charges: ministry.charges) }
+      let!(:ministry) { create(:ministry, church: user.church, responsibilities: [director_resp]) }
+      let!(:member) { create(:member, church: user.church, charges: ministry.charges) }
 
       scenario 'rejects ministry destroyal' do
         click_link('', href: "/ministries/#{ministry.id}")

@@ -5,7 +5,7 @@ if Rails.env.development?
   )
 
   user = User.new(
-    name: 'Admin',email: 'admin@example.com', password: 'password',
+    name: 'Admin', email: 'admin@example.com', password: 'password',
     password_confirmation: 'password', church: church
   )
   user.role = :admin
@@ -19,10 +19,10 @@ if Rails.env.development?
   end
 
   ['Escuela Biblica', 'Grupo de Jovenes'].each do |min|
-    Ministry.create(name: min, church: church, responsibilities: responsibilities )
+    Ministry.create(name: min, church: church, responsibilities: responsibilities)
   end
 
-  20.times do |u|
+  20.times do
     Member.create!(
       first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
       email: Faker::Internet.email, address: Faker::Address.street_address,

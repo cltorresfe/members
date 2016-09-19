@@ -1,8 +1,7 @@
 class ChurchesController < ApplicationController
-
   # GET /churches/new
   def new
-    if(current_church.blank?)
+    if current_church.blank?
       @church = Church.new
     else
       redirect_to root_path, alert: t('.new_church_not_allowed')
@@ -21,8 +20,8 @@ class ChurchesController < ApplicationController
   end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def church_params
-      params.require(:church).permit(:name, :address, :email, :phone)
-    end
+
+  def church_params
+    params.require(:church).permit(:name, :address, :email, :phone)
+  end
 end

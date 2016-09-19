@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-feature "Members pages" do
+feature 'Members pages' do
   let!(:user) { create(:user) }
-  let!(:director_resp){ create(:responsibility, church: user.church, name: 'Director') }
-  let!(:leader_resp){ create(:responsibility, church: user.church, name: 'Lider') }
-  let!(:ministry){
+  let!(:director_resp) { create(:responsibility, church: user.church, name: 'Director') }
+  let!(:leader_resp) { create(:responsibility, church: user.church, name: 'Lider') }
+  let!(:ministry) do
     create(:ministry, church: user.church, responsibilities: [director_resp, leader_resp])
-  }
+  end
 
   background do
     log_in user
@@ -14,18 +14,18 @@ feature "Members pages" do
 
   describe 'index' do
     context 'with members' do
-      let!(:member){ create(:member, church: user.church, charges: director_resp.charges) }
+      let!(:member) { create(:member, church: user.church, charges: director_resp.charges) }
 
-      scenario "displaying all the members" do
+      scenario 'displaying all the members' do
         visit members_path
-        expect(page).to have_content "Listado de Miembros"
+        expect(page).to have_content 'Listado de Miembros'
         expect(page).to have_content user.church.name
         expect(page).to have_content member.first_name
-        expect(page).to have_content "1 miembro"
+        expect(page).to have_content '1 miembro'
         expect(page).not_to have_content 'No se encontraron miembros ingresados'
       end
 
-      scenario "access to member details" do
+      scenario 'access to member details' do
         visit members_path
         click_link('', href: "/members/#{member.id}")
         expect(page).to have_content "Información del Miembro"
@@ -37,12 +37,12 @@ feature "Members pages" do
 
   describe 'show' do
     context 'with members' do
-      let!(:member){ create(:member, church: user.church, charges: director_resp.charges) }
+      let!(:member) { create(:member, church: user.church, charges: director_resp.charges) }
 
-      scenario "access to member edit" do
+      scenario 'access to member edit' do
         visit member_path(member)
         click_link('', href: "/members/#{member.id}/edit")
-        expect(page).to have_content "Editar Miembro"
+        expect(page).to have_content 'Editar Miembro'
 
         # Basic info
         expect(page).to have_field('Nombres', with: member.first_name)
@@ -72,39 +72,38 @@ feature "Members pages" do
         # Responsibilities
         expect(page).to have_checked_field("member_charge_ids_#{director_resp.charges.last.id}", visible: false)
         expect(page).not_to have_checked_field("member_charge_ids_#{leader_resp.charges.last.id}", visible: false)
-
       end
     end
 
     context 'without members' do
-      scenario "Displaying not found message" do
+      scenario 'Displaying not found message' do
         visit members_path
-        expect(page).to have_content "Listado de Miembros"
+        expect(page).to have_content 'Listado de Miembros'
         expect(page).to have_content 'No se encontraron miembros ingresados'
       end
     end
   end
 
   describe 'new/create' do
-    scenario "Creates a new member" do
+    scenario 'Creates a new member' do
       visit new_member_path
       fill_in 'Nombres', with: 'Homero'
       fill_in 'Apellidos', with: 'Simpson'
-      click_button "Crear Miembro"
-      expect(page).not_to have_content "No puede estar en blanco"
-      expect(page).to have_content "Homero"
+      click_button 'Crear Miembro'
+      expect(page).not_to have_content 'No puede estar en blanco'
+      expect(page).to have_content 'Homero'
     end
 
-    scenario "tries to create member without name" do
+    scenario 'tries to create member without name' do
       visit new_member_path
-      click_button "Crear Miembro"
+      click_button 'Crear Miembro'
       # save_and_open_page
-      expect(page).to have_content "No puede estar en blanco"
+      expect(page).to have_content 'No puede estar en blanco'
     end
   end
 
   describe 'edit/update' do
-    let!(:member){ create(:member, church: user.church, charges: director_resp.charges) }
+    let!(:member) { create(:member, church: user.church, charges: director_resp.charges) }
     background { visit edit_member_path(member) }
 
     scenario 'removing member name' do
@@ -125,7 +124,7 @@ feature "Members pages" do
   end
 
   describe 'destroy' do
-    let!(:member){ create(:member, church: user.church, charges: director_resp.charges) }
+    let!(:member) { create(:member, church: user.church, charges: director_resp.charges) }
     background { visit member_path(member) }
 
     context 'member with no associations' do
@@ -140,9 +139,9 @@ feature "Members pages" do
 
   describe 'send_mail' do
     background { visit member_path(member) }
-    
+
     context 'member with email and subject' do
-      let!(:member){ create(:member, church: user.church, ) }
+      let!(:member) { create(:member, church: user.church) }
       scenario 'sends email to member', js: true do
         click_button('Enviar Mensaje')
         fill_in 'Asunto', with: 'subject'
@@ -152,7 +151,7 @@ feature "Members pages" do
     end
 
     context 'member with email and without subject' do
-      let!(:member){ create(:member, church: user.church ) }
+      let!(:member) { create(:member, church: user.church) }
       scenario 'sends email to member', js: true do
         click_button('Enviar Mensaje')
         click_button('Enviar Correo')
@@ -161,7 +160,7 @@ feature "Members pages" do
     end
 
     context 'member without email' do
-      let!(:member){ create(:member, church: user.church, email: nil) }
+      let!(:member) { create(:member, church: user.church, email: nil) }
       scenario 'sends email to member' do
         expect(page).not_to have_content 'Enviar Mensaje'
       end
@@ -170,13 +169,13 @@ feature "Members pages" do
 
   describe 'associated_family' do
     background { visit member_path(member) }
-    let!(:family) { create(:family, church: user.church, name: "familiaT")}
+    let!(:family) { create(:family, church: user.church, name: 'familiaT') }
 
     context 'member without family associated' do
-      let!(:member){ create(:member, church: user.church, family: nil ) }
+      let!(:member) { create(:member, church: user.church, family: nil) }
       scenario 'associated family to member' do
         click_button('Asociar Familia')
-        select('Padre', :from => 'Rol')
+        select('Padre', from: 'Rol')
         have_select('Familia', selected: family.name)
         click_button('Actualizar Miembro')
         expect(page).to have_content 'Miembro ha sido actualizado satisfactoriamente.'
@@ -184,10 +183,10 @@ feature "Members pages" do
     end
 
     context 'member with family associated' do
-      let!(:member){ create(:member, church: user.church, family: family ) }
+      let!(:member) { create(:member, church: user.church, family: family) }
       scenario 'associated family to member' do
         click_button('Cambiar Familia')
-        select('Padre', :from => 'Rol')
+        select('Padre', from: 'Rol')
         have_select('Familia', selected: family.name)
         click_button('Actualizar Miembro')
         expect(page).to have_content 'Miembro ha sido actualizado satisfactoriamente.'
@@ -195,11 +194,11 @@ feature "Members pages" do
     end
 
     context 'member with head family associated' do
-      let!(:member_head){ create(:member, church: user.church, family: family, role: :head_family ) }
-      let!(:member){ create(:member, church: user.church, family: family ) }
+      let!(:member_head) { create(:member, church: user.church, family: family, role: :head_family) }
+      let!(:member) { create(:member, church: user.church, family: family) }
       scenario 'associated family to member' do
         click_button('Cambiar Familia')
-        select('Jefe de Familia', :from => 'Rol')
+        select('Jefe de Familia', from: 'Rol')
         have_select('Familia', selected: family.name)
         click_button('Actualizar Miembro')
         expect(page).to have_content 'ya es un Jefe de Familia'

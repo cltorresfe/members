@@ -32,17 +32,21 @@ class Ministry < ApplicationRecord
   end
 
   def attendances_by_date(date_l, date_r)
-    attendances.where('attendances.attendance_date >= ? and attendances.attendance_date <= ?', date_l, date_r)
+    attendances.where(
+      'attendances.attendance_date >= ? and attendances.attendance_date <= ?',
+      date_l, date_r
+    )
   end
 
   def percent_attendances_by_member(member)
-    attendances_member = attendances_by_member(member)
-    attendances_member.present.size*100/attendances_member.size if(attendances_member.size > 0)
+    Ministry.present_percent_for(attendances_by_member(member))
   end
 
   def percent_attendances_by_date(date_l, date_r)
-    attendances_date = attendances_by_date(date_l, date_r)
-    attendances_date.present.size*100/attendances_date.size if(attendances_date.size > 0)
+    Ministry.present_percent_for(attendances_by_date(date_l, date_r))
   end
 
+  def self.present_percent_for(attendances)
+    attendances.present.size * 100 / attendances.size unless attendances.empty?
+  end
 end

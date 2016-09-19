@@ -22,15 +22,14 @@
 
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-
+RSpec.describe User, type: :model do
   it { is_expected.to belong_to(:church) }
 
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:email) }
   it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
 
-  let!(:user) { create(:user)}
+  let!(:user) { create(:user) }
 
   context '.set_default_role' do
     it 'set common role as default' do
@@ -54,9 +53,9 @@ RSpec.describe User, :type => :model do
   end
 
   context '#checking search_members' do
-    let!(:church){ create(:church, name: 'Iglesia')}
-    let!(:member) { create(:member, first_name: 'Plumero', church: church)}
-      
+    let!(:church) { create(:church, name: 'Iglesia') }
+    let!(:member) { create(:member, first_name: 'Plumero', church: church) }
+
     it 'searches an existing member' do
       user = create(:user, church: church)
       expect(user.search_members('Plumero')).to include member
@@ -66,5 +65,4 @@ RSpec.describe User, :type => :model do
       expect(user.search_members('Margaret')).not_to include member
     end
   end
-
 end

@@ -8,11 +8,12 @@ module Decorators
       end
 
       def self.statuses_for_select
-        statuses.map { |k, _v| [ get_status_name_for(k), k] }
+        statuses.map { |k, _v| [get_status_name_for(k), k] }
       end
 
       def self.get_status_name_for(status)
-        I18n.t("activerecord.attributes.member.status_name.#{status}", default: '')
+        I18n.t("activerecord.attributes.member.status_name.#{status}",
+               default: '')
       end
 
       def role_name
@@ -20,7 +21,7 @@ module Decorators
       end
 
       def self.role_for_select
-        roles.map { |k, _v| [ get_role_name_for(k), k] }
+        roles.map { |k, _v| [get_role_name_for(k), k] }
       end
 
       def self.get_role_name_for(role)
@@ -57,9 +58,9 @@ module Decorators
           avatar.url(version)
         else
           case gender
-          when true then "default_avatar_female.png"
-          when false then "default_avatar_male.png"
-          when nil then "default_avatar.png"
+          when true then 'default_avatar_female.png'
+          when false then 'default_avatar_male.png'
+          when nil then 'default_avatar.png'
           end
         end
       end
