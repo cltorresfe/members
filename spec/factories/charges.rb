@@ -11,6 +11,9 @@
 FactoryGirl.define do
   factory :charge do
     responsibility
-    ministry
+
+    factory :non_admin_charge do
+      responsibility { create(:responsibility, administrative: false) }
+    end
   end
 end
