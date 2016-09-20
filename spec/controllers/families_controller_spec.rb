@@ -41,7 +41,7 @@ RSpec.describe FamiliesController, type: :controller do
         end.to change(Family, :count).by(1)
       end
 
-      it 'assigns a newly created family as @family', focus: true do
+      it 'assigns a newly created family as @family' do
         post :create, params: { family: valid_attributes }
         expect(assigns(:family)).to be_a(Family)
         expect(assigns(:family)).to be_persisted
@@ -100,7 +100,7 @@ RSpec.describe FamiliesController, type: :controller do
     end
   end
 
-  describe 'DELETE destroy', focus: true do
+  describe 'DELETE destroy' do
     it 'destroys the requested family' do
       expect do
         delete :destroy, params: { id: family.id }

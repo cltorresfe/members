@@ -15,12 +15,7 @@ class Charge < ApplicationRecord
   has_many :charge_members
   has_many :members, through: :charge_members
 
-  def non_administrative
+  def self.non_administrative
     joins(:responsibility).where(responsibilities: { administrative: false })
-  end
-
-  def by_responsibilities
-    joins(:responsibility).group(:responsibility_id)
-                          .select('charges.responsibility_id, count (*)')
   end
 end
