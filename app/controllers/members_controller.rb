@@ -6,6 +6,7 @@ class MembersController < ApplicationController
   # GET /members.json
   def show
     @ministries = @member.ministries
+    @tithe = Tithe.new  
     @responsibilities = @member.responsibilities
     @attendances = @member.attendances.sorted
                           .paginate(page: params[:page], per_page: 12)
@@ -89,6 +90,18 @@ class MembersController < ApplicationController
         redirect_to action: :show
       end
     end
+  end
+
+  def add_tithes
+    @member = current_church.members.where(id: params[:id]).first
+    @tithe = Tithe.new
+    @tithe.handed_at = params[:tithe][:handed_at]
+    @tithe.quantity = params[:tithe][:quantity]
+    @tithe.member = @member
+    @tithe.church = current_church
+
+    @tithe.save
+    redirect_to action: :show
   end
 
   # DELETE /members/1
