@@ -12,9 +12,9 @@
                 = link_to responsibility, method: :delete, data: { confirm: t('confirm.message.destroy'), toggle: 'tooltip', placement: 'top', title: t('link.destroy')} do
                   .glyphicon.glyphicon-trash
                 %small
-                  = t('common.member', count: responsibility.members_by_church(current_church).size)
+                  = t('common.member', count: responsibility.members_by_church(current_church).active_service.size)
               .clearfix
             .x_content{:style => "display: block;"}
               .row
                 .clearfix
-                = render responsibility.members_by_church(current_church)
+                = render responsibility.members_by_church(current_church).active_service

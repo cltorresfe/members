@@ -61,6 +61,7 @@ class Member < ApplicationRecord
   scope :sorted, -> { order(created_at: :desc) }
   scope :with_birth_date, -> { where.not(birth_date: nil) }
   scope :with_email, -> { where.not(email: nil) }
+  scope :active_service, -> { where("members.status = ? OR members.status = ? OR members.status = ?", 0, 1, 3) }
 
   def set_defaults
     self.status ||= :active
@@ -72,6 +73,10 @@ class Member < ApplicationRecord
 
   def head_family
     family.members.where('role = ?', 0) if family
+  end
+
+  def passive_status?
+    %w(transferred deceased inactive).include? status
   end
 
   def self.administrative_for_ministry(ministry_id)

@@ -90,12 +90,12 @@
                           %h2
                             = t('.title_table_family',title_family: @family.name)
                             %small
-                              =t('common.member', count: @members_family.size)
+                              =t('common.member', count: @members_family.active_service.size)
                           .clearfix
                         .x_content
                           .row
                             .clearfix
-                            = render partial: 'member', collection: @members_family, locals: {role_name: true, semi_full_name: true}
+                            = render partial: 'member', collection: @members_family.active_service, locals: {role_name: true, semi_full_name: true}
                         .x_content.text-center
                           -if @family.present?
                             %button.btn.btn-success{"data-target" => "#modal_new_family", "data-toggle" => "modal", :type => "button"}
