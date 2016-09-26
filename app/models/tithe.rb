@@ -1,5 +1,5 @@
 class Tithe < ApplicationRecord
-  validates :church, presence: true
+  validates :church, :member, presence: true
   
   belongs_to :member
   belongs_to :church
