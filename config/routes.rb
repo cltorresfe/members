@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :attendances, only: [:index, :create]
+  resources :tithes, only:[:new, :create, :update]
   resources :churches, only: [:new, :create]
   resources :families, except: :show
   resources :members do
     member do
       post :send_mail, format: :js
       post :associated_family
+      post :add_tithes
     end
   end
   resources :ministries, except: :show
