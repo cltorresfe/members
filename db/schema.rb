@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719192217) do
+ActiveRecord::Schema.define(version: 20160926202634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,17 @@ ActiveRecord::Schema.define(version: 20160719192217) do
     t.index ["church_id"], name: "index_responsibilities_on_church_id", using: :btree
   end
 
+  create_table "tithes", force: :cascade do |t|
+    t.datetime "handed_at"
+    t.decimal  "quantity"
+    t.integer  "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "church_id"
+    t.index ["church_id"], name: "index_tithes_on_church_id", using: :btree
+    t.index ["member_id"], name: "index_tithes_on_member_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -153,5 +164,7 @@ ActiveRecord::Schema.define(version: 20160719192217) do
   add_foreign_key "members", "families"
   add_foreign_key "ministries", "churches"
   add_foreign_key "responsibilities", "churches"
+  add_foreign_key "tithes", "churches"
+  add_foreign_key "tithes", "members"
   add_foreign_key "users", "churches"
 end
