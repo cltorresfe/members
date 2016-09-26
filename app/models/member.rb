@@ -79,7 +79,7 @@ class Member < ApplicationRecord
   end
 
   def passive_status?
-    (status == 'transferred' || status == 'deceased' || status == 'inactive')
+    %w(transferred deceased inactive)
   end
 
   def self.administrative_for_ministry(ministry_id)
