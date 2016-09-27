@@ -13,3 +13,16 @@ es:
       address: Dirección
       email: correo
       phone: Fono
+  member_mailer:
+    send_notification_tithe:
+      subject: Aviso de Entrega de Diezmo
+      title: Comprobante Electrónico de Diezmo
+      content_title: <b>Estimado(a) %{full_name}</b>
+      content_body: |
+        Le informamos que hoy <b>%{date}</b> hemos recibido satisfactoriamente su diezmo. Gracias por apoyar la obra de nuestro Dios en la Iglesia <b>%{name_church}</b>. Su diezmo ha sido ingresado correctamente a nuestros registros.
+      content_detail: El detalle de esta operación es el siguiente
+      table_quantity: Monto entregado
+      table_member: Colaborador
+      table_church: Iglesia Destinataria
+      table_date: Fecha Operación
+      table_num: Número de Operación
