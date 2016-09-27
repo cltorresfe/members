@@ -205,4 +205,19 @@ feature 'Members pages' do
       end
     end
   end
+
+  describe 'add_tithes' do
+    background { visit member_path(member) }
+    let!(:member) { create(:member, church: user.church) }
+    let!(:tithe) { create(:tithe, church: user.church, member: member) }
+      
+    scenario 'adds tithe to member', js: true do
+      click_button('Diezmo')
+      fill_in 'Fecha entrega', with: I18n.l(Time.now, format: :just_date)
+      fill_in 'Cantidad', with: '3000'
+
+      click_button('Crear Diezmo')
+      expect(page).to have_content 'Diezmo ha sido agregado satisfactoriamente'
+    end
+  end
 end
