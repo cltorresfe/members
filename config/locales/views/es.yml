@@ -72,6 +72,7 @@ es:
       data_column_date: Fecha
       data_column_present: Estado
       title_table_family: Integrantes Familia %{title_family}
+      title_last_tithes: Diezmos último año
       name: 'Nombre'
       address: 'Dirección'
       email: 'Correo'
