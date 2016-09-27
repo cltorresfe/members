@@ -45,6 +45,7 @@ class Member < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :ministries, -> { distinct }, through: :charges
   has_many :responsibilities, -> { distinct }, through: :charges
+  has_many :tithes, dependent: :destroy
 
   validates :first_name, :last_name, :church, presence: true
   validates :email, email: true, allow_blank: true
@@ -134,5 +135,12 @@ class Member < ApplicationRecord
                     value: "#{count * 100 / total}%", count: count }
     end
     list_age.presence || [{ label: 'Sin información', value: 1, count: 1 }]
+  end
+
+  def tithes_by_date(date_l, date_r)
+    tithes.where(
+      'tithes.handed_at >= ? and tithes.handed_at <= ?',
+      date_l, date_r
+    )
   end
 end
