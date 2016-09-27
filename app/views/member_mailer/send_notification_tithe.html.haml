@@ -1,0 +1,31 @@
+.title{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
+  %h2{:style => "padding-left: 23px;"}
+    = t('.title')
+.panel{:style => "padding-left: 23px;color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
+  .content{:style => "color: #2A3F54;font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;"}
+    = raw t('.content_title', full_name: @member.full_name)
+    %p
+      = raw t('.content_body', name_church: @member.church.name, date: Time.now.strftime("%d/%m/%Y"))
+    %p
+      = t('.content_detail')
+      %table{:style => "border:1px solid #2A3F54;width:50%;border-collapse:collapse; "}
+        %tr{:style => "padding-top: 5px;border-top: 1px solid; #eaeaea;"}
+          %th{:style => "border:1px solid;padding:5px; text-align:right;"}= t('.table_quantity')
+          %td{:style => "border:1px solid;padding:5px;"}= number_to_currency(@tithe.quantity)
+        %tr
+          %th{:style => "border:1px solid;padding:5px;text-align:right;"}= t('.table_member')
+          %td{:style => "border:1px solid;padding:5px;"}= @member.full_name
+        %tr
+          %th{:style => "border:1px solid;padding:5px;text-align:right;"}= t('.table_church')
+          %td{:style => "border:1px solid;padding:5px;"}= @tithe.church.name
+        %tr
+          %th{:style => "border:1px solid;padding:5px;text-align:right;"}= t('.table_date')
+          %td{:style => "border:1px solid;padding:5px;"}= @tithe.handed_at.strftime("%d/%m/%Y")
+        %tr
+          %th{:style => "border:1px solid;padding:5px;text-align:right;"}= t('.table_num')
+          %td{:style => "border:1px solid;padding:5px;"}= @tithe.id
+
+  .footer{:style => "padding-top: 15px;"}
+    %p= raw t('.footer')
+  
+  %p= raw t('.message_warning', phone_church: @tithe.church.phone)
