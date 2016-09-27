@@ -19,6 +19,7 @@ es:
       one: 1 miembro
       other: "%{count} miembros"
     title_modal_mail: Enviar Correo
+    title_modal_tithe: Añadir Diezmo
   # Specific view translations
   layouts:
     sidebar:
@@ -81,6 +82,7 @@ es:
       button_mail: Enviar Mensaje
       button_add_family: Asociar Familia
       button_change_family: Cambiar Familia
+      button_add_tithe: Diezmo
     form_modal_mail:
       subject: Asunto
       body: Mensaje
@@ -91,6 +93,9 @@ es:
     associated_family:
       success: Miembro ha sido actualizado satisfactoriamente.
       error_head_family: '%{member} ya es un Jefe de Familia.'
+    add_tithes:
+      success: Diezmo ha sido agregado satisfactoriamente.
+      error_save: Ha ocurrido un error inesperado, favor revisar sus datos.
     update:
       success: Miembro ha sido actualizado satisfactoriamente.
     create:

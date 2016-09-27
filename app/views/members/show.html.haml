@@ -54,6 +54,9 @@
                 %li
                   = link_to '#', data: { toggle: 'tooltip', placement: 'right', title: "#{@member.skype}"} do
                     %i.fa.fa-skype
+          %button.btn.btn-default.btn-block{"data-target" => "#modal_new_tithe", "data-toggle" => "modal", :type => "button"}
+            %i.glyphicon.glyphicon-plus-sign
+            = t('.button_add_tithe')
           = link_to edit_member_path(@member) do
             .btn.btn-success
               %i.glyphicon.glyphicon-pencil
@@ -134,6 +137,8 @@
 
 #modal_init.modal{"aria-hidden" => "true"}
   = render 'form_modal_mail'
+#modal_new_tithe.modal{"aria-hidden" => "true"}
+  = render 'form_modal_tithe', member: @member, locals: { remote: true }
 #modal_new_family.modal{"aria-hidden" => "true"}
   .row
     .modal-dialog

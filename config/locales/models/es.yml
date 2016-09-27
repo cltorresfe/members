@@ -9,6 +9,7 @@ es:
       user: Usuario
       family: Familia
       attendance: Asistencia
+      tithe: Diezmo
     attributes:
       church:
         name: 'Nombre'
@@ -75,6 +76,9 @@ es:
       'attendance/present':
         'true': 'Presente'
         'false': 'Ausente'
+      tithe:
+        handed_at: Fecha entrega
+        quantity: Cantidad
     errors:
       models:
         member:

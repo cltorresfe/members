@@ -1,0 +1,16 @@
+.row
+  .modal-dialog
+    .modal-content
+      / header
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} &times;
+        %h3.modal-title= t('common.title_modal_tithe')
+        = @member.full_name_and_mail
+        #flash_messages_error
+      .modal-body
+        = simple_form_for @tithe, url: add_tithes_member_path(@member.id), :method => :post, html: {class: 'form-horizontal'} do |f| 
+          = f.input :handed_at, placeholder: Member.human_attribute_name(:discipline_date), as: :date_time_picker
+          = f.input :quantity
+          .form-group
+            .col-xs-offset-4
+              = f.submit class: "btn btn-primary btn-lg"

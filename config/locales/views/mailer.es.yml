@@ -13,3 +13,21 @@ es:
       address: Dirección
       email: correo
       phone: Fono
+  member_mailer:
+    send_notification_tithe:
+      subject: Aviso de Entrega de Diezmo
+      title: Comprobante Electrónico de Diezmo
+      content_title: <b>Estimado(a) %{full_name}:</b>
+      content_body: |
+        Le informamos que hoy <b>%{date}</b> hemos recibido satisfactoriamente su diezmo. Gracias por apoyar la obra de nuestro Dios en la Iglesia <b>%{name_church}</b>. Su diezmo ha sido ingresado correctamente a nuestros registros.
+      content_detail: "El detalle de esta operación es el siguiente:"
+      table_quantity: Monto entregado
+      table_member: Colaborador
+      table_church: Iglesia Destinataria
+      table_date: Fecha Operación
+      table_num: Número de Operación
+      footer: Atte. <br> eDiscípulo - Software a la Medida
+      message_warning: <small><b>Importante</b><br> 
+        <li> Este mail es generado de manera automática, por favor no responda a este mensaje.</li> 
+        <li>Ante cualquier duda, contáctese al %{phone_church}. </li> 
+        <li>Los comentarios aquí ingresados son exclusiva responsabilidad de nuestro cliente y no involucran en absoluto a eDiscípulo.</li></small>
