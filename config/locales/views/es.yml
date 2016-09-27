@@ -93,6 +93,9 @@ es:
     associated_family:
       success: Miembro ha sido actualizado satisfactoriamente.
       error_head_family: '%{member} ya es un Jefe de Familia.'
+    add_tithes:
+      success: Diezmo ha sido agregado satisfactoriamente.
+      error_save: Ha ocurrido un error inesperado, favor revisar sus datos.
     update:
       success: Miembro ha sido actualizado satisfactoriamente.
     create:

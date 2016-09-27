@@ -104,6 +104,9 @@ class MembersController < ApplicationController
       MemberMailer.send_notification_tithe(
             params[:id], @tithe.id, current_user.id
           ).deliver_later
+      flash[:notice] = t('.success')
+    else
+      flash[:alert] = t('.error_save')
     end
     redirect_to action: :show
   end
