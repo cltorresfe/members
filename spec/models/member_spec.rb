@@ -209,4 +209,19 @@ RSpec.describe Member, type: :model do
       expect(Member.administrative_for_ministry(ministry.id)).not_to be_empty
     end
   end
+
+  describe '.tithes_by_date' do
+    let!(:date_f) { 1.year.ago.beginning_of_day }
+    let!(:date_l) { Time.now}
+    subject { member.tithes_by_date(date_f, date_l) }
+
+    context 'returns an array with the tithes of the last year' do
+      let!(:tithe) { create(:tithe, handed_at: 30.days.ago, member: member) }
+      it { is_expected.not_to be_empty }
+    end
+
+    context 'returns an array empty without loaded tithes to member associated' do
+      it { is_expected.to be_empty }
+    end
+  end
 end

@@ -1,5 +1,6 @@
 
 var days = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ];
+var months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 if (typeof gon !== 'undefined'){
   if (gon.attendances_week != null){
       line_week = new Morris.Line({
@@ -21,6 +22,29 @@ if (typeof gon !== 'undefined'){
       // Labels for the ykeys -- will be displayed when you hover over the
       // chart.
       labels: ['Personas']
+    });
+  }
+  if (gon.tithes_year != null){
+      line_week = new Morris.Line({
+      // ID of the element in which to draw the chart.
+      element: 'line_tithes_chart',
+      // Chart data records -- each entry in this array corresponds to a point on
+      // the chart.
+      data: gon.tithes_year,
+      // The name of the data record attribute that contains x-values.
+      parseTime: false,
+      xkey: 'handed_at',
+      // A list of names of data record attributes that contain y-values.
+      ykeys: ['quantity'],
+      xLabelFormat: function(d)
+                    {
+                      date = new Date(d.src.handed_at);
+                      year = date.getFullYear();
+                      return months[date.getMonth()] ;
+                    },
+      // Labels for the ykeys -- will be displayed when you hover over the
+      // chart.
+      labels: ['Diezmos']
     });
   }
   if (gon.members_range != null){
