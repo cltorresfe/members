@@ -100,7 +100,11 @@ class MembersController < ApplicationController
     @tithe.member = @member
     @tithe.church = current_church
 
-    @tithe.save
+    if @tithe.save
+      MemberMailer.send_notification_tithe(
+            params[:id], @tithe.id, current_user.id
+          ).deliver_later
+    end
     redirect_to action: :show
   end
 
