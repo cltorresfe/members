@@ -7,7 +7,7 @@ class MembersController < ApplicationController
   def show
     @ministries = @member.ministries
     @tithe = Tithe.new  
-    @tithes = @member.tithes_by_date(1.year.ago, Time.now).sorted
+    @tithes = @member.tithes_by_date(1.year.ago.beginning_of_day, Time.now).sorted
     @responsibilities = @member.responsibilities
     @attendances = @member.attendances.sorted
                           .paginate(page: params[:page], per_page: 12)
