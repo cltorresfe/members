@@ -1,6 +1,7 @@
 es:
   # Common view translations
-  application: Plataforma Miembros de Iglesia
+  application: eDiscipulo
+  welcome: Bienvenido
   link:
     back: Atrás
     churches: Iglesias
@@ -137,11 +138,21 @@ es:
       success: Ministerio fue agregado exitosamente
     update:
       success: Ministerio fue modificado exitosamente
+    row:
+      new_responsibility: Nuevo Cargo
+      edit_ministry: Editar
     index:
       title: Listado de Ministerios
       not_found: "No se encontraron ministerios asociados"
     edit:
       title: Editar Ministerio
+    list:
+      title: Ministerios
+      new_ministry: Nuevo Ministerio
+      name: Nombre
+      members: Miembros
+      charges: Cargos
+      action: Acción
     new:
       title: Nuevo Ministerio
     destroy:
