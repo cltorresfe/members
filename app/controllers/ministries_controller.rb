@@ -17,7 +17,10 @@ class MinistriesController < ApplicationController
   # GET /ministries/1/edit
   def edit
   end
-
+  def list
+    @ministries = current_church.ministries.sorted
+    flash.now[:alert] = t('.not_found') if @ministries.blank?
+  end
   # POST /ministries
   # POST /ministries.json
   def create
