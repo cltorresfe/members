@@ -3,8 +3,9 @@
   %td= ministry.members.size
   %td
     - ministry.responsibilities.each do |responsibility|
-      =responsibility.name
+      =responsibility.name+" |"
   %td
-    = link_to t('.new_responsibility'), new_responsibility_path, remote: true, class: "btn btn-default btn-xs"
+    = link_to t('.new_responsibility'), new_responsibility_path(ministry_id: ministry), remote: true, class: "btn btn-info btn-xs"
   %td
     = link_to t('.edit_ministry'), edit_ministry_path(ministry), remote: true
+    = link_to "Eliminar", ministry_path(ministry), method: :delete, data: { confirm: 'Are you sure?' }
