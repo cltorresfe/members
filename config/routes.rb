@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       post :add_tithes
     end
   end
-  resources :ministries
+  resources :ministries, except: :show
   resources :responsibilities
 
   get 'profile', to: 'users#edit', as: :edit_profile
