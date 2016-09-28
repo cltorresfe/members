@@ -1,8 +1,14 @@
 <% if @ministry.errors.empty? %>
   // add the row to the table, show alert and hide modal
   $('table tbody tr#<%= @ministry.id %>').replaceWith(' <%= j render "row", ministry: @ministry %>');
-  $('.alert-success').html("El ministerio ha sido modificado con éxito").show();
   $('#ministry-modal').modal('hide');
+  <% flash.each do |type, message| %>
+    <% if type == 'notice' %> 
+      $("#flash_messages").html("<div class='alert alert-success alert-dismissible' role='alert'><button class='close' data-dismiss='alert'>×</button><%= message.html_safe %></div>")
+    <%else%> 
+      $("#flash_messages_error").html("<span class='label label-danger'><%= message.html_safe %></span>")
+    <% end %>
+  <% end %> 
 <% else %>
   // show first error
   alert('<%= @ministry.errors.full_messages[0] %>');
