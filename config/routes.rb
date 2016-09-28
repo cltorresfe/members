@@ -17,11 +17,12 @@ Rails.application.routes.draw do
       post :add_tithes
     end
   end
-  resources :ministries, except: :show
+  resources :ministries
   resources :responsibilities
 
   get 'profile', to: 'users#edit', as: :edit_profile
   put 'profile', to: 'users#update', as: :profile
+  get 'list_ministries', to: 'ministries#list', as: :list_ministries
 
   root 'main#index'
 
