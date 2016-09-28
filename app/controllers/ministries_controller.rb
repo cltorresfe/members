@@ -28,10 +28,7 @@ class MinistriesController < ApplicationController
     @ministry.church = current_church
 
     if @ministry.save
-      flash[:notice] = 'Ministry was successfully created.'
-      redirect_to action: :index
-    else
-      render :new
+      flash.now[:notice] = t('.success')
     end
   end
 
@@ -45,10 +42,7 @@ class MinistriesController < ApplicationController
     end
 
     if @ministry.update(ministry_params)
-      flash[:notice] = 'Ministry was successfully created.'
-      redirect_to action: :index
-    else
-      render :edit
+      flash.now[:notice] = t('.success')
     end
   end
 
