@@ -11,6 +11,7 @@ class ResponsibilitiesController < ApplicationController
   # GET /responsibilities/new
   def new
     @responsibility = Responsibility.new
+    @ministry = Ministry.find(params[:ministry_id])
   end
 
   # GET /responsibilities/1/edit
@@ -21,11 +22,14 @@ class ResponsibilitiesController < ApplicationController
   # POST /responsibilities.json
   def create
     @responsibility = Responsibility.new(responsibility_params)
+    @ministry = Ministry.find(params[:responsibility][:ministry_id])
+    @charge = Charge.new
+    @charge.ministry = @ministry
     @responsibility.church = current_church
     if @responsibility.save
-      redirect_to action: :index
-    else
-      render :new
+      @charge.responsibility = @responsibility
+      @charge.save
+      flash.now[:notice] = t('.success')
     end
   end
 
