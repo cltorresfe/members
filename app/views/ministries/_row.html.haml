@@ -1,0 +1,5 @@
+%tr{:id => "#{ministry.id}"}
+  %td= ministry.name
+  %td= ministry.members.size
+  %td
+    = link_to "Editar", edit_ministry_path(ministry), remote: true
