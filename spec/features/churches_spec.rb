@@ -8,7 +8,7 @@ feature 'Churches' do
   end
 
   scenario 'rejects access to other sections until user church is created' do
-    click_link 'Plataforma Miembros de Iglesia'
+    click_link 'eDiscipulo'
     expect(page).not_to have_content 'Inicio'
     expect(page).to have_content 'Nueva Iglesia'
   end
