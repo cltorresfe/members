@@ -1,0 +1,10 @@
+<% if @ministry.errors.empty? %>
+  // add the row to the table, show alert and hide modal
+  $('#ministry-modal').modal('hide');
+  $('table tbody').append(' <%= j render "row", ministry: @ministry %>');
+  $('.alert-success').html("El ministerio ha sido creado con éxito").show();
+  
+<% else %>
+  // show first error
+  alert('<%= @ministry.errors.full_messages[0] %>');
+<% end %>
