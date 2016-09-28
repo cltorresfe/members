@@ -124,6 +124,8 @@ es:
       title: Listado de Cargos
       not_found: "No se encontraron cargos asociados"
       admin: Cargo administrativo
+    create:
+      success: El Cargo fue agregado exitosamente
     edit:
       title: Editar Cargo
     new:
