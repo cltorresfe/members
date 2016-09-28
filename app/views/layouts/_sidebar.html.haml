@@ -3,15 +3,14 @@
     .navbar.nav_title{:style => "border: 0;"}
       = link_to root_path , class: "site_title" do
         %i.glyphicon.glyphicon-grain
-        %span
-          = t('application')
+        %span= t('application')
     .clearfix
     / menu profile quick info
     .profile
       .profile_pic
         = image_tag "avatar_2x.png", :class => "img-circle profile_img"
       .profile_info
-        %span Welcome,
+        %span= t('welcome')
         %h2= current_user.name
     / /menu profile quick info
     / sidebar menu
