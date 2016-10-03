@@ -13,6 +13,10 @@
             %span.fa.fa-angle-down
           %ul.dropdown-menu.dropdown-usermenu.pull-right
             %li
+              = form_for :search, url: search_path, method: :get do |f|
+              = f.text_field :q 
+              = f.submit "Go", name: nil
+            %li
               = link_to edit_profile_path do
                 %i.fa.fa-edit.pull-right
                 = t('.profile')

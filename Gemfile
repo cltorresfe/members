@@ -18,6 +18,9 @@ gem 'pg'
 gem 'puma'
 # gem 'pundit'
 # gem 'react_on_rails', "~> 6"#, github: 'shakacode/react_on_rails', branch: :master
+
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 gem 'sass-rails', '~> 5.0.5'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sidekiq'

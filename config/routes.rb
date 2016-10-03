@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#edit', as: :edit_profile
   put 'profile', to: 'users#update', as: :profile
+  get "search" => "search#search", as: :search
 
   root 'main#index'
 

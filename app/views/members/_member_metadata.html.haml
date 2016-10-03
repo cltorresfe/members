@@ -1,0 +1,6 @@
+.text-center
+  = link_to( member_path(member), class: 'info-number') do
+    = avatar_for(member)
+    - if member.passive_status?
+      %span.badge.bg-red
+        = member.status_name_abbv

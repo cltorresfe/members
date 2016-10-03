@@ -26,6 +26,7 @@
 #  discipline_date :datetime
 #  transfer_date   :datetime
 #
+require 'elasticsearch/model'
 
 class Member < ApplicationRecord
   include Decorators::Member
@@ -63,7 +64,10 @@ class Member < ApplicationRecord
   scope :with_birth_date, -> { where.not(birth_date: nil) }
   scope :with_email, -> { where.not(email: nil) }
   scope :active_service, -> { where("members.status = ? OR members.status = ? OR members.status = ?", 0, 1, 3) }
-
+  
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  
   def set_defaults
     self.status ||= :active
   end
@@ -144,3 +148,5 @@ class Member < ApplicationRecord
     )
   end
 end
+
+Member.import
