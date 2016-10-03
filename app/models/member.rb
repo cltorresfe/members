@@ -90,14 +90,6 @@ class Member < ApplicationRecord
       .with_email
   end
 
-  def self.search(search)
-    if search
-      where('lower(first_name) LIKE ?', "%#{search.downcase}%").sorted
-    else
-      none
-    end
-  end
-
   def self.birth_date_by_month
     where('Extract(month from birth_date) = ?
           AND Extract(day from birth_date) >= ?',
