@@ -30,6 +30,7 @@ require 'elasticsearch/model'
 
 class Member < ApplicationRecord
   include Decorators::Member
+  include SearchableMember
   include ChangeFormatPhone
   mount_uploader :avatar, AvatarUploader
 
@@ -65,8 +66,6 @@ class Member < ApplicationRecord
   scope :with_email, -> { where.not(email: nil) }
   scope :active_service, -> { where("members.status = ? OR members.status = ? OR members.status = ?", 0, 1, 3) }
   
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
   
   def set_defaults
     self.status ||= :active
@@ -149,4 +148,12 @@ class Member < ApplicationRecord
   end
 end
 
-Member.import
+# Delete the previous members index in Elasticsearch
+Member.__elasticsearch__.client.indices.delete index: Member.index_name rescue nil
+
+# Create the new index with the new mapping
+Member.__elasticsearch__.client.indices.create \
+  index: Member.index_name,
+  body: { settings: Member.settings.to_hash, mappings: Member.mappings.to_hash }
+
+Member.import force: true
