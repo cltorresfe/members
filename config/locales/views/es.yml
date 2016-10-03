@@ -32,6 +32,7 @@ es:
       destroy_session: Cerrar
       profile: Editar Perfil
       sidekiq: Monitor Sidekiq
+      searchbar: Buscar por Miembros
   attendances:
     index:
       not_found: |

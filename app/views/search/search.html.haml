@@ -1,2 +1,13 @@
-%h1 Search Result
-= render @search_results
+%h1 Search Resultsff
+.row
+  .col-md-3
+    - if @search_results.any?
+      %h4.small-heading.with-border Member
+      - @search_results.each do |member|
+        .member-card
+          .avatar-wrapper
+            = avatar_for member, size: 50
+          .uc-metadata
+            %h4= link_to member.first_name, member
+            %p= member.last_name
+

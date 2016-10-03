@@ -6,10 +6,11 @@
         %a#menu_toggle
           %i.fa.fa-bars
       %ul.nav.navbar-nav.navbar-center
-        %li
+        %li.main-searchbar
           = form_for :search, url: search_path, method: :get do |f|
-            = f.text_field :q 
-            = f.submit "Go", name: nil
+            = button_tag do
+              %span.glyphicon.glyphicon-search
+            = f.search_field :q, placeholder: t('.searchbar')
       %ul.nav.navbar-nav.navbar-right
         %li
           %a.user-profile.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "javascript:;"}
