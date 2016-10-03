@@ -1,10 +1,14 @@
 class SearchController < ApplicationController
-  before_action :beautify_url
+  before_action :beautify_url, only: [:show]
 
   def search
     @search_results = current_church.members.active_service.search(params[:q]).records
 
   end
+
+  def autocomplete
+      render json: Member.search(params[:term]).map(&:full_name)
+    end
 
   private
   def beautify_url
