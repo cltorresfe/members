@@ -5,10 +5,10 @@ module SearchableMember
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
-    settings index: { number_of_shards: 1 } do
+    settings INDEX_OPTIONS do
         mappings dynamic: 'false' do
-          indexes :first_name, analyzer: 'english'
-          indexes :last_name, analyzer: 'english'
+          indexes :first_name, analyzer: 'autocomplete'
+          indexes :last_name, analyzer: 'autocomplete'
           indexes :family do
             indexes :name, analyzer: 'english'
           end
@@ -36,4 +36,26 @@ module SearchableMember
       }
     })
   end
+
+  INDEX_OPTIONS =
+      { number_of_shards: 1, analysis: {
+      filter: {
+        "autocomplete_filter" => {
+          type: "edge_ngram",
+          min_gram: 1,
+          max_gram: 20
+        }
+      },
+      analyzer: {
+        "autocomplete" => {
+          type: "custom",
+          tokenizer: "standard",
+          filter: [
+            "lowercase",
+            "autocomplete_filter"
+          ]
+        }
+      }
+    }
+  }
 end
