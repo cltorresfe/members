@@ -19,6 +19,7 @@
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= #require turbolinks
 //= require common
+//= require autocomplete
 //= require gentelella/vendors/raphael/raphael.min
 //= require gentelella/vendors/morris.js/morris.min
 //= require custom

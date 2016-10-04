@@ -7,7 +7,7 @@ class SearchController < ApplicationController
   end
 
   def autocomplete
-    render json: Member.search(params[:term]).map(&:full_name)
+    @members = Member.search(params[:term]).records.to_a
   end
 
   private

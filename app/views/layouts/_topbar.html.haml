@@ -6,7 +6,7 @@
         %a#menu_toggle
           %i.fa.fa-bars
       %ul.nav.navbar-nav.navbar-center
-        %li.main-searchbar
+        %li#main-searchbar.main-searchbar
           = form_for :search, url: search_path, method: :get do |f|
             = button_tag do
               %span.glyphicon.glyphicon-search

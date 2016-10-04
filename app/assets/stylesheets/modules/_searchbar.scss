@@ -1,4 +1,5 @@
 .main-searchbar form {
+  position: relative;
   padding: 0.4em 0.8em;
   border-radius: 20px;
   margin-top: 8px;
@@ -31,5 +32,29 @@
     border: none;
     outline: none;
     background-color: #fff;
+  }
+}
+
+#autocomplete-items {
+  position: absolute;
+  top: 53px;
+  left: 300px;
+  list-style: none;
+  padding: 0 10px;
+  width: 240px;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  display: block;
+  z-index:30 !important;
+  li {
+    padding: 8px 10px;
+    a {
+      color: $font-black;
+      font-size: 12px;
+    }
+  }
+  .avatar-image {
+    margin-right: 5px;
   }
 }
