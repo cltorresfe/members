@@ -45,14 +45,14 @@ RSpec.describe Member, type: :model do
   it { is_expected.not_to allow_value('invalid').for(:email) }
 
   let!(:member) { create(:member, first_name: 'Homero', last_name: 'Simpsons') }
-
   describe '#search' do
-    it 'searches an existing member' do
-      expect(Member.search('Homero')).to include member
+    it 'searches an existing member', elasticsearch: true do
+      Member.__elasticsearch__.refresh_index!
+      expect(Member.search('Homero').results.first._source.first_name).to eq("Homero")
     end
 
     it 'searches an unknown member' do
-      expect(Member.search('Marge')).not_to include member
+      expect(Member.search('Marge')).not_to include "Homero"
     end
   end
 

@@ -56,13 +56,14 @@ RSpec.describe User, type: :model do
     let!(:church) { create(:church, name: 'Iglesia') }
     let!(:member) { create(:member, first_name: 'Plumero', church: church) }
 
-    it 'searches an existing member' do
+    it 'searches an existing member', elasticsearch: true do
       user = create(:user, church: church)
-      expect(user.search_members('Plumero')).to include member
+      Member.__elasticsearch__.refresh_index!
+      expect(user.search_members('Plumero').results.first._source.first_name).to eq("Plumero")
     end
 
     it 'searches an unknown member' do
-      expect(user.search_members('Margaret')).not_to include member
+      expect(user.search_members('Margaret')).not_to include "Margaret"
     end
   end
 end

@@ -71,7 +71,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   # Using until a new rspec version compatible with rails 5 comes.
   config.include ::Rails::Controller::Testing::TestProcess, type: :controller
