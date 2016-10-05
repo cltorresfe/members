@@ -13,13 +13,11 @@
 //= require jquery/dist/jquery
 //= require jquery_ujs
 //= require jquery-validation/dist/jquery.validate.min
-//= require jquery-ui/autocomplete
 //= require bootstrap/dist/js/bootstrap
 //= require moment/min/moment.min
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= #require turbolinks
 //= require common
-//= require autocomplete
 //= require gentelella/vendors/raphael/raphael.min
 //= require gentelella/vendors/morris.js/morris.min
 //= require custom
@@ -28,4 +26,7 @@
 // require gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard
 //= require ckeditor/init
 //= require chosen/chosen.jquery
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree ./routes/

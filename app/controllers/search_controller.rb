@@ -2,8 +2,7 @@ class SearchController < ApplicationController
   before_action :beautify_url, only: [:search]
 
   def search
-    @search_results = current_church.members.active_service.search(params[:q]).records
-
+    @search_results = Member.search(params[:q]).records
   end
 
   def autocomplete

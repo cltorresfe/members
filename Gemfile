@@ -23,6 +23,7 @@ gem 'puma'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'sass-rails', '~> 5.0.5'
+gem 'react-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sidekiq'
 gem 'simple_form'
