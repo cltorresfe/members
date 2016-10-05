@@ -56,7 +56,7 @@ RSpec.describe User, type: :model do
     let!(:church) { create(:church, name: 'Iglesia') }
     let!(:member) { create(:member, first_name: 'Plumero', church: church) }
 
-    it 'searches an existing member', elasticsearch: true do
+    it 'searches an existing member' do
       user = create(:user, church: church)
       Member.__elasticsearch__.refresh_index!
       expect(user.search_members('Plumero').records.total).to be > 0

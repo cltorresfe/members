@@ -46,7 +46,7 @@ RSpec.describe Member, type: :model do
 
   let!(:member) { create(:member, first_name: 'Homero', last_name: 'Simpsons') }
   describe '#search' do
-    it 'searches an existing member', elasticsearch: true do
+    it 'searches an existing member' do
       Member.__elasticsearch__.refresh_index!
       expect(Member.search('Homero').records.total).to be > 0
     end
