@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
     it 'searches an existing member', elasticsearch: true do
       user = create(:user, church: church)
       Member.__elasticsearch__.refresh_index!
-      expect(user.search_members('Plumero').results.first._source.first_name).to eq("Plumero")
+      expect(user.search_members('Plumero').records.total).to be > 0
     end
 
     it 'searches an unknown member' do

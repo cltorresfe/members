@@ -21,7 +21,7 @@ module SearchableMember
           query: {
             multi_match: {
               query: term,
-              fields: ['first_name^10', 'last_name', 'family.name^5']
+              fields: ['first_name^10', 'last_name^10', 'family.name^5']
             }
           }
         }

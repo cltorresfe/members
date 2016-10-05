@@ -18,7 +18,6 @@ gem 'jquery-ui-rails'
 gem 'pg'
 gem 'puma'
 # gem 'pundit'
-# gem 'react_on_rails', "~> 6"#, github: 'shakacode/react_on_rails', branch: :master
 
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'

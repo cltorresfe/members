@@ -66,7 +66,6 @@ class Member < ApplicationRecord
   scope :with_email, -> { where.not(email: nil) }
   scope :active_service, -> { where("members.status = ? OR members.status = ? OR members.status = ?", 0, 1, 3) }
   
-  
   def set_defaults
     self.status ||= :active
   end

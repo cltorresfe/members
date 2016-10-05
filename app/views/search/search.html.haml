@@ -1,13 +1,19 @@
-%h1 Search Resultsff
-.row
-  .col-md-3
-    - if @search_results.any?
-      %h4.small-heading.with-border Member
-      - @search_results.each do |member|
-        .member-card
-          .avatar-wrapper
-            = avatar_for member, size: 50
-          .uc-metadata
-            %h4= link_to member.first_name, member
-            %p= member.last_name
+%h3 Resultado de la Búsqueda
+- if(@search_results.present?)
+  .row
+    .col-md-12.col-sm-12.col-xs-12
+      .box-body.no-padding
+        .x_panel
+          .x_title
+            %h2
+              = current_church.name
+              %small
+                = t('common.member', count: @search_results.size)
+            .clearfix
+          .x_content
+            .row
+              .clearfix
+              = render @search_results
+              .col-md-12.col-sm-12.col-xs-12
+                .text-center= will_paginate @search_results, :class => 'margin: 0px'
 

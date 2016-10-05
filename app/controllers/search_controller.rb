@@ -3,6 +3,7 @@ class SearchController < ApplicationController
 
   def search
     @search_results = Member.search(params[:q]).records
+                            .paginate(page: params[:page], per_page: 12)
   end
 
   def autocomplete
