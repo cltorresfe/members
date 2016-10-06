@@ -11,7 +11,7 @@ class SearchResultsList extends React.Component {
         <span className="dropdown-arrow-bottom"></span>
         <li>
           <a href={`/search?q=${this.props.term}`}>
-            <i className="fa fa-search"></i> Search for <strong>{this.props.term}</strong>
+            <i className="fa fa-search"></i> {this.props.title_search} <strong>{this.props.term}</strong>
           </a>
         </li>
         {this.renderMemberHeading()}

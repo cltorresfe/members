@@ -31,6 +31,7 @@ es:
     topbar:
       destroy_session: Cerrar
       profile: Editar Perfil
+      title_search: Resultados para
       sidekiq: Monitor Sidekiq
       searchbar: Buscar por Miembros
   attendances:

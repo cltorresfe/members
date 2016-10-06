@@ -1,4 +1,8 @@
 class SearchContainer extends React.Component {
+  propTypes: {
+      title_search: React.PropTypes.string
+    }
+
   constructor(props) {
     super(props)
 
@@ -60,6 +64,7 @@ class SearchContainer extends React.Component {
         setPreventHideDropdown={this.setPreventHideDropdown}
         resetPreventHideDropdown={this.resetPreventHideDropdown}
         term={this.state.term}
+        title_search={this.props.title_search}
         members={this.state.members}
         ministries={this.state.ministries}
       />
