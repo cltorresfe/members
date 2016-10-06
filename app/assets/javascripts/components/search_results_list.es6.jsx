@@ -2,7 +2,7 @@ class SearchResultsList extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { term: '', members: [] }
+    this.state = { term: '', members: [], ministries: [] }
   }
   render () {
     return (
@@ -16,11 +16,13 @@ class SearchResultsList extends React.Component {
         </li>
         {this.renderMemberHeading()}
         {this.renderMembers()}
+        {this.renderMinistryHeading()}
+        {this.renderMinistries()}
       </ul>
     );
   }
   renderMembers() {
-   return this.props.members.slice(0, 7).map((member) => {
+   return this.props.members.slice(0, 4).map((member) => {
       return <SearchMemberListItem key={member.id} member={member} />
     });
   }
@@ -29,6 +31,18 @@ class SearchResultsList extends React.Component {
     if (this.props.members.length === 0) { return; }
 
     return <li className="autocomplete-heading"><h4>Members</h4></li>
+  }
+
+  renderMinistries() {
+   return this.props.ministries.slice(0, 3).map((ministry) => {
+      return <SearchMinistryListItem key={ministry.id} ministry={ministry} />
+    });
+  }
+
+  renderMinistryHeading() {
+    if (this.props.ministries.length === 0) { return; }
+
+    return <li className="autocomplete-heading"><h4>Ministries</h4></li>
   }
 }
 

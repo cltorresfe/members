@@ -2,7 +2,7 @@ class SearchContainer extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { term: '', members: [] }
+    this.state = { term: '', members: [], ministries: [] }
     this.hideDropdown = this.hideDropdown.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
     this.setPreventHideDropdown = this.setPreventHideDropdown.bind(this);
@@ -15,7 +15,9 @@ class SearchContainer extends React.Component {
       url: `/autocomplete.json/?term=${term}`,
       method: 'GET',
       success: (data) => 
-        this.setState({ members: data.members})
+        this.setState({ 
+          members: data.members,
+          ministries: data.ministries})
     });
   }
   setPreventHideDropdown() {
@@ -50,7 +52,7 @@ class SearchContainer extends React.Component {
     );
   }
   renderSearchResults(){
-    if(!this.state.showDropdown || this.state.members.length === 0) {
+    if(!this.state.showDropdown || (this.state.members.length === 0 && this.state.ministries.length === 0)) {
       return;
     }
     return (
@@ -59,6 +61,7 @@ class SearchContainer extends React.Component {
         resetPreventHideDropdown={this.resetPreventHideDropdown}
         term={this.state.term}
         members={this.state.members}
+        ministries={this.state.ministries}
       />
     );
   }
