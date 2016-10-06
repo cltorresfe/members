@@ -49,6 +49,8 @@ class SearchContainer extends React.Component {
           showDropdown={this.showDropdown}
           hideDropdown={this.hideDropdown}
           term={this.state.term}
+          title_search={this.props.title_search}
+          title_placeholder={this.props.title_placeholder}
           onSearchTermChange={(term) => {this.search(term)}}
         />
         {this.renderSearchResults()}

@@ -32,6 +32,7 @@ es:
       destroy_session: Cerrar
       profile: Editar Perfil
       title_search: Resultados para
+      title_placeholder: Buscar Miembros/Ministerios
       sidekiq: Monitor Sidekiq
       searchbar: Buscar por Miembros
   attendances:

@@ -1,6 +1,7 @@
 
 .main-searchbar form {
   position: relative;
+  width: 230px;
   padding: 0.4em 0.8em;
   border-radius: 20px;
   margin-top: 10px;
@@ -18,8 +19,13 @@
   input[type="search"] {
     border: none;
     outline: none;
+    width: 85%;
     background-color: transparent !important;
   }
+}
+
+.margin-box{
+  margin: 14px !important;
 }
 
 .main-searchbar {
@@ -103,6 +109,10 @@
       padding-bottom: 6px;
     }
   }
+}
+
+.top_nav .navbar-right {
+  width: 80% !important;
 }
 
 // search dropdown list items
