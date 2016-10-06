@@ -45,16 +45,6 @@ RSpec.describe Member, type: :model do
   it { is_expected.not_to allow_value('invalid').for(:email) }
 
   let!(:member) { create(:member, first_name: 'Homero', last_name: 'Simpsons') }
-  describe '#search' do
-    it 'searches an existing member' do
-      Member.__elasticsearch__.refresh_index!
-      expect(Member.search('Homero').records.total).to be > 0
-    end
-
-    it 'searches an unknown member' do
-      expect(Member.search('Marge')).not_to include "Homero"
-    end
-  end
 
   describe '.status_name' do
     it { expect(member.status_name).to eq 'Activo' }

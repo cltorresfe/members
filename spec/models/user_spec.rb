@@ -51,19 +51,4 @@ RSpec.describe User, type: :model do
       expect(user.admin?).to be_falsey
     end
   end
-
-  context '#checking search_members' do
-    let!(:church) { create(:church, name: 'Iglesia') }
-    let!(:member) { create(:member, first_name: 'Plumero', church: church) }
-
-    it 'searches an existing member' do
-      user = create(:user, church: church)
-      Member.__elasticsearch__.refresh_index!
-      expect(user.search_members('Plumero').records.total).to be > 0
-    end
-
-    it 'searches an unknown member' do
-      expect(user.search_members('Margaret')).not_to include "Margaret"
-    end
-  end
 end
