@@ -457,8 +457,8 @@ DEPENDENCIES
   devise (~> 4.2.0)
   dotenv-rails
   elasticsearch-extensions
-  elasticsearch-model
-  elasticsearch-rails
+  elasticsearch-model (~> 0.1.8)
+  elasticsearch-rails (~> 0.1.8)
   factory_girl_rails
   faker
   foreman

@@ -19,8 +19,8 @@ gem 'pg'
 gem 'puma'
 # gem 'pundit'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+gem 'elasticsearch-model', '~> 0.1.8'
+gem 'elasticsearch-rails', '~> 0.1.8'
 gem 'sass-rails', '~> 5.0.5'
 gem 'react-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
