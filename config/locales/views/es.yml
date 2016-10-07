@@ -166,3 +166,6 @@ es:
       title_last_attendance: Asistencia última semana
       title_last_persons: Últimas personas agregadas
       title_notif_married_date: Aniversarios del mes
+  search:
+    search:
+      title: Resultado de la Búsqueda
