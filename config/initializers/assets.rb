@@ -8,6 +8,6 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
-config.assets.precompile += Ckeditor.assets
-config.assets.precompile += %w( ckeditor/* components.js react-server.js)
+Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+Rails.application.config.assets.precompile += Ckeditor.assets
+Rails.application.config.assets.precompile += %w( ckeditor/* components.js react-server.js)
