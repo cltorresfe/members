@@ -29,12 +29,13 @@ es:
       responsibilities_link: Cargos
       destroy_session_link: Cerrar
     topbar:
-      destroy_session: Cerrar
-      profile: Editar Perfil
       title_search: Resultados para
       title_placeholder: Buscar Miembros/Ministerios
-      sidekiq: Monitor Sidekiq
       searchbar: Buscar por Miembros
+    dropdown_menu_topbar:
+      sidekiq: Monitor Sidekiq
+      destroy_session: Cerrar
+      profile: Editar Perfil
   attendances:
     index:
       not_found: |
