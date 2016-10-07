@@ -44,7 +44,7 @@ feature 'Users pages' do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: '123456789'
       click_button "Iniciar sesión"
-      expect(page).to have_content 'Plataforma Miembros de Iglesia'
+      expect(page).to have_content 'eDiscípulo'
       expect(page).to have_content "Welcome, #{user.name}"
       expect(page).to have_content 'Inicio'
     end

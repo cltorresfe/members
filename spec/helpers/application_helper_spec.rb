@@ -9,7 +9,7 @@ RSpec.describe ApplicationHelper do
         helper.content_for(:title, 'Index')
       end
 
-      it { is_expected.to eq('Index - Plataforma Miembros de Iglesia') }
+      it { is_expected.to eq('Index - eDiscípulo') }
     end
 
     context 'title is not in context but has found a title by locale' do
@@ -18,11 +18,11 @@ RSpec.describe ApplicationHelper do
         allow(controller).to receive(:action_name).and_return('index')
       end
 
-      it { is_expected.to eq('Listado de Miembros - Plataforma Miembros de Iglesia') }
+      it { is_expected.to eq('Listado de Miembros - eDiscípulo') }
     end
 
     context 'title is not in context or locale' do
-      it { is_expected.to eq('Plataforma Miembros de Iglesia') }
+      it { is_expected.to eq('eDiscípulo') }
     end
   end
 
