@@ -26,4 +26,7 @@
 // require gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard
 //= require ckeditor/init
 //= require chosen/chosen.jquery
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree ./routes/

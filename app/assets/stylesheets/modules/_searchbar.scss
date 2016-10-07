@@ -1,0 +1,130 @@
+
+.main-searchbar form {
+  position: relative;
+  width: 230px;
+  padding: 0.4em 0.8em;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-right: 8px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  button[type="submit"] {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    span {
+      color: $light-font-color;
+    }
+  }
+  input[type="search"] {
+    border: none;
+    outline: none;
+    width: 85%;
+    background-color: transparent !important;
+  }
+}
+
+.margin-box{
+  margin: 14px !important;
+}
+
+.main-searchbar {
+  .dropdown-menu {
+    margin-top: 10px;
+    .dropdown-arrow-top {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      z-index: 20;
+      border-bottom: 10px solid #fff;
+      position: absolute;
+      right: 76px;
+      top: -10px;
+    }
+    .dropdown-arrow-bottom {
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      z-index: 10;
+      border-bottom: 11px solid rgba(0, 0, 0, 0.11);
+      position: absolute;
+      right: 74px;
+      top: -11px;
+    }
+  }
+}
+
+.large-searchbar {
+  form {
+    margin: 1em 0;
+  }
+  input[type="search"] {
+    width: 100%;
+    font-size: 50px;
+    font-weight: 100;
+    border: none;
+    outline: none;
+    background-color: #fff;
+  }
+}
+
+#autocomplete-items {
+  list-style: none;
+  padding: 6px 8px;
+  width: 300px;
+  background: $white;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  display: block;
+  li {
+    padding: 4px 10px;
+    a {
+      color: $light-font-color;
+      font-size: 12px;
+      padding: 3px 0 !important;
+      overflow: hidden;
+      &:hover {
+        background-color: $white;
+        color: $font-black;
+      }
+    }
+  }
+  .avatar-image {
+    margin-right: 5px;
+  }
+  .fa-search {
+    margin-right: 5px;
+  }
+  .autocomplete-heading {
+    padding-bottom: 0;
+    h4 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: $font-black;
+      border-bottom: 1px solid $light-border-color;
+      margin: 0;
+      padding-bottom: 6px;
+    }
+  }
+}
+
+.top_nav .navbar-right {
+  width: 80% !important;
+}
+
+// search dropdown list items
+.search-tag-list-item {
+  .fa-tag {
+    margin-right: 11px;
+    font-size: 18px;
+    padding-left: 10px;
+    color: $light-font-color;
+  }
+}
+
+img.avatar-image {
+  border-radius: $round;
+}

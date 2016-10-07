@@ -1,0 +1,35 @@
+- if(@members.present?)
+  .row
+    .col-md-12.col-sm-12.col-xs-12
+      .box-body.no-padding
+        .x_panel
+          .x_title
+            %h2
+              = current_church.name
+              %small
+                = t('common.member', count: @members.size)
+            .clearfix
+          .x_content
+            .row
+              .clearfix
+              = render @members
+              .col-md-12.col-sm-12.col-xs-12
+                .text-center= will_paginate @members, :class => 'margin: 0px'
+- if(@ministries.present?)
+  .row
+    .col-md-12.col-sm-12.col-xs-12
+      .box-body.no-padding
+        .x_panel
+          .x_title
+            %h2
+              = current_church.name
+              %small
+                = t('common.member', count: @ministries.size)
+            .clearfix
+          .x_content
+            .row
+              .clearfix
+              = render @ministries
+              .col-md-12.col-sm-12.col-xs-12
+                .text-center= will_paginate @ministries, :class => 'margin: 0px'
+

@@ -46,16 +46,6 @@ RSpec.describe Member, type: :model do
 
   let!(:member) { create(:member, first_name: 'Homero', last_name: 'Simpsons') }
 
-  describe '#search' do
-    it 'searches an existing member' do
-      expect(Member.search('Homero')).to include member
-    end
-
-    it 'searches an unknown member' do
-      expect(Member.search('Marge')).not_to include member
-    end
-  end
-
   describe '.status_name' do
     it { expect(member.status_name).to eq 'Activo' }
   end

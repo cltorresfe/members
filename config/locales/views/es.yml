@@ -29,9 +29,13 @@ es:
       responsibilities_link: Cargos
       destroy_session_link: Cerrar
     topbar:
+      title_search: Resultados para
+      title_placeholder: Buscar Miembros/Ministerios
+      searchbar: Buscar por Miembros
+    dropdown_menu_topbar:
+      sidekiq: Monitor Sidekiq
       destroy_session: Cerrar
       profile: Editar Perfil
-      sidekiq: Monitor Sidekiq
   attendances:
     index:
       not_found: |
@@ -163,3 +167,6 @@ es:
       title_last_attendance: Asistencia última semana
       title_last_persons: Últimas personas agregadas
       title_notif_married_date: Aniversarios del mes
+  search:
+    search:
+      title: Resultado de la Búsqueda
