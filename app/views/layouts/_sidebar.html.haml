@@ -50,6 +50,9 @@
             %ul.nav.child_menu{:style => "display: none"}
               %li= link_to t('responsibilities.index.title'), responsibilities_path
               %li= link_to t('responsibilities.new.title'), new_responsibility_path
+    .left_col.scroll-view
+      %span
+        = react_component('DailyVerses', {language: I18n.locale}, { prerender: true })
 
     - if current_user.admin?
       / /sidebar menu
