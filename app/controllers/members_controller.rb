@@ -20,17 +20,7 @@ class MembersController < ApplicationController
   end
 
   def index
-    # search specific of members
-    if params[:name].present?
-      @members = current_user.search_members(params[:first_name])
-      if @members.size == 1
-        redirect_to edit_member_path(@members.first)
-        return
-      elsif @members.blank?
-        flash.now[:notice] = t('.not_found')
-      end
-    # List all members of the church
-    elsif current_church.present? && current_church.members.present?
+    if current_church.present? && current_church.members.present?
       @members = current_church.members.sorted
     else
       flash.now[:notice] = t('.not_found')

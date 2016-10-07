@@ -14,11 +14,15 @@ gem 'gravatar_image_tag'
 gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'pg'
 gem 'puma'
 # gem 'pundit'
-# gem 'react_on_rails', "~> 6"#, github: 'shakacode/react_on_rails', branch: :master
+
+gem 'elasticsearch-model', '~> 0.1.8'
+gem 'elasticsearch-rails', '~> 0.1.8'
 gem 'sass-rails', '~> 5.0.5'
+gem 'react-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sidekiq'
 gem 'simple_form'
