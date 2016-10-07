@@ -62,8 +62,36 @@ brew install v8
 gem install libv8 -v '3.16.14.13' -- --with-system-v8
 gem install therubyracer -- --with-v8-dir=/usr/local/opt/v8-#622424
 ```
+## Instalar Elasticsearch
+
+```
+brew install elasticsearch
+```
+
+Para ver si todo va ok visita la siguiente dirección [http://localhost:9200](http://localhost:9200) en tu browser. Debería decir algo así:
+
+```
+{
+  "status" : 200,
+  "name" : "Astronomer",
+  "cluster_name" : "elasticsearch_claudiotorres",
+  "version" : {
+    "number" : "1.7.5",
+    "build_hash" : "00f95f4ffca6de89d68b7ccaf80d148f1f70e4d4",
+    "build_timestamp" : "2016-02-02T09:55:30Z",
+    "build_snapshot" : false,
+    "lucene_version" : "4.10.4"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 ## Ejecución
+
+Start Elasticsearch:
+```
+elastic search —config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
+```
 
 ### Desarrollo
 
