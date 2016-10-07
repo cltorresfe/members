@@ -90,6 +90,6 @@ Rails.application.configure do
   config.react.variant = :production
   config.react.addons = true
   config.react.server_renderer_options = {
-    files: ["components.js"], # files to load for prerendering
+    files: ["react-server.js", "components.js"], # files to load for prerendering
   }
 end
