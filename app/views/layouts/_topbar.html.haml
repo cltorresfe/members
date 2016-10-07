@@ -10,26 +10,14 @@
           .visible-xs-block.margin-box
             %a.user-profile.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "javascript:;"}
               = image_tag "avatar_2x.png"
-            %span.fa.fa-angle-down
+              %span.fa.fa-angle-down
+            = render 'layouts/dropdown_menu_topbar'
           .visible-sm-block.visible-md-block.visible-lg-block.margin-box
             %a.user-profile.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "javascript:;"}
               = image_tag "avatar_2x.png"
               = current_user.name
-            %span.fa.fa-angle-down
-          %ul.dropdown-menu.dropdown-usermenu.pull-right
-            %li
-              = link_to edit_profile_path do
-                %i.fa.fa-edit.pull-right
-                = t('.profile')
-            - if current_user.admin?
-              %li
-                = link_to sidekiq_web_path do
-                  %i.fa.fa-signal.pull-right
-                  = t('.sidekiq')
-            %li
-              = link_to destroy_user_session_path, method: :delete do
-                %i.fa.fa-sign-out.pull-right
-                = t('.destroy_session')
+              %span.fa.fa-angle-down
+            = render 'layouts/dropdown_menu_topbar'
         %li#main-searchbar.main-searchbar
           = react_component('SearchContainer', {title_search: t('.title_search'), title_placeholder: t('.title_placeholder')}, { prerender: true })
 / /top navigation
