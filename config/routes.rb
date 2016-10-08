@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :attendances, only: [:index, :create]
-  resources :tithes, only:[:new, :create, :update]
+  resources :tithes, only: [:new, :create, :update]
   resources :churches, only: [:new, :create]
   resources :families, except: :show
   resources :members do
@@ -22,8 +22,9 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#edit', as: :edit_profile
   put 'profile', to: 'users#update', as: :profile
-  get "search" => "search#search", as: :search
-  get "autocomplete" => "search#autocomplete", as: :autocomplete
+  get 'search' => 'search#search', as: :search
+  get 'autocomplete' => 'search#autocomplete', as: :autocomplete,
+      constraints: { format: :json }, defaults: { format: :json }
 
   root 'main#index'
 
@@ -52,6 +53,10 @@ end
 #                          DELETE /users(.:format)                         users/registrations#destroy
 #              attendances GET    /attendances(.:format)                   attendances#index
 #                          POST   /attendances(.:format)                   attendances#create
+#                   tithes POST   /tithes(.:format)                        tithes#create
+#                new_tithe GET    /tithes/new(.:format)                    tithes#new
+#                    tithe PATCH  /tithes/:id(.:format)                    tithes#update
+#                          PUT    /tithes/:id(.:format)                    tithes#update
 #                 churches POST   /churches(.:format)                      churches#create
 #               new_church GET    /churches/new(.:format)                  churches#new
 #                 families GET    /families(.:format)                      families#index
@@ -63,6 +68,7 @@ end
 #                          DELETE /families/:id(.:format)                  families#destroy
 #         send_mail_member POST   /members/:id/send_mail(.:format)         members#send_mail
 # associated_family_member POST   /members/:id/associated_family(.:format) members#associated_family
+#        add_tithes_member POST   /members/:id/add_tithes(.:format)        members#add_tithes
 #                  members GET    /members(.:format)                       members#index
 #                          POST   /members(.:format)                       members#create
 #               new_member GET    /members/new(.:format)                   members#new
@@ -88,5 +94,7 @@ end
 #                          DELETE /responsibilities/:id(.:format)          responsibilities#destroy
 #             edit_profile GET    /profile(.:format)                       users#edit
 #                  profile PUT    /profile(.:format)                       users#update
+#                   search GET    /search(.:format)                        search#search
+#             autocomplete GET    /autocomplete(.:format)                  search#autocomplete {:format=>:json}
 #                     root GET    /                                        main#index
 #

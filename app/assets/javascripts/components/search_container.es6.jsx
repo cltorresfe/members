@@ -16,10 +16,10 @@ class SearchContainer extends React.Component {
   search(term){
     this.setState( {term});
     $.ajax({
-      url: `/autocomplete.json/?term=${term}`,
+      url: `/autocomplete?term=${term}`,
       method: 'GET',
-      success: (data) => 
-        this.setState({ 
+      success: (data) =>
+        this.setState({
           members: data.members,
           ministries: data.ministries})
     });
@@ -54,11 +54,11 @@ class SearchContainer extends React.Component {
           onSearchTermChange={(term) => {this.search(term)}}
         />
         {this.renderSearchResults()}
-      </div>  
+      </div>
     );
   }
   renderSearchResults(){
-    if(!this.state.showDropdown || (this.state.members.length === 0 && this.state.ministries.length === 0)) {
+    if(!this.state.showDropdown || (this.state.term == '')) {
       return;
     }
     return (
@@ -73,4 +73,3 @@ class SearchContainer extends React.Component {
     );
   }
 }
-
