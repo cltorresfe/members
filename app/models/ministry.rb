@@ -51,13 +51,3 @@ class Ministry < ApplicationRecord
     attendances.present.size * 100 / attendances.size unless attendances.empty?
   end
 end
-
-# Delete the previous members index in Elasticsearch
-Ministry.__elasticsearch__.client.indices.delete index: Ministry.index_name rescue nil
-
-# Create the new index with the new mapping
-Ministry.__elasticsearch__.client.indices.create \
-  index: Ministry.index_name,
-  body: { settings: Ministry.settings.to_hash, mappings: Ministry.mappings.to_hash }
-
-Ministry.import force: true

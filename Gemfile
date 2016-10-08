@@ -5,24 +5,25 @@ gem 'rails', '>= 5.0.0', '< 5.1'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-will_paginate'
+gem 'carrierwave'
+gem 'ckeditor'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'country_select'
 gem 'coveralls', require: false
 gem 'devise', '~> 4.2.0'
+gem 'elasticsearch-model', '~> 0.1.8'
+gem 'elasticsearch-rails', '~> 0.1.8'
 gem 'gon', git: 'https://github.com/gazay/gon.git', branch: :master
 gem 'gravatar_image_tag'
 gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'mini_magick'
 gem 'pg'
 gem 'puma'
-# gem 'pundit'
-
-gem 'elasticsearch-model', '~> 0.1.8'
-gem 'elasticsearch-rails', '~> 0.1.8'
-gem 'sass-rails', '~> 5.0.5'
 gem 'react-rails'
+gem 'sass-rails', '~> 5.0.5'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sidekiq'
 gem 'simple_form'
@@ -30,9 +31,6 @@ gem 'sinatra', git: 'https://github.com/sinatra/sinatra.git', require: false
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate'
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'ckeditor'
 
 group :development, :test do
   gem 'awesome_print'

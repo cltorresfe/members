@@ -25,7 +25,11 @@
 #  membership_date :datetime
 #  discipline_date :datetime
 #  transfer_date   :datetime
+#  avatar          :string
+#  role            :integer
+#  family_id       :integer
 #
+
 require 'elasticsearch/model'
 
 class Member < ApplicationRecord
@@ -64,8 +68,8 @@ class Member < ApplicationRecord
   scope :sorted, -> { order(created_at: :desc) }
   scope :with_birth_date, -> { where.not(birth_date: nil) }
   scope :with_email, -> { where.not(email: nil) }
-  scope :active_service, -> { where("members.status = ? OR members.status = ? OR members.status = ?", 0, 1, 3) }
-  
+  scope :active_service, -> { where('members.status = ? OR members.status = ? OR members.status = ?', 0, 1, 3) }
+
   def set_defaults
     self.status ||= :active
   end
@@ -138,13 +142,3 @@ class Member < ApplicationRecord
     )
   end
 end
-
-# Delete the previous members index in Elasticsearch
-Member.__elasticsearch__.client.indices.delete index: Member.index_name rescue nil
-
-# Create the new index with the new mapping
-Member.__elasticsearch__.client.indices.create \
-  index: Member.index_name,
-  body: { settings: Member.settings.to_hash, mappings: Member.mappings.to_hash }
-
-Member.import force: true
