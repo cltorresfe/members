@@ -6,7 +6,7 @@ class MembersController < ApplicationController
   # GET /members.json
   def show
     @ministries = @member.ministries
-    @tithe = Tithe.new  
+    @tithe = Tithe.new
     @tithes = @member.tithes_by_date(1.year.ago.beginning_of_day, Time.now).sorted
     @responsibilities = @member.responsibilities
     @attendances = @member.attendances.sorted
@@ -94,8 +94,8 @@ class MembersController < ApplicationController
 
     if @tithe.save
       MemberMailer.send_notification_tithe(
-            params[:id], @tithe.id, current_user.id
-          ).deliver_later
+        params[:id], @tithe.id, current_user.id
+      ).deliver_later
       flash[:notice] = t('.success')
     else
       flash[:alert] = t('.error_save')

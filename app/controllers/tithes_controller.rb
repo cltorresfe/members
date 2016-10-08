@@ -1,5 +1,4 @@
 class TithesController < ApplicationController
-
   def new
     @tithe = Tithe.new
   end
@@ -17,11 +16,9 @@ class TithesController < ApplicationController
   end
 
   def update
-
   end
 
   private
-
 
   def tithe_params
     params.require(:tithe).permit(:handed_at, :quantity, :member_id)

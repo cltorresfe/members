@@ -16,7 +16,7 @@ module Decorators
       end
 
       def self.statuses_for_badge
-        statuses.map{|k, _v| [get_status_name_for(k), generate_abbv_for(k), (_v < 2 || _v == 3) ? 'bg-green' : 'bg-red']}
+        statuses.map { |k, _v| [get_status_name_for(k), generate_abbv_for(k), (_v < 2 || _v == 3) ? 'bg-green' : 'bg-red'] }
       end
 
       def self.get_status_name_for(status)
@@ -25,7 +25,7 @@ module Decorators
       end
 
       def self.generate_abbv_for(status)
-        get_status_name_for(status).split(" ").map {|name| name[0].chr }.join.upcase
+        get_status_name_for(status).split(' ').map { |name| name[0].chr }.join.upcase
       end
 
       def role_name

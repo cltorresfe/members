@@ -202,7 +202,7 @@ RSpec.describe Member, type: :model do
 
   describe '.tithes_by_date' do
     let!(:date_f) { 1.year.ago.beginning_of_day }
-    let!(:date_l) { Time.now}
+    let!(:date_l) { Time.now }
     subject { member.tithes_by_date(date_f, date_l) }
 
     context 'returns an array with the tithes of the last year' do

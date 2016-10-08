@@ -210,7 +210,7 @@ feature 'Members pages' do
     background { visit member_path(member) }
     let!(:member) { create(:member, church: user.church) }
     let!(:tithe) { create(:tithe, church: user.church, member: member) }
-      
+
     scenario 'adds tithe to member', js: true do
       click_button('Diezmo')
       fill_in 'Fecha entrega', with: I18n.l(Time.now, format: :just_date)

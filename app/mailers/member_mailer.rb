@@ -11,6 +11,6 @@ class MemberMailer < ApplicationMailer
     @member = Member.find(member_id)
     @tithe = Tithe.find(tithe_id)
     mail to: @member.email, subject: I18n.t('member_mailer.send_notification_tithe.subject'),
-        reply_to: @user.email
+         reply_to: @user.email
   end
 end
