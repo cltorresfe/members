@@ -90,7 +90,7 @@ Para ver si todo va ok visita la siguiente dirección [http://localhost:9200](ht
 
 Start Elasticsearch:
 ```
-elastic search —config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
+elasticsearch —config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
 ```
 
 ### Desarrollo
