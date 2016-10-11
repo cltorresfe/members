@@ -23,7 +23,7 @@ class MembersController < ApplicationController
     if current_church.present? && current_church.members.present?
       @members = current_church.members.sorted
     else
-      flash.now[:notice] = t('.not_found')
+      flash[:notice] = t('.not_found')
       return
     end
     @members = @members.paginate(page: params[:page], per_page: 24)
@@ -116,12 +116,13 @@ class MembersController < ApplicationController
       if current_church.members.include?(@member)
         MemberMailer.send_message(params[:subject], params[:body], @member.id,
                                   current_user.id).deliver_later
-        flash.now[:notice] = t('.success')
+        flash[:notice] = t('.success')
+        redirect_to action: :show
       else
         render status: :forbidden
       end
     else
-      flash.now[:alert] = t('.error')
+      flash[:alert] = t('.error')
       render status: :unprocessable_entity
     end
   end
