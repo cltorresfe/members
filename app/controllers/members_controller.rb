@@ -119,10 +119,11 @@ class MembersController < ApplicationController
         flash[:notice] = t('.success')
         redirect_to action: :show
       else
+        flash.now[:alert] = t('.error')
         render status: :forbidden
       end
     else
-      flash[:alert] = t('.error')
+      flash.now[:alert] = t('.error')
       render status: :unprocessable_entity
     end
   end
