@@ -83,7 +83,6 @@
         .col-md-9.col-sm-9.col-xs-12
           %div{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
             #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
-              #flash_messages
               - if(@members_family.present?)
                 .row
                   .col-md-12.col-sm-12.col-xs-12

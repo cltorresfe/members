@@ -8,7 +8,7 @@ feature 'Responsibilities pages' do
     context 'without responsibilities' do
       scenario 'displaying a "not found" message' do
         visit responsibilities_path
-        expect(page).to have_content 'No se encontraron cargos asociados'
+        expect(page.body).to match 'No se encontraron cargos asociados'
       end
     end
 
@@ -33,7 +33,7 @@ feature 'Responsibilities pages' do
     scenario 'tries to create an invalid responsibility' do
       visit new_responsibility_path
       click_button 'Crear Cargo'
-      expect(page).to have_content 'No puede estar en blanco'
+      expect(page.body).to match 'No puede estar en blanco'
     end
 
     scenario 'creates an admin responsibility' do
@@ -52,7 +52,7 @@ feature 'Responsibilities pages' do
     scenario 'removing responsibility name' do
       fill_in 'Nombre', with: ''
       click_button 'Actualizar Cargo'
-      expect(page).to have_content 'No puede estar en blanco'
+      expect(page.body).to match 'No puede estar en blanco'
     end
 
     scenario 'updating responsibility name' do
@@ -71,8 +71,8 @@ feature 'Responsibilities pages' do
       scenario 'destroys the given responsibility' do
         expect(page).to have_content responsibility.name
         click_link('', href: "/responsibilities/#{responsibility.id}")
-        expect(page).to have_content 'Cargo fue borrado exitosamente'
-        expect(page).to have_content 'No se encontraron cargos asociados'
+        expect(page.body).to match 'Cargo fue borrado exitosamente'
+        expect(page.body).to match 'No se encontraron cargos asociados'
         expect(page).not_to have_content responsibility.name
       end
     end
@@ -82,9 +82,8 @@ feature 'Responsibilities pages' do
 
       scenario 'rejects responsibility destroyal' do
         click_link('', href: "/responsibilities/#{responsibility.id}")
-        expect(page).not_to have_content 'Cargo fue borrado exitosamente'
         expect(page).to have_content responsibility.name
-        expect(page).to have_content 'Uno o más ministerios se encuentran asociados a este cargo. Favor desasociar primero.'
+        expect(page.body).to match 'Uno o más ministerios se encuentran asociados a este cargo. Favor desasociar primero.'
       end
     end
   end

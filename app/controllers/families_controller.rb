@@ -5,7 +5,7 @@ class FamiliesController < ApplicationController
   # GET /families.json
   def index
     @families = current_church.families
-    flash.now[:alert] = t('.not_found') if @families.blank?
+    flash[:alert] = t('.not_found') if @families.blank?
   end
 
   # GET /families/new

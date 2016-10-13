@@ -7,7 +7,7 @@
         %h3.modal-title= t('common.title_modal_mail')
         = t('.send_to', member: @member.full_name_and_mail)
         #flash_messages_error
-      = form_tag(send_mail_member_path(@member.id), remote: true, id: 'email_form', style: "display:inline;" ) do
+      = form_tag(send_mail_member_path(@member.id), :method => :post, id: 'email_form', style: "display:inline;" ) do
         / body (form)
         .modal-body
           .form-group

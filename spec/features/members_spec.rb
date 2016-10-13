@@ -79,7 +79,7 @@ feature 'Members pages' do
       scenario 'Displaying not found message' do
         visit members_path
         expect(page).to have_content 'Listado de Miembros'
-        expect(page).to have_content 'No se encontraron miembros ingresados'
+        expect(page.body).to match  'No se encontraron miembros ingresados'
       end
     end
   end
@@ -131,7 +131,7 @@ feature 'Members pages' do
       scenario 'destroys the given member' do
         expect(page).to have_content member.full_name
         click_link('Borrar')
-        expect(page).to have_content 'No se encontraron miembros ingresados'
+        expect(page.body).to match  'No se encontraron miembros ingresados'
         expect(page).not_to have_content member.full_name
       end
     end
@@ -142,11 +142,11 @@ feature 'Members pages' do
 
     context 'member with email and subject' do
       let!(:member) { create(:member, church: user.church) }
-      scenario 'sends email to member', js: true do
+      scenario 'sends email to member' do
         click_button('Enviar Mensaje')
         fill_in 'Asunto', with: 'subject'
         click_button('Enviar Correo')
-        expect(page).to have_content 'Se ha enviado el correo satisfactoriamente.'
+        expect(page.body).to match  'Se ha enviado el correo satisfactoriamente.'
       end
     end
 
@@ -178,7 +178,7 @@ feature 'Members pages' do
         select('Padre', from: 'Rol')
         have_select('Familia', selected: family.name)
         click_button('Actualizar Miembro')
-        expect(page).to have_content 'Miembro ha sido actualizado satisfactoriamente.'
+        expect(page.body).to match  'Miembro ha sido actualizado satisfactoriamente.'
       end
     end
 
@@ -189,7 +189,7 @@ feature 'Members pages' do
         select('Padre', from: 'Rol')
         have_select('Familia', selected: family.name)
         click_button('Actualizar Miembro')
-        expect(page).to have_content 'Miembro ha sido actualizado satisfactoriamente.'
+        expect(page.body).to match  'Miembro ha sido actualizado satisfactoriamente.'
       end
     end
 
@@ -201,7 +201,7 @@ feature 'Members pages' do
         select('Jefe de Familia', from: 'Rol')
         have_select('Familia', selected: family.name)
         click_button('Actualizar Miembro')
-        expect(page).to have_content 'ya es un Jefe de Familia'
+        expect(page.body).to match  'ya es un Jefe de Familia'
       end
     end
   end
@@ -211,13 +211,13 @@ feature 'Members pages' do
     let!(:member) { create(:member, church: user.church) }
     let!(:tithe) { create(:tithe, church: user.church, member: member) }
       
-    scenario 'adds tithe to member', js: true do
+    scenario 'adds tithe to member' do
       click_button('Diezmo')
       fill_in 'Fecha entrega', with: I18n.l(Time.now, format: :just_date)
       fill_in 'Cantidad', with: '3000'
 
       click_button('Crear Diezmo')
-      expect(page).to have_content 'Diezmo ha sido agregado satisfactoriamente'
+      expect(page.body).to match 'Diezmo ha sido agregado satisfactoriamente'
     end
   end
 end

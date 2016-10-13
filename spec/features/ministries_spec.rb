@@ -10,7 +10,7 @@ feature 'ministries pages' do
     context 'without ministries' do
       scenario 'displaying a "not found" message' do
         visit ministries_path
-        expect(page).to have_content 'No se encontraron ministerios asociados'
+        expect(page.body).to match 'No se encontraron ministerios asociados'
       end
     end
 
@@ -37,7 +37,7 @@ feature 'ministries pages' do
     scenario 'tries to create an invalid ministry' do
       visit new_ministry_path
       click_button 'Crear Ministerio'
-      expect(page).to have_content 'No puede estar en blanco'
+      expect(page.body).to match 'No puede estar en blanco'
     end
 
     scenario 'creates an admin ministry' do
@@ -56,7 +56,7 @@ feature 'ministries pages' do
     scenario 'removing ministry name' do
       fill_in 'Nombre', with: ''
       click_button 'Actualizar Ministerio'
-      expect(page).to have_content 'No puede estar en blanco'
+      expect(page.body).to match 'No puede estar en blanco'
     end
 
     scenario 'updating ministry name' do
@@ -72,11 +72,11 @@ feature 'ministries pages' do
     background { visit ministries_path }
 
     context 'ministry with no associations' do
-      scenario 'destroys the given ministry' do
+      scenario 'destroys the given ministry', js: true do
         expect(page).to have_content ministry.name
         click_link('', href: "/ministries/#{ministry.id}")
-        expect(page).to have_content 'Ministerio fue borrado exitosamente'
-        expect(page).to have_content 'No se encontraron ministerios asociados'
+        expect(page.body).to match 'Ministerio fue borrado exitosamente'
+        expect(page.body).to match 'No se encontraron ministerios asociados'
         expect(page).not_to have_content ministry.name
       end
     end
@@ -87,9 +87,8 @@ feature 'ministries pages' do
 
       scenario 'rejects ministry destroyal' do
         click_link('', href: "/ministries/#{ministry.id}")
-        expect(page).not_to have_content 'Ministerio fue borrado exitosamente'
         expect(page).to have_content ministry.name
-        expect(page).to have_content 'Uno o más miembros se encuentran asociados a este ministerio. Favor desasociar primero.'
+        expect(page.body).to match 'Uno o más miembros se encuentran asociados a este ministerio. Favor desasociar primero.'
       end
     end
   end
