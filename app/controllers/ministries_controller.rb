@@ -6,7 +6,7 @@ class MinistriesController < ApplicationController
   # GET /ministries.json
   def index
     @ministries = current_church.ministries.sorted
-    flash.now[:alert] = t('.not_found') if @ministries.blank?
+    flash[:alert] = t('.not_found') if @ministries.blank?
   end
 
   # GET /ministries/new

@@ -16,7 +16,7 @@ feature 'Churches' do
   scenario 'creating an invalid church' do
     click_button 'Crear Iglesia'
     expect(page).to have_content 'Nueva Iglesia'
-    expect(page).to have_content 'No puede estar en blanco'
+    expect(page.body).to match 'No puede estar en blanco'
   end
 
   scenario 'creating a valid church' do
@@ -34,7 +34,7 @@ feature 'Churches' do
 
     scenario 'redirects to dashboard if tries to create a new church' do
       visit new_church_path
-      expect(page).to have_content 'No es posible crear una nueva iglesia'
+      expect(page.body).to match 'No es posible crear una nueva iglesia'
     end
   end
 end

@@ -1,14 +1,4 @@
 - if notice
-  .row
-    .col-xs-6.col-xs-offset-1
-      .alert.alert-success.alert-dismissible.fade.in{:role => "alert"}
-        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
-          %span{"aria-hidden" => "true"} ×
-        %strong= notice.html_safe
+  = react_component('AlertMessage', { message: notice.html_safe, type: 'success' })
 - if alert
-  .row
-    .col-xs-6.col-xs-offset-1
-      .alert.alert-danger.alert-dismissible.fade.in{:role => "alert"}
-        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
-          %span{"aria-hidden" => "true"} ×
-        %strong= alert
+  = react_component('AlertMessage', { message: alert, type: 'danger' })
